@@ -67,9 +67,9 @@
                             <i class="fa fa-key"></i>
                             <h3>sign in</h3>
                         </div>
-                        <form>
+                        <form action="login" method="post" >
                             <div class="account-form-group">
-                                <input type="text" placeholder="Username or Email" name="username" >
+                                <input type="text" placeholder="Username or Email" name="player_id" >
                                 <i class="fa fa-user"></i>
                             </div>
                             <div class="account-form-group">
@@ -90,7 +90,7 @@
                             </p>
                         </form>
                         <div class="login-sign-up">
-                            <a href="register.html">Do you need an account?</a>
+                            <a href="registration">Do you need an account?</a>
                         </div>
                     </div>
                 </div>

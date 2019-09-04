@@ -19,5 +19,13 @@ public class MemberRepository {
 		
 		return result;
 	}
+
+	public PlayerDTO login(PlayerDTO player) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		
+		PlayerDTO result = mapper.selectOne(player);
+		
+		return result;
+	}
 	
 }

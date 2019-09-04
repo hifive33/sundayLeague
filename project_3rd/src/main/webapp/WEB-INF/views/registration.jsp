@@ -90,30 +90,76 @@
                             </div>
                             <hr>
                             <div class="account-form-group">
-                                <input type="text" placeholder="Position" name="position" >
+                            	<select name="position">
+                            		<option>Position</option>
+                            		<option value="CB">CB</option>
+                            		<option value="LCB">LCB</option>
+                            		<option value="RCB">RCB</option>
+                            		<option value="LB">LB</option>
+                            		<option value="RB">RB</option>
+                            		<option value="LWB">LWB</option>
+                            		<option value="RWB">RWB</option>
+                            		<option value="CM">CM</option>
+                            		<option value="LCM">LCM</option>
+                            		<option value="RCM">RCM</option>
+                            		<option value="CDM">CDM</option>
+                            		<option value="CAM">CAM</option>
+                            		<option value="LM">LM</option>
+                            		<option value="RM">RM</option>
+                            		<option value="LWM">LWM</option>
+                            		<option value="RWM">RWM</option>
+                            		<option value="CF">CF</option>
+                            		<option value="SS">SS</option>
+                            		<option value="ST">ST</option>
+                            		<option value="LWF">LWF</option>
+                            		<option value="RWF">RWF</option>
+                            	</select>
                                 <i class="fa"></i>
                             </div>
                             <div class="account-form-group">
-                                <input type="text" placeholder="Subposition" name="subposition" >
+                                <select name="subposition">
+                            		<option>Subposition</option>
+                            		<option value="CB">CB</option>
+                            		<option value="LCB">LCB</option>
+                            		<option value="RCB">RCB</option>
+                            		<option value="LB">LB</option>
+                            		<option value="RB">RB</option>
+                            		<option value="LWB">LWB</option>
+                            		<option value="RWB">RWB</option>
+                            		<option value="CM">CM</option>
+                            		<option value="LCM">LCM</option>
+                            		<option value="RCM">RCM</option>
+                            		<option value="CDM">CDM</option>
+                            		<option value="CAM">CAM</option>
+                            		<option value="LM">LM</option>
+                            		<option value="RM">RM</option>
+                            		<option value="LWM">LWM</option>
+                            		<option value="RWM">RWM</option>
+                            		<option value="CF">CF</option>
+                            		<option value="SS">SS</option>
+                            		<option value="ST">ST</option>
+                            		<option value="LWF">LWF</option>
+                            		<option value="RWF">RWF</option>
+                            	</select>
                                 <i class="fa"></i>
                             </div>
                             <div class="account-form-group">
-                                <input type="number" placeholder="Height" name="height" >
+                                <input type="number" placeholder="Height" name="height" min="0" >
                                 <i class="fa"></i>
                             </div>
                             <div class="account-form-group">
-                                <input type="number" placeholder="Weight" name="weight" >
+                                <input type="number" placeholder="Weight" name="weight" min="0" >
                                 <i class="fa"></i>
                             </div>
                             <div class="account-form-group">
-                                <input type="number" placeholder="Age" name="age" >
+                                <input type="number" placeholder="Age" name="age" min="0" >
                                 <i class="fa"></i>
                             </div>
                             <div class="account-form-group">
                             	<select name="mainfoot" >
                             		<option>Main Foot</option>
-                            		<option>left</option>
-                            		<option>right</option>
+                            		<option value="left">left</option>
+                            		<option value="right">right</option>
                             	</select>
                                 <i class="fa"></i>
                             </div>
@@ -187,10 +233,21 @@
 		$(function(){
 			$(".breadcromb-box ul li:last-child").html("Registration")
 			$(".account-form-group > select").on('change', function(){
-				if ($(this).val() != $(this).children()[0].innerHTML)
+				if ($(this).val() != $(this).children()[0].innerHTML){
 					$(this).attr('style','color:black;');
-				else
+					$(this).next().addClass("fa-check");
+				}else {
 					$(this).removeAttr('style');
+					$(this).next().removeClass("fa-check");
+				}
+			})
+			$(".account-form-group > input[type=number], textarea").on('keyup', function(){
+				// validation 추가
+				if ($(this).val() != ""){
+					$(this).next().addClass("fa-check");
+				}else {
+					$(this).next().removeClass("fa-check");
+				}
 			})
 		})
 	</script>

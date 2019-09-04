@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.sundayleague.main.dao.MemberRepository;
 import com.sundayleague.main.dto.PlayerDTO;
 
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 @Controller
 public class MemberController {
 	
@@ -17,7 +20,19 @@ public class MemberController {
 	@GetMapping("/login")
 	public void login() {
 	}
-	
+
+	@PostMapping("/login")
+	public String loginProcess(PlayerDTO player) {
+		player = repo.login(player);
+		
+		if (player != null){
+			log.info(player.toString());
+			return "redirect:/";
+		} else{
+			return "/login";
+		}
+	}
+
 	@GetMapping("/registration")
 	public void registration() {
 	}
