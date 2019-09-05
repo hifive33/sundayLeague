@@ -234,11 +234,11 @@
 			$(".breadcromb-box ul li:last-child").html("Registration")
 			$(".account-form-group > select").on('change', function(){
 				if ($(this).val() != $(this).children()[0].innerHTML){
-					$(this).attr('style','color:black;');
-					$(this).next().addClass("fa-check");
+					$(this).attr('style','color:black;')
+						   .next().addClass("fa-check");
 				}else {
-					$(this).removeAttr('style');
-					$(this).next().removeClass("fa-check");
+					$(this).removeAttr('style')
+						   .next().removeClass("fa-check");
 				}
 			})
 			$(".account-form-group > input[type=number], textarea").on('keyup', function(){

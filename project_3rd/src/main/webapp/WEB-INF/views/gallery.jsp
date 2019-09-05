@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Title -->
-    <title>Kick || Football Club</title>
+    <title>Sunday League</title>
     
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="144x144" href="resources/favicons/apple-touch-icon.png">
@@ -250,6 +250,7 @@
     <!-- script -->
 	<script>
 		$(function(){
+			$(".breadcromb-box > h2").html("Gallery")
 			$(".breadcromb-box ul li:last-child").html("Gallery")
 		})
 	</script>

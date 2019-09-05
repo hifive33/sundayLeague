@@ -37,11 +37,11 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="header-top-right">
-                        <a href="cart">
+                        <!-- <a href="cart">
                             <i class="fa fa-shopping-cart"></i>
                             cart
-                        </a>
-                        <a href="#">
+                        </a> -->
+                        <a href="myaccount">
                             <i class="fa fa-user"></i>
                             My Account
                         </a>
@@ -79,12 +79,6 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="player">Player</a>
-                                        <ul>
-                                            <li><a href="player">players</a></li><li><a href="playerdetails">player details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
                                         <a href="gallery">gallery</a>
                                     </li>
                                 </ul>
@@ -100,14 +94,20 @@
                         <div class="mainmenu-left second-menu">
                             <nav>
                                 <ul id="navigation_menu_2">
-                                    <li>
+                                	<li>
+                                        <a href="player">Player</a>
+                                        <ul>
+                                            <li><a href="player">players</a></li><li><a href="playerdetails">player details</a></li>
+                                        </ul>
+                                    </li>
+                                    <!-- <li>
                                         <a href="tickets">all tickets</a>
                                         <ul>
                                             <li><a href="tickets">tickets</a></li>
                                             <li><a href="buytickets">tickets details</a></li>
                                         </ul>
-                                    </li>
-                                    <li>
+                                    </li> -->
+                                    <!-- <li>
                                         <a href="shop">shop</a>
                                         <ul>
                                             <li><a href="shop">shop</a></li>
@@ -115,19 +115,18 @@
                                             <li><a href="cart">cart page</a></li>
                                             <li><a href="checkout">checkout page</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                     <li>
-                                        <a href="bloggrid">blog</a>
+                                        <a href="team">Team</a>
                                         <ul>
-                                            <li><a href="bloggrid">blog grid</a></li>
-                                            <li><a href="blogleft">blog left sidebar</a></li>
-                                            <li><a href="blogright">blog right sidebar</a></li>
-                                            <li><a href="singleblog">single blog</a></li>
+                                            <li><a href="team">Teams</a></li>
+                                            <li><a href="teamdetails">Team Details</a></li>
                                         </ul>
                                     </li>
                                     <!-- 선택된 css -->
                                     <!-- <li class="current-page-item"> -->
-                                    <li>
+                                    <!-- 하위메뉴 -->
+                                    <!-- <li>
                                         <a>page</a>
                                         <ul>
                                             <li>
@@ -144,9 +143,12 @@
                                                 </a>
                                             </li>
                                         </ul>
+                                    </li> -->
+                                    <li>
+                                    	<a href="faq">FAQ</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">contact</a>
+                                        <a href="contact">contact</a>
                                     </li>
                                 </ul>
                             </nav>

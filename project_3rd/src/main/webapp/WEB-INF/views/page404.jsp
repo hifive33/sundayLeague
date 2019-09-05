@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Title -->
-    <title>Kick || Football Club HTML Template</title>
+    <title>Sunday League</title>
     
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="144x144" href="resources/favicons/apple-touch-icon.png">
@@ -121,6 +121,7 @@
     <!-- script -->
 	<script>
 		$(function(){
+			$(".breadcromb-box > h2").html("404 Page")
 			$(".breadcromb-box ul li:last-child").html("404 Page")
 		})
 	</script>

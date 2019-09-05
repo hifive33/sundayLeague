@@ -44,5 +44,8 @@ public class MemberController {
 		return result == 1 ? "redirect:/login" : null;
 	}
 	
-	
+	@GetMapping("/myaccount")
+	public void myaccount() {
+	}
+
 }

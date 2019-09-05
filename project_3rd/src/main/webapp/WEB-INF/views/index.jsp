@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Title -->
-    <title>Kick || Football Club</title>
+    <title>Sunday League</title>
     
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="144x144" href="resources/favicons/apple-touch-icon.png">
@@ -65,7 +66,7 @@
                                     <h2>kika Semi Finals at city stadium</h2>
                                     <p>Friday, 10th Sep, 2018, 16:00GMT</p>
                                     <a href="#" class="kick-btn">
-                                        buy tickets now
+                                        Link1
                                         <i class="fa fa-arrow-right"></i>
                                     </a>
                                 </div>
@@ -83,7 +84,25 @@
                                     <h2>kika Semi Finals at city stadium</h2>
                                     <p>Friday, 10th Sep, 2018, 16:00GMT</p>
                                     <a href="#" class="kick-btn">
-                                        buy tickets now
+                                        Link2
+                                        <i class="fa fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="kick-main-slide slide-item-3">
+                <div class="kick-main-caption">
+                    <div class="kick-caption-cell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <h2>kika Semi Finals at city stadium</h2>
+                                    <p>Friday, 10th Sep, 2018, 16:00GMT</p>
+                                    <a href="#" class="kick-btn">
+                                        Link3
                                         <i class="fa fa-arrow-right"></i>
                                     </a>
                                 </div>
@@ -407,7 +426,7 @@
     
     
     <!-- Video Area Start -->
-    <section class="kick-video-area section_100">
+<!--     <section class="kick-video-area section_100">
         <div class="kick-video-overlay"></div>
         <div class="container">
             <div class="row">
@@ -497,7 +516,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Video Area End -->
     
     
@@ -585,7 +604,7 @@
     
     
     <!-- Match Gallery Area Start -->
-    <section class="kick-match-gallery-area section_100">
+<!--     <section class="kick-match-gallery-area section_100">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -681,10 +700,10 @@
             </div>
         </div>
     </section>
-    <!-- Match Gallery Area End -->
+    Match Gallery Area End
     
     
-    <!-- Top Products Area Start -->
+    Top Products Area Start
     <section class="kick-top-products-area section_100">
         <div class="container">
             <div class="row">
@@ -823,12 +842,12 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Top Products Area End -->
     
     
     <!-- Latest Post Area Start -->
-    <section class="kick-latest-post-area section_100">
+<!--     <section class="kick-latest-post-area section_100">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -930,7 +949,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Latest Post Area End -->
     
     

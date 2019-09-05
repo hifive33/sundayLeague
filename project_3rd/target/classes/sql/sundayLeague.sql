@@ -167,6 +167,8 @@ CREATE TABLE team
 	region varchar2(20) NOT NULL,
 	-- 삭제여부 1 : 활성화, 0 : 비활성화(삭제)
 	deleted_flag char(1) DEFAULT '1',
+	-- 구단 승인 여부 0:대기 1:승인
+	accpet_flag char(1) DEFAULT '0',
 	CONSTRAINT team_teamid_pk PRIMARY KEY (team_name)
 );
 

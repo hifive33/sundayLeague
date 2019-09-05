@@ -70,17 +70,10 @@
                 </div>
                 <div class="col-md-8 col-sm-8">
                     <div class="player-details-right">
-                        <h2>Sergio Ramos</h2>
+                        <h2>player_id</h2>
+                        <hr>
                         <div class="player-desc">
-                            <p>Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis. Commodo enim aliquam suspendisse tortor cum diam, commodo facilisis,</p>
-                            <p>libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis. Commodo enim aliquam suspendisse tortor cum diam, commodo facilisis,</p>
-                        </div>
-                        <div class="player-social">
-                            <h3>Social Network :</h3>
-                            <a href="#" class="pl_fb"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="pl_ttr"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="pl_gp"><i class="fa fa-google-plus"></i></a>
-                            <a href="#" class="pl_lnk"><i class="fa fa-linkedin"></i></a>
+                            <p>player_comment</p>
                         </div>
                     </div>
                 </div>
@@ -108,32 +101,32 @@
                         <table class="table table-striped table-responsive">
                             <tbody>
                                 <tr>
-                                    <td>Birth Date :</td>
-                                    <td>january 5th, 1996</td>
+                                    <td>Team Name</td>
+                                    <td>team name</td>
                                 </tr>
                                 <tr>
-                                    <td>Birth Place :</td>
-                                    <td>Manchester - UK</td>
+                                    <td>Age</td>
+                                    <td>age</td>
                                 </tr>
                                 <tr>
-                                    <td>nationality:</td>
-                                    <td>italian</td>
+                                    <td>Position</td>
+                                    <td>position</td>
                                 </tr>
                                 <tr>
-                                    <td>Height :</td>
+                                    <td>Subposition</td>
+                                    <td>subposition</td>
+                                </tr>
+                                <tr>
+                                    <td>Height</td>
                                     <td>184 cm (1m 86cm)</td>
                                 </tr>
                                 <tr>
-                                    <td>Weight :</td>
+                                    <td>Weight</td>
                                     <td>84 kg - 168 lbs</td>
                                 </tr>
                                 <tr>
-                                    <td>Field position :</td>
-                                    <td>forward</td>
-                                </tr>
-                                <tr>
-                                    <td>First professional club :</td>
-                                    <td>abc Club</td>
+                                    <td>Mainfoot</td>
+                                    <td>mainfoot</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -287,8 +280,8 @@
     <!-- script -->
 	<script>
 		$(function(){
-			$(".breadcromb-box > h2").html("Player Details")
-			$(".breadcromb-box ul li:last-child").html("Player Details")
+			$(".breadcromb-box > h2").html("My Account")
+			$(".breadcromb-box > ul > li:last-child").html("My Account")
 		})
 	</script>
 </body>

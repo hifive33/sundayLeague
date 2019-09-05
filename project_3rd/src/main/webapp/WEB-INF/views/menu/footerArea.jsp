@@ -49,27 +49,21 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="fixture">
                                     <i class="fa fa-chevron-right"></i>
-                                    team
+                                    fixture
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="gallery">
                                     <i class="fa fa-chevron-right"></i>
-                                    terms
+                                    gallery
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="faq">
                                     <i class="fa fa-chevron-right"></i>
-                                    faqs
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-chevron-right"></i>
-                                    privecy policy
+                                    FAQs
                                 </a>
                             </li>
                         </ul>
@@ -85,7 +79,7 @@
                                         <img src="resources/img/footer-post.jpg" alt="footer-post" />
                                     </div>
                                     <div class="footer-post-text">
-                                        Lorem ipsum dolor amet, conse-ctetur adipiscing.
+                                        article1
                                     </div>
                                 </a>
                             </li>
@@ -95,7 +89,7 @@
                                         <img src="resources/img/footer-post-2.jpg" alt="footer-post" />
                                     </div>
                                     <div class="footer-post-text">
-                                        Lorem ipsum dolor amet, conse-ctetur adipiscing.
+                                        article2
                                     </div>
                                 </a>
                             </li>
@@ -105,7 +99,7 @@
                                         <img src="resources/img/footer-post.jpg" alt="footer-post" />
                                     </div>
                                     <div class="footer-post-text">
-                                        Lorem ipsum dolor amet, conse-ctetur adipiscing.
+                                        article3
                                     </div>
                                 </a>
                             </li>
