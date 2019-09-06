@@ -1,5 +1,10 @@
 package com.sundayleague.main.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +25,13 @@ public class TeamController {
 	}
 	
 	@RequestMapping(value="/creation",method=RequestMethod.POST)
-	public String insertTeam(TeamDTO team,String subregion) {
+	public String insertTeam(TeamDTO team,String subregion,HttpSession session) {
 		team.setRegion(team.getRegion()+subregion);
-		if(repo.insertTeam(team)==1) {
+		String player_id = (String)session.getAttribute("loginId");
+		Map<String,Object>map = new HashMap<>();
+		map.put("team", team);
+		map.put("id", player_id);
+		if(repo.insertTeam(map)==1) {
 			return "teaminfo";
 		}else{
 			return "creation";

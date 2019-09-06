@@ -225,27 +225,46 @@ COMMENT ON COLUMN team.region IS '소속 지역';
 COMMENT ON COLUMN team.deleted_flag IS '삭제여부 1 : 활성화, 0 : 비활성화(삭제)';
 
 
-/*구단 창단(Insert)*/
-insert into TEAM(
-TEAM_NAME,
-VICTORY,
-DEFEAT,
-DRAW,
-RATING,
-ESTABLISHED,
-HEADCOUNT,
-TEAM_COMMENT,
-REGION,
-DELETED_FLAG,
-ACCPET_FLAG)values(
-team_name = #{team_name},
-VICTORY = #{victory},
-DEFEAT = #{defeat},
-DRAW = #{draw},
-RATING = #{rating},
-ESTABLISHED = sysdate,
-HEADCOUNT = #{headcount},
-TEAM_COMMENT =#{team_comment},
-REGION = #{region},
-DELETED_FLAG = 1,
-ACCPET_FLAG = 0);
+/* 구단 창단(Insert) Procedure
+ * Team Table add & Player Table modify(team_name & authority)
+ * */
+create or replace PROCEDURE
+sp_insert_team
+(
+    v_team_name IN team.team_name%TYPE,
+    v_team_comment IN team.team_comment%TYPE,
+    v_team_region IN team.region%TYPE,
+    v_player_id IN player.player_id%TYPE
+)
+is
+begin
+      		insert into TEAM(
+			TEAM_NAME,
+			VICTORY,
+			DEFEAT,
+			DRAW,
+			RATING,
+			ESTABLISHED,
+			HEADCOUNT,
+			TEAM_COMMENT,
+			REGION,
+			DELETED_FLAG,
+			ACCPET_FLAG)
+		values(
+			v_team_name,
+			default,
+			default,
+			default,
+			1000,
+			sysdate,
+			default,
+			v_team_comment,
+			v_team_region,
+			default,
+			0);
+            
+        update player set authority=1, 
+		team_name=v_team_name 
+        where player_id=v_player_id;
+    end;
+    /

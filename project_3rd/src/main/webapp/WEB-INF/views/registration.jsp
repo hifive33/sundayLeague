@@ -158,8 +158,8 @@
                             <div class="account-form-group">
                             	<select name="mainfoot" >
                             		<option>Main Foot</option>
-                            		<option value="left">left</option>
-                            		<option value="right">right</option>
+                            		<option value="left">Left Foot</option>
+                            		<option value="right">Right Foot</option>
                             	</select>
                                 <i class="fa"></i>
                             </div>
@@ -253,11 +253,15 @@
 		    var el = $('.account-form-group > input[type="date"]')
 		    if ($(el).val() == '') $(el).attr('type', 'text');
 		    $(el).focus(function() {
-		        $(el).attr('type', 'date');
+		        $(this).attr('type', 'date');
+		        $(this).next().addClass("fa-check");
 		        el.click();
 		    });
 		    $(el).blur(function() {
-		        if ($(el).val() == '') $(el).attr('type', 'text');
+		        if ($(this).val() == '') {
+		        	$(this).attr('type', 'text');
+		        	$(this).next().removeClass("fa-check");
+		        }
 		    });
 		})
 	</script>

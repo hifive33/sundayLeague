@@ -163,7 +163,7 @@
                 </div>
             </div>
             <div class="row">
-				<div class="kick-update-cart clearfix">
+				<div class="player-profile-update clearfix">
 					<div class="col-md-6 col-sm-6">
 					</div>
 					<div class="col-md-6 col-sm-6">

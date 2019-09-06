@@ -1,8 +1,9 @@
 package com.sundayleague.main.dao;
 
-import com.sundayleague.main.dto.TeamDTO;
+import java.util.HashMap;
+import java.util.Map;
 
 public interface TeamMapper {
 
-	int insertTeam(TeamDTO team);
+	int insertTeam(Map<String, Object> map);
 }

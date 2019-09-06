@@ -87,4 +87,16 @@ public class HomeController {
 	public void contact() {
 	}
 	
+	@GetMapping("/teams")
+	public void teams() {
+	}
+	
+	@GetMapping("/myteam")
+	public void myteam() {
+	}
+	
+	@GetMapping("/teamdetails")
+	public void teamdetails() {
+	}
+	
 }
