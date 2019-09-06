@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	    
     
     <!-- Title -->
     <title>Sunday League</title>
@@ -70,10 +72,10 @@
                 </div>
                 <div class="col-md-8 col-sm-8">
                     <div class="player-details-right">
-                        <h2>player_id</h2>
+                        <h2>${player.player_id }</h2>
                         <hr>
                         <div class="player-desc">
-                            <p>player_comment</p>
+                            <p>${player.player_comment }</p>
                         </div>
                     </div>
                 </div>
@@ -102,31 +104,36 @@
                             <tbody>
                                 <tr>
                                     <td>Team Name</td>
-                                    <td>team name</td>
+                                    <c:if test="${player.team_name == null }">
+                                    <td>무소속</td>
+                                    </c:if>
+                                    <c:if test="${player.team_name != null }">
+                                    <td>${player.team_name }</td>
+                                    </c:if>
                                 </tr>
                                 <tr>
                                     <td>Birth</td>
-                                    <td>birth</td>
+                                    <td>${player.birth }</td>
                                 </tr>
                                 <tr>
                                     <td>Position</td>
-                                    <td>position</td>
+                                    <td>${player.position}</td>
                                 </tr>
                                 <tr>
                                     <td>Subposition</td>
-                                    <td>subposition</td>
+                                    <td>${player.subposition}</td>
                                 </tr>
                                 <tr>
                                     <td>Height</td>
-                                    <td>184 cm (1m 86cm)</td>
+                                    <td>${player.height }</td>
                                 </tr>
                                 <tr>
                                     <td>Weight</td>
-                                    <td>84 kg - 168 lbs</td>
+                                    <td>${player.weight }</td>
                                 </tr>
                                 <tr>
                                     <td>Mainfoot</td>
-                                    <td>mainfoot</td>
+                                    <td>${player.mainfoot}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -160,8 +167,8 @@
 					<div class="col-md-6 col-sm-6">
 					</div>
 					<div class="col-md-6 col-sm-6">
-						<div class="player-update-button">
-							<a href="#">Edit Profile</a>
+						<div class="coupon-cart-right">
+							<a href="updateprofile">Edit Profile</a>
 						</div>
 					</div>
 				</div>
