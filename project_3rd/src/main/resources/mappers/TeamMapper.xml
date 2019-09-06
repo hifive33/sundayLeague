@@ -3,32 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sundayleague.main.dao.TeamMapper">
-	<insert id="insertTeam" parameterType="TeamDTO">
-		insert into TEAM(
-			TEAM_NAME,
-			VICTORY,
-			DEFEAT,
-			DRAW,
-			RATING,
-			ESTABLISHED,
-			HEADCOUNT,
-			TEAM_COMMENT,
-			REGION,
-			DELETED_FLAG,
-			ACCPET_FLAG)
-		values(
-			#{team_name},
-			0,
-			0,
-			0,
-			1000,
-			sysdate,
-			0,
-			#{team_comment},
-			#{region},
-			1,
-			0)
-	</insert>
+	<update id="insertTeam" parameterType="map" statementType="CALLABLE">
+		{call sp_insert_team(
+		#{team.team_name},
+		#{team.team_comment},
+		#{team.region},
+		'123'
+		)
+		}
+	</update>
+	
 
 
 </mapper>
