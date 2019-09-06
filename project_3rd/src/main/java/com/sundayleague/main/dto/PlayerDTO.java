@@ -13,7 +13,7 @@ public class PlayerDTO {
 	private String subposition;
 	private String height;
 	private String weight;
-	private String age;
+	private String birth;
 	private String player_comment;
 	private String mainfoot;
 	private String withdrawal_flag;

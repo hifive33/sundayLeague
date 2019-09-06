@@ -15,7 +15,7 @@
 			,subposition
 			,height
 			,weight
-			,age
+			,birth
 			,mainfoot
 			,player_comment
 		)
@@ -29,7 +29,7 @@
 			,#{subposition}
 			,#{height}
 			,#{weight}
-			,#{age}
+			,#{birth}
 			,#{mainfoot}
 			,#{player_comment}
 		)
@@ -45,7 +45,7 @@
 			,subposition
 			,height
 			,weight
-			,age
+			,birth
 			,mainfoot
 			,player_comment
 			,withdrawal_flag

@@ -152,7 +152,7 @@
                                 <i class="fa"></i>
                             </div>
                             <div class="account-form-group">
-                                <input type="number" placeholder="Age" name="age" min="0" >
+                            	<input type="date" placeholder="Birthdate" name="birth">
                                 <i class="fa"></i>
                             </div>
                             <div class="account-form-group">
@@ -241,7 +241,7 @@
 						   .next().removeClass("fa-check");
 				}
 			})
-			$(".account-form-group > input[type=number], textarea").on('keyup', function(){
+			$(".account-form-group > input[type=number], textarea").on('change', function(){
 				// validation 추가
 				if ($(this).val() != ""){
 					$(this).next().addClass("fa-check");
@@ -249,6 +249,16 @@
 					$(this).next().removeClass("fa-check");
 				}
 			})
+			
+		    var el = $('.account-form-group > input[type="date"]')
+		    if ($(el).val() == '') $(el).attr('type', 'text');
+		    $(el).focus(function() {
+		        $(el).attr('type', 'date');
+		        el.click();
+		    });
+		    $(el).blur(function() {
+		        if ($(el).val() == '') $(el).attr('type', 'text');
+		    });
 		})
 	</script>
 	

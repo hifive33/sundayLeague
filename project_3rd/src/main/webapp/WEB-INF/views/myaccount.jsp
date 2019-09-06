@@ -136,7 +136,7 @@
                     <div class="player-profile-right">
                         <ul class="progress-list">
                             <li>
-                                <p> Shot Accuracy</p>
+                                <p>Shot Accuracy</p>
                                 <div class="bar" data-value="95"></div>
                             </li>
                             <li>
@@ -161,7 +161,7 @@
     
     
     <!-- Player Page Gallery Start -->
-    <section class="kick-player-page-gallery section_100">
+    <!-- <section class="kick-player-page-gallery section_100">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -233,7 +233,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Player Page Gallery End -->
     
     

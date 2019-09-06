@@ -132,7 +132,7 @@ CREATE TABLE player
 	-- 체중
 	weight number(5,2) NOT NULL,
 	-- 나이
-	age number NOT NULL,
+	birth date NOT NULL,
 	player_comment varchar2(1000) NOT NULL,
 	-- 주로 사용하는 발
 	mainfoot varchar2(10) NOT NULL,
