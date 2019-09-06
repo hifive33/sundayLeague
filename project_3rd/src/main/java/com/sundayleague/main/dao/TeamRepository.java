@@ -14,7 +14,8 @@ public class TeamRepository {
 	
 	public int insertTeam(Map<String, Object> map) {
 		TeamMapper mapper = session.getMapper(TeamMapper.class);
-		System.out.println();
-		return mapper.insertTeam(map);
+		int result = mapper.insertTeam(map);
+		System.out.println(result+"return값 확인");
+		return result;
 	}
 }

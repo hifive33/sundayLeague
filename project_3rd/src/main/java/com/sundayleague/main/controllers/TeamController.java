@@ -31,11 +31,16 @@ public class TeamController {
 		Map<String,Object>map = new HashMap<>();
 		map.put("team", team);
 		map.put("id", player_id);
-		if(repo.insertTeam(map)==1) {
+		//procedure return == -1 
+		if(repo.insertTeam(map)<0) {
 			return "teaminfo";
 		}else{
 			return "creation";
 		}
+	}
+	@RequestMapping(value="/teaminfo")
+	public String teamInfo() {
+		return "teaminfo";
 	}
 }
 	
