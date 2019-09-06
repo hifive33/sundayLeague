@@ -79,14 +79,14 @@
 			player_id = #{loginId}
 	</select>
 	
-	<update id="updateProfile" parameterType="String" >
+	<update id="updateProfile" parameterType="PlayerDTO" >
 			
 			update Player
 			
 			set
-			 
-			password =#{password}
-			,email =#{email}
+			
+
+			email =#{email}
 			,name =#{name}
 			,position =#{position}
 			,subposition =#{subposition}
@@ -96,6 +96,6 @@
 			,mainfoot =#{mainfoot}
 			,player_comment =#{player_comment}
 			
-			where player_id = #{loginId}			
+			where player_id = #{player_id}			
 	</update>
 </mapper>

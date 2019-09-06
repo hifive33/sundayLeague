@@ -6,7 +6,7 @@ public interface MemberMapper {
 
 	int insertPlayer(PlayerDTO player);
 	PlayerDTO selectOne(PlayerDTO player);
-	PlayerDTO updateProfile(String loginId);
+	int updateProfile(PlayerDTO player);
 	PlayerDTO selectProfile(String loginId);
 	
 }

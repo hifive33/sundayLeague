@@ -65,11 +65,11 @@
                     <div class="login-page-box">
                         <div class="login-page-heading">
                             <i class="fa fa-lock"></i>
-                            <h3>register</h3>
+                            <h3>update profile</h3>
                         </div>
-                        <form action=registration method="post">
+                        <form action=updateprofile method="post">
                             <div class="account-form-group">
-                                <input type="text" placeholder="ID" name=player_id value="${player.player_id}">
+                                <input type="text" placeholder="ID" name=player_id value="${player.player_id}" readonly="readonly">
                                 <i class="fa fa-user-o"></i>
                             </div>
                             <div class="account-form-group">

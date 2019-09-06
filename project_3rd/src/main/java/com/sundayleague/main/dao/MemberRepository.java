@@ -35,11 +35,11 @@ public class MemberRepository {
 		return player;
 	}
 
-	public PlayerDTO updateProfile(String loginId) {
+	public int updateProfile(PlayerDTO player) {
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
 		
-		PlayerDTO player = mapper.updateProfile(loginId);
-		return player;
+		int result = mapper.updateProfile(player);
+		return result;
 	}
 	
 }

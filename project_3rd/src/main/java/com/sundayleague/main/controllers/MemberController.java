@@ -67,8 +67,10 @@ public class MemberController {
 	
 	@PostMapping("/updateprofile")
 	public String updateProfile(HttpSession session, PlayerDTO player) {
-		String loginId = (String)session.getAttribute("loginId");
-		player = repo.updateProfile(loginId);
-		return "updateProfile";
+		int result = 0;
+		//String loginId = (String)session.getAttribute("loginId");
+		//player.setPlayer_id(loginId);
+		result = repo.updateProfile(player);
+		return "redirect:/myaccount";
 	}
 }
