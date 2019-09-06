@@ -8,7 +8,7 @@
 		#{team.team_name},
 		#{team.team_comment},
 		#{team.region},
-		'123'
+		#{id}
 		)
 		}
 	</update>
