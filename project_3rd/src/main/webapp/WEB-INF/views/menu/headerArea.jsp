@@ -96,9 +96,6 @@
                                 <ul id="navigation_menu_2">
                                 	<li>
                                         <a href="player">Player</a>
-                                        <ul>
-                                            <li><a href="player">players</a></li><li><a href="playerdetails">player details</a></li>
-                                        </ul>
                                     </li>
                                     <!-- <li>
                                         <a href="tickets">all tickets</a>
@@ -117,10 +114,10 @@
                                         </ul>
                                     </li> -->
                                     <li>
-                                        <a href="team">Team</a>
+                                        <a href="teams">Team</a>
                                         <ul>
-                                            <li><a href="team">Teams</a></li>
-                                            <li><a href="teamdetails">Team Details</a></li>
+                                            <li><a href="teams">Teams</a></li>
+                                            <li><a href="myteam">My Team</a></li>
                                         </ul>
                                     </li>
                                     <!-- 선택된 css -->

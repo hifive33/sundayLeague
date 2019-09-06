@@ -105,8 +105,8 @@
                                     <td>team name</td>
                                 </tr>
                                 <tr>
-                                    <td>Age</td>
-                                    <td>age</td>
+                                    <td>Birth</td>
+                                    <td>birth</td>
                                 </tr>
                                 <tr>
                                     <td>Position</td>
@@ -156,11 +156,11 @@
                 </div>
             </div>
             <div class="row">
-				<div class="kick-update-cart clearfix">
+				<div class="player-profile-update clearfix">
 					<div class="col-md-6 col-sm-6">
 					</div>
 					<div class="col-md-6 col-sm-6">
-						<div class="coupon-cart-right">
+						<div class="player-update-button">
 							<a href="#">Edit Profile</a>
 						</div>
 					</div>

@@ -6,7 +6,7 @@
     <div class="kick-top-footer-area section_50">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="single-footer-widget">
                         <h3>about <span>kick</span></h3>
                         <p>orem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ante at nunc pretium.</p>
@@ -69,7 +69,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-3">
+<!--                 <div class="col-md-3">
                     <div class="single-footer-widget">
                         <h3>recent post</h3>
                         <ul class="single-footer-post">
@@ -105,7 +105,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-md-3">
                     <div class="single-footer-widget">
                         <h3>Connect with us</h3>
