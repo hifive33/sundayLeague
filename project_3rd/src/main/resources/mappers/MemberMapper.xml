@@ -56,4 +56,46 @@
 			player_id =#{player_id}
 			and password=#{password}
 	</select>
+	
+	<select id="selectProfile" parameterType="String" resultType="PlayerDTO">
+				select
+			player_id
+			,team_name
+			,password
+			,email
+			,name
+			,position
+			,subposition
+			,height
+			,weight
+			,to_char(birth, 'YYYY-MM-DD') as birth
+			,mainfoot
+			,player_comment
+			,withdrawal_flag
+			,authority
+		from 
+			player
+		where
+			player_id = #{loginId}
+	</select>
+	
+	<update id="updateProfile" parameterType="String" >
+			
+			update Player
+			
+			set
+			 
+			password =#{password}
+			,email =#{email}
+			,name =#{name}
+			,position =#{position}
+			,subposition =#{subposition}
+			,height =#{height}
+			,weight =#{weight}
+			,birth =#{birth}
+			,mainfoot =#{mainfoot}
+			,player_comment =#{player_comment}
+			
+			where player_id = #{loginId}			
+	</update>
 </mapper>
