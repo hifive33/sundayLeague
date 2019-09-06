@@ -136,26 +136,38 @@
                     <div class="player-profile-right">
                         <ul class="progress-list">
                             <li>
-                                <p>Shot Accuracy</p>
-                                <div class="bar" data-value="95"></div>
+                                <p>Attendance</p>
+                                <div class="bar" data-value="92"></div>
                             </li>
                             <li>
-                                <p>Pass Accuracy</p>
+                                <p>Winning Rate</p>
                                 <div class="bar" data-value="85"></div>
                             </li>
-                            <li>
+<!--                             <li>
                                 <p>timing Accuracy</p>
                                 <div class="bar" data-value="90"></div>
                             </li>
                             <li>
                                 <p>total Accuracy</p>
                                 <div class="bar" data-value="95"></div>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
             </div>
+            <div class="row">
+				<div class="kick-update-cart clearfix">
+					<div class="col-md-6 col-sm-6">
+					</div>
+					<div class="col-md-6 col-sm-6">
+						<div class="coupon-cart-right">
+							<a href="#">Edit Profile</a>
+						</div>
+					</div>
+				</div>
+			</div>
         </div>
+
     </section>
     <!-- Player Profile Info End -->
     
