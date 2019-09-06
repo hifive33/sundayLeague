@@ -54,6 +54,7 @@ This files contents are outlined below >>>>
 31 - FAQs PAGE CSS
 32 - LOGIN PAGE CSS
 33 - CONTACT PAGE CSS
+34 - TEAM PAGE CSS
 
 */
 
@@ -2030,10 +2031,23 @@ li {
 .player-gallery-single {
     margin-top: 30px;
 }
-.player-profile-single {
-    margin-top: 20px;
+.player-update-button{
+	margin-top: 20px;
+	text-align: right;
 }
-
+.player-update-button > a:hover {
+    background: #212121 none repeat scroll 0 0;
+}
+.player-update-button > a {
+    background: #e01a22 none repeat scroll 0 0;
+    color: #fff;
+    display: inline-block;
+    font-weight: 600;
+    margin-right: 50px;
+    margin-top: 0;
+    padding: 12px 20px;
+    text-transform: uppercase;
+}
 /*================================================
 23 - GALLERY PAGE CSS
 ==================================================*/
@@ -3020,4 +3034,72 @@ li {
 .contact-heading {
     margin-bottom: 30px;
     text-align: center;
+}
+
+/*================================================
+34 - TEAM DETAILS PAGE CSS
+==================================================*/
+
+#wdl:before {
+    border-color: #e01a22 transparent;
+    border-style: solid;
+    border-width: 45px 35px 45px 0;
+    content: "";
+    height: 50px;
+    left: -1px;
+    position: absolute;
+    top: 0;
+    width: 43%;
+}
+#wdl {
+    background: #f9f9f9 none repeat scroll 0 0;
+    color: #000;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 15px 20px;
+    position: relative;
+    text-align: right;
+    text-transform: capitalize;
+}
+#wdl > p{
+    display: inline-block;
+    background: #212121 none repeat scroll 0 0;
+    color: #fff;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    font-weight: 600;
+    padding: 10px;
+    width: 80px
+}
+
+/*================================================
+35 - TEAMS PAGE CSS
+==================================================*/
+
+.element-team-rank {
+	width: 10%;
+}
+.element-team-name {
+	width: 30%;
+}
+.element-team-name > h3 {
+    color: #333;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    margin-top: 17px;
+}
+.element-team-name img {
+    height: 60px;
+    width: 60px;
+    vertical-align: bottom;
+}
+.element-team-rating {
+	width: 15%;
+}
+.element-team-information {
+}
+.element-team-information > p {
+	margin: 0;
 }

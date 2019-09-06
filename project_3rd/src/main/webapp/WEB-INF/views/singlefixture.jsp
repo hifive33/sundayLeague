@@ -11,40 +11,40 @@
     <title>Sunday League</title>
     
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="144x144" href="assets/favicons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="resources/favicons/apple-touch-icon.png">
     
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="resources/favicons/favicon-32x32.png">
     
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="resources/favicons/favicon-16x16.png">
     
-    <link rel="manifest" href="assets/favicons/manifest.json">
+    <link rel="manifest" href="resources/favicons/manifest.json">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
     
     <!-- Font awesome CSS -->
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="resources/css/font-awesome.min.css">
     
     <!-- Animate CSS -->
-    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="resources/css/animate.min.css">
     
     <!-- OwlCarousel CSS -->
-    <link rel="stylesheet" href="assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="resources/css/owl.carousel.css">
     
     <!-- SlickNav CSS -->
-    <link rel="stylesheet" href="assets/css/slicknav.min.css">
+    <link rel="stylesheet" href="resources/css/slicknav.min.css">
     
     <!-- Magnific popup CSS -->
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="resources/css/magnific-popup.css">
     
     <!-- Scroll CSS -->
-    <link rel="stylesheet" href="assets/css/perfect-scrollbar.min.css">
+    <link rel="stylesheet" href="resources/css/perfect-scrollbar.min.css">
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="resources/css/style.css">
     
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="resources/css/responsive.css">
 
 </head>
 <body>
@@ -75,7 +75,7 @@
                                         <div class="col-sm-5">
                                             <div class="team-head-image">
                                                 <a href="#">
-                                                    <img src="assets/img/team-2.png" alt="team image" />
+                                                    <img src="resources/img/team-2.png" alt="team image" />
                                                 </a>
                                             </div>
                                         </div>
@@ -87,7 +87,7 @@
                                         <div class="col-sm-5">
                                             <div class="team-head-image">
                                                 <a href="#">
-                                                    <img src="assets/img/team-3.png" alt="team image" />
+                                                    <img src="resources/img/team-3.png" alt="team image" />
                                                 </a>
                                             </div>
                                         </div>
@@ -233,7 +233,7 @@
                                 <div class="single-comment-box">
                                     <div class="main-comment">
                                         <div class="author-image">
-                                            <img src="assets/img/author-7.jpg" alt="author" />
+                                            <img src="resources/img/author-7.jpg" alt="author" />
                                         </div>
                                         <div class="comment-text">
                                             <div class="comment-info">
@@ -250,7 +250,7 @@
                                 <div class="single-comment-box reply-comment">
                                     <div class="main-comment">
                                         <div class="author-image">
-                                            <img src="assets/img/author-8.jpg" alt="author" />
+                                            <img src="resources/img/author-8.jpg" alt="author" />
                                         </div>
                                         <div class="comment-text">
                                             <div class="comment-info">
@@ -267,7 +267,7 @@
                                 <div class="single-comment-box">
                                     <div class="main-comment">
                                         <div class="author-image">
-                                            <img src="assets/img/author-6.jpg" alt="author" />
+                                            <img src="resources/img/author-6.jpg" alt="author" />
                                         </div>
                                         <div class="comment-text">
                                             <div class="comment-info">
@@ -417,32 +417,32 @@
                             <h3>best moment</h3>
                             <div class="moment-slider">
                                 <div class="single-moment">
-                                    <img src="assets/img/win-m.jpg" alt="best moment" />
+                                    <img src="resources/img/win-m.jpg" alt="best moment" />
                                 </div>
                                 <div class="single-moment">
-                                    <img src="assets/img/win-m2.jpg" alt="best moment" />
+                                    <img src="resources/img/win-m2.jpg" alt="best moment" />
                                 </div>
                             </div>
                         </div>
                         <div class="single-fixture-right-widget">
                             <h3>gallery</h3>
                             <a href="#">
-                                <img src="assets/img/widgetgallery-1.jpg" alt="Gallery" />
+                                <img src="resources/img/widgetgallery-1.jpg" alt="Gallery" />
                             </a>
                             <a href="#">
-                                <img src="assets/img/widgetgallery-2.jpg" alt="Gallery" />
+                                <img src="resources/img/widgetgallery-2.jpg" alt="Gallery" />
                             </a>
                             <a href="#">
-                                <img src="assets/img/widgetgallery-3.jpg" alt="Gallery" />
+                                <img src="resources/img/widgetgallery-3.jpg" alt="Gallery" />
                             </a>
                             <a href="#">
-                                <img src="assets/img/widgetgallery-2.jpg" alt="Gallery" />
+                                <img src="resources/img/widgetgallery-2.jpg" alt="Gallery" />
                             </a>
                             <a href="#">
-                                <img src="assets/img/widgetgallery-3.jpg" alt="Gallery" />
+                                <img src="resources/img/widgetgallery-3.jpg" alt="Gallery" />
                             </a>
                             <a href="#">
-                                <img src="assets/img/widgetgallery-1.jpg" alt="Gallery" />
+                                <img src="resources/img/widgetgallery-1.jpg" alt="Gallery" />
                             </a>
                         </div>
                     </div>
@@ -459,39 +459,39 @@
 
 
     <!-- jQuery -->
-    <script src="assets/js/jquery.min.js"></script>
+    <script src="resources/js/jquery.min.js"></script>
     
     <!-- Bootstrap JS -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
     
     <!-- Magnific Popup JS -->
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="resources/js/jquery.magnific-popup.min.js"></script>
     
     <!-- OwlCarousel JS -->
-    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="resources/js/owl.carousel.min.js"></script>
     
     <!-- SlickNav JS -->
-    <script src="assets/js/jquery.slicknav.min.js"></script>
+    <script src="resources/js/jquery.slicknav.min.js"></script>
     
     <!-- Scrollbar JS -->
-    <script src="assets/js/jquery-perfect-scrollbar.min.js"></script>
+    <script src="resources/js/jquery-perfect-scrollbar.min.js"></script>
     
     <!-- Countdown JS -->
-    <script src="assets/js/jquery.countdown.min.js"></script>
+    <script src="resources/js/jquery.countdown.min.js"></script>
     
     <!-- Waypoints JS -->
-    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="resources/js/jquery.waypoints.min.js"></script>
     
     <!-- Progressbar JS -->
-    <script src="assets/js/progressbar.min.js"></script>
+    <script src="resources/js/progressbar.min.js"></script>
     
     <!-- Isotop JS -->
-    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="resources/js/isotope.pkgd.min.js"></script>
     
-    <script src="assets/js/custom-isotop.js"></script>
+    <script src="resources/js/custom-isotop.js"></script>
     
     <!-- Custom JS -->
-    <script src="assets/js/custom.js"></script>
+    <script src="resources/js/custom.js"></script>
     
     <!-- script -->
 	<script>

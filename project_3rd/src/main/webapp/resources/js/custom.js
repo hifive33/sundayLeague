@@ -238,7 +238,7 @@ JS INDEX
         =================================================================	
         */
        
-        $('#coming-soon').countdown('2018/7/5', function (event) {
+        $('#coming-soon').countdown('2019/12/5', function (event) {
             var $this = $(this).html(event.strftime('' + '<p><span>%D</span>days</p>  ' + '<p><span>%H</span>Hours</p>  ' + '<p><span>%M</span>Minutes</p>  ' + '<p><span>%S</span>Seconds</p> '));
         });
         
