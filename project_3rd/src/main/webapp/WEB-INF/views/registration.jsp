@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Title -->
-    <title>Kick || Football Club</title>
+    <title>Sunday League</title>
     
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="144x144" href="resources/favicons/apple-touch-icon.png">
@@ -85,7 +85,7 @@
                                 <i class="fa fa-lock"></i>
                             </div>
                             <div class="account-form-group">
-                                <input type="password" placeholder="Confirm Password" >
+                                <input type="password" placeholder="Confirm Password" id="confirm">
                                 <i class="fa fa-lock"></i>
                             </div>
                             <hr>
@@ -231,7 +231,8 @@
     <!-- script -->
 	<script>
 		$(function(){
-			$(".breadcromb-box ul li:last-child").html("Registration")
+			$(".breadcromb-box > h2").html("Registraion")
+			$(".breadcromb-box ul li:last-child").html("Registraion")
 			$(".account-form-group > select").on('change', function(){
 				if ($(this).val() != $(this).children()[0].innerHTML){
 					$(this).attr('style','color:black;')
@@ -241,6 +242,62 @@
 						   .next().removeClass("fa-check");
 				}
 			})
+			
+			$(".account-form-group > input[name=player_id]").on('change', function(){
+				// validation 추가
+				if ($(this).val() != ""){
+					$(this).next().removeClass("fa-user-o");
+					$(this).next().addClass("fa-check");
+				}else {
+					$(this).next().removeClass("fa-check");
+					$(this).next().addClass("fa-user-o");
+				}
+			})
+			
+			$(".account-form-group > input[name=name]").on('change', function(){
+				// validation 추가
+				if ($(this).val() != ""){
+					$(this).next().removeClass("fa-user");
+					$(this).next().addClass("fa-check");
+				}else {
+					$(this).next().removeClass("fa-check");
+					$(this).next().addClass("fa-user");
+				}
+			})
+			
+			$(".account-form-group > input[name=email]").on('change', function(){
+				// validation 추가
+				if ($(this).val() != ""){
+					$(this).next().removeClass("fa-envelope-o");
+					$(this).next().addClass("fa-check");
+				}else {
+					$(this).next().removeClass("fa-check");
+					$(this).next().addClass("fa-envelope-o");
+				}
+			})
+			
+			$(".account-form-group > input[name=password]").on('change', function(){
+				// validation 추가
+				if ($(this).val() != ""){
+					$(this).next().removeClass("fa-lock");
+					$(this).next().addClass("fa-check");
+				}else {
+					$(this).next().removeClass("fa-check");
+					$(this).next().addClass("fa-lock");
+				}
+			})
+			
+			$("#confirm").on('change', function(){
+				// validation 추가
+				if ($(this).val() != ""){
+					$(this).next().removeClass("fa-lock");
+					$(this).next().addClass("fa-check");
+				}else {
+					$(this).next().removeClass("fa-check");
+					$(this).next().addClass("fa-lock");
+				}
+			})
+			
 			$(".account-form-group > input[type=number], textarea").on('change', function(){
 				// validation 추가
 				if ($(this).val() != ""){
