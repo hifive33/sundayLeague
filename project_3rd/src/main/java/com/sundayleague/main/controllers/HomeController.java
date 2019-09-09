@@ -99,4 +99,8 @@ public class HomeController {
 	public void teamdetails() {
 	}
 	
+	@GetMapping("/match")
+	public void match() {
+	}
+	
 }

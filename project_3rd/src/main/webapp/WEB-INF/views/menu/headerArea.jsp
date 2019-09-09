@@ -86,7 +86,7 @@
                         </div>
                         <div class="kick-site-logo">
                             <div class="responsive-menu-2"></div>
-                            <a href="<c:url value='/' />" class="kick-site-logo">
+                            <a href="match" class="kick-site-logo">
                                 <img src="resources/img/logo.png" alt="site logo" />
                             </a>
                             <div class="responsive-menu-1"></div>
