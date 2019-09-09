@@ -12,5 +12,6 @@
 	<mappers>
 		<mapper resource="mappers/MemberMapper.xml" />
 		<mapper resource="mappers/TeamMapper.xml" />
+		<mapper resource="mappers/AdminMapper.xml" />
 	</mappers>
 </configuration>
