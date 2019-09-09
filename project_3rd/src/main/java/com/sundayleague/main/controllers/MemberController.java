@@ -33,7 +33,14 @@ public class MemberController {
 			return "/login";
 		}
 	}
-
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		
+		return "redirect:/";
+	}
+	
 	@GetMapping("/registration")
 	public void registration() {
 	}
