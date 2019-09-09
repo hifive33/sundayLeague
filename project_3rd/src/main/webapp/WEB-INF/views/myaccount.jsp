@@ -164,9 +164,7 @@
             </div>
             <div class="row">
 				<div class="player-profile-update clearfix">
-					<div class="col-md-6 col-sm-6">
-					</div>
-					<div class="col-md-6 col-sm-6">
+					<div class="col-md-12 col-sm-6">
 						<div class="coupon-cart-right">
 							<a href="updateprofile">Edit Profile</a>
 						</div>

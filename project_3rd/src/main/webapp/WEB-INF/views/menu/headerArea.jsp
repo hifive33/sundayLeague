@@ -45,10 +45,8 @@
                             <i class="fa fa-user"></i>
                             My Account
                         </a>
-                        <a href="login">
-                            <i class="fa fa-sign-in"></i>
-                            login
-                        </a>
+                        ${sessionScope.loginId == null ? '<a href="login"><i class="fa fa-sign-in"></i>login</a>' : '<a href="logout"><i class="fa fa-sign-out"></i>logout</a>'}
+                        
                         <a href="registration">
                             <i class="fa fa-user-plus"></i>
                             register
@@ -67,7 +65,7 @@
                             <nav>
                                 <ul id="navigation_menu">
                                     <li>
-                                        <a href="<c:url value='/' />">Home</a>
+                                        <a href="<c:url value='/' />">ホーム</a>
                                     </li>
                                     <li>
                                         <a href="about">about</a>
@@ -118,6 +116,7 @@
                                         <ul>
                                             <li><a href="teams">Teams</a></li>
                                             <li><a href="myteam">My Team</a></li>
+                                            <li><a href="creation">Create Team</a></li>
                                         </ul>
                                     </li>
                                     <!-- 선택된 css -->

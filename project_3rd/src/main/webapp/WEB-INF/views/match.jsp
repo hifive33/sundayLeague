@@ -58,128 +58,52 @@
     <!-- Breadcromb Area End -->
     
     <!-- Match Area Start -->
-    <section class="kick-login-page-area section_100">
+    <section class="kick-tickets-list-area section_100">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="login-page-box">
-                        <div class="login-page-heading">
-                            <i class="fa fa-lock"></i>
-                            <h3>Match</h3>
+                    <div class="fixture-page-next-match-left">
+                        <div class="single-upcoming-match">
+                            <div id="coming-soon"></div>
+                            <h2>next match started in</h2>
+                            <div class="upcoming-match-box">
+                                <h4>위치</h4>
+                                <p>날짜</p>
+                                <div class="upcoming-teams-head">
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <div class="team-head-image">
+                                                <a href="#">
+                                                    <img src="resources/img/team-2.png" alt="team image" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="team-head-vs">
+                                                <span>VS</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="team-head-image">
+                                                <a href="#">
+                                                    <img src="resources/img/team-3.png" alt="team image" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4>Sunday League</h4>
+                            </div>
                         </div>
-                        <form action=registration method="post">
-                            <div class="account-form-group">
-                                <input type="text" placeholder="ID" name=player_id >
-                                <i class="fa fa-user-o"></i>
-                            </div>
-                            <div class="account-form-group">
-                                <input type="text" placeholder="Username" name="name" >
-                                <i class="fa fa-user"></i>
-                            </div>
-                            <div class="account-form-group">
-                                <input type="email" placeholder="Email Address" name="email" >
-                                <i class="fa fa-envelope-o"></i>
-                            </div>
-                            <div class="account-form-group">
-                                <input type="password" placeholder="Choose Password" name="password" >
-                                <i class="fa fa-lock"></i>
-                            </div>
-                            <div class="account-form-group">
-                                <input type="password" placeholder="Confirm Password" >
-                                <i class="fa fa-lock"></i>
-                            </div>
-                            <hr>
-                            <div class="account-form-group">
-                            	<select name="position">
-                            		<option>Position</option>
-                            		<option value="CB">CB</option>
-                            		<option value="LCB">LCB</option>
-                            		<option value="RCB">RCB</option>
-                            		<option value="LB">LB</option>
-                            		<option value="RB">RB</option>
-                            		<option value="LWB">LWB</option>
-                            		<option value="RWB">RWB</option>
-                            		<option value="CM">CM</option>
-                            		<option value="LCM">LCM</option>
-                            		<option value="RCM">RCM</option>
-                            		<option value="CDM">CDM</option>
-                            		<option value="CAM">CAM</option>
-                            		<option value="LM">LM</option>
-                            		<option value="RM">RM</option>
-                            		<option value="LWM">LWM</option>
-                            		<option value="RWM">RWM</option>
-                            		<option value="CF">CF</option>
-                            		<option value="SS">SS</option>
-                            		<option value="ST">ST</option>
-                            		<option value="LWF">LWF</option>
-                            		<option value="RWF">RWF</option>
-                            	</select>
-                                <i class="fa"></i>
-                            </div>
-                            <div class="account-form-group">
-                                <select name="subposition">
-                            		<option>Subposition</option>
-                            		<option value="CB">CB</option>
-                            		<option value="LCB">LCB</option>
-                            		<option value="RCB">RCB</option>
-                            		<option value="LB">LB</option>
-                            		<option value="RB">RB</option>
-                            		<option value="LWB">LWB</option>
-                            		<option value="RWB">RWB</option>
-                            		<option value="CM">CM</option>
-                            		<option value="LCM">LCM</option>
-                            		<option value="RCM">RCM</option>
-                            		<option value="CDM">CDM</option>
-                            		<option value="CAM">CAM</option>
-                            		<option value="LM">LM</option>
-                            		<option value="RM">RM</option>
-                            		<option value="LWM">LWM</option>
-                            		<option value="RWM">RWM</option>
-                            		<option value="CF">CF</option>
-                            		<option value="SS">SS</option>
-                            		<option value="ST">ST</option>
-                            		<option value="LWF">LWF</option>
-                            		<option value="RWF">RWF</option>
-                            	</select>
-                                <i class="fa"></i>
-                            </div>
-                            <div class="account-form-group">
-                                <input type="number" placeholder="Height" name="height" min="0" >
-                                <i class="fa"></i>
-                            </div>
-                            <div class="account-form-group">
-                                <input type="number" placeholder="Weight" name="weight" min="0" >
-                                <i class="fa"></i>
-                            </div>
-                            <div class="account-form-group">
-                            	<input type="date" placeholder="Birthdate" name="birth">
-                                <i class="fa"></i>
-                            </div>
-                            <div class="account-form-group">
-                            	<select name="mainfoot" >
-                            		<option>Main Foot</option>
-                            		<option value="left">Left Foot</option>
-                            		<option value="right">Right Foot</option>
-                            	</select>
-                                <i class="fa"></i>
-                            </div>
-                            <div class="account-form-group" style="height: 90px">
-                            	<textarea placeholder="Comment" name="player_comment"></textarea>
-                                <i class="fa"></i>
-                            </div>
-                            <!-- <div class="remember">
-                                <label>
-                                    <input name="remember" type="checkbox">
-                                     I agree the term’s &#38; conditions
-                                </label>
-                            </div> -->
-                            <div class="submit-login">
-                                <button type="submit" >Register</button>
-                            </div>
-                        </form>
-                        <div class="login-sign-up">
-                            <a href="login.html">back to login</a>
-                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="order-tickets">
+                    	<div class="coupon-cart-right">
+                    		<a href="#" class="kick-btn">신청하기</a>
+                    	</div>
                     </div>
                 </div>
             </div>
@@ -233,7 +157,14 @@
 		$(function(){
 			$(".breadcromb-box > h2").html("Match")
 			$(".breadcromb-box ul li:last-child").html("Match")
+			
+			var dday = '2019/09/09 18:34:56' // 경기시간
+			
+			$('#coming-soon').countdown(dday, function (event) {
+	            var $this = $(this).html(event.strftime('' + '<p><span>%D</span>days</p>  ' + '<p><span>%H</span>Hours</p>  ' + '<p><span>%M</span>Minutes</p>  ' + '<p><span>%S</span>Seconds</p> '));
+	        });
 		})
+		
 	</script>
 	
 </body>
