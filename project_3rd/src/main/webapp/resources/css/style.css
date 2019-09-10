@@ -55,7 +55,10 @@ This files contents are outlined below >>>>
 32 - LOGIN PAGE CSS
 33 - CONTACT PAGE CSS
 34 - TEAM DETAILS PAGE CSS
-34 - TEAMS PAGE CSS
+35 - TEAMS PAGE CSS
+36 - ADMIN HEADER CSS
+37 - ADMIN BREADCROMB CSS
+38 - ADMIN PAGINATION CSS
 
 */
 
@@ -181,6 +184,9 @@ li {
     height: 3px;
     margin-top: 5px;
     width: 22%;
+}
+.gray-background-section{
+    background: #f9f9f9 none repeat scroll 0 0;
 }
 
 /*================================================
@@ -3104,3 +3110,173 @@ li {
 .element-team-information > p {
 	margin: 0;
 }
+
+/*================================================
+36 - ADMIN HEADER CSS
+==================================================*/ 
+
+.admin-header-top-area {
+    background: #212121 none repeat scroll 0 0;
+    padding: 15px 0;
+    position: relative
+}
+.admin-header-top-overlay{
+    background: #1759c6 none repeat scroll 0 0;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 55%;
+}
+.admin-header-top-right {
+  text-align: right;
+}
+.admin-header-top-right > a {
+    border-right: 1px solid #ddd;
+    color: #fff;
+    font-weight: 600;
+    margin-right: 13px;
+    padding-right: 8px;
+    text-transform: capitalize;
+}
+.admin-header-top-right > a:hover{
+    color: #333
+}
+.admin-header-top-right > a:last-child{
+    border-right: 0px solid #ddd
+}
+.admin-header-top-overlay:before {
+    border-color: #1759c6 transparent;
+    border-style: solid;
+    border-width: 58px 0 0 65px;
+    content: "";
+    left: -65px;
+    position: absolute;
+    top: 0;
+}
+.admin-mainmenu-left {
+    float: right;
+    margin: 20px 0
+}
+.admin-mainmenu-left li {
+    display: inline-block;
+    position: relative
+}
+.admin-mainmenu-left li a{
+    display: block;
+    text-transform: capitalize;
+    padding: 30px 10px;
+    font-size: 18px;
+    color: #fff
+}
+.admin-mainmenu-left .admin-current-page-item > a, .admin-mainmenu-left a:hover {
+    color: #1759c6;
+}
+.admin-header-mainmenu-area {
+    background: #212121 none repeat scroll 0 0;
+    border-top: 2px solid #1759c6;
+    position: relative
+}
+.admin-mainmenu-left ul > li > ul {
+    background: #212121 none repeat scroll 0 0;
+    border-top: 2px solid #1759c6;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    position: absolute;
+    top: 130%;
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    visibility: hidden;
+    width: 220px;
+    z-index: 999999;
+}
+.admin-mainmenu-left ul > li:hover ul{
+    visibility: visible;
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    top: 100%
+}
+.admin-mainmenu-left li ul li{
+    display: block;
+    border-bottom: 2px solid #4a4a4a
+}
+.admin-mainmenu-left li ul li:last-child{
+    border-bottom: 0px solid #4a4a4a
+}
+.admin-mainmenu-left li ul li a{
+    display: block;
+    padding: 10px 20px
+}
+.admin-mainmenu-left li ul li a:hover{
+    background: #e01a22 none repeat scroll 0 0;
+    color: #fff
+}
+.admin-mainmenu-left.second-menu ul li:nth-last-child(-n+2) ul{
+    left: auto;
+    right: 0;
+}
+
+/*================================================
+37 - ADMIN BREADCROMB CSS
+==================================================*/ 
+.admin-kick-breadcromb-area {
+    background: #eee none repeat scroll 0 0;
+    padding: 70px 0;
+    position: relative;
+    text-align: center
+}
+.admin-breadcromb-box h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 29px;
+    font-weight: 700;
+    text-transform: capitalize
+}
+.admin-breadcromb-box > ul {
+    margin-top: 10px;
+}
+.admin-breadcromb-box ul li {
+    display: inline-block;
+    font-weight: 600;
+    margin: 0 4px;
+    text-transform: capitalize;
+}
+.admin-breadcromb-box ul li a i {
+    color: #1759c6;
+    font-size: 20px;
+}
+.admin-kick-breadcromb-area:before {
+    border-color: #1759c6 transparent;
+    border-style: solid;
+    border-width: 65px 60px 0 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 33.33%;
+}
+.admin-kick-breadcromb-area:after {
+    border-color: #1759c6 transparent;
+    border-style: solid;
+    border-width: 0 0 65px 60px;
+    content: "";
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 33.33%;
+}
+
+/*================================================
+38 - ADMIN PAGINATION CSS
+==================================================*/ 
+
+.admin-pagination a {
+    color: #555 !important;
+    border: 1px solid #1759c6  !important
+}
+.admin-pagination .active > a, .admin-pagination a:hover {
+    background: #1759c6  none repeat scroll 0 0 !important; 
+    color: #fff !important
+}
+

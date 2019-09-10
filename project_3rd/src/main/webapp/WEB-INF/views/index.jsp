@@ -263,7 +263,7 @@
     
     
     <!-- Upcoming Matches Area Start -->
-    <section class="kick-upcoming-mathces-area section_100">
+<!--     <section class="kick-upcoming-mathces-area section_100">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -421,7 +421,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Upcoming Matches Area End -->
     
     
