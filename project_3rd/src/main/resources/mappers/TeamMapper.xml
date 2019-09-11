@@ -13,6 +13,14 @@
 		}
 	</update>
 	
-
-
+	<!-- Myteam Team select구문 -->
+	<select id="selectTeam" resultType="TeamDTO" parameterType="String">
+	select * from team where team_name = #{team_name}
+	
+	</select>
+	<!-- Myteam Player List select구문 -->
+	<select id="selectTeam2" resultType="PlayerDTO" parameterType="String">
+	select * from player where team_name = #{team_name}
+	
+	</select>
 </mapper>
