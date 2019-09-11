@@ -65,9 +65,9 @@
                     <div class="fixture-page-next-match-left">
                         <div class="single-upcoming-match">
                             <div id="wdl">
-                            	<p><span>0</span>win</p>
-                            	<p><span>0</span>draw</p>
-                            	<p><span>0</span>lose</p>
+                            	<p><span>${team.victory}</span>win</p>
+                            	<p><span>${team.draw}</span>draw</p>
+                            	<p><span>${team.defeat}</span>lose</p>
                             </div>
                             <h2>Team Record</h2>
                             <div class="upcoming-match-box">
@@ -84,8 +84,8 @@
                                         </div>
                                     </div>
                                 </div>
-								<h4>team_name</h4>
-                                <p>team_comment</p>
+								<h4>${team.team_name}</h4>
+                                <p>${team.team_comment}</p>
                             </div>
                         </div>
                     </div>
@@ -104,12 +104,11 @@
                             <c:forEach var="list" items="${player}">
                                 <tr>
                                     <td>${list.name}</td>
-                                    <td>$(list.position)</td>
+                                    <td>${list.position}</td>
                                 </tr>
                             </c:forEach>
                             </tbody>
                         </table>
-                        <c:if test="${SessionScope.authority not eq null }">
 	                        <table class="table table-striped table-responsive">
 	                            <thead class="apply">
 	                                <tr>
@@ -124,7 +123,6 @@
 	                                </tr>
 	                            </tbody>
 	                        </table>
-                        </c:if>
                     </div>
                 </div>
             </div>
