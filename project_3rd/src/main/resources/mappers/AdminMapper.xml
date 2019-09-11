@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.sundayleague.main.dao.AdminMapper">
-	<select id="selectPlayerList" resultType="PlayerDTO">
+	<select id="selectPlayerList" parameterType="map" resultType="PlayerDTO">
 		SELECT
 			player_id
 			, team_name
@@ -21,6 +21,9 @@
 			, withdrawal_flag
 			, authority
 		FROM player
+		<if test="searchItem != null">
+   		WHERE ${searchItem} like '%' || #{searchWord} || '%'
+   		</if>
 	</select>
 	
 	<select id="selectTeamList" resultType="TeamDTO">
@@ -37,5 +40,24 @@
 			, deleted_flag
 			, accpet_flag
 		FROM team
+		<if test="searchItem != null">
+   		WHERE ${searchItem} like '%' || #{searchWord} || '%'
+   		</if>
+	</select>
+	
+	<select id="selectPlayerCount" parameterType="map" resultType="int">
+		SELECT count(*)
+		FROM player
+		<if test="searchItem != null">
+		WHERE ${searchItem} like '%' || #{searchWord} || '%'
+		</if>
+	</select>
+	
+	<select id="selectTeamCount" parameterType="map" resultType="int">
+		SELECT count(*)
+		FROM team
+		<if test="searchItem != null">
+		WHERE ${searchItem} like '%' || #{searchWord} || '%'
+		</if>
 	</select>
 </mapper>

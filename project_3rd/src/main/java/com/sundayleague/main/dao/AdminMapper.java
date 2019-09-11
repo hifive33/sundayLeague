@@ -8,14 +8,21 @@
 package com.sundayleague.main.dao;
 
 import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.RowBounds;
 
 import com.sundayleague.main.dto.PlayerDTO;
 import com.sundayleague.main.dto.TeamDTO;
 
 public interface AdminMapper {
 
-	List<PlayerDTO> selectPlayerList();
+	List<PlayerDTO> selectPlayerList(Map<String, String> map, RowBounds rb);
 
-	List<TeamDTO> selectTeamList();
+	List<TeamDTO> selectTeamList(Map<String, String> map, RowBounds rb);
+
+	int selectPlayerCount(Map<String, String> map);
+
+	int selectTeamCount(Map<String, String> map);
 
 }
