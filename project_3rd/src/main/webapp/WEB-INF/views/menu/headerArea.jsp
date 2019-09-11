@@ -45,12 +45,7 @@
                             <i class="fa fa-user"></i>
                             My Account
                         </a>
-                        ${sessionScope.loginId == null ? '<a href="login"><i class="fa fa-sign-in"></i>login</a>' : '<a href="logout"><i class="fa fa-sign-out"></i>logout</a>'}
-                        
-                        <a href="registration">
-                            <i class="fa fa-user-plus"></i>
-                            register
-                        </a>
+                        ${sessionScope.loginId == null ? '<a href="login"><i class="fa fa-sign-in"></i>login</a><a href="registration"><i class="fa fa-user-plus"></i>register</a>' : '<a href="logout"><i class="fa fa-sign-out"></i>logout</a>'}
                     </div>
                 </div>
             </div>
