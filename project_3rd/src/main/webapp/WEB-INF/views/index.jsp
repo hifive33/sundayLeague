@@ -48,8 +48,9 @@
     <link rel="stylesheet" href="resources/css/responsive.css">
 
 </head>
-<body>
 
+<body>
+	
     <!-- Header Area Start -->
 	<%@include file="menu/headerArea.jsp"%>
     <!-- Header Area End -->
@@ -992,6 +993,14 @@
     
     <!-- Custom JS -->
     <script src="resources/js/custom.js"></script>
-    
+    <script>
+$(function(){
+	var result = "${alert}";
+	if(result!=""){
+		alert(result);
+	}
+})
+
+</script>
 </body>
 </html>

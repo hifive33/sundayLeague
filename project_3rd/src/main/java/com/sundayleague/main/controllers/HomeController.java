@@ -91,9 +91,6 @@ public class HomeController {
 	public void teams() {
 	}
 	
-	@GetMapping("/myteam")
-	public void myteam() {
-	}
 	
 	@GetMapping("/teamdetails")
 	public void teamdetails() {
