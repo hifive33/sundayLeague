@@ -101,52 +101,30 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            <c:forEach var="list" items="${player}">
                                 <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
+                                    <td>${list.name}</td>
+                                    <td>$(list.position)</td>
                                 </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
+                        <c:if test="${SessionScope.authority not eq null }">
+	                        <table class="table table-striped table-responsive">
+	                            <thead class="apply">
+	                                <tr>
+	                                    <th>Name</th>
+	                                    <th>Position</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                                <tr>
+	                                    <td>lee</td>
+	                                    <td>posi</td>
+	                                </tr>
+	                            </tbody>
+	                        </table>
+                        </c:if>
                     </div>
                 </div>
             </div>

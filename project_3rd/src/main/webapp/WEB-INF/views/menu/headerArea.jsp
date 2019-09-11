@@ -91,12 +91,12 @@
                                         <a href="myteam">My Team</a>
 										<ul>
 											<!-- 팀 없을때 -->
-                                            <li><a href="creation">Create Team</a></li>
+											${ sessionScope.loginId != null && sessionScope.team_name == null ? "<li><a href='creation'>Create Team</a></li>" : ""}
                                             <!-- 팀 있을때 -->
-                                            <li><a href="myteam">스텟</a></li>
-                                            <li><a href="#">일정</a></li>
+                                            ${ sessionScope.loginId != null && sessionScope.team_name != null ? 
+                                            '<li><a href="myteam">스텟</a></li>
+                                            <li><a href="#">일정</a></li>' : ''}
                                             <!-- 운영진 전용 -->
-                                            <li><a href="#">모집</a></li>
                                             <li><a href="#">매칭</a></li>
                                             <li><a href="#">구단스텟</a></li>
                                             <!-- 감독 전용 -->
@@ -106,27 +106,6 @@
                                     <li>
                                         <a href="teams">Teams</a>
                                     </li>
-                                    <!-- 선택된 css -->
-                                    <!-- <li class="current-page-item"> -->
-                                    <!-- 하위메뉴 -->
-                                    <!-- <li>
-                                        <a>page</a>
-                                        <ul>
-                                            <li>
-                                                <a href="page404">404 page</a>
-                                            </li>
-                                            <li>
-                                                <a href="faq">FAQs Page</a>
-                                            </li>
-                                            <li>
-                                                <a href="login">login</a>
-                                            </li>
-                                            <li>
-                                                <a href="registration">registration
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li> -->
                                     <li>
                                     	<a href="faq">FAQ</a>
                                     </li>
