@@ -147,11 +147,6 @@
     <!-- Gallery Masonary Page Start -->
     
     
-    <!-- Footer Area Start -->
-    <%@include file="../menu/adminfooterArea.jsp"%>
-    <!-- Footer Area End -->
-    
-    
     <!-- jQuery -->
     <script src="resources/js/jquery.min.js"></script>
     

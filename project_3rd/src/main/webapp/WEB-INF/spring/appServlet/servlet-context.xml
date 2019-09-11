@@ -35,7 +35,7 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/creation" />
-			<mapping path="/teaminfo" />
+			<mapping path="/myteam" />
 			<beans:ref bean="LoginInterceptor" />
 		</interceptor>
 	</interceptors>
