@@ -112,7 +112,7 @@
                                     </c:if>
                                 </tr>
                                 <tr>
-                                    <td>Birth</td>
+                                    <td>Birth Date</td>
                                     <td>${player.birth }</td>
                                 </tr>
                                 <tr>

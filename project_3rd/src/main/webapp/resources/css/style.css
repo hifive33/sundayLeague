@@ -1581,6 +1581,11 @@ li {
 .fixture-page-next-match-right table{
     margin-bottom: 0px
 }
+.fixture-page-next-match-right table thead.apply {
+    background: #1759c6 none repeat scroll 0 0;
+    color: #fff;
+    text-transform: capitalize;
+}
 
 /*================================================
 20 - SINGLE FIXTURE PAGE CSS
