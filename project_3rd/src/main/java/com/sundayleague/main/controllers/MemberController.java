@@ -28,6 +28,7 @@ public class MemberController {
 		
 		if (player != null){
 			session.setAttribute("loginId", player.getPlayer_id());
+			session.setAttribute("team_name", player.getTeam_name());
 			return "redirect:/";
 		} else{
 			return "/login";
