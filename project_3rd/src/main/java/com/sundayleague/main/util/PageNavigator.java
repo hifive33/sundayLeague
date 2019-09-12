@@ -41,7 +41,8 @@ public class PageNavigator {
 		endPageGroup = endPageGroup < totalPageCount ? endPageGroup : totalPageCount;
 	
 		// 전체 레코드 중에서 현제 페이지의 첫 글의 위치
-		startRecord = (currentPage -1  ) * countPerPage;
+		startRecord = (currentPage - 1) * countPerPage;
+
 	}
 
 	public int getCurrentPage() {

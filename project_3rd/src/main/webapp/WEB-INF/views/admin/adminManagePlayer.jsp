@@ -109,21 +109,39 @@
                     </div> 
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="pagination-box">
-                        <ul class="pagination admin-pagination">
-                            <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li class="active"><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <!-- Paging 시작 -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="pagination-box">
+						<ul class="pagination admin-pagination">
+						<li><a href="adminManagePlayer?currentPage=${navi.currentPage - navi.pagePerGroup }&searchItem=${searchItem}&searchWord=${searchWord}"><i class="fa fa-angle-double-left"></i></a></li>
+						<li><a href="adminManagePlayer?currentPage=${navi.currentPage - 1 }&searchItem=${searchItem}&searchWord=${searchWord}"><i class="fa fa-angle-left"></i></a></li>
+							<c:forEach var="page" begin="${navi.startPageGroup }" end="${navi.endPageGroup }">
+								<li><a href="adminManagePlayer?currentPage=${page }&searchItem=${searchItem}&searchWord=${searchWord}">${page }</a></li>
+							</c:forEach>
+						<li><a href="adminManagePlayer?currentPage=${navi.currentPage + 1 }&searchItem=${searchItem}&searchWord=${searchWord}"><i class="fa fa-angle-right"></i></a></li>
+						<li><a href="adminManagePlayer?currentPage=${navi.currentPage + navi.pagePerGroup }&searchItem=${searchItem}&searchWord=${searchWord}"><i class="fa fa-angle-double-right"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- Paging 끝 -->
+			
+			<!-- search 시작 -->
+            <div class="pull-right">
+				<form action="adminManagePlayer" method="get">
+					<select name="searchItem" style="height:25px;">
+						<option value="team_name" ${searchItem == 'team_name' ? 'selected' : '' }>소속팀명</option>
+						<option value="name" ${searchItem == 'name' ? 'selected' : '' }>선수명</option>
+						<option value="email" ${searchItem == 'email' ? 'selected' : '' }>이메일</option>
+					</select>
+					<input type="text" name="searchWord" value="${searchWord }">
+					<input type="submit" value="검색">
+				</form>
+			</div>
+			<!-- search 끝 -->
+            
+            
         </div>
     </section>
     <!-- Gallery Masonary Page Start -->

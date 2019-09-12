@@ -16,10 +16,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sundayleague.main.dao.AdminRepository;
 import com.sundayleague.main.dto.PlayerDTO;
 import com.sundayleague.main.dto.TeamDTO;
+import com.sundayleague.main.util.PageNavigator;
 
 @Controller
 public class AdminController {
@@ -37,25 +39,52 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/adminManagePlayer", method=RequestMethod.GET)
-	public String adminManagePlayer(Model model){
+	public String adminManagePlayer(@RequestParam(value="searchItem", defaultValue="name") String searchItem, 
+			@RequestParam(value="searchWord", defaultValue="") String searchWord, 
+			@RequestParam(value="currentPage", defaultValue="1") int currentPage, 
+			Model model){
 		
-		List<PlayerDTO> list = adRepo.selectPlayerList(); 
 		
+		//전체 유저수 조회
+		int totalRecordCount = adRepo.getPlayerCount(searchItem, searchWord);
+		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount);
+		
+		
+		
+		List<PlayerDTO> list = adRepo.selectPlayerList(searchItem, searchWord, navi.getStartRecord(), navi.getCountPerPage());
+		
+		
+		model.addAttribute("searchItem", searchItem);
+		model.addAttribute("searchWord", searchWord);
+		model.addAttribute("navi", navi);
 		model.addAttribute("list", list);
-		
+
+		System.out.println(navi);
 		System.out.println(list);
 		
 		return "admin/adminManagePlayer";
 	}
 	
 	@RequestMapping(value="/adminManageTeam", method=RequestMethod.GET)
-	public String adminManageTeam(Model model){
+	public String adminManageTeam(@RequestParam(value="searchItem", defaultValue="team_name") String searchItem, 
+			@RequestParam(value="searchWord", defaultValue="") String searchWord, 
+			@RequestParam(value="currentPage", defaultValue="1") int currentPage, 
+			Model model){
 		
-		List<TeamDTO> list = adRepo.selectTeamList();
+		//전체 구단수 조회
+		int totalRecordCount = adRepo.getTeamCount(searchItem, searchWord);
+		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount);
 		
+		List<TeamDTO> list = adRepo.selectTeamList(searchItem, searchWord, navi.getStartRecord(), navi.getCountPerPage());
+		
+		model.addAttribute("searchItem", searchItem);
+		model.addAttribute("searchWord", searchWord);
+		model.addAttribute("navi", navi);
 		model.addAttribute("list", list);
-		
+
+		System.out.println(navi);
 		System.out.println(list);
+
 		
 		return "admin/adminManageTeam";
 	}

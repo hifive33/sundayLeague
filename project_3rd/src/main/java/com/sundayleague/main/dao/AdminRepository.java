@@ -7,8 +7,11 @@
 
 package com.sundayleague.main.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,20 +25,56 @@ public class AdminRepository {
 	@Autowired
 	SqlSession session;
 
-	public List<PlayerDTO> selectPlayerList() {
+	public List<PlayerDTO> selectPlayerList(String searchItem, String searchWord, int startRecord, int countPerPage) {
 		AdminMapper mapper = session.getMapper(AdminMapper.class);
 		
-		List<PlayerDTO> list = mapper.selectPlayerList();
+		RowBounds rb = new RowBounds(startRecord, countPerPage);
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("searchItem", searchItem);
+		map.put("searchWord", searchWord);
+		
+		List<PlayerDTO> list = mapper.selectPlayerList(map, rb);
 		
 		return list;
 	}
 
-	public List<TeamDTO> selectTeamList() {
+	public List<TeamDTO> selectTeamList(String searchItem, String searchWord, int startRecord, int countPerPage) {
 		AdminMapper mapper = session.getMapper(AdminMapper.class);
 		
-		List<TeamDTO> list = mapper.selectTeamList();
+		RowBounds rb = new RowBounds(startRecord, countPerPage);
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("searchItem", searchItem);
+		map.put("searchWord", searchWord);
+		
+		List<TeamDTO> list = mapper.selectTeamList(map, rb);
 		
 		return list;
+	}
+
+	public int getPlayerCount(String searchItem, String searchWord) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("searchItem", searchItem);
+		map.put("searchWord", searchWord);
+		
+		int result = mapper.selectPlayerCount(map);
+		
+		return result;
+	}
+
+	public int getTeamCount(String searchItem, String searchWord) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("searchItem", searchItem);
+		map.put("searchWord", searchWord);
+		
+		int result = mapper.selectTeamCount(map);
+		
+		return result;
 	}
 	
 }
