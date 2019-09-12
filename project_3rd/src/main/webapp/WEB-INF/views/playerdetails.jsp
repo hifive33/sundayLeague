@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	    
     
     <!-- Title -->
     <title>Sunday League</title>
@@ -70,17 +72,10 @@
                 </div>
                 <div class="col-md-8 col-sm-8">
                     <div class="player-details-right">
-                        <h2>Sergio Ramos</h2>
+                        <h2>${player.player_id }</h2>
+                        <hr>
                         <div class="player-desc">
-                            <p>Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis. Commodo enim aliquam suspendisse tortor cum diam, commodo facilisis,</p>
-                            <p>libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis. Commodo enim aliquam suspendisse tortor cum diam, commodo facilisis,</p>
-                        </div>
-                        <div class="player-social">
-                            <h3>Social Network :</h3>
-                            <a href="#" class="pl_fb"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="pl_ttr"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="pl_gp"><i class="fa fa-google-plus"></i></a>
-                            <a href="#" class="pl_lnk"><i class="fa fa-linkedin"></i></a>
+                            <p>${player.player_comment }</p>
                         </div>
                     </div>
                 </div>
@@ -108,32 +103,37 @@
                         <table class="table table-striped table-responsive">
                             <tbody>
                                 <tr>
-                                    <td>Birth Date :</td>
-                                    <td>january 5th, 1996</td>
+                                    <td>Team Name</td>
+                                    <c:if test="${player.team_name == null }">
+                                    <td>무소속</td>
+                                    </c:if>
+                                    <c:if test="${player.team_name != null }">
+                                    <td>${player.team_name }</td>
+                                    </c:if>
                                 </tr>
                                 <tr>
-                                    <td>Birth Place :</td>
-                                    <td>Manchester - UK</td>
+                                    <td>Birth Date</td>
+                                    <td>${player.birth }</td>
                                 </tr>
                                 <tr>
-                                    <td>nationality:</td>
-                                    <td>italian</td>
+                                    <td>Position</td>
+                                    <td>${player.position}</td>
                                 </tr>
                                 <tr>
-                                    <td>Height :</td>
-                                    <td>184 cm (1m 86cm)</td>
+                                    <td>Subposition</td>
+                                    <td>${player.subposition}</td>
                                 </tr>
                                 <tr>
-                                    <td>Weight :</td>
-                                    <td>84 kg - 168 lbs</td>
+                                    <td>Height</td>
+                                    <td>${player.height }</td>
                                 </tr>
                                 <tr>
-                                    <td>Field position :</td>
-                                    <td>forward</td>
+                                    <td>Weight</td>
+                                    <td>${player.weight }</td>
                                 </tr>
                                 <tr>
-                                    <td>First professional club :</td>
-                                    <td>abc Club</td>
+                                    <td>Mainfoot</td>
+                                    <td>${player.mainfoot}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -143,105 +143,40 @@
                     <div class="player-profile-right">
                         <ul class="progress-list">
                             <li>
-                                <p> Shot Accuracy</p>
-                                <div class="bar" data-value="95"></div>
+                                <p>Attendance</p>
+                                <div class="bar" data-value="92"></div>
                             </li>
                             <li>
-                                <p>Pass Accuracy</p>
+                                <p>Winning Rate</p>
                                 <div class="bar" data-value="85"></div>
                             </li>
-                            <li>
+<!--                             <li>
                                 <p>timing Accuracy</p>
                                 <div class="bar" data-value="90"></div>
                             </li>
                             <li>
                                 <p>total Accuracy</p>
                                 <div class="bar" data-value="95"></div>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
             </div>
+            <c:if test="${sessionScope.team_name == player.team_name && sessionScope.authority > 0 && player.authority == -1 }">
+	            <div class="row">
+					<div class="player-profile-update clearfix">
+						<div class="col-md-12 col-sm-6">
+							<div class="coupon-cart-right">
+								<a href="updateprofile">가입 승인</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</c:if>
         </div>
+
     </section>
     <!-- Player Profile Info End -->
-    
-    
-    <!-- Player Page Gallery Start -->
-    <section class="kick-player-page-gallery section_100">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="kick-section-heading">
-                        <h2>Player <span>Gallery</span></h2>
-                        <div class="title-line-one"></div>
-                        <div class="title-line-two"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <a href="resources/img/player-gallery-5.jpg" class="gallery-lightbox">
-                        <div class="project-img player-gallery-single">
-                            <img src="resources/img/player-gallery-5.jpg" alt="single project" />
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="resources/img/player-gallery-4.jpg" class="gallery-lightbox">
-                        <div class="project-img player-gallery-single">
-                            <img src="resources/img/player-gallery-4.jpg" alt="single project" />
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="resources/img/player-gallery-6.jpg" class="gallery-lightbox">
-                        <div class="project-img player-gallery-single">
-                            <img src="resources/img/player-gallery-6.jpg" alt="single project" />
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="resources/img/player-gallery-3.jpg" class="gallery-lightbox">
-                        <div class="project-img player-gallery-single">
-                            <img src="resources/img/player-gallery-3.jpg" alt="single project" />
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <a href="resources/img/player-gallery-6.jpg" class="gallery-lightbox">
-                        <div class="project-img player-gallery-single">
-                            <img src="resources/img/player-gallery-6.jpg" alt="single project" />
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="resources/img/player-gallery-5.jpg" class="gallery-lightbox">
-                        <div class="project-img player-gallery-single">
-                            <img src="resources/img/player-gallery-5.jpg" alt="single project" />
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="resources/img/player-gallery-2.jpg" class="gallery-lightbox">
-                        <div class="project-img player-gallery-single">
-                            <img src="resources/img/player-gallery-2.jpg" alt="single project" />
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="resources/img/player-gallery-1.jpg" class="gallery-lightbox">
-                        <div class="project-img player-gallery-single">
-                            <img src="resources/img/player-gallery-1.jpg" alt="single project" />
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Player Page Gallery End -->
     
     
     <!-- Footer Area Start -->
@@ -287,8 +222,8 @@
     <!-- script -->
 	<script>
 		$(function(){
-			$(".breadcromb-box > h2").html("Player Details")
-			$(".breadcromb-box ul li:last-child").html("Player Details")
+			$(".breadcromb-box > h2").html("My Account")
+			$(".breadcromb-box > ul > li:last-child").html("My Account")
 		})
 	</script>
 </body>

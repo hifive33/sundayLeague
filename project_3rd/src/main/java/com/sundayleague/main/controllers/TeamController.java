@@ -1,6 +1,7 @@
 package com.sundayleague.main.controllers;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -11,10 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sundayleague.main.dao.TeamRepository;
 import com.sundayleague.main.dto.TeamDTO;
+import com.sundayleague.main.util.PageNavigator;
 
 @Controller
 public class TeamController {
@@ -46,6 +49,7 @@ public class TeamController {
 			return "creation";
 		}
 	}
+	
 	@GetMapping(value="/myteam")
 	public String myteam(HttpSession session,Model model) {
 		model.addAttribute("team", repo.selectTeam((String)session.getAttribute("team_name")));
@@ -53,6 +57,24 @@ public class TeamController {
 		return "myteam";
 	}
 	
+	@GetMapping("/teams")
+	public void team(@RequestParam(value = "region", defaultValue = "") String region
+			,@RequestParam(value = "searchWord", defaultValue = "") String searchWord,
+			@RequestParam(value = "currentPage", defaultValue = "1") int currentPage, Model model) {
+		int total = repo.getTeamCount(region, searchWord);
+		PageNavigator navi = new PageNavigator(currentPage, total);
+		List<TeamDTO>list = repo.selectTeamList(region,searchWord,navi.getStartRecord(), navi.getCountPerPage());
+
+		model.addAttribute("navi", navi);
+		model.addAttribute("teams", list);
+		model.addAttribute("region", region);
+		model.addAttribute("searchWord", searchWord);
+	}
 	
+	@GetMapping("/teamdetails")
+	public void teamdetails(String team_name, Model model) {
+		model.addAttribute("team", repo.selectTeam(team_name));
+		model.addAttribute("player", repo.selectTeam2(team_name));
+	}
 }
 	

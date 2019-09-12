@@ -57,7 +57,7 @@
     <%@include file="menu/breadcrombArea.jsp"%>
     <!-- Breadcromb Area End -->
     
-    <!-- Fixture Page Next Match Start -->
+    <!-- Team Details Page Start -->
     <section class="kick-fixture-page-next-match section_100">
         <div class="container">
             <div class="row">
@@ -65,9 +65,9 @@
                     <div class="fixture-page-next-match-left">
                         <div class="single-upcoming-match">
                             <div id="wdl">
-                            	<p><span>0</span>win</p>
-                            	<p><span>0</span>draw</p>
-                            	<p><span>0</span>lose</p>
+                            	<p><span>${team.victory}</span>win</p>
+                            	<p><span>${team.draw}</span>draw</p>
+                            	<p><span>${team.defeat}</span>lose</p>
                             </div>
                             <h2>Team Record</h2>
                             <div class="upcoming-match-box">
@@ -84,10 +84,19 @@
                                         </div>
                                     </div>
                                 </div>
-								<h4>team_name</h4>
-                                <p>team_comment</p>
+								<h4>${team.team_name}</h4>
+                                <p>${team.team_comment}</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+	                    <div class="order-tickets">
+	                    	<div class="coupon-cart-right">
+	                    		<!-- 등록 취소 변경 -->
+	                    		<a href="#" class="kick-btn">모집 등록</a>
+	                    		<a href="#" class="kick-btn">구단 해체</a>
+	                    	</div>
+	                    </div>
                     </div>
                 </div>
                 <!-- 팀원 목록 -->
@@ -101,58 +110,43 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
+                            <c:forEach var="list" items="${player}">
+                            	<c:if test="${list.authority != -1}">
+	                                <tr>
+	                                    <td><a href="playerdetails?playerid=${list.player_id}">${list.name}</a></td>
+	                                    <td>${list.position}</td>
+	                                </tr>
+                                </c:if>
+                            </c:forEach>
                             </tbody>
                         </table>
+						<!-- 신청자 목록 -->
+                        <c:if test="${sessionScope.authority > 0 }">
+	                        <table class="table table-striped table-responsive">
+	                            <thead class="apply">
+	                                <tr>
+	                                    <th>Name</th>
+	                                    <th>Position</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+								<c:forEach var="list" items="${player}">
+									<c:if test="${list.authority == -1}">
+		                                <tr>
+		                                    <td>${list.name}</td>
+		                                    <td>${list.position}</td>
+		                                </tr>
+	                                </c:if>
+								</c:forEach>
+	                            </tbody>
+	                        </table>
+						</c:if>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Fixture Page Next Match End -->
+    <!-- Team Details Page End -->
     
     <!-- Footer Area Start -->
     <%@include file="menu/footerArea.jsp"%>
