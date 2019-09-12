@@ -29,6 +29,7 @@ public class MemberController {
 		if (player != null){
 			session.setAttribute("loginId", player.getPlayer_id());
 			session.setAttribute("team_name", player.getTeam_name());
+			session.setAttribute("authority", player.getAuthority());
 			return "redirect:/";
 		} else{
 			return "/login";
@@ -75,10 +76,11 @@ public class MemberController {
 	
 	@PostMapping("/updateprofile")
 	public String updateProfile(HttpSession session, PlayerDTO player) {
-		int result = 0;
+		//int result = 0;
 		//String loginId = (String)session.getAttribute("loginId");
 		//player.setPlayer_id(loginId);
-		result = repo.updateProfile(player);
+		//result = repo.updateProfile(player);
+		repo.updateProfile(player);
 		return "redirect:/myaccount";
 	}
 }

@@ -104,8 +104,13 @@
                             	<textarea placeholder="team_comment" name="team_comment"></textarea>
                                 <i class="fa"></i>
                             </div>
+                            <div class="account-form-group" style="height: 135px">
+	                            <img id="mypic" src="resources/img/emblem-null.png" style="height:135px" />
+                                <i class="fa"></i>
+							</div>
+							<input id="imgPreview" type="file" value="사진첨부" accept="image/jpg, image/jpeg, image/png, image/gif" />
                             <div class="submit-login">
-                                <button type="submit" >창단</button>
+								s<button type="submit" >창단</button>
                             </div>
                         </form>
                         <div class="login-sign-up">
@@ -313,6 +318,20 @@
 				opt.value = d[x];
 				opt.innerHTML = d[x];
 				target.appendChild(opt);
+			}
+		}
+		
+		$("#imgPreview").on('change', function(){
+			previewImage(this); // 미리보기 함수
+		})
+		function previewImage(input){
+			// 이미지를 선택하면
+			if(input.files && input.files[0]){
+				var reader = new FileReader();
+				reader.onload = function(e){
+					$("#mypic").attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
 			}
 		}
 	</script>
