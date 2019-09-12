@@ -288,6 +288,7 @@
 		$(function(){
 			$(".breadcromb-box > h2").html("About")
 			$(".breadcromb-box ul li:last-child").html("About")
+			$("a[href=about]").parent().attr('class', 'current-page-item')
 		})
 	</script>
 </body>

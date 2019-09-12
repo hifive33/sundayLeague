@@ -93,8 +93,10 @@
 	                    <div class="order-tickets">
 	                    	<div class="coupon-cart-right">
 	                    		<!-- 등록 취소 변경 -->
-	                    		<a href="#" class="kick-btn">모집 등록</a>
-	                    		<a href="#" class="kick-btn">구단 해체</a>
+	                    		<!-- <a href="#" class="kick-btn">모집 등록</a> -->
+	                    		<c:if test="${sessionScope.authority == 3}">
+	                    			<a href="#" class="kick-btn">구단 해체</a>
+	                    		</c:if>
 	                    	</div>
 	                    </div>
                     </div>
@@ -111,7 +113,7 @@
                             </thead>
                             <tbody>
                             <c:forEach var="list" items="${player}">
-                            	<c:if test="${list.authority != -1}">
+                            	<c:if test="${list.authority > 0}">
 	                                <tr>
 	                                    <td><a href="playerdetails?playerid=${list.player_id}">${list.name}</a></td>
 	                                    <td>${list.position}</td>
@@ -121,7 +123,7 @@
                             </tbody>
                         </table>
 						<!-- 신청자 목록 -->
-                        <c:if test="${sessionScope.authority > 0 }">
+                        <c:if test="${sessionScope.authority > 1 }">
 	                        <table class="table table-striped table-responsive">
 	                            <thead class="apply">
 	                                <tr>
@@ -131,9 +133,9 @@
 	                            </thead>
 	                            <tbody>
 								<c:forEach var="list" items="${player}">
-									<c:if test="${list.authority == -1}">
+									<c:if test="${list.authority == 0}">
 		                                <tr>
-		                                    <td>${list.name}</td>
+		                                    <td><a href="playerdetails?playerid=${list.player_id}">${list.name}</a></td>
 		                                    <td>${list.position}</td>
 		                                </tr>
 	                                </c:if>
@@ -192,6 +194,7 @@
 		$(function(){
 			$(".breadcromb-box > h2").html("My Team")
 			$(".breadcromb-box ul li:last-child").html("My Team")
+			$("a[href=myteam]").parent().attr('class', 'current-page-item')
 		})
 	</script>
 </body>

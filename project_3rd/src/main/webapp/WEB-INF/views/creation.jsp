@@ -169,6 +169,8 @@
 		$(function(){
 			$(".breadcromb-box > h2").html("Create Team")
 			$(".breadcromb-box ul li:last-child").html("Create Team")
+			$("#navigation_menu_2 > li:first-child").attr('class', 'current-page-item')
+			$(".kick-header-area a[href=creation]").parent().attr('class', 'current-page-item')
 			
 			$(".account-form-group > select").on('change', function(){
 				if ($(this).val() != $(this).children()[0].innerHTML){

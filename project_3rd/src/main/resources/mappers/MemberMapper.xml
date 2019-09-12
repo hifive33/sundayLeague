@@ -58,7 +58,7 @@
 	</select>
 	
 	<select id="selectProfile" parameterType="String" resultType="PlayerDTO">
-				select
+		select
 			player_id
 			,team_name
 			,password
@@ -80,22 +80,34 @@
 	</select>
 	
 	<update id="updateProfile" parameterType="PlayerDTO" >
-			
-			update Player
-			
+			update
+				player
 			set
-			
-
-			email =#{email}
-			,name =#{name}
-			,position =#{position}
-			,subposition =#{subposition}
-			,height =#{height}
-			,weight =#{weight}
-			,birth =#{birth}
-			,mainfoot =#{mainfoot}
-			,player_comment =#{player_comment}
-			
-			where player_id = #{player_id}			
+			<choose>
+				<when test="team_name != null">
+					<if test="team_name != 'nn'">
+					team_name = #{team_name}
+					</if>
+					<if test="team_name == 'nn'">
+					team_name = null
+					</if>
+				</when>
+				<when test="authority != null">
+					authority = #{authority}
+				</when>
+				<otherwise>
+					email =#{email}
+					,name =#{name}
+					,position =#{position}
+					,subposition =#{subposition}
+					,height =#{height}
+					,weight =#{weight}
+					,birth =#{birth}
+					,mainfoot =#{mainfoot}
+					,player_comment =#{player_comment}
+				</otherwise>
+			</choose>
+			where
+				player_id = #{player_id}
 	</update>
 </mapper>

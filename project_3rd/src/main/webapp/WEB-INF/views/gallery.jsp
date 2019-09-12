@@ -252,6 +252,7 @@
 		$(function(){
 			$(".breadcromb-box > h2").html("Gallery")
 			$(".breadcromb-box ul li:last-child").html("Gallery")
+			$(".kick-header-area a[href=gallery]").parent().attr('class', 'current-page-item')
 		})
 	</script>
 </body>

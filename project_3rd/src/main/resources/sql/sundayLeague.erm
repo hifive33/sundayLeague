@@ -11,7 +11,7 @@
 	</page_setting>
 	<category_index>0</category_index>
 	<zoom>0.8</zoom>
-	<x>150</x>
+	<x>594</x>
 	<y>0</y>
 	<default_color>
 		<r>128</r>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2019-09-03 18:17:25</creation_date>
-			<updated_date>2019-09-12 14:59:16</updated_date>
+			<updated_date>2019-09-12 19:18:26</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -227,7 +227,7 @@
 			<binary>false</binary>
 			<args></args>
 			<char_semantics>false</char_semantics>
-			<description>구단에서의 권한, -1:승인 대기, 0: 일반, 1: 감독, 2: 코치</description>
+			<description>구단에서의 권한, 0:승인 대기, 1: 일반, 2: 감독, 3: 코치</description>
 			<logical_name>권한</logical_name>
 			<physical_name>authority</physical_name>
 			<type>character(n)</type>

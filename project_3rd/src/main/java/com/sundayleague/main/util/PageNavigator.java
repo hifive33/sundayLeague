@@ -42,6 +42,7 @@ public class PageNavigator {
 	
 		// 전체 레코드 중에서 현제 페이지의 첫 글의 위치
 		startRecord = (currentPage - 1) * countPerPage;
+
 	}
 
 	public int getCurrentPage() {

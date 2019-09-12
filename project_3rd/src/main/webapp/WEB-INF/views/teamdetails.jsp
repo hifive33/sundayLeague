@@ -93,8 +93,12 @@
 	                    <div class="order-tickets">
 	                    	<div class="coupon-cart-right">
 	                    		<!-- 등록 취소 변경 -->
-	                    		<a href="#" class="kick-btn">모집 등록</a>
-	                    		<a href="#" class="kick-btn">구단 해체</a>
+	                    		<c:if test="${sessionScope.team_name == team.team_name && sessionScope.authority == 0}">
+	                    			<a href="jointeamcancel?team_name=${team.team_name}" class="kick-btn">신청 취소</a>
+	                    		</c:if>
+	                    		<c:if test="${sessionScope.loginId != null && sessionScope.team_name == null}">
+	                    			<a href="jointeam?team_name=${team.team_name}" class="kick-btn">가입 신청</a>
+	                    		</c:if>
 	                    	</div>
 	                    </div>
                     </div>
@@ -111,7 +115,7 @@
                             </thead>
                             <tbody>
                             <c:forEach var="list" items="${player}">
-                            	<c:if test="${list.authority != -1}">
+                            	<c:if test="${list.authority > 0}">
 	                                <tr>
 	                                    <td><a href="playerdetails?playerid=${list.player_id}">${list.name}</a></td>
 	                                    <td>${list.position}</td>
@@ -120,27 +124,6 @@
                             </c:forEach>
                             </tbody>
                         </table>
-						<!-- 신청자 목록 -->
-                        <c:if test="${sessionScope.authority > 0 }">
-	                        <table class="table table-striped table-responsive">
-	                            <thead class="apply">
-	                                <tr>
-	                                    <th>Name</th>
-	                                    <th>Position</th>
-	                                </tr>
-	                            </thead>
-	                            <tbody>
-								<c:forEach var="list" items="${player}">
-									<c:if test="${list.authority == -1}">
-		                                <tr>
-		                                    <td>${list.name}</td>
-		                                    <td>${list.position}</td>
-		                                </tr>
-	                                </c:if>
-								</c:forEach>
-	                            </tbody>
-	                        </table>
-						</c:if>
                     </div>
                 </div>
             </div>
@@ -192,6 +175,7 @@
 		$(function(){
 			$(".breadcromb-box > h2").html("Team Details")
 			$(".breadcromb-box ul li:last-child").html("Team Details")
+			$(".kick-header-area a[href=teams]").parent().attr('class', 'current-page-item')
 		})
 	</script>
 </body>

@@ -162,12 +162,12 @@
                     </div>
                 </div>
             </div>
-            <c:if test="${sessionScope.team_name == player.team_name && sessionScope.authority > 0 && player.authority == -1 }">
+            <c:if test="${sessionScope.team_name == player.team_name && sessionScope.authority > 1 && player.authority == 0 }">
 	            <div class="row">
 					<div class="player-profile-update clearfix">
 						<div class="col-md-12 col-sm-6">
 							<div class="coupon-cart-right">
-								<a href="updateprofile">가입 승인</a>
+								<a href="joinapply?player_id=${player.player_id}">가입 승인</a>
 							</div>
 						</div>
 					</div>
@@ -222,8 +222,10 @@
     <!-- script -->
 	<script>
 		$(function(){
-			$(".breadcromb-box > h2").html("My Account")
-			$(".breadcromb-box > ul > li:last-child").html("My Account")
+			$(".breadcromb-box > h2").html("Player Details")
+			$(".breadcromb-box > ul > li:last-child").html("Player Details")
+			if(${player.team_name==sessionScope.team_name}) $(".kick-header-area a[href=myteam]").parent().attr('class', 'current-page-item')
+			else $(".kick-header-area a[href=teams]").parent().attr('class', 'current-page-item')
 		})
 	</script>
 </body>

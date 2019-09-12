@@ -77,7 +77,7 @@
                     		<div class="teams-searchWord-right">
                         		<form action="teams" method="get" id="listform">
                         			<input type="hidden" name="region" value="${region}" />
-                        			<input type="text" name="searchWord" placeholder="team name"/>
+                        			<input type="text" name="searchWord" placeholder="team name" value="${searchWord}" />
                         			<input type="submit" value="Search" />
                         		</form>
                        		</div>
@@ -194,6 +194,7 @@
 		$(function(){
 			$(".breadcromb-box > h2").html("Teams")
 			$(".breadcromb-box ul li:last-child").html("Teams")
+			$(".kick-header-area a[href=teams]").parent().attr('class', 'current-page-item')
 		})
 	</script>
 </body>

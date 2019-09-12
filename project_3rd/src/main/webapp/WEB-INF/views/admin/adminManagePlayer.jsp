@@ -187,7 +187,7 @@
 		$(function(){
 			$(".admin-breadcromb-box > h2").html("Manage Player")
 			$(".admin-breadcromb-box ul li:last-child").html("Manage Player")
-			$("a[href=adminManagePlayer]").parent().attr('class', 'admin-current-page-item')
+			$(".kick-header-area a[href=adminManagePlayer]").parent().attr('class', 'admin-current-page-item')
 		})
 	</script>
 </body>
