@@ -89,6 +89,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+	                    <div class="order-tickets">
+	                    	<div class="coupon-cart-right">
+	                    		<!-- 가입 신청 -->
+	                    		<a href="#" class="kick-btn">가입 신청</a>
+	                    	</div>
+	                    </div>
+                    </div>
                 </div>
                 <!-- 팀원 목록 -->
                 <div class="col-md-4">

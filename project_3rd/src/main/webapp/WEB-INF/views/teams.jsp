@@ -87,67 +87,29 @@
 			                            </thead>
 			                            <tbody>
 			                            	<!-- team list item start -->
-			                                <tr class="team-rank-item">
-			                                    <td class="element-team-rank">1</td>
-			                                    <td class="element-team-name">
-			                                    	<img src="resources/img/emblem-null.png" alt="team image" />
-			                                        <h3>Team1</h3>
-			                                    </td>
-			                                    <td class="element-team-rating">
-			                                        <p>1050</p>
-			                                    </td>
-			                                    <td class="element-team-information">
-			                                    	<p>지역:경남-창원</p>
-			                                    	<p>연령대:10대</p>
-			                                    	<p>실력:상</p>
-			                                    </td>
-			                                    <td class="element-team-information">
-			                                    	<p>소속유형:청소년</p>
-			                                    	<p>팀원 수:12명</p>
-			                                    	<p>경기유형:풋살</p>
-			                                    </td>
-			                                </tr>
+			                            	<c:forEach var="team" items="teams" varStatus="stat">
+				                                <tr class="team-rank-item">
+				                                    <td class="element-team-rank">${stat.count }</td>
+				                                    <td class="element-team-name">
+				                                    	<img src="resources/img/emblem-null.png" alt="team image" />
+				                                        <h3>${team.team_name }</h3>
+				                                    </td>
+				                                    <td class="element-team-rating">
+				                                        <p>${team.rating }</p>
+				                                    </td>
+				                                    <td class="element-team-information">
+				                                    	<p>지역:${team.region }</p>
+				                                    	<p>연령대:</p>
+				                                    	<p>실력:</p>
+				                                    </td>
+				                                    <td class="element-team-information">
+				                                    	<p>소속유형:</p>
+				                                    	<p>팀원 수:${team.headcount }</p>
+				                                    	<p>경기유형:</p>
+				                                    </td>
+				                                </tr>
+											</c:forEach>
 			                                <!-- team list item end -->
-			                                <tr class="team-rank-item">
-			                                    <td class="element-team-rank">2</td>
-			                                    <td class="element-team-name">
-			                                    	<img src="resources/img/emblem-null.png" alt="team image" />
-			                                        <h3>Team2</h3>
-			                                    </td>
-			                                    <td class="element-team-rating">
-			                                        <p>1010</p>
-			                                    </td>
-			                                    <td class="element-team-information">
-			                                    	<p>지역:경남-창원</p>
-			                                    	<p>연령대:10대</p>
-			                                    	<p>실력:상</p>
-			                                    </td>
-			                                    <td class="element-team-information">
-			                                    	<p>소속유형:청소년</p>
-			                                    	<p>팀원 수:12명</p>
-			                                    	<p>경기유형:풋살</p>
-			                                    </td>
-			                                </tr>
-			                                <tr class="team-rank-item">
-			                                    <td class="element-team-rank">3</td>
-			                                    <td class="element-team-name">
-			                                    	<img src="resources/img/emblem-null.png" alt="team image" />
-			                                        <h3>Team3</h3>
-			                                    </td>
-			                                    <td class="element-team-rating">
-			                                        <p>900</p>
-			                                    </td>
-			                                    <td class="element-team-information">
-			                                    	<p>지역:경남-창원</p>
-			                                    	<p>연령대:10대</p>
-			                                    	<p>실력:상</p>
-			                                    </td>
-			                                    <td class="element-team-information">
-			                                    	<p>소속유형:청소년</p>
-			                                    	<p>팀원 수:12명</p>
-			                                    	<p>경기유형:풋살</p>
-			                                    </td>
-			                                </tr>
 			                            </tbody>
 			                        </table>
 			                    </div>

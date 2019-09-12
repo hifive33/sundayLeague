@@ -89,6 +89,15 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+	                    <div class="order-tickets">
+	                    	<div class="coupon-cart-right">
+	                    		<!-- 등록 취소 변경 -->
+	                    		<a href="#" class="kick-btn">모집 등록</a>
+	                    		<a href="#" class="kick-btn">구단 해체</a>
+	                    	</div>
+	                    </div>
+                    </div>
                 </div>
                 <!-- 팀원 목록 -->
                 <div class="col-md-4">
@@ -102,13 +111,17 @@
                             </thead>
                             <tbody>
                             <c:forEach var="list" items="${player}">
-                                <tr>
-                                    <td>${list.name}</td>
-                                    <td>${list.position}</td>
-                                </tr>
+                            	<c:if test="${list.authority != -1}">
+	                                <tr>
+	                                    <td><a href="playerdetails?playerid=${list.player_id}">${list.name}</a></td>
+	                                    <td>${list.position}</td>
+	                                </tr>
+                                </c:if>
                             </c:forEach>
                             </tbody>
                         </table>
+						<!-- 신청자 목록 -->
+                        <c:if test="${sessionScope.authority > 0 }">
 	                        <table class="table table-striped table-responsive">
 	                            <thead class="apply">
 	                                <tr>
@@ -117,12 +130,17 @@
 	                                </tr>
 	                            </thead>
 	                            <tbody>
-	                                <tr>
-	                                    <td>lee</td>
-	                                    <td>posi</td>
-	                                </tr>
+								<c:forEach var="list" items="${player}">
+									<c:if test="${list.authority == -1}">
+		                                <tr>
+		                                    <td>${list.name}</td>
+		                                    <td>${list.position}</td>
+		                                </tr>
+	                                </c:if>
+								</c:forEach>
 	                            </tbody>
 	                        </table>
+						</c:if>
                     </div>
                 </div>
             </div>

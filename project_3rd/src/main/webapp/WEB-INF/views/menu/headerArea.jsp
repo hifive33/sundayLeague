@@ -102,7 +102,7 @@
 	                                            <li><a href="#">일정</a></li>
                                             </c:if>
                                             <!-- 운영진 전용 -->
-                                            <c:if test="${sessionScope.authority != 0}">
+                                            <c:if test="${sessionScope.authority > 0}">
 	                                            <li><a href="#">매칭</a></li>
 	                                            <li><a href="#">구단스텟</a></li>
                                             </c:if>

@@ -105,12 +105,12 @@
                                 <i class="fa"></i>
                             </div>
                             <div class="account-form-group" style="height: 135px">
-	                            <img id="mypic" src="resources/img/emblem-null.png" style="height:135px" />
+	                            <img id="mypic" src="resources/img/emblem-null.png" style="height:130px" />
                                 <i class="fa"></i>
 							</div>
 							<input id="imgPreview" type="file" value="사진첨부" accept="image/jpg, image/jpeg, image/png, image/gif" />
                             <div class="submit-login">
-								s<button type="submit" >창단</button>
+								<button type="submit" >창단</button>
                             </div>
                         </form>
                         <div class="login-sign-up">
@@ -288,38 +288,6 @@
 				}
 			})
 		})
-		
-		function categoryChange(e) {
-			var none = [ "---" ]
-			var seoul = [ "---", "강동구","종로구", "중구", "용산구", "성동구", "광진구", "동대문구", "중랑구", "성북구", "강북구", "도봉구", "노원구", "은평구", "서대문구", "마포구", "양천구", "강서구", "구로구", "금천구", "영등포구", "동작구", "관악구", "서초구", "강남구", "송파구" ];
-			var gyeonggi = [ "---", "정현이형", "해주실거라", "믿습니다", "화이팅" ];
-			var kangwon = [ "---", "전국을", "다해야만", "하는건가", "불가능", "입니다" ];
-			var target = document.getElementById("subregion");
-	
-			switch(e.value){
-			case "지역을 선택해주세요.":
-				var d = none;
-				break;
-			case "서울시2":
-				var d = seoul;
-				break;
-			case "경기도":
-				var d = gyeonggi;
-				break;
-			case "강원도":
-				var d = kangwon;
-				break;
-			}
-	
-			target.options.length = 0;
-	
-			for (x in d) {
-				var opt = document.createElement("option");
-				opt.value = d[x];
-				opt.innerHTML = d[x];
-				target.appendChild(opt);
-			}
-		}
 		
 		$("#imgPreview").on('change', function(){
 			previewImage(this); // 미리보기 함수
