@@ -89,28 +89,30 @@
                                 <ul id="navigation_menu_2">
                                 	<li>
                                         <a href="myteam">My Team</a>
-										<ul>
-											<!-- 팀 없을때 -->
-                                            <c:if test="${sessionScope.loginId != null && sessionScope.team_name == null}">
-												<li>
-													<a href='creation'>Create Team</a>
-												</li>
-											</c:if>
-                                            <!-- 팀 있을때 -->
-                                            <c:if test="${sessionScope.loginId != null && sessionScope.team_name != null}">
-	                                            <li><a href="myteam">스텟</a></li>
-	                                            <li><a href="#">일정</a></li>
-                                            </c:if>
-                                            <!-- 운영진 전용 -->
-                                            <c:if test="${sessionScope.authority > 0}">
-	                                            <li><a href="#">매칭</a></li>
-	                                            <li><a href="#">구단스텟</a></li>
-                                            </c:if>
-                                            <!-- 감독 전용 -->
-                                            <c:if test="${sessionScope.authority == 2}">
-                                            	<li><a href="#">운영진임명</a></li>
-                                            </c:if>
-                                        </ul>
+                                        <c:if test="${sessionScope.loginId != null}">
+											<ul>
+												<!-- 팀 없을때 -->
+	                                            <c:if test="${sessionScope.team_name == null}">
+													<li>
+														<a href='creation'>Create Team</a>
+													</li>
+												</c:if>
+	                                            <!-- 팀 있을때 -->
+	                                            <c:if test="${sessionScope.team_name != null}">
+		                                            <li><a href="myteam">스텟</a></li>
+		                                            <li><a href="#">일정</a></li>
+	                                            </c:if>
+	                                            <!-- 운영진 전용 -->
+	                                            <c:if test="${sessionScope.authority > 0}">
+		                                            <li><a href="#">매칭</a></li>
+		                                            <li><a href="#">구단스텟</a></li>
+	                                            </c:if>
+	                                            <!-- 감독 전용 -->
+	                                            <c:if test="${sessionScope.authority == 2}">
+	                                            	<li><a href="#">운영진임명</a></li>
+	                                            </c:if>
+	                                        </ul>
+                                        </c:if>
                                     </li>
                                     <li>
                                         <a href="teams">Teams</a>

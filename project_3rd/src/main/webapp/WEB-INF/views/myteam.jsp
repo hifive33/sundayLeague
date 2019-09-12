@@ -57,7 +57,7 @@
     <%@include file="menu/breadcrombArea.jsp"%>
     <!-- Breadcromb Area End -->
     
-    <!-- Fixture Page Next Match Start -->
+    <!-- My Team Page Start -->
     <section class="kick-fixture-page-next-match section_100">
         <div class="container">
             <div class="row">
@@ -146,7 +146,7 @@
             </div>
         </div>
     </section>
-    <!-- Fixture Page Next Match End -->
+    <!-- My Team Page End -->
     
     <!-- Footer Area Start -->
     <%@include file="menu/footerArea.jsp"%>

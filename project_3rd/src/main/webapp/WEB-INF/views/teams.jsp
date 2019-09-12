@@ -58,25 +58,34 @@
     <!-- Breadcromb Area End -->
     
     <!-- Gallery Masonary Page Start -->
-    <section class="kick-gallery-masonary section_100">
+    <section class="teams-section section_100">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="big-isotope-project">
-                        <div class="projectFilter project-btn-const">
-                            <a href="#" data-filter="*" class="current">전체</a>
-                            <a href="#" data-filter=".construction">서울</a>
-                            <a href="#" data-filter=".renovation">경기</a>
-                            <a href="#" data-filter=".plumbing">강원</a>
-                            <a href="#" data-filter=".flooring">충청</a>
-                            <a href="#" data-filter=".flooring">전라</a>
-                            <a href="#" data-filter=".flooring">경상</a>
-                            <a href="#" data-filter=".flooring">제주</a>
+                        <div class="teams-projectFilter project-btn-const">
+                            <a ${region=='' ? 'class="current"' : '' }>전체</a>
+                            <a ${region=='서울' ? 'class="current"' : '' }>서울</a>
+                            <a ${region=='경기' ? 'class="current"' : '' }>경기</a>
+                            <a ${region=='강원' ? 'class="current"' : '' }>강원</a>
+                            <a ${region=='충청' ? 'class="current"' : '' }>충청</a>
+                            <a ${region=='전라' ? 'class="current"' : '' }>전라</a>
+                            <a ${region=='경상' ? 'class="current"' : '' }>경상</a>
+                            <a ${region=='제주' ? 'class="current"' : '' }>제주</a>
+                        </div>
+                        <div class="row">
+                    		<div class="teams-searchWord-right">
+                        		<form action="teams" method="get" id="listform">
+                        			<input type="hidden" name="region" value="${region}" />
+                        			<input type="text" name="searchWord" placeholder="team name"/>
+                        			<input type="submit" value="Search" />
+                        		</form>
+                       		</div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="order-tickets">
-			                        <table class="table table-striped table-responsive">
+			                        <table class="table table-striped table-responsive" >
 			                            <thead>
 			                                <tr>
 			                                    <th>순위</th>
@@ -87,24 +96,26 @@
 			                            </thead>
 			                            <tbody>
 			                            	<!-- team list item start -->
-			                            	<c:forEach var="team" items="teams" varStatus="stat">
+			                            	<c:forEach var="team" items="${teams}" varStatus="stat">
 				                                <tr class="team-rank-item">
-				                                    <td class="element-team-rank">${stat.count }</td>
+				                                    <td class="element-team-rank">${stat.count + navi.startRecord}</td>
 				                                    <td class="element-team-name">
-				                                    	<img src="resources/img/emblem-null.png" alt="team image" />
-				                                        <h3>${team.team_name }</h3>
+				                                    	<a href="teamdetails?team_name=${team.team_name}">
+					                                    	<img src="resources/img/emblem-null.png" alt="team image" />
+				                                        </a>
+														<h3><a href="teamdetails?team_name=${team.team_name}">${team.team_name}</a></h3>
 				                                    </td>
 				                                    <td class="element-team-rating">
-				                                        <p>${team.rating }</p>
+				                                        <p>${team.rating}</p>
 				                                    </td>
 				                                    <td class="element-team-information">
-				                                    	<p>지역:${team.region }</p>
+				                                    	<p>지역:${team.region}</p>
 				                                    	<p>연령대:</p>
 				                                    	<p>실력:</p>
 				                                    </td>
 				                                    <td class="element-team-information">
 				                                    	<p>소속유형:</p>
-				                                    	<p>팀원 수:${team.headcount }</p>
+				                                    	<p>팀원 수:${team.headcount}</p>
 				                                    	<p>경기유형:</p>
 				                                    </td>
 				                                </tr>
@@ -122,13 +133,13 @@
                 <div class="col-md-12">
                     <div class="pagination-box">
                         <ul class="pagination">
-                            <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li class="active"><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                            <li><a href="teams?currentPage=${navi.currentPage-navi.pagePerGroup}&region=${region}&searchWord=${searchWord}"><i class="fa fa-angle-double-left"></i></a></li>
+                            <li>${navi.startPageGroup > 2 ? '...' : ''}</li>
+                            <c:forEach var="page" begin="${navi.startPageGroup}" end="${navi.endPageGroup}">
+	                            <li ${navi.currentPage == page ? 'class="active"' : ''}><a href="teams?currentPage=${page}&region=${region}&searchWord=${searchWord}">${page}</a></li>
+                            </c:forEach>
+                            <li>${navi.endPageGroup < navi.totalPageCount ? '...' : ''}</li>
+                            <li><a href="teams?currentPage=${navi.currentPage+navi.pagePerGroup}&region=${region}&searchWord=${searchWord}"><i class="fa fa-angle-double-right"></i></a></li>
                         </ul>
                     </div>
                 </div>

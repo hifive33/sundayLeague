@@ -1,8 +1,10 @@
 package com.sundayleague.main.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,4 +35,22 @@ public class TeamRepository {
 		return mapper.selectTeam2(team_name);
 	}
 
+	public int getTeamCount(String region,String searchWord) {
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		Map<String,String> map = new HashMap<>();
+		map.put("region", region);
+		map.put("searchWord",searchWord);
+		
+		return mapper.getTeamCount(map);
+	}
+	
+	public List<TeamDTO> selectTeamList(String region,String searchWord, int startRecord, int countPerPage){
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		Map<String,String> map = new HashMap<>();
+		map.put("region", region);
+		map.put("searchWord", searchWord);
+		
+		return mapper.selectTeamList(map, new RowBounds(startRecord,countPerPage));
+	}
+		
 }
