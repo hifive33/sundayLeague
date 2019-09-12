@@ -574,6 +574,7 @@
 		$(function(){
 			$(".breadcromb-box > h2").html("Fixture")
 			$(".breadcromb-box ul li:last-child").html("Fixture")
+			$(".kick-header-area a[href=fixture]").parent().attr('class', 'current-page-item')
 		})
 	</script>
 </body>
