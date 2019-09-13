@@ -77,7 +77,8 @@
                                         </div>
                                         <div class="col-sm-2">
                                             <div class="team-head-image">
-												<img src="resources/img/emblem-null.png" alt="team image" />
+												<!-- <img src="resources/img/emblem-null.png" alt="team image" /> -->
+												<img src="/emblemimg/${team.team_name}" alt="team image" />
                                             </div>
                                         </div>
                                         <div class="col-sm-5">
