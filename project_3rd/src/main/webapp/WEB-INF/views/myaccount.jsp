@@ -135,6 +135,12 @@
                                     <td>Mainfoot</td>
                                     <td>${player.mainfoot}</td>
                                 </tr>
+                                <tr>
+                                    <td>Authority</td>
+                                    <td>${player.authority == 3 ? '감독' : 
+                                    	  player.authority == 2 ? '코치' : 
+                                    	  player.authority == 1 ? '일반' : '승인 대기' }</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

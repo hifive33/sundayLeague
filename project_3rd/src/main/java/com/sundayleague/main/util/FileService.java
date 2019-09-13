@@ -86,6 +86,39 @@ public class FileService {
 	}
 	
 	/**
+	 * 업로드 된 파일을 지정된 경로에 저장, 파일 이름을 변경하지 않음, 저장된 파일명을 리턴
+	 * @param mfile 업로드된 파일
+	 * @param path 저장할 경로
+	 * @return 저장된 파일명
+	 */
+	public static String saveOriginalFile(MultipartFile upload, String uploadPath, String team_name) {
+		//저장 폴더가 없으면 생성
+		File path = new File(uploadPath);
+		if (!path.isDirectory()) {
+			path.mkdirs();
+		}
+		
+		//원본 파일명 : 파일이 존재하지 않으면 빈문자열 리턴
+		String originalFilename = team_name;
+		
+		if(originalFilename.trim().length() == 0 || upload.isEmpty()) 
+			return "";
+		
+		//저장할 전체 경로를 포함한 File 객체
+		File serverFile = new File(uploadPath + "/" + team_name);
+		
+		//파일 저장
+		try {
+			upload.transferTo(serverFile);  // 지정된 이름으로 지정된 위치에 파일 저장 
+		} catch (Exception e) {
+			originalFilename = null;
+			e.printStackTrace();
+		}
+		
+		return originalFilename;
+	}
+	
+	/**
 	 * 서버에 저장된 파일의 전체 경로를 전달받아, 해당 파일을 삭제
 	 * @param fullpath 삭제할 파일의 경로
 	 * @return 삭제 여부
