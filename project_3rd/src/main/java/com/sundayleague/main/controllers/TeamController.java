@@ -52,7 +52,8 @@ public class TeamController {
 			// upload된 emblem은 team_name으로 저장
 			FileService.saveOriginalFile(emblemUpload, uploadPath, team.getTeam_name());
 			session.setAttribute("team_name", team.getTeam_name());
-			return "myteam";
+			session.setAttribute("authority", "3");
+			return "redirect:/myteam";
 		}else{
 			return "creation";
 		}
