@@ -238,33 +238,33 @@ sp_insert_team
 )
 is
 begin
-      		insert into TEAM(
-			TEAM_NAME,
-			VICTORY,
-			DEFEAT,
-			DRAW,
-			RATING,
-			ESTABLISHED,
-			HEADCOUNT,
-			TEAM_COMMENT,
-			REGION,
-			DELETED_FLAG,
-			ACCPET_FLAG)
-		values(
-			v_team_name,
-			default,
-			default,
-			default,
-			1000,
-			sysdate,
-			default,
-			v_team_comment,
-			v_team_region,
-			default,
-			0);
-            
-        update player set authority=1, 
-		team_name=v_team_name 
-        where player_id=v_player_id;
-    end;
-    /
+  	insert into TEAM(
+		TEAM_NAME,
+		VICTORY,
+		DEFEAT,
+		DRAW,
+		RATING,
+		ESTABLISHED,
+		HEADCOUNT,
+		TEAM_COMMENT,
+		REGION,
+		DELETED_FLAG,
+		ACCPET_FLAG)
+	values(
+		v_team_name,
+		default,
+		default,
+		default,
+		1000,
+		sysdate,
+		default,
+		v_team_comment,
+		v_team_region,
+		default,
+		0);
+        
+    update player set authority=3, 
+	team_name=v_team_name 
+    where player_id=v_player_id;
+end;
+/
