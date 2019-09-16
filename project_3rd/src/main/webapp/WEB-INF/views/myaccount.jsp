@@ -112,7 +112,7 @@
                                     </c:if>
                                 </tr>
                                 <tr>
-                                    <td>Birth</td>
+                                    <td>Birth Date</td>
                                     <td>${player.birth }</td>
                                 </tr>
                                 <tr>
@@ -134,6 +134,12 @@
                                 <tr>
                                     <td>Mainfoot</td>
                                     <td>${player.mainfoot}</td>
+                                </tr>
+                                <tr>
+                                    <td>Authority</td>
+                                    <td>${player.authority == 3 ? '감독' : 
+                                    	  player.authority == 2 ? '코치' : 
+                                    	  player.authority == 1 ? '일반' : '승인 대기' }</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -164,9 +170,7 @@
             </div>
             <div class="row">
 				<div class="player-profile-update clearfix">
-					<div class="col-md-6 col-sm-6">
-					</div>
-					<div class="col-md-6 col-sm-6">
+					<div class="col-md-12 col-sm-6">
 						<div class="coupon-cart-right">
 							<a href="updateprofile">Edit Profile</a>
 						</div>

@@ -172,6 +172,7 @@
 		$(function(){
 			$(".breadcromb-box > h2").html("FAQs Page")
 			$(".breadcromb-box ul li:last-child").html("FAQs Page")
+			$(".kick-header-area a[href=faq]").parent().attr('class', 'current-page-item')
 		})
 	</script>
 </body>

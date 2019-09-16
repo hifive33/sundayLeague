@@ -128,7 +128,7 @@
                 </div>
             </div>
         </div>
-        <div class="kick-player-section section_t_100">
+        <div class="kick-player-section section_t_100 gray-background-section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -224,7 +224,7 @@
                 </div>
             </div>
         </div>
-        <div class="kick-player-section section_t_100">
+        <div class="kick-player-section section_t_100 gray-background-section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

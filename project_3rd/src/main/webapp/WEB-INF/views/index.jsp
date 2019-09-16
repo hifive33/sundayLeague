@@ -48,8 +48,9 @@
     <link rel="stylesheet" href="resources/css/responsive.css">
 
 </head>
-<body>
 
+<body>
+	
     <!-- Header Area Start -->
 	<%@include file="menu/headerArea.jsp"%>
     <!-- Header Area End -->
@@ -263,7 +264,7 @@
     
     
     <!-- Upcoming Matches Area Start -->
-    <section class="kick-upcoming-mathces-area section_100">
+<!--     <section class="kick-upcoming-mathces-area section_100">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -421,7 +422,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Upcoming Matches Area End -->
     
     
@@ -992,6 +993,14 @@
     
     <!-- Custom JS -->
     <script src="resources/js/custom.js"></script>
-    
+    <script>
+$(function(){
+	var result = "${alert}";
+	if(result!=""){
+		alert(result);
+	}
+})
+
+</script>
 </body>
 </html>

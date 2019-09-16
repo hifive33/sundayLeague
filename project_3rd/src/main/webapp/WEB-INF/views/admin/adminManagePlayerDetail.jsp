@@ -52,11 +52,11 @@
 <body>
     
     <!-- Header Area Start -->
-	<%@include file="menu/headerArea.jsp"%>
+	<%@include file="../menu/headerArea.jsp"%>
     <!-- Header Area End -->
     
     <!-- Breadcromb Area Start -->
-    <%@include file="menu/breadcrombArea.jsp"%>
+    <%@include file="../menu/breadcrombArea.jsp"%>
     <!-- Breadcromb Area End -->
     
     <!-- Player Page Section Start -->
@@ -72,7 +72,7 @@
                 </div>
                 <div class="col-md-8 col-sm-8">
                     <div class="player-details-right">
-                        <h2>${player.player_id }</h2>
+                        <h2>${player.name }</h2>
                         <hr>
                         <div class="player-desc">
                             <p>${player.player_comment }</p>
@@ -144,43 +144,118 @@
                         <ul class="progress-list">
                             <li>
                                 <p>Attendance</p>
-                                <div class="bar" data-value="92"></div>
+                                <div class="bar" data-value="42"></div>
                             </li>
                             <li>
                                 <p>Winning Rate</p>
                                 <div class="bar" data-value="85"></div>
                             </li>
-<!--                             <li>
+                             <li>
                                 <p>timing Accuracy</p>
                                 <div class="bar" data-value="90"></div>
                             </li>
                             <li>
                                 <p>total Accuracy</p>
                                 <div class="bar" data-value="95"></div>
-                            </li> -->
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <c:if test="${sessionScope.team_name == player.team_name && sessionScope.authority > 1 && player.authority == 0 }">
-	            <div class="row">
-					<div class="player-profile-update clearfix">
-						<div class="col-md-12 col-sm-6">
-							<div class="coupon-cart-right">
-								<a href="joinapply?player_id=${player.player_id}">가입 승인</a>
-							</div>
+            <div class="row">
+				<div class="player-profile-update clearfix">
+					<div class="col-md-12 col-sm-6">
+						<div class="coupon-cart-right">
+							<a href="updateprofile">Edit Profile</a>
 						</div>
 					</div>
 				</div>
-			</c:if>
+			</div>
         </div>
 
     </section>
     <!-- Player Profile Info End -->
     
     
+    <!-- Player Page Gallery Start -->
+    <!-- <section class="kick-player-page-gallery section_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="kick-section-heading">
+                        <h2>Player <span>Gallery</span></h2>
+                        <div class="title-line-one"></div>
+                        <div class="title-line-two"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <a href="resources/img/player-gallery-5.jpg" class="gallery-lightbox">
+                        <div class="project-img player-gallery-single">
+                            <img src="resources/img/player-gallery-5.jpg" alt="single project" />
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="resources/img/player-gallery-4.jpg" class="gallery-lightbox">
+                        <div class="project-img player-gallery-single">
+                            <img src="resources/img/player-gallery-4.jpg" alt="single project" />
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="resources/img/player-gallery-6.jpg" class="gallery-lightbox">
+                        <div class="project-img player-gallery-single">
+                            <img src="resources/img/player-gallery-6.jpg" alt="single project" />
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="resources/img/player-gallery-3.jpg" class="gallery-lightbox">
+                        <div class="project-img player-gallery-single">
+                            <img src="resources/img/player-gallery-3.jpg" alt="single project" />
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <a href="resources/img/player-gallery-6.jpg" class="gallery-lightbox">
+                        <div class="project-img player-gallery-single">
+                            <img src="resources/img/player-gallery-6.jpg" alt="single project" />
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="resources/img/player-gallery-5.jpg" class="gallery-lightbox">
+                        <div class="project-img player-gallery-single">
+                            <img src="resources/img/player-gallery-5.jpg" alt="single project" />
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="resources/img/player-gallery-2.jpg" class="gallery-lightbox">
+                        <div class="project-img player-gallery-single">
+                            <img src="resources/img/player-gallery-2.jpg" alt="single project" />
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="resources/img/player-gallery-1.jpg" class="gallery-lightbox">
+                        <div class="project-img player-gallery-single">
+                            <img src="resources/img/player-gallery-1.jpg" alt="single project" />
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- Player Page Gallery End -->
+    
+    
     <!-- Footer Area Start -->
-    <%@include file="menu/footerArea.jsp"%>
+    <%@include file="../menu/footerArea.jsp"%>
     <!-- Footer Area End -->
 
 
@@ -222,10 +297,8 @@
     <!-- script -->
 	<script>
 		$(function(){
-			$(".breadcromb-box > h2").html("Player Details")
-			$(".breadcromb-box > ul > li:last-child").html("Player Details")
-			if(${player.team_name==sessionScope.team_name}) $(".kick-header-area a[href=myteam]").parent().attr('class', 'current-page-item')
-			else $(".kick-header-area a[href=teams]").parent().attr('class', 'current-page-item')
+			$(".breadcromb-box > h2").html("My Account")
+			$(".breadcromb-box > ul > li:last-child").html("My Account")
 		})
 	</script>
 </body>

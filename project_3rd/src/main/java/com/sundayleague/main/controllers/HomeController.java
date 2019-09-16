@@ -26,11 +26,7 @@ public class HomeController {
 	@GetMapping("/player")
 	public void player() {
 	}
-	
-	@GetMapping("/playerdetails")
-	public void playerdetails() {
-	}
-	
+
 	@GetMapping("/gallery")
 	public void gallery() {
 	}
@@ -87,16 +83,8 @@ public class HomeController {
 	public void contact() {
 	}
 	
-	@GetMapping("/teams")
-	public void teams() {
-	}
-	
-	@GetMapping("/myteam")
-	public void myteam() {
-	}
-	
-	@GetMapping("/teamdetails")
-	public void teamdetails() {
+	@GetMapping("/match")
+	public void match() {
 	}
 	
 }

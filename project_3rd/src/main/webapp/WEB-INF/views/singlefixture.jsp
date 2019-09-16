@@ -498,6 +498,8 @@
 		$(function(){
 			$(".breadcromb-box > h2").html("Fixture Details")
 			$(".breadcromb-box ul li:last-child").html("Fixture Details")
+			$("#navigation_menu > li:nth-child(3)").attr('class', 'current-page-item')
+			$(".kick-header-area a[href=singlefixture]").parent().attr('class', 'current-page-item')
 		})
 	</script>
 </body>
