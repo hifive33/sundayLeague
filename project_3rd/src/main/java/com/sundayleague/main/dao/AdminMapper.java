@@ -25,4 +25,6 @@ public interface AdminMapper {
 
 	int selectTeamCount(Map<String, String> map);
 
+	PlayerDTO selectPlayer(String player_id);
+
 }
