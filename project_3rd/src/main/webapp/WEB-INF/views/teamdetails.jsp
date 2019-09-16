@@ -57,7 +57,7 @@
     <%@include file="menu/breadcrombArea.jsp"%>
     <!-- Breadcromb Area End -->
     
-    <!-- Fixture Page Next Match Start -->
+    <!-- Team Details Page Start -->
     <section class="kick-fixture-page-next-match section_100">
         <div class="container">
             <div class="row">
@@ -65,9 +65,9 @@
                     <div class="fixture-page-next-match-left">
                         <div class="single-upcoming-match">
                             <div id="wdl">
-                            	<p><span>0</span>win</p>
-                            	<p><span>0</span>draw</p>
-                            	<p><span>0</span>lose</p>
+                            	<p><span>${team.victory}</span>win</p>
+                            	<p><span>${team.draw}</span>draw</p>
+                            	<p><span>${team.defeat}</span>lose</p>
                             </div>
                             <h2>Team Record</h2>
                             <div class="upcoming-match-box">
@@ -77,17 +77,31 @@
                                         </div>
                                         <div class="col-sm-2">
                                             <div class="team-head-image">
-												<img src="resources/img/emblem-null.png" alt="team image" />
+												<!-- <img src="resources/img/emblem-null.png" alt="team image" /> -->
+												<img src="/emblemimg/${team.team_name}" alt="team image" />
                                             </div>
                                         </div>
                                         <div class="col-sm-5">
                                         </div>
                                     </div>
                                 </div>
-								<h4>team_name</h4>
-                                <p>team_comment</p>
+								<h4>${team.team_name}</h4>
+                                <p>${team.team_comment}</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+	                    <div class="order-tickets">
+	                    	<div class="coupon-cart-right">
+	                    		<!-- 등록 취소 변경 -->
+	                    		<c:if test="${sessionScope.team_name == team.team_name && sessionScope.authority == 0}">
+	                    			<a href="jointeamcancel?team_name=${team.team_name}" class="kick-btn">신청 취소</a>
+	                    		</c:if>
+	                    		<c:if test="${sessionScope.loginId != null && sessionScope.team_name == null}">
+	                    			<a href="jointeam?team_name=${team.team_name}" class="kick-btn">가입 신청</a>
+	                    		</c:if>
+	                    	</div>
+	                    </div>
                     </div>
                 </div>
                 <!-- 팀원 목록 -->
@@ -101,50 +115,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
-                                <tr>
-                                    <th>lee</th>
-                                    <th>posi</th>
-                                </tr>
+                            <c:forEach var="list" items="${player}">
+                            	<c:if test="${list.authority > 0}">
+	                                <tr>
+	                                    <td><a href="playerdetails?playerid=${list.player_id}">${list.name}</a></td>
+	                                    <td>${list.position}</td>
+	                                </tr>
+                                </c:if>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
@@ -152,7 +130,7 @@
             </div>
         </div>
     </section>
-    <!-- Fixture Page Next Match End -->
+    <!-- Team Details Page End -->
     
     <!-- Footer Area Start -->
     <%@include file="menu/footerArea.jsp"%>
@@ -198,6 +176,7 @@
 		$(function(){
 			$(".breadcromb-box > h2").html("Team Details")
 			$(".breadcromb-box ul li:last-child").html("Team Details")
+			$(".kick-header-area a[href=teams]").parent().attr('class', 'current-page-item')
 		})
 	</script>
 </body>

@@ -3091,6 +3091,7 @@ li {
 
 .element-team-rank {
 	width: 10%;
+	font-weight: 600;
 }
 .element-team-name {
 	width: 30%;
@@ -3115,7 +3116,32 @@ li {
 .element-team-information > p {
 	margin: 0;
 }
-
+.teams-searchWord-right {
+    text-align: right;
+    margin-top: 20px;
+}
+.teams-searchWord-right input[type="text"] {
+    background: #eee none repeat scroll 0 0;
+    border: medium none;
+    height: 50px;
+    padding: 10px 15px;
+    width: 20%;
+}
+.teams-searchWord-right input[type="submit"] {
+    background: #e01a22 none repeat scroll 0 0;
+    border: medium none;
+    color: #fff;
+    font-weight: 600;
+    height: 50px;
+    margin-left: 5px;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+.teams-searchWord-right input[type="submit"]:hover {
+    background: #212121 none repeat scroll 0 0;
+}
 /*================================================
 36 - ADMIN HEADER CSS
 ==================================================*/ 

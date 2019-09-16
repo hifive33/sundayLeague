@@ -37,15 +37,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="header-top-right">
-                        <!-- <a href="cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            cart
-                        </a> -->
-                        <a href="myaccount">
-                            <i class="fa fa-user"></i>
-                            My Account
-                        </a>
-                        ${sessionScope.loginId == null ? '<a href="login"><i class="fa fa-sign-in"></i>login</a><a href="registration"><i class="fa fa-user-plus"></i>register</a>' : '<a href="logout"><i class="fa fa-sign-out"></i>logout</a>'}
+                        ${sessionScope.loginId == null ? '<a href="login"><i class="fa fa-sign-in"></i>login</a><a href="registration"><i class="fa fa-user-plus"></i>register</a>' : '<a href="myaccount"><i class="fa fa-user"></i>My Account</a><a href="logout"><i class="fa fa-sign-out"></i>logout</a>'}
                     </div>
                 </div>
             </div>
@@ -65,7 +57,7 @@
                                     <li>
                                         <a href="about">about</a>
                                     </li>
-                                    <li>
+                                    <li id="fixture">
                                         <a href="fixture">fixture</a>
                                         <ul>
                                             <li><a href="fixture">Fixtures</a></li><li><a href="singlefixture">Fixtures details</a></li>
@@ -80,7 +72,7 @@
                         <div class="kick-site-logo">
                             <div class="responsive-menu-2"></div>
                             <a href="match" class="kick-site-logo">
-                                <img src="resources/img/logo.png" alt="site logo" />
+                                <img src="resources/img/logo-match.png" alt="site logo" />
                             </a>
                             <div class="responsive-menu-1"></div>
                         </div>
@@ -89,19 +81,30 @@
                                 <ul id="navigation_menu_2">
                                 	<li>
                                         <a href="myteam">My Team</a>
-										<ul>
-											<!-- 팀 없을때 -->
-											${ sessionScope.loginId != null && sessionScope.team_name == null ? "<li><a href='creation'>Create Team</a></li>" : ""}
-                                            <!-- 팀 있을때 -->
-                                            ${ sessionScope.loginId != null && sessionScope.team_name != null ? 
-                                            '<li><a href="myteam">스텟</a></li>
-                                            <li><a href="#">일정</a></li>' : ''}
-                                            <!-- 운영진 전용 -->
-                                            <li><a href="#">매칭</a></li>
-                                            <li><a href="#">구단스텟</a></li>
-                                            <!-- 감독 전용 -->
-                                            <li><a href="#">운영진임명</a></li>
-                                        </ul>
+                                        <c:if test="${sessionScope.loginId != null}">
+											<ul>
+												<!-- 팀 없을때 -->
+	                                            <c:if test="${sessionScope.team_name == null}">
+													<li>
+														<a href='creation'>Create Team</a>
+													</li>
+												</c:if>
+	                                            <!-- 팀 있을때 -->
+	                                            <c:if test="${sessionScope.team_name != null}">
+		                                            <li><a href="myteam">My Team</a></li>
+		                                            <li><a href="#">일정</a></li>
+	                                            </c:if>
+	                                            <!-- 운영진 전용 -->
+	                                            <c:if test="${sessionScope.authority > 1}">
+		                                            <li><a href="#">매칭</a></li>
+		                                            <li><a href="#">구단스텟</a></li>
+	                                            </c:if>
+	                                            <!-- 감독 전용 -->
+	                                            <c:if test="${sessionScope.authority == 3}">
+	                                            	<li><a href="#">운영진임명</a></li>
+	                                            </c:if>
+	                                        </ul>
+                                        </c:if>
                                     </li>
                                     <li>
                                         <a href="teams">Teams</a>

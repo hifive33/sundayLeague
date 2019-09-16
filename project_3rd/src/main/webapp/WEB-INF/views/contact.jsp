@@ -226,6 +226,7 @@
 		$(function(){
 			$(".breadcromb-box > h2").html("Contact")
 			$(".breadcromb-box ul li:last-child").html("Contact")
+			$(".kick-header-area a[href=contact]").parent().attr('class', 'current-page-item')
 		})
 	</script>
 </body>

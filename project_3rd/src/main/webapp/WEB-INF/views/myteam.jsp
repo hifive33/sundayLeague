@@ -57,7 +57,7 @@
     <%@include file="menu/breadcrombArea.jsp"%>
     <!-- Breadcromb Area End -->
     
-    <!-- Fixture Page Next Match Start -->
+    <!-- My Team Page Start -->
     <section class="kick-fixture-page-next-match section_100">
         <div class="container">
             <div class="row">
@@ -77,7 +77,8 @@
                                         </div>
                                         <div class="col-sm-2">
                                             <div class="team-head-image">
-												<img src="resources/img/emblem-null.png" alt="team image" />
+												<!-- <img src="resources/img/emblem-null.png" alt="team image" /> -->
+												<img src="/emblemimg/${team.team_name}" alt="team image" />
                                             </div>
                                         </div>
                                         <div class="col-sm-5">
@@ -88,6 +89,17 @@
                                 <p>${team.team_comment}</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+	                    <div class="order-tickets">
+	                    	<div class="coupon-cart-right">
+	                    		<!-- 등록 취소 변경 -->
+	                    		<!-- <a href="#" class="kick-btn">모집 등록</a> -->
+	                    		<c:if test="${sessionScope.authority == 3}">
+	                    			<a href="#" class="kick-btn">구단 해체</a>
+	                    		</c:if>
+	                    	</div>
+	                    </div>
                     </div>
                 </div>
                 <!-- 팀원 목록 -->
@@ -102,13 +114,17 @@
                             </thead>
                             <tbody>
                             <c:forEach var="list" items="${player}">
-                                <tr>
-                                    <td>${list.name}</td>
-                                    <td>${list.position}</td>
-                                </tr>
+                            	<c:if test="${list.authority > 0}">
+	                                <tr>
+	                                    <td><a href="playerdetails?playerid=${list.player_id}">${list.name}</a></td>
+	                                    <td>${list.position}</td>
+	                                </tr>
+                                </c:if>
                             </c:forEach>
                             </tbody>
                         </table>
+						<!-- 신청자 목록 -->
+                        <c:if test="${sessionScope.authority > 1 }">
 	                        <table class="table table-striped table-responsive">
 	                            <thead class="apply">
 	                                <tr>
@@ -117,18 +133,23 @@
 	                                </tr>
 	                            </thead>
 	                            <tbody>
-	                                <tr>
-	                                    <td>lee</td>
-	                                    <td>posi</td>
-	                                </tr>
+								<c:forEach var="list" items="${player}">
+									<c:if test="${list.authority == 0}">
+		                                <tr>
+		                                    <td><a href="playerdetails?playerid=${list.player_id}">${list.name}</a></td>
+		                                    <td>${list.position}</td>
+		                                </tr>
+	                                </c:if>
+								</c:forEach>
 	                            </tbody>
 	                        </table>
+						</c:if>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Fixture Page Next Match End -->
+    <!-- My Team Page End -->
     
     <!-- Footer Area Start -->
     <%@include file="menu/footerArea.jsp"%>
@@ -174,6 +195,7 @@
 		$(function(){
 			$(".breadcromb-box > h2").html("My Team")
 			$(".breadcromb-box ul li:last-child").html("My Team")
+			$("a[href=myteam]").parent().attr('class', 'current-page-item')
 		})
 	</script>
 </body>
