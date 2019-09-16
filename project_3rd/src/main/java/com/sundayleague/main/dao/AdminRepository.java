@@ -76,5 +76,13 @@ public class AdminRepository {
 		
 		return result;
 	}
+
+	public PlayerDTO selectPlayer(String player_id) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		
+		PlayerDTO player = mapper.selectPlayer(player_id);
+		
+		return player;
+	}
 	
 }

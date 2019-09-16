@@ -88,6 +88,20 @@ public class AdminController {
 		
 		return "admin/adminManageTeam";
 	}
-
 	
+	@RequestMapping(value="/adminManagePlayerDetail", method=RequestMethod.GET)
+	public String adminManagePlayerDetail(String player_id, Model model){
+		
+		if(player_id == null){ return "redirect:/adminMain"; }
+		
+		System.out.println(player_id);
+		
+		PlayerDTO player = adRepo.selectPlayer(player_id);
+		
+		System.out.println(player);
+		
+		model.addAttribute("player", player);
+		
+		return "admin/adminManagePlayerDetail";
+	}
 }
