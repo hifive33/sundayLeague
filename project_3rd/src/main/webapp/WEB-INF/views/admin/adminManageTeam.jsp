@@ -84,7 +84,7 @@
 			                            <tbody>
 			                            	<c:forEach var="board" items="${list }">
 												<tr>
-													<td>${board.team_name }</td>
+													<td><a href="adminManageTeamDetail?team_name=${board.team_name }">${board.team_name }</a></td>
 													<td>${board.victory }</td>
 													<td>${board.defeat }</td>
 													<td>${board.draw }</td>
