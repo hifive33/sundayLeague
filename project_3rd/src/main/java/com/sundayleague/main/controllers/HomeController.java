@@ -83,8 +83,4 @@ public class HomeController {
 	public void contact() {
 	}
 	
-	@GetMapping("/match")
-	public void match() {
-	}
-	
 }

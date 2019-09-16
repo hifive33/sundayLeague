@@ -16,4 +16,7 @@ public interface TeamMapper {
 	int getTeamCount(Map<String,String>map);
 	List<TeamDTO> selectTeamList(Map<String, String> map, RowBounds rb);
 	int deleteTeam(String team_name);
+	int updateMatch_flag(TeamDTO team);
+	String getMatch_flag(String team_name);
+
 }

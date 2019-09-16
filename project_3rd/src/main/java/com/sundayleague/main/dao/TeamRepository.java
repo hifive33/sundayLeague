@@ -57,4 +57,16 @@ public class TeamRepository {
 		TeamMapper mapper = session.getMapper(TeamMapper.class);
 		return mapper.deleteTeam(team_name);
 	}
+
+
+	public int updateMatch_flag(TeamDTO team) {
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		return mapper.updateMatch_flag(team);
+	}
+
+	public String getMatchFlag(String team_name) {
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		return mapper.getMatch_flag(team_name);
+	}
+	
 }
