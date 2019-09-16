@@ -21,9 +21,10 @@
 			, withdrawal_flag
 			, authority
 		FROM player
-		<if test="searchItem != null">
-   		WHERE ${searchItem} like '%' || #{searchWord} || '%'
-   		</if>
+		WHERE withdrawal_flag = '1'
+			<if test="searchItem != null">
+   			AND ${searchItem} like '%' || #{searchWord} || '%'
+   			</if>
 	</select>
 	
 	<select id="selectTeamList" resultType="TeamDTO">
@@ -40,8 +41,9 @@
 			, deleted_flag
 			, accpet_flag
 		FROM team
+		WHERE deleted_flag = '1'
 		<if test="searchItem != null">
-   		WHERE ${searchItem} like '%' || #{searchWord} || '%'
+   		AND ${searchItem} like '%' || #{searchWord} || '%'
    		</if>
 	</select>
 	
@@ -78,7 +80,51 @@
 			, withdrawal_flag
 			, authority
 		FROM player
-		WHERE player_id = #{player_id}
-   		
+		WHERE player_id = #{player_id}   		
+	</select>
+	
+	<update id="updatePlayerDelete" parameterType="String">
+		UPDATE player
+		SET
+			withdrawal_flag = '0'
+			, team_name = null
+		WHERE player_id=#{player_id}
+	</update>
+	
+	<select id="selectTeam" parameterType="String" resultType="TeamDTO">
+		SELECT
+			team_name
+			, victory
+			, defeat
+			, draw
+			, rating
+			, established
+			, headcount
+			, team_comment
+			, region
+			, deleted_flag
+			, accpet_flag
+		FROM team
+		WHERE team_name = #{team_name}
+	</select>
+	
+	<select id="selectTeamMember" parameterType="String" resultType="PlayerDTO">
+		SELECT
+			player_id
+			, team_name
+			, password
+			, email
+			, name
+			, position
+			, subposition
+			, height
+			, weight
+			, birth
+			, player_comment
+			, mainfoot
+			, withdrawal_flag
+			, authority
+		FROM player
+		WHERE team_name = #{team_name}   
 	</select>
 </mapper>

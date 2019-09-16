@@ -166,7 +166,7 @@
 				<div class="player-profile-update clearfix">
 					<div class="col-md-12 col-sm-6">
 						<div class="coupon-cart-right">
-							<a href="updateprofile">Edit Profile</a>
+							<a href="#" id="delete" >Delete Player</a>
 						</div>
 					</div>
 				</div>
@@ -299,7 +299,18 @@
 		$(function(){
 			$(".breadcromb-box > h2").html("My Account")
 			$(".breadcromb-box > ul > li:last-child").html("My Account")
+			
+			$("#delete").on('click', function(){
+				var flag = confirm("정말 삭제하시겠습니까?")
+				if(flag == true){
+					$(location).attr('href', 'adminPlayerDelete?player_id=${player.player_id}');
+				}
+			});
+			
+			
 		})
+		
+		
 	</script>
 </body>
 </html>
