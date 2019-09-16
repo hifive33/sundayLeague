@@ -88,7 +88,7 @@
 			                            	<c:forEach var="board" items="${list }">
 												<tr>
 													<td>${board.player_id }</td>
-													<td>${board.name }</td>
+													<td><a href="adminManagePlayerDetail?player_id=${board.player_id }">${board.name }</a></td>
 													<td>${board.team_name }</td>
 													<td>${board.email }</td>
 													<%-- <td>${board.position }</td>

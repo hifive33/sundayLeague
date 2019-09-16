@@ -50,14 +50,14 @@
 <body>
     
     <!-- Header Area Start -->
-	<%@include file="menu/headerArea.jsp"%>
+	<%@include file="../menu/headerArea.jsp"%>
     <!-- Header Area End -->
     
     <!-- Breadcromb Area Start -->
-    <%@include file="menu/breadcrombArea.jsp"%>
+    <%@include file="../menu/breadcrombArea.jsp"%>
     <!-- Breadcromb Area End -->
     
-    <!-- My Team Page Start -->
+    <!-- Team Details Page Start -->
     <section class="kick-fixture-page-next-match section_100">
         <div class="container">
             <div class="row">
@@ -77,7 +77,7 @@
                                         </div>
                                         <div class="col-sm-2">
                                             <div class="team-head-image">
-												<!-- <img src="resources/img/emblem-null.png" alt="team image" /> -->
+												 <!-- <img src="resources/img/emblem-null.png" alt="team image" /> -->
 												<img src="/emblemimg/${team.team_name}" alt="team image" />
                                             </div>
                                         </div>
@@ -94,10 +94,14 @@
 	                    <div class="order-tickets">
 	                    	<div class="coupon-cart-right">
 	                    		<!-- 등록 취소 변경 -->
-	                    		<!-- <a href="#" class="kick-btn">모집 등록</a> -->
-	                    		<c:if test="${sessionScope.authority == 3}">
-	                    			<a href="teamdelete" class="kick-btn">구단 해체</a>
+	                    		<!-- 
+	                    		<c:if test="${sessionScope.team_name == team.team_name && sessionScope.authority == 0}">
+	                    			<a href="jointeamcancel?team_name=${team.team_name}" class="kick-btn">신청 취소</a>
 	                    		</c:if>
+	                    		<c:if test="${sessionScope.loginId != null && sessionScope.team_name == null}">
+	                    			<a href="jointeam?team_name=${team.team_name}" class="kick-btn">가입 신청</a>
+	                    		</c:if>
+	                    		 -->
 	                    	</div>
 	                    </div>
                     </div>
@@ -113,46 +117,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="list" items="${player}">
-                            	<c:if test="${list.authority > 0}">
+                            <c:forEach var="board" items="${list}">
+                            	<c:if test="${board.authority > 0}">
 	                                <tr>
-	                                    <td><a href="playerdetails?playerid=${list.player_id}">${list.name}</a></td>
-	                                    <td>${list.position}</td>
+	                                    <td><a href="adminManagePlayerDetail?player_id=${board.player_id }">${board.name}</a></td>
+	                                    <td>${board.position}</td>
 	                                </tr>
                                 </c:if>
                             </c:forEach>
                             </tbody>
                         </table>
-						<!-- 신청자 목록 -->
-                        <c:if test="${sessionScope.authority > 1 }">
-	                        <table class="table table-striped table-responsive">
-	                            <thead class="apply">
-	                                <tr>
-	                                    <th>Name</th>
-	                                    <th>Position</th>
-	                                </tr>
-	                            </thead>
-	                            <tbody>
-								<c:forEach var="list" items="${player}">
-									<c:if test="${list.authority == 0}">
-		                                <tr>
-		                                    <td><a href="playerdetails?playerid=${list.player_id}">${list.name}</a></td>
-		                                    <td>${list.position}</td>
-		                                </tr>
-	                                </c:if>
-								</c:forEach>
-	                            </tbody>
-	                        </table>
-						</c:if>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- My Team Page End -->
+    <!-- Team Details Page End -->
     
     <!-- Footer Area Start -->
-    <%@include file="menu/footerArea.jsp"%>
+    <%@include file="../menu/footerArea.jsp"%>
     <!-- Footer Area End -->
 
     <!-- jQuery -->
@@ -193,9 +176,9 @@
     <!-- script -->
 	<script>
 		$(function(){
-			$(".breadcromb-box > h2").html("My Team")
-			$(".breadcromb-box ul li:last-child").html("My Team")
-			$("a[href=myteam]").parent().attr('class', 'current-page-item')
+			$(".breadcromb-box > h2").html("Team Details")
+			$(".breadcromb-box ul li:last-child").html("Team Details")
+			$(".kick-header-area a[href=teams]").parent().attr('class', 'current-page-item')
 		})
 	</script>
 </body>

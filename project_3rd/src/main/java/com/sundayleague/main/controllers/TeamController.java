@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -87,6 +88,18 @@ public class TeamController {
 	public void teamdetails(String team_name, Model model) {
 		model.addAttribute("team", repo.selectTeam(team_name));
 		model.addAttribute("player", repo.selectTeam2(team_name));
+	}
+	
+	@GetMapping("/teamdelete")
+	public String teamdelete(HttpSession session) {
+		repo.deleteTeam((String)session.getAttribute("team_name"));
+		FileService.deleteFile(uploadPath+(String)session.getAttribute("team_name"));
+		return "redirect:/";
+	}
+	
+	@GetMapping("/calendar")
+	public void scheduleTeam(){
+		
 	}
 }
 	

@@ -101,7 +101,7 @@
 				                                    <td class="element-team-rank">${stat.count + navi.startRecord}</td>
 				                                    <td class="element-team-name">
 				                                    	<a href="teamdetails?team_name=${team.team_name}">
-					                                    	<img src="resources/img/emblem-null.png" alt="team image" />
+					                                    	<img src="/emblemimg/${team.team_name}" alt="team image" />
 				                                        </a>
 														<h3><a href="teamdetails?team_name=${team.team_name}">${team.team_name}</a></h3>
 				                                    </td>

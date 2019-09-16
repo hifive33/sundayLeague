@@ -88,6 +88,47 @@ public class AdminController {
 		
 		return "admin/adminManageTeam";
 	}
-
 	
+	@RequestMapping(value="/adminManagePlayerDetail", method=RequestMethod.GET)
+	public String adminManagePlayerDetail(String player_id, Model model){
+		
+		if(player_id == null){ return "redirect:/adminMain"; }
+		
+		System.out.println(player_id);
+		
+		PlayerDTO player = adRepo.selectPlayer(player_id);
+		
+		System.out.println(player);
+		
+		model.addAttribute("player", player);
+		
+		return "admin/adminManagePlayerDetail";
+	}
+	
+	@RequestMapping(value="/adminPlayerDelete", method=RequestMethod.GET)
+	public String adminPlayerDelete(String player_id){
+		
+		System.out.println("delete id : "+player_id);
+		
+		int result = adRepo.deletePlayer(player_id);
+		
+		return "redirect:/adminManagePlayer";
+	}
+	
+	@RequestMapping(value="/adminManageTeamDetail", method=RequestMethod.GET)
+	public String adminManageTeamDetail(String team_name, Model model){
+		
+		if(team_name == null){ return "redirect:/adminMain"; }
+		
+		TeamDTO team = adRepo.selectTeam(team_name);
+		List<PlayerDTO> list = adRepo.selectTeamMember(team_name);
+		
+		System.out.println(team_name);
+		System.out.println(list);
+		
+		model.addAttribute("team", team);
+		model.addAttribute("list", list);
+		
+		return "admin/adminManageTeamDetail";
+	}
 }

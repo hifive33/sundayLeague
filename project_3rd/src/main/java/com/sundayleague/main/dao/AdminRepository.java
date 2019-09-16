@@ -76,5 +76,37 @@ public class AdminRepository {
 		
 		return result;
 	}
+
+	public PlayerDTO selectPlayer(String player_id) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		
+		PlayerDTO player = mapper.selectPlayer(player_id);
+		
+		return player;
+	}
+
+	public int deletePlayer(String player_id) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		
+		int result = mapper.updatePlayerDelete(player_id);
+		
+		return result;
+	}
+
+	public TeamDTO selectTeam(String team_name) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		
+		TeamDTO team = mapper.selectTeam(team_name);
+		
+		return team;
+	}
+
+	public List<PlayerDTO> selectTeamMember(String team_name) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		
+		List<PlayerDTO> list = mapper.selectTeamMember(team_name); 
+		
+		return list;
+	}
 	
 }

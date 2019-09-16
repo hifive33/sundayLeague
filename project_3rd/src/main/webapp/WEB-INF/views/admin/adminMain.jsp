@@ -10,6 +10,9 @@
 	<ul>
 		<li><a href="adminManagePlayer">회원관리</a></li>
 		<li><a href="adminManageTeam">구단관리</a></li>
+		<li><a href="adminManagePlayerDetail">선수보기(임시)</a></li>
+		<li><a href="adminManageTeamDetail">구단보기(임시)</a></li>
+		
 	</ul>
 </body>
 </html>
