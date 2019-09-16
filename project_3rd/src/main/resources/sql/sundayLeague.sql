@@ -171,6 +171,10 @@ CREATE TABLE team
 	accpet_flag char(1) DEFAULT '0',
 	-- 매칭 신청 여부 0: 신청 안했음, 1: 신청했음
 	match_flag char(1) DEFAULT '0',
+	-- 경기장 주소 null 일시 경기장 보유x
+	match_address varchar2(200),
+	-- 경기요일
+	match_day varchar2(20),
 	CONSTRAINT team_teamid_pk PRIMARY KEY (team_name)
 );
 
