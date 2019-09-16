@@ -102,7 +102,9 @@
                 <div class="col-md-12">
                     <div class="order-tickets">
                     	<div class="coupon-cart-right">
-                    		<a href="#" class="kick-btn">신청하기</a>
+                    		<c:if test="${authority > 1}">
+                    			<a href="matchfind" class="kick-btn">${flag == "0" ? "신청하기" : "신청취소" }</a>
+                    		</c:if>
                     	</div>
                     </div>
                 </div>

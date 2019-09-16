@@ -52,5 +52,15 @@ public class TeamRepository {
 		
 		return mapper.selectTeamList(map, new RowBounds(startRecord,countPerPage));
 	}
-		
+
+	public int updateMatch_flag(TeamDTO team) {
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		return mapper.updateMatch_flag(team);
+	}
+
+	public String getMatchFlag(String team_name) {
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		return mapper.getMatch_flag(team_name);
+	}
+	
 }
