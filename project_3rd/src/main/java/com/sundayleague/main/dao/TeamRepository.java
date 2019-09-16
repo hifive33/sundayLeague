@@ -52,5 +52,9 @@ public class TeamRepository {
 		
 		return mapper.selectTeamList(map, new RowBounds(startRecord,countPerPage));
 	}
-		
+	
+	public int deleteTeam(String team_name) {
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		return mapper.deleteTeam(team_name);
+	}
 }

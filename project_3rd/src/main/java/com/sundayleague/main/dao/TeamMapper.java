@@ -15,4 +15,5 @@ public interface TeamMapper {
 	List<PlayerDTO> selectTeam2(String team_name);
 	int getTeamCount(Map<String,String>map);
 	List<TeamDTO> selectTeamList(Map<String, String> map, RowBounds rb);
+	int deleteTeam(String team_name);
 }
