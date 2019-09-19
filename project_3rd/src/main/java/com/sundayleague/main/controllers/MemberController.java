@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sundayleague.main.dao.MemberRepository;
 import com.sundayleague.main.dto.PlayerDTO;
@@ -83,4 +84,35 @@ public class MemberController {
 		repo.updateProfile(player);
 		return "redirect:/myaccount";
 	}
+	
+	@GetMapping("/forgot")
+	public void forgot() {
+		
+	}
+	
+	@GetMapping("/forgotid")
+	public void forgotId() {
+		
+	}
+	
+	@GetMapping("/forgotpw")
+	public void forgotPw() {
+		
+	}
+	@PostMapping("/forgotid")
+	@ResponseBody
+	public String forgotid(PlayerDTO player) {
+		String id  = null;
+		id = repo.selectId(player);
+		
+		return id;
+	}
+	@PostMapping("/forgotpw")
+	@ResponseBody
+	public String forgotPw(PlayerDTO player) {
+		String pw  = null;
+		pw = repo.selectPw(player);
+		
+		return pw;
+	}	
 }
