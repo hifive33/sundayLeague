@@ -34,8 +34,8 @@ CREATE TABLE match
 	match_no number,
 	-- 홈팀구단명
 	team_name varchar2(20) NOT NULL,
-	-- 원정팀일련번호
-	away_team_name number NOT NULL,
+	-- 원정팀구단명
+	away_team_name varchar2(20) NOT NULL,
 	-- 홈팀점수
 	home_teamscore number NOT NULL,
 	-- 원정팀점수
@@ -169,6 +169,12 @@ CREATE TABLE team
 	deleted_flag char(1) DEFAULT '1',
 	-- 구단 승인 여부 0:대기 1:승인
 	accpet_flag char(1) DEFAULT '0',
+	-- 매칭 신청 여부 0: 신청 안했음, 1: 신청했음
+	match_flag char(1) DEFAULT '0',
+	-- 경기장 주소 null 일시 경기장 보유x
+	match_address varchar2(200),
+	-- 경기요일
+	match_day varchar2(20),
 	CONSTRAINT team_teamid_pk PRIMARY KEY (team_name)
 );
 

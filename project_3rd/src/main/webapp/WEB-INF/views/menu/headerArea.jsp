@@ -92,7 +92,7 @@
 	                                            <!-- 팀 있을때 -->
 	                                            <c:if test="${sessionScope.team_name != null}">
 		                                            <li><a href="myteam">My Team</a></li>
-		                                            <li><a href="#">일정</a></li>
+		                                            <li><a href="calendar">일정</a></li>
 	                                            </c:if>
 	                                            <!-- 운영진 전용 -->
 	                                            <c:if test="${sessionScope.authority > 1}">

@@ -15,4 +15,5 @@ public class TeamDTO {
 	private String region;
 	private String deleted_flag;
 	private String accpet_flag;
+	private String match_flag;
 }
