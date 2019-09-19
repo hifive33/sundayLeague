@@ -110,4 +110,16 @@
 			where
 				player_id = #{player_id}
 	</update>
+	
+	<select id="selectId" parameterType="PlayerDTO" resultType="String">
+			Select player_id
+			From player
+			Where name = #{name} AND email = #{email}
+	</select>
+	
+	<select id="selectPw" parameterType="PlayerDTO" resultType="String">
+			Select password
+			From player
+			Where player_id = #{player_id} AND email = #{email}
+	</select>	
 </mapper>

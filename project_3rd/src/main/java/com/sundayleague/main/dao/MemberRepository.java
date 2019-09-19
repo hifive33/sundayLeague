@@ -41,5 +41,21 @@ public class MemberRepository {
 		int result = mapper.updateProfile(player);
 		return result;
 	}
+
+	public String selectId(PlayerDTO player) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		String id = null;
+		id = mapper.selectId(player);
+		
+		return id;
+	}
+
+	public String selectPw(PlayerDTO player) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		String pw = null;
+		pw = mapper.selectPw(player);
+		
+		return pw;
+	}
 	
 }
