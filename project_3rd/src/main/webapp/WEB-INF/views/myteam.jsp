@@ -96,7 +96,7 @@
 	                    		<!-- 등록 취소 변경 -->
 	                    		<!-- <a href="#" class="kick-btn">모집 등록</a> -->
 	                    		<c:if test="${sessionScope.authority == 3}">
-	                    			<a href="#" class="kick-btn">구단 해체</a>
+	                    			<a href="teamdelete" class="kick-btn">구단 해체</a>
 	                    		</c:if>
 	                    	</div>
 	                    </div>

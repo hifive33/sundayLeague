@@ -3,7 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sundayleague.main.dao.TeamMapper">
-	<update id="insertTeam" parameterType="map" statementType="CALLABLE">
+	<update id="insertTeam" parameterType="map"
+		statementType="CALLABLE">
 		{call sp_insert_team(
 		#{team.team_name},
 		#{team.team_comment},
@@ -12,56 +13,97 @@
 		)
 		}
 	</update>
-	
+
 	<!-- Myteam Team select구문 -->
-	<select id="selectTeam" resultType="TeamDTO" parameterType="String">
-	select * from team where team_name = #{team_name}
-	
+	<select id="selectTeam" resultType="TeamDTO"
+		parameterType="String">
+		select * from team where team_name = #{team_name}
+
 	</select>
 	<!-- Myteam Player List select구문 -->
-	<select id="selectTeam2" resultType="PlayerDTO" parameterType="String">
-	select * from player where team_name = #{team_name}
-	
+	<select id="selectTeam2" resultType="PlayerDTO"
+		parameterType="String">
+		select * from player where team_name = #{team_name}
+
 	</select>
 	<select id="getTeamCount" parameterType="map" resultType="int">
 		SELECT
-			count(*)
+		count(*)
 		FROM
-			team
-		<trim prefix="WHERE" prefixOverrides="AND |OR "> 
+		team
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
 			<if test="region != ''">
 				region like #{region}||'%'
-			</if> 
+			</if>
 			<if test="searchWord != ''">
 				AND team_name like '%'||#{searchWord}||'%'
 			</if>
 		</trim>
 	</select>
-	<select id="selectTeamList" resultType="TeamDTO" parameterType="Map">
+	<select id="selectTeamList" resultType="TeamDTO"
+		parameterType="Map">
 		SELECT
-			team_name
-			, victory
-			, defeat
-			, draw
-			, rating
-			, to_char(established, 'yyyy-mm-dd') as established
-			, headcount
-			, team_comment
-			, region
-			, deleted_flag
-			, accpet_flag
+		team_name
+		, victory
+		, defeat
+		, draw
+		, rating
+		, to_char(established, 'yyyy-mm-dd') as established
+		, headcount
+		, team_comment
+		, region
+		, deleted_flag
+		, accpet_flag
 		FROM
-			team
-		<trim prefix="WHERE" prefixOverrides="AND |OR "> 
+		team
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
 			<if test="region != ''">
 				region like #{region}||'%'
-			</if> 
+			</if>
 			<if test="searchWord != ''">
 				AND team_name like '%'||#{searchWord}||'%'
 			</if>
 		</trim>
+		where deleted_flag=1
 		ORDER BY
-			rating DESC
+		rating DESC
 	</select>
-	
+
+	<update id="deleteTeam" parameterType="String"
+		statementType="CALLABLE">
+		{call sp_delete_team(
+		#{team_name}
+		)
+		}
+	</update>
+
+
+
+	<update id="updateMatch_flag" parameterType="TeamDTO">
+		<selectKey resultType="String" keyProperty="match_flag" order="BEFORE">
+			select
+	        	match_flag
+	        from
+	        	team
+	        where
+	        	team_name = #{team_name}
+		</selectKey>
+		update
+			team
+		set
+			<choose>
+				<when test="match_flag == 1">match_flag = '0'</when>
+				<otherwise>match_flag = '1'</otherwise>
+			</choose>
+		where
+			team_name = #{team_name}
+	</update>
+	<select id="getMatch_flag" parameterType="String" resultType="String">
+		select
+			match_flag
+		from
+			team
+		where
+			team_name = #{team_name}
+	</select>
 </mapper>

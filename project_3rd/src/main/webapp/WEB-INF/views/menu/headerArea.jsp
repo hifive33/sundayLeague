@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="header-top-right">
-                        ${sessionScope.loginId == null ? '<a href="login"><i class="fa fa-sign-in"></i>login</a><a href="registration"><i class="fa fa-user-plus"></i>register</a>' : '<a href="myaccount"><i class="fa fa-user"></i>My Account</a><a href="logout"><i class="fa fa-sign-out"></i>logout</a>'}
+                        ${sessionScope.loginId == null ? '<a href="login"><i class="fa fa-sign-in"></i>ログイン</a><a href="registration"><i class="fa fa-user-plus"></i>はじめてご利用の方（新規会員登録）</a>' : '<a href="myaccount"><i class="fa fa-user"></i>My Account</a><a href="logout"><i class="fa fa-sign-out"></i>logout</a>'}
                     </div>
                 </div>
             </div>
@@ -55,16 +55,16 @@
                                         <a href="<c:url value='/' />">ホーム</a>
                                     </li>
                                     <li>
-                                        <a href="about">about</a>
+                                        <a href="about">サンデーリーグについて</a>
                                     </li>
                                     <li id="fixture">
-                                        <a href="fixture">fixture</a>
+                                        <a href="fixture">試合</a>
                                         <ul>
-                                            <li><a href="fixture">Fixtures</a></li><li><a href="singlefixture">Fixtures details</a></li>
+                                            <li><a href="fixture">試合一覧</a></li><li><a href="singlefixture">試合詳細</a></li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="gallery">gallery</a>
+                                        <a href="gallery">ギャラリー</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -80,7 +80,7 @@
                             <nav>
                                 <ul id="navigation_menu_2">
                                 	<li>
-                                        <a href="myteam">My Team</a>
+                                        <a href="myteam">マイチーム</a>
                                         <c:if test="${sessionScope.loginId != null}">
 											<ul>
 												<!-- 팀 없을때 -->
@@ -92,7 +92,7 @@
 	                                            <!-- 팀 있을때 -->
 	                                            <c:if test="${sessionScope.team_name != null}">
 		                                            <li><a href="myteam">My Team</a></li>
-		                                            <li><a href="#">일정</a></li>
+		                                            <li><a href="calendar">일정</a></li>
 	                                            </c:if>
 	                                            <!-- 운영진 전용 -->
 	                                            <c:if test="${sessionScope.authority > 1}">
@@ -107,13 +107,13 @@
                                         </c:if>
                                     </li>
                                     <li>
-                                        <a href="teams">Teams</a>
+                                        <a href="teams">チーム</a>
                                     </li>
                                     <li>
-                                    	<a href="faq">FAQ</a>
+                                    	<a href="faq">よくある質問</a>
                                     </li>
                                     <li>
-                                        <a href="contact">contact</a>
+                                        <a href="contact">コンタクト</a>
                                     </li>
                                 </ul>
                             </nav>

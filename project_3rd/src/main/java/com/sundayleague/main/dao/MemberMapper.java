@@ -8,5 +8,7 @@ public interface MemberMapper {
 	PlayerDTO selectOne(PlayerDTO player);
 	int updateProfile(PlayerDTO player);
 	PlayerDTO selectProfile(String loginId);
+	String selectId(PlayerDTO player);
+	String selectPw(PlayerDTO player);
 	
 }
