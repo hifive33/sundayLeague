@@ -71,8 +71,23 @@ $(function(){
     $("#userId").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
         if($("#idSaveCheck").is(":checked")){ // ID 저장하기를 체크한 상태라면,
             setCookie("key", $("#userId").val(), 7); // 7일 동안 쿠키 보관
-        }
+
+       	}
     });
+    
+	$("#password").on('keyup',function(){
+		   if($("#password").val().length < 3 || $("#password").val().length > 10){
+			   $("#pw_check").html("pw는 3~10자리만 가능합니다.")
+		    }	
+	})
+	
+	$("#userId").on('keyup',function(){
+		   if($("#userId").val().length < 3 || $("userId").val().length > 10){
+			   	$("#id_check").html("id는 3~10자리만 가능합니다.")
+		    }	
+	})
+ 
+    
 });
  
 function setCookie(cookieName, value, exdays){
@@ -130,14 +145,16 @@ function getCookie(cookieName) {
                         <form action="login" method="post" >
                             <div class="account-form-group">
                                 <input type="text" placeholder="Username or Email" name="player_id" id="userId" >
+                                <span id="id_check"></span>
                                 <i class="fa fa-user"></i>
                             </div>
                             <div class="account-form-group">
-                                <input type="password" placeholder="Password" name="password" >
+                                <input type="password" placeholder="Password" name="password" id="password">
                                 <i class="fa fa-lock"></i>
                             </div>
                             <p class="forgot">
-                                <a href="#">Forgot username?</a>
+                                <a href="forgot">Forgot username or password?</a>
+                                
                             </p>
                             <p>
                                 <label>
