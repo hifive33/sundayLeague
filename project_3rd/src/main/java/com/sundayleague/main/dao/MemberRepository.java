@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.sundayleague.main.dto.ContactDTO;
 import com.sundayleague.main.dto.PlayerDTO;
 
 @Repository
@@ -56,6 +57,11 @@ public class MemberRepository {
 		pw = mapper.selectPw(player);
 		
 		return pw;
+	}
+	
+	public int insertContact(ContactDTO contact) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		return mapper.insertContact(contact);
 	}
 	
 }

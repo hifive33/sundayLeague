@@ -1,5 +1,6 @@
 package com.sundayleague.main.dao;
 
+import com.sundayleague.main.dto.ContactDTO;
 import com.sundayleague.main.dto.PlayerDTO;
 
 public interface MemberMapper {
@@ -10,5 +11,5 @@ public interface MemberMapper {
 	PlayerDTO selectProfile(String loginId);
 	String selectId(PlayerDTO player);
 	String selectPw(PlayerDTO player);
-	
+	int insertContact(ContactDTO contact);
 }
