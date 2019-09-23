@@ -66,44 +66,119 @@
                         <div class="single-upcoming-match">
                             <div id="coming-soon"></div>
                             <h2>next match started in</h2>
-                            <div class="upcoming-match-box">
-                                <h4>위치</h4>
-                                <p>날짜</p>
-                                <div class="upcoming-teams-head">
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <div class="team-head-image">
-                                                <a href="#">
-                                                    <img src="resources/img/team-2.png" alt="team image" />
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <div class="team-head-vs">
-                                                <span>VS</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <div class="team-head-image">
-                                                <a href="#">
-                                                    <img src="resources/img/team-3.png" alt="team image" />
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h4>Sunday League</h4>
-                            </div>
+                            <c:if test="${flag == '0'}">
+	                            <div class="upcoming-match-box">
+	                                <h4>위치</h4>
+	                                <p>날짜</p>
+	                                <div class="upcoming-teams-head">
+	                                    <div class="row">
+	                                        <div class="col-sm-5">
+	                                            <div class="team-head-image">
+	                                                <a href="#">
+	                                                    <img src="resources/img/team-2.png" alt="team image" />
+	                                                </a>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-sm-2">
+	                                            <div class="team-head-vs">
+	                                                <span>VS</span>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-sm-5">
+	                                            <div class="team-head-image">
+	                                                <a href="#">
+	                                                    <img src="resources/img/team-3.png" alt="team image" />
+	                                                </a>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <h4>Sunday League</h4>
+	                            </div>
+                            </c:if>
+                            <c:if test="${flag == '1'}">
+	                            <div class="upcoming-match-box">
+	                                <h4>위치</h4>
+	                                <p>날짜</p>
+	                                <div class="upcoming-teams-head">
+	                                    <div class="row">
+	                                        <div class="col-sm-5">
+	                                            <div class="team-head-image">
+	                                                <a href="myteam">
+	                                                    <img src="emblemimg/${team_name}" alt="my team image" />
+	                                                </a>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-sm-2">
+	                                            <div class="team-head-vs">
+	                                                <span>VS</span>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-sm-5">
+	                                            <div class="team-head-image">
+                                                	<a>
+                                                    	<img src="resources/img/emblem-null.png" alt="away team image" />
+													</a>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <h4>Sunday League</h4>
+	                            </div>
+                            </c:if>
+                            <c:if test="${flag > '1'}">
+	                            <div class="upcoming-match-box">
+	                                <h4>위치</h4>
+	                                <p>날짜</p>
+	                                <div class="upcoming-teams-head">
+	                                    <div class="row">
+	                                        <div class="col-sm-5">
+	                                            <div class="team-head-image">
+	                                                <a href="myteam">
+	                                                    <img src="emblemimg/${team_name}" alt="my team image" />
+	                                                </a>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-sm-2">
+	                                            <div class="team-head-vs">
+	                                                <span>VS</span>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-sm-5">
+	                                            <div class="team-head-image">
+	                                                <a href="teamdetails?team_name=${away_team_name}">
+	                                                    <img src="emblemimg/${away_team_name}" alt="away team image" />
+	                                                </a>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <h4>Sunday League</h4>
+	                            </div>
+                            </c:if>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="order-tickets">
-                    	<div class="coupon-cart-right">
+                    <div class="match-find">
+                    	<div class="match-form-group">
                     		<c:if test="${authority > 1}">
-                    			<a href="matchfind" class="kick-btn">${flag == "0" ? "신청하기" : "신청취소" }</a>
+                    			<c:if test="${flag == '0'}">
+	                    			<form action="matchfind">
+	                    				<input type="checkbox" id="addressboolean" />
+	                    				<input type="text" name="match_address" placeholder="Address" disabled="disabled" /><br />
+	                    				<input type="radio" name="match_day" value="sat" checked="checked" />SATERDAY<input type="radio" name="matchday" value="sun"/>SUNDAY<br />
+	                    				<button>MATCHING</button>
+	                    			</form>
+                    			</c:if>
+                    			<c:if test="${flag == '1'}">
+									<button type="button" id="matchfind">신청취소</button>
+                    			</c:if>
+                    			<c:if test="${flag > '1' && authority > 1}">
+									<button type="button" id="scorewrite">점수입력</button>
+                    			</c:if>
                     		</c:if>
                     	</div>
                     </div>
@@ -160,11 +235,28 @@
 			$(".breadcromb-box > h2").html("Match")
 			$(".breadcromb-box ul li:last-child").html("Match")
 			
-			var dday = '2019/09/09 18:34:56' // 경기시간
+			var dday = '${dday}' // 경기시간
 			
 			$('#coming-soon').countdown(dday, function (event) {
 	            var $this = $(this).html(event.strftime('' + '<p><span>%D</span>days</p>  ' + '<p><span>%H</span>Hours</p>  ' + '<p><span>%M</span>Minutes</p>  ' + '<p><span>%S</span>Seconds</p> '));
 	        });
+			
+			$("#matchfind").on('click', function(){
+				location.href = "matchfind"
+				return false;
+			})
+			
+			$("#scorewrite").on('click', function(){
+				location.href = "scorewrite"
+				return false;
+			})
+			
+			$("#addressboolean").on('click', function(){
+				if ($("#addressboolean").is(":checked"))
+					$(this).next().removeAttr('disabled')
+				else
+					$(this).next().attr('disabled', 'disabled')
+			})
 		})
 		
 	</script>

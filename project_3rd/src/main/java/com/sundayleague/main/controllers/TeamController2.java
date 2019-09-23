@@ -57,29 +57,12 @@ public class TeamController2 {
 	public String joinapply(PlayerDTO player, HttpSession session, RedirectAttributes rttr){
 		player.setAuthority("1");
 		memberRepo.updateProfile(player);
+		TeamDTO team = new TeamDTO();
+		team.setTeam_name((String) session.getAttribute("team_name"));
+		teamRepo.countUpHeadcount(team);
 		
 		return "redirect:/myteam";
 	}
 	
-	// match페이지로 이동
-	@GetMapping("/match")
-	public String match(Model model, HttpSession session) {
-		if ((String)session.getAttribute("team_name") == null) return "redirect:/creation";
-		else {
-			model.addAttribute("flag", teamRepo.getMatchFlag((String)session.getAttribute("team_name")));
-			return "match";
-		}
-		
-		
-	}
-	
-	// 매칭신청, 취소
-	@GetMapping("matchfind")
-	public String matchfind(HttpSession session){
-		TeamDTO team = new TeamDTO();
-		team.setTeam_name((String)session.getAttribute("team_name"));
-		teamRepo.updateMatch_flag(team);
-		return "redirect:/match";
-	}
-	
+
 }
