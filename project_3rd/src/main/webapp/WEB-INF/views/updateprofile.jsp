@@ -92,6 +92,7 @@
                             <div class="account-form-group">
                             	<select name="position">
                             		<option>${player.position} </option>
+                            		<option value="GK">GK</option>
                             		<option value="CB">CB</option>
                             		<option value="LCB">LCB</option>
                             		<option value="RCB">RCB</option>
@@ -119,6 +120,7 @@
                             <div class="account-form-group">
                                 <select name="subposition">
                             		<option>${player.subposition}</option>
+                            		<option value="GK">GK</option>
                             		<option value="CB">CB</option>
                             		<option value="LCB">LCB</option>
                             		<option value="RCB">RCB</option>
