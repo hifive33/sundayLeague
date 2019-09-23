@@ -67,7 +67,7 @@
                             <i class="fa fa-lock"></i>
                             <h3>update profile</h3>
                         </div>
-                        <form action=updateprofile method="post">
+                        <form action=updateprofile method="post" enctype="multipart/form-data">
                             <div class="account-form-group">
                                 <input type="text" placeholder="ID" name=player_id value="${player.player_id}" readonly="readonly">
                                 <i class="fa fa-user-o"></i>
@@ -178,10 +178,10 @@
                             
                             <div class="account-form-group" style="height: 135px">
                             <c:if test="${result==false }">
-	                            <img id="mypic" src="resources/img/emblem-null.png" style="height:130px" />
+	                            <img id="mypic" src="resources/img/emblem-null.png" name="mypicUpload" style="height:130px" />
                             </c:if>
                             <c:if test="${result==true }">
-								<img id="mypic" src="/uploadfile/mypic/${player_id }" style="height:130px" />
+								<img id="mypic" src="/mypic/${loginId}" name="mypicUpload" style="height:130px" />
 							</c:if>   
                                 <i class="fa"></i>
                                 

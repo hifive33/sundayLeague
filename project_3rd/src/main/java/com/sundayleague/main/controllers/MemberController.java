@@ -73,10 +73,10 @@ public class MemberController {
 	}
 	
 	@GetMapping("/updateprofile")
-	public String updateProfile(HttpSession session, Model model) {
+	public String updateProfile(HttpSession session, Model model, MultipartFile mypicUpload) {
 		String loginId = (String)session.getAttribute("loginId");
 		PlayerDTO player = repo.selectProfile(loginId);
-		System.out.println(player);
+//		System.out.println(player);
 		model.addAttribute("player",player );
 		File savedFile = new File(uploadPath, player.getPlayer_id());
 		if(savedFile.exists()) {
@@ -91,11 +91,12 @@ public class MemberController {
 	
 	
 	@PostMapping("/updateprofile")
-	public String updateProfile(HttpSession session, PlayerDTO player) {
+	public String updateProfile(HttpSession session, PlayerDTO player, MultipartFile mypicUpload) {
 		//int result = 0;
 		//String loginId = (String)session.getAttribute("loginId");
 		//player.setPlayer_id(loginId);
 		//result = repo.updateProfile(player);
+		FileService.saveOriginalFile(mypicUpload, uploadPath, player.getPlayer_id());
 		repo.updateProfile(player);
 		return "redirect:/myaccount";
 	}
