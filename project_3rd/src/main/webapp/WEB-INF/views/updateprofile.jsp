@@ -92,6 +92,7 @@
                             <div class="account-form-group">
                             	<select name="position">
                             		<option>${player.position} </option>
+                            		<option value="GK">GK</option>
                             		<option value="CB">CB</option>
                             		<option value="LCB">LCB</option>
                             		<option value="RCB">RCB</option>
@@ -119,6 +120,7 @@
                             <div class="account-form-group">
                                 <select name="subposition">
                             		<option>${player.subposition}</option>
+                            		<option value="GK">GK</option>
                             		<option value="CB">CB</option>
                             		<option value="LCB">LCB</option>
                             		<option value="RCB">RCB</option>
@@ -173,6 +175,23 @@
                                      I agree the term’s &#38; conditions
                                 </label>
                             </div> -->
+                            
+                            <div class="account-form-group" style="height: 135px">
+                            <c:if test="${result==false }">
+	                            <img id="mypic" src="resources/img/emblem-null.png" style="height:130px" />
+                            </c:if>
+                            <c:if test="${result==true }">
+								<img id="mypic" src="/uploadfile/mypic/${player_id }" style="height:130px" />
+							</c:if>   
+                                <i class="fa"></i>
+                                
+							</div>
+							
+								
+
+							
+							<input id="imgPreview" type="file" name="mypicUpload" value="사진첨부" accept="image/jpg, image/jpeg, image/png, image/gif" />                            
+                            
                             <div class="submit-login">
                                 <button type="submit" >Register</button>
                             </div>
@@ -260,6 +279,29 @@
 		        if ($(el).val() == '') $(el).attr('type', 'text');
 		    });
 		})
+		
+				$("#imgPreview").on('change', function(){
+			previewImage(this); // 미리보기 함수
+			
+			if($("#imgPreview").val() != ''){
+				$("#mypic").next().addClass('fa-check')
+			}else{
+				$("#mypic").next().removeClass("fa-check");
+			}
+		})
+		function previewImage(input){
+			// 이미지를 선택하면
+			if(input.files && input.files[0]){
+				var reader = new FileReader();
+				reader.onload = function(e){
+					$("#mypic").attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			} else{
+				$("#mypic").attr('src', "resources/img/emblem-null.png");
+			}
+			
+		}
 	</script>
 	
 </body>

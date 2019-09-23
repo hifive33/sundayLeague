@@ -88,10 +88,10 @@
 			                        <table class="table table-striped table-responsive" >
 			                            <thead>
 			                                <tr>
-			                                    <th>순위</th>
-			                                    <th>팀명</th>
-			                                    <th>점수</th>
-			                                    <th colspan="2">팀 정보</th>
+			                                    <th>順位</th>
+			                                    <th>チーム名</th>
+			                                    <th>レーティング</th>
+			                                    <th colspan="2">チーム詳細</th>
 			                                </tr>
 			                            </thead>
 			                            <tbody>
@@ -109,13 +109,13 @@
 				                                        <p>${team.rating}</p>
 				                                    </td>
 				                                    <td class="element-team-information">
-				                                    	<p>지역:${team.region}</p>
-				                                    	<p>연령대:</p>
-				                                    	<p>실력:</p>
+				                                    	<p>地域:${team.region}</p>
+				                                    	<p>年齢:</p>
+				                                    	<p>レベル:</p>
 				                                    </td>
 				                                    <td class="element-team-information">
 				                                    	<p>소속유형:</p>
-				                                    	<p>팀원 수:${team.headcount}</p>
+				                                    	<p>人数:${team.headcount}</p>
 				                                    	<p>경기유형:</p>
 				                                    </td>
 				                                </tr>

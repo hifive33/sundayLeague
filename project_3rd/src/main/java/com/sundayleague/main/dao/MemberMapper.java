@@ -10,5 +10,6 @@ public interface MemberMapper {
 	PlayerDTO selectProfile(String loginId);
 	String selectId(PlayerDTO player);
 	String selectPw(PlayerDTO player);
+	void saveFile(String uploadPath);
 	
 }

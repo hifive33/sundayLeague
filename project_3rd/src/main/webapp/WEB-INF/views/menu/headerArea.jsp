@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="header-top-right">
-                        ${sessionScope.loginId == null ? '<a href="login"><i class="fa fa-sign-in"></i>ログイン</a><a href="registration"><i class="fa fa-user-plus"></i>はじめてご利用の方（新規会員登録）</a>' : '<a href="myaccount"><i class="fa fa-user"></i>My Account</a><a href="logout"><i class="fa fa-sign-out"></i>logout</a>'}
+                        ${sessionScope.loginId == null ? '<a href="login"><i class="fa fa-sign-in"></i>ログイン</a><a href="registration"><i class="fa fa-user-plus"></i>はじめてご利用の方（新規会員登録）</a>' : '<a href="myaccount"><i class="fa fa-user"></i>マイアカウント</a><a href="logout"><i class="fa fa-sign-out"></i>ログアウト</a>'}
                     </div>
                 </div>
             </div>
@@ -86,22 +86,22 @@
 												<!-- 팀 없을때 -->
 	                                            <c:if test="${sessionScope.team_name == null}">
 													<li>
-														<a href='creation'>Create Team</a>
+														<a href='creation'>チームを作る</a>
 													</li>
 												</c:if>
 	                                            <!-- 팀 있을때 -->
 	                                            <c:if test="${sessionScope.team_name != null}">
-		                                            <li><a href="myteam">My Team</a></li>
-		                                            <li><a href="calendar">일정</a></li>
+		                                            <li><a href="myteam">マイチーム詳細</a></li>
+		                                            <li><a href="calendar">スケジュール</a></li>
 	                                            </c:if>
 	                                            <!-- 운영진 전용 -->
 	                                            <c:if test="${sessionScope.authority > 1}">
-		                                            <li><a href="#">매칭</a></li>
-		                                            <li><a href="#">구단스텟</a></li>
+		                                            <li><a href="#">試合申請</a></li>
+		                                            <li><a href="#">チーム情報</a></li>
 	                                            </c:if>
 	                                            <!-- 감독 전용 -->
 	                                            <c:if test="${sessionScope.authority == 3}">
-	                                            	<li><a href="#">운영진임명</a></li>
+	                                            	<li><a href="#">コーチ任命</a></li>
 	                                            </c:if>
 	                                        </ul>
                                         </c:if>
