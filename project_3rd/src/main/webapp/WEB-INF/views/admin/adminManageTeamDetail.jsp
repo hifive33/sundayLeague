@@ -134,10 +134,6 @@
     </section>
     <!-- Team Details Page End -->
     
-    <!-- Footer Area Start -->
-    <%@include file="../menu/footerArea.jsp"%>
-    <!-- Footer Area End -->
-
     <!-- jQuery -->
     <script src="resources/js/jquery.min.js"></script>
     

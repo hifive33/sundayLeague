@@ -176,7 +176,7 @@
 		$(function(){
 			$(".admin-breadcromb-box > h2").html("Answer")
 			$(".admin-breadcromb-box ul li:last-child").html("Answer")
-			$(".kick-header-area a[href=adminManagePlayer]").parent().attr('class', 'admin-current-page-item')
+			$(".kick-header-area a[href=adminManageContact]").parent().attr('class', 'admin-current-page-item')
 			$(".textbox").hide();
 			$(".contact").on('click',function(){
 			 $(this).parent().next().toggle();

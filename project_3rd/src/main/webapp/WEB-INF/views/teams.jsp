@@ -84,7 +84,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="order-tickets">
+                                <div class="member-table">
 			                        <table class="table table-striped table-responsive" >
 			                            <thead>
 			                                <tr>
@@ -97,13 +97,11 @@
 			                            <tbody>
 			                            	<!-- team list item start -->
 			                            	<c:forEach var="team" items="${teams}" varStatus="stat">
-				                                <tr class="team-rank-item">
+				                                <tr class="team-rank-item" onclick="location.href='teamdetails?team_name=${team.team_name}';">
 				                                    <td class="element-team-rank">${stat.count + navi.startRecord}</td>
 				                                    <td class="element-team-name">
-				                                    	<a href="teamdetails?team_name=${team.team_name}">
-					                                    	<img src="/emblemimg/${team.team_name}" alt="team image" />
-				                                        </a>
-														<h3><a href="teamdetails?team_name=${team.team_name}">${team.team_name}</a></h3>
+					                                    <img src="/emblemimg/${team.team_name}" alt="team image" />
+														<h3>${team.team_name}</h3>
 				                                    </td>
 				                                    <td class="element-team-rating">
 				                                        <p>${team.rating}</p>

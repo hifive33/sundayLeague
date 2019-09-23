@@ -38,6 +38,9 @@
 			<if test="searchWord != ''">
 				AND team_name like '%'||#{searchWord}||'%'
 			</if>
+			<if test="true">
+				and deleted_flag=1
+			</if>
 		</trim>
 	</select>
 	<select id="selectTeamList" resultType="TeamDTO" parameterType="Map">

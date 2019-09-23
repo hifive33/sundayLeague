@@ -75,7 +75,7 @@
 	                                        <div class="col-sm-5">
 	                                            <div class="team-head-image">
 	                                                <a href="#">
-	                                                    <img src="resources/img/team-2.png" alt="team image" />
+	                                                    <img src="resources/img/emblem-question.png" alt="team image" />
 	                                                </a>
 	                                            </div>
 	                                        </div>
@@ -87,7 +87,7 @@
 	                                        <div class="col-sm-5">
 	                                            <div class="team-head-image">
 	                                                <a href="#">
-	                                                    <img src="resources/img/team-3.png" alt="team image" />
+	                                                    <img src="resources/img/emblem-question.png" alt="team image" />
 	                                                </a>
 	                                            </div>
 	                                        </div>
@@ -117,7 +117,7 @@
 	                                        <div class="col-sm-5">
 	                                            <div class="team-head-image">
                                                 	<a>
-                                                    	<img src="resources/img/emblem-null.png" alt="away team image" />
+                                                    	<img src="resources/img/emblem-question.png" alt="away team image" />
 													</a>
 	                                            </div>
 	                                        </div>
