@@ -140,7 +140,6 @@ public class MemberController {
 		
 	}
 	
-	}	
 	
 
 	@RequestMapping(value = "/ajaxFileUpload", method = RequestMethod.POST)
