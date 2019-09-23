@@ -7,6 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 
 import com.sundayleague.main.dto.PlayerDTO;
 import com.sundayleague.main.dto.TeamDTO;
+import com.sundayleague.main.dto.TeamMatchingDTO;
 
 public interface TeamMapper {
 
@@ -18,5 +19,8 @@ public interface TeamMapper {
 	int deleteTeam(String team_name);
 	int updateMatch_flag(TeamDTO team);
 	String getMatch_flag(String team_name);
+	List<TeamMatchingDTO> selectMatchTeamList();
+	String getAwayTeamName(String team_name);
+	int countUpHeadcount(TeamDTO team);
 
 }

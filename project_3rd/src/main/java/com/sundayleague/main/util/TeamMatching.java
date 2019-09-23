@@ -11,15 +11,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.sundayleague.main.dto.TeamMatchingDTO;
+
 public class TeamMatching {
 	
 	//매칭신청리스트, 신청팀수 입력
-	public Map<String, String> matching(List<TeamMatchingVO> list, int count){
+	public Map<String, String> matching(List<TeamMatchingDTO> list){
+		int count = list.size();
 		Map<String, String> result = new HashMap<>();
 		
 		//리스트 데이터를 홈팀과 원정팀으로 나누어서 배열에 저장
-		TeamMatchingVO home[] = new TeamMatchingVO[count];
-		TeamMatchingVO away[] = new TeamMatchingVO[count];
+		TeamMatchingDTO home[] = new TeamMatchingDTO[count];
+		TeamMatchingDTO away[] = new TeamMatchingDTO[count];
 	
 		int homeCount=0;
 		int awayCount=0;
@@ -41,17 +44,17 @@ public class TeamMatching {
 		
 		
 		///내부데이터 확인용
-		System.out.println("j, k : " + homeCount+", "+awayCount);
-		System.out.println("===Ȩ��===");
-		for(int i=0; i<homeCount; i++) {
-			
-			System.out.println(home[i]);
-		}
-		System.out.println("===������===");
-		for(int i=0; i<awayCount; i++) {
-			
-			System.out.println(away[i]);
-		}
+//		System.out.println("j, k : " + homeCount+", "+awayCount);
+//		System.out.println("===Ȩ��===");
+//		for(int i=0; i<homeCount; i++) {
+//			
+//			System.out.println(home[i]);
+//		}
+//		System.out.println("===������===");
+//		for(int i=0; i<awayCount; i++) {
+//			
+//			System.out.println(away[i]);
+//		}
 		///
 		
 		
@@ -63,7 +66,7 @@ public class TeamMatching {
 		return result;
 	}
 	
-	private Map<String, String> match(TeamMatchingVO[] home, int homeCount, TeamMatchingVO[] away, int awayCount) {
+	private Map<String, String> match(TeamMatchingDTO[] home, int homeCount, TeamMatchingDTO[] away, int awayCount) {
 		Map<String, String> result = new HashMap<>();
 		int homeTemp[] = new int[homeCount];
 		int awayTemp[] = new int[awayCount];
@@ -82,11 +85,11 @@ public class TeamMatching {
 					if(homeTemp[j]<0) {homeTemp[j] *= -1;}
 				}
 				///내부데이터 확인용
-				System.out.print("homeTemp = ");
-				for(int j=0; j<homeCount; j++) {
-					System.out.print(homeTemp[j]+", ");
-				}
-				System.out.println();
+//				System.out.print("homeTemp = ");
+//				for(int j=0; j<homeCount; j++) {
+//					System.out.print(homeTemp[j]+", ");
+//				}
+//				System.out.println();
 				///
 				
 				//배열에서 레이팅점수 차의 최소값을 찾는다. checked 위치에 1이 있으면 무시
@@ -101,12 +104,16 @@ public class TeamMatching {
 					}
 				}
 				///내부데이터 확인용
-				System.out.println("min = " + min);
+//				System.out.println("min = " + min);
 				///
 				
 				
 				//최소값이 존재하는 위치를 찾아서 맵에 매칭된 팀을 등록, 기록된 팀은 checked 배열에 기록
 				for(int j=0; j<homeCount; j++) {
+					if(homeChecked[j]==1) {
+						continue;
+					}
+					
 					if(min == homeTemp[j]) {
 						//ex) home0 -> home팀 0번째 경기
 						result.put("home"+game, home[j].getName());
@@ -138,11 +145,11 @@ public class TeamMatching {
 					if(awayTemp[j]<0) {awayTemp[j] *= -1;}
 				}
 				///내부데이터 확인용
-				System.out.print("awayTemp = ");
-				for(int j=0; j<awayCount; j++) {
-					System.out.print(awayTemp[j]+", ");
-				}
-				System.out.println();
+//				System.out.print("awayTemp = ");
+//				for(int j=0; j<awayCount; j++) {
+//					System.out.print(awayTemp[j]+", ");
+//				}
+//				System.out.println();
 				///
 				
 				//배열에서 레이팅점수 차의 최소값을 찾는다. checked 위치에 1이 있으면 무시
@@ -157,12 +164,16 @@ public class TeamMatching {
 					}
 				}
 				///내부데이터 확인용
-				System.out.println("min = " + min);
+//				System.out.println("min = " + min);
 				///
 				
 				
 				//최소값이 존재하는 위치를 찾아서 맵에 매칭된 팀을 등록, 기록된 팀은 checked 배열에 기록
 				for(int j=0; j<awayCount; j++) {
+					if(awayChecked[j]==1) {
+						continue;
+					}
+					
 					if(min == awayTemp[j]) {
 						//ex) home0 -> home팀 0번째 경기
 						result.put("away"+game, away[j].getName());
@@ -187,13 +198,13 @@ public class TeamMatching {
 		}
 		
 		///내부데이터 확인용
-		System.out.println(result);
+//		System.out.println(result);
 		///
 		
 		return result;
 	}
 
-	private void selectionSort(TeamMatchingVO [] array, int count) {
+	private void selectionSort(TeamMatchingDTO [] array, int count) {
 		for(int i=0 ; i<count-1 ; i++) {
 			for(int j=i+1 ; j<count ; j++) {
 				if(array[i].getRating() /*오름차순*/> array[j].getRating()) swap(i, j, array);
@@ -202,8 +213,8 @@ public class TeamMatching {
 		
 	}
 	
-	private void swap(int a, int b, TeamMatchingVO [] array) {
-		TeamMatchingVO temp = array[a];
+	private void swap(int a, int b, TeamMatchingDTO [] array) {
+		TeamMatchingDTO temp = array[a];
 		array[a] = array[b];
 		array[b] = temp;
 	}

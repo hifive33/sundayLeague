@@ -40,22 +40,21 @@
 			</if>
 		</trim>
 	</select>
-	<select id="selectTeamList" resultType="TeamDTO"
-		parameterType="Map">
+	<select id="selectTeamList" resultType="TeamDTO" parameterType="Map">
 		SELECT
-		team_name
-		, victory
-		, defeat
-		, draw
-		, rating
-		, to_char(established, 'yyyy-mm-dd') as established
-		, headcount
-		, team_comment
-		, region
-		, deleted_flag
-		, accpet_flag
+			team_name
+			, victory
+			, defeat
+			, draw
+			, rating
+			, to_char(established, 'yyyy-mm-dd') as established
+			, headcount
+			, team_comment
+			, region
+			, deleted_flag
+			, accpet_flag
 		FROM
-		team
+			team
 		<trim prefix="WHERE" prefixOverrides="AND |OR ">
 			<if test="region != ''">
 				region like #{region}||'%'
@@ -63,10 +62,12 @@
 			<if test="searchWord != ''">
 				AND team_name like '%'||#{searchWord}||'%'
 			</if>
+			<if test="true">
+				and deleted_flag=1
+			</if>
 		</trim>
-		where deleted_flag=1
 		ORDER BY
-		rating DESC
+			rating DESC
 	</select>
 
 	<update id="deleteTeam" parameterType="String"
@@ -76,9 +77,7 @@
 		)
 		}
 	</update>
-
-
-
+	
 	<update id="updateMatch_flag" parameterType="TeamDTO">
 		<selectKey resultType="String" keyProperty="match_flag" order="BEFORE">
 			select
@@ -92,8 +91,18 @@
 			team
 		set
 			<choose>
-				<when test="match_flag == 1">match_flag = '0'</when>
-				<otherwise>match_flag = '1'</otherwise>
+				<when test="match_flag == 1">
+					match_flag = '0'
+					,match_address = null
+					,match_day = null
+				</when>
+				<otherwise>
+					match_flag = '1'
+					,match_day = #{match_day}
+					<if test="match_address != null">
+					,match_address = #{match_address}
+					</if>
+				</otherwise>
 			</choose>
 		where
 			team_name = #{team_name}
@@ -106,4 +115,52 @@
 		where
 			team_name = #{team_name}
 	</select>
+	<select id="selectMatchTeamList" resultType="TeamMatchingDTO">
+		select
+			team_name as name
+			, victory as win
+			, defeat as lose
+			, draw as draw
+			, rating as rating
+			, substr(region, 0, 2) as region
+			, nvl2(match_address, '1', '0') as stadium
+			, match_day
+		from
+			team
+		where
+			match_flag = '1'
+	</select>
+	<select id="getAwayTeamName" parameterType="String" resultType="String">
+		select
+		    away_team_name
+		from
+		(
+		    select
+		        away_team_name
+		    from
+		        match
+			where
+				team_name = #{team_name}
+		    order by
+		        matchdate desc
+		)
+		where
+		    rownum = 1
+	</select>
+	<update id="countUpHeadcount" parameterType="TeamDTO">
+		<selectKey resultType="int" keyProperty="headcount" order="BEFORE">
+			select
+	        	headcount + 1
+	        from
+	        	team
+	        where
+	        	team_name = #{team_name}
+		</selectKey>
+		update
+			team
+		set
+			headcount = #{headcount}
+		where
+			team_name = #{team_name}
+	</update>
 </mapper>

@@ -1,5 +1,8 @@
 package com.sundayleague.main.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sundayleague.main.dao.MemberRepository;
 import com.sundayleague.main.dao.TeamRepository;
+import com.sundayleague.main.dto.MatchDTO;
 import com.sundayleague.main.dto.PlayerDTO;
 import com.sundayleague.main.dto.TeamDTO;
 
@@ -57,6 +61,9 @@ public class TeamController2 {
 	public String joinapply(PlayerDTO player, HttpSession session, RedirectAttributes rttr){
 		player.setAuthority("1");
 		memberRepo.updateProfile(player);
+		TeamDTO team = new TeamDTO();
+		team.setTeam_name((String) session.getAttribute("team_name"));
+		teamRepo.countUpHeadcount(team);
 		
 		return "redirect:/myteam";
 	}
@@ -64,22 +71,42 @@ public class TeamController2 {
 	// match페이지로 이동
 	@GetMapping("/match")
 	public String match(Model model, HttpSession session) {
+		
+		SimpleDateFormat format = new SimpleDateFormat();
+ 		format.applyPattern("yyyy/MM/dd");
+		Calendar c = Calendar.getInstance();
+ 		if(c.get(Calendar.DAY_OF_WEEK) <= 4){
+ 			c.set(Calendar.DAY_OF_WEEK,Calendar.THURSDAY);
+ 		} else{
+ 			c.add(Calendar.DATE, 7);
+ 			c.set(Calendar.DAY_OF_WEEK,Calendar.THURSDAY);
+ 		}
+ 		model.addAttribute("dday", format.format(c.getTime()));
+ 		
 		if ((String)session.getAttribute("team_name") == null) return "redirect:/creation";
 		else {
-			model.addAttribute("flag", teamRepo.getMatchFlag((String)session.getAttribute("team_name")));
+			String matchFlag = teamRepo.getMatchFlag((String)session.getAttribute("team_name"));
+			model.addAttribute("flag", matchFlag);
+			if (Integer.parseInt(matchFlag) > 1){
+				model.addAttribute("away_team_name", teamRepo.getAwayTeamName((String)session.getAttribute("team_name")));
+			}
 			return "match";
 		}
-		
-		
 	}
 	
 	// 매칭신청, 취소
 	@GetMapping("matchfind")
-	public String matchfind(HttpSession session){
-		TeamDTO team = new TeamDTO();
+	public String matchfind(HttpSession session, TeamDTO team){
 		team.setTeam_name((String)session.getAttribute("team_name"));
 		teamRepo.updateMatch_flag(team);
 		return "redirect:/match";
+	}
+	
+	// 점수 입력
+	@GetMapping("scorewrite")
+	public String scorewrite(HttpSession session, Model model){
+//		match.setTeam_name((String)session.getAttribute("team_name"));
+		return "redirect:/scorewrite";
 	}
 	
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.sundayleague.main.dto.PlayerDTO;
 import com.sundayleague.main.dto.TeamDTO;
+import com.sundayleague.main.dto.TeamMatchingDTO;
 
 @Repository
 public class TeamRepository {
@@ -69,4 +70,18 @@ public class TeamRepository {
 		return mapper.getMatch_flag(team_name);
 	}
 	
+	public List<TeamMatchingDTO> selectMatchTeamList(){
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		return mapper.selectMatchTeamList();
+	}
+
+	public String getAwayTeamName(String team_name) {
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		return mapper.getAwayTeamName(team_name);
+	}
+
+	public int countUpHeadcount(TeamDTO team) {
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		return mapper.countUpHeadcount(team);
+	}
 }

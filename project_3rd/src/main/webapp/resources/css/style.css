@@ -3311,3 +3311,31 @@ li {
     color: #fff !important
 }
 
+/*================================================
+39 - MATCH PAGE CSS
+==================================================*/ 
+
+.match-form-group{
+	text-align: right;
+}
+.match-form-group input[type=text] {
+    border: medium 1px;
+    height: 45px;
+    width: 400px;
+}
+.match-form-group button {
+    background: #e01a22 none repeat scroll 0 0;
+    border: medium none;
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    height: 100%;
+    padding: 10px 20px;
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    margin-top: 10px
+}
+.match-form-group button:hover{
+    background: #212121 none repeat scroll 0 0
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sundayleague.main.dao.MatchMapper">
+	<insert id="insertMatches" parameterType="Map">
+		<foreach collection="list" item="item" index="index"  open="INSERT ALL " separator=" " close="SELECT * FROM DUAL" > 
+			into match
+			(
+				match_no
+				,team_name
+				,away_team_name
+				,matchdate
+			)
+			values
+			(
+				get_seq_match_id()
+				,#{item.team_name}
+				,#{item.away_team_name}
+				,#{item.matchdate}
+			)
+		</foreach>
+	</insert>
+	<update id="updateMatchFlag" parameterType="List">
+	    <foreach collection="list" item="item" index="index" separator=";" open="DECLARE BEGIN" close="; END;" >
+	        update
+	        	team
+	        set
+	        	match_flag = '2'
+	        where
+	        	team_name = #{item.team_name} or team_name = #{item.away_team_name}
+	    </foreach>
+	</update>
+</mapper>
