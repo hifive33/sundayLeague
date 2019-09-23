@@ -12,6 +12,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 
+import com.sundayleague.main.dto.ContactDTO;
 import com.sundayleague.main.dto.PlayerDTO;
 import com.sundayleague.main.dto.TeamDTO;
 
@@ -32,5 +33,7 @@ public interface AdminMapper {
 	TeamDTO selectTeam(String team_name);
 
 	List<PlayerDTO> selectTeamMember(String team_name);
-
+	List<ContactDTO> allContact();
+	String findMail(String contact_no);
+	int updateMail(String contact_no);
 }
