@@ -75,28 +75,28 @@
 							<h3>get in touch</h3>
 							<p>Our experts will reply you very soon</p>
 						</div>
-						<form>
+						<form action="contact" method="POST">
 							<div class="row">
 								<div class="col-md-4">
 									<p>
-										<input type="text" name="name" placeholder="Your Name">
+										<input type="text" name="contact_name" placeholder="Your Name">
 									</p>
 								</div>
 								<div class="col-md-4">
 									<p>
-										<input type="email" name="email" placeholder="Your Email">
+										<input type="email" name="contact_email" placeholder="Your Email">
 									</p>
 								</div>
 								<div class="col-md-4">
 									<p>
-										<input type="tel" name="phone" placeholder="Your Phone Number">
+										<input type="tel" name="contact_phone" placeholder="Your Phone Number">
 									</p>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-12">
 									<p>
-										<textarea name="Message" placeholder="Write Your Message"></textarea>
+										<textarea name="contact_message" placeholder="Write Your Message"></textarea>
 									</p>
 								</div>
 							</div>

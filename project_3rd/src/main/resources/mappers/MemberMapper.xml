@@ -123,5 +123,19 @@
 			Where player_id = #{player_id} AND email = #{email}
 	</select>	
 	
-
+	<insert id="insertContact" parameterType="ContactDTO">
+		insert into contact(
+		contact_no,
+		contact_name,
+		contact_email,
+		contact_phone,
+		contact_message)
+	VALUES(
+		SEQ_contact_no.nextval,
+		#{contact_name},
+		#{contact_email},
+		#{contact_phone},
+		#{contact_message}
+		)
+	</insert>
 </mapper>

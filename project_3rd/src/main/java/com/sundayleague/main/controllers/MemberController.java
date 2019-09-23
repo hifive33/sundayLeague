@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sundayleague.main.dao.MemberRepository;
+import com.sundayleague.main.dto.ContactDTO;
 import com.sundayleague.main.dto.PlayerDTO;
 import com.sundayleague.main.util.FileService;
 
@@ -130,6 +131,15 @@ public class MemberController {
 		pw = repo.selectPw(player);
 		
 		return pw;
+	}
+	
+	@PostMapping("/contact")
+	public String contact(ContactDTO contact) {
+		repo.insertContact(contact);
+		return "redirect:/contact";
+		
+	}
+	
 	}	
 	
 
