@@ -110,7 +110,7 @@
 							</div>
 							<input id="imgPreview" type="file" name="emblemUpload" value="사진첨부" accept="image/jpg, image/jpeg, image/png, image/gif" />
                             <div class="submit-login">
-								<button type="submit" >作る</button>
+								<button type="submit" >登録</button>
                             </div>
                         </form>
                         <div class="login-sign-up">

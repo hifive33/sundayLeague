@@ -15,7 +15,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
-	
+
 	<!-- ojdbc6.jar 레퍼런스 주소 // 해결 안될 때는 직접 복사-붙여넣기 /WEB-INF/lib/안에 파일을 직접 붙여넣는다. -->
  	<repositories> 
   		<repository> 

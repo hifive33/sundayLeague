@@ -175,6 +175,11 @@
                                      I agree the term’s &#38; conditions
                                 </label>
                             </div> -->
+                            <div class="account-form-group" style="height: 135px">
+	                            <img id="mypic" src="resources/img/emblem-null.png" style="height:130px" />
+                                <i class="fa"></i>
+							</div>
+							<input id="imgPreview" type="file" name="mypicUpload" value="사진첨부" accept="image/jpg, image/jpeg, image/png, image/gif" />                            
                             <div class="submit-login">
                                 <button type="submit" >登録</button>
                             </div>

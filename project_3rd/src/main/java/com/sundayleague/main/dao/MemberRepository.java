@@ -57,5 +57,12 @@ public class MemberRepository {
 		
 		return pw;
 	}
+
+	public void saveFile(String uploadPath) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		mapper.saveFile(uploadPath);
+		
+	}
+	
 	
 }
