@@ -58,6 +58,13 @@ public class MemberRepository {
 		
 		return pw;
 	}
+
+	public void saveFile(String uploadPath) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		mapper.saveFile(uploadPath);
+		
+	}
+	
 	
 	public int insertContact(ContactDTO contact) {
 		MemberMapper mapper = session.getMapper(MemberMapper.class);

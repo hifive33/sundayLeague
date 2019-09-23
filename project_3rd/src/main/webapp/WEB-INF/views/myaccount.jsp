@@ -8,7 +8,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	    
-    
     <!-- Title -->
     <title>Sunday League</title>
     
@@ -65,9 +64,10 @@
             <div class="row">
                 <div class="col-md-4 col-sm-4">
                     <div class="player-details-left">
-                        <div class="single-top-player details">
-                            <img src="resources/img/player-4.jpg" alt="top player" />
-                        </div>
+						<div class="player-head-image">
+							<!-- <img src="resources/img/emblem-null.png" alt="team image" /> -->
+							<img src="/mypic/${player.player_id}" alt="player image" />
+                    	</div>
                     </div>
                 </div>
                 <div class="col-md-8 col-sm-8">
@@ -305,7 +305,9 @@
 		$(function(){
 			$(".breadcromb-box > h2").html("My Account")
 			$(".breadcromb-box > ul > li:last-child").html("My Account")
+			
 		})
+
 	</script>
 </body>
 </html>

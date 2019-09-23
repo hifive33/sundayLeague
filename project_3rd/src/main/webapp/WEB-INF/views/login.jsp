@@ -140,20 +140,20 @@ function getCookie(cookieName) {
                     <div class="login-page-box">
                         <div class="login-page-heading">
                             <i class="fa fa-key"></i>
-                            <h3>sign in</h3>
+                            <h3>ログイン</h3>
                         </div>
                         <form action="login" method="post" >
                             <div class="account-form-group">
-                                <input type="text" placeholder="Username or Email" name="player_id" id="userId" >
+                                <input type="text" placeholder="ID" name="player_id" id="userId" >
                                 <span id="id_check"></span>
                                 <i class="fa fa-user"></i>
                             </div>
                             <div class="account-form-group">
-                                <input type="password" placeholder="Password" name="password" id="password">
+                                <input type="password" placeholder="パスワード" name="password" id="password">
                                 <i class="fa fa-lock"></i>
                             </div>
                             <p class="forgot">
-                                <a href="forgot">Forgot username or password?</a>
+                                <a href="forgot">ID・パスワードをお忘れですか？</a>
                                 
                             </p>
                             <p>
@@ -163,11 +163,11 @@ function getCookie(cookieName) {
                                 </label>
                             </p>
                             <p>
-                                <button type="submit" >Login</button>
+                                <button type="submit" >ログイン</button>
                             </p>
                         </form>
                         <div class="login-sign-up">
-                            <a href="registration">Do you need an account?</a>
+                            <a href="registration">はじめてご利用の方（新規会員登録）</a>
                         </div>
                     </div>
                 </div>
