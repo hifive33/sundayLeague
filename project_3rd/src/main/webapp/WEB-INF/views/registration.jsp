@@ -73,7 +73,7 @@
                                 <i class="fa fa-user-o"></i>
                             </div>
                             <div class="account-form-group">
-                                <input type="text" placeholder="Username" name="name" >
+                                <input type="text" placeholder="お名前" name="name" >
                                 <i class="fa fa-user"></i>
                             </div>
                             <div class="account-form-group">
@@ -81,17 +81,18 @@
                                 <i class="fa fa-envelope-o"></i>
                             </div>
                             <div class="account-form-group">
-                                <input type="password" placeholder="Choose Password" name="password" >
+                                <input type="password" placeholder="パスワード" name="password" >
                                 <i class="fa fa-lock"></i>
                             </div>
                             <div class="account-form-group">
-                                <input type="password" placeholder="Confirm Password" id="confirm">
+                                <input type="password" placeholder="パスワード再確認" id="confirm">
                                 <i class="fa fa-lock"></i>
                             </div>
                             <hr>
                             <div class="account-form-group">
                             	<select name="position">
-                            		<option>Position</option>
+                            		<option>ポジション</option>
+                            		<option value="GK">GK</option>
                             		<option value="CB">CB</option>
                             		<option value="LCB">LCB</option>
                             		<option value="RCB">RCB</option>
@@ -118,7 +119,8 @@
                             </div>
                             <div class="account-form-group">
                                 <select name="subposition">
-                            		<option>Subposition</option>
+                            		<option>サブポジション</option>
+                            		<option value="GK">GK</option>
                             		<option value="CB">CB</option>
                             		<option value="LCB">LCB</option>
                             		<option value="RCB">RCB</option>
@@ -157,7 +159,7 @@
                             </div>
                             <div class="account-form-group">
                             	<select name="mainfoot" >
-                            		<option>Main Foot</option>
+                            		<option>利き足</option>
                             		<option value="left">Left Foot</option>
                             		<option value="right">Right Foot</option>
                             	</select>
@@ -174,11 +176,11 @@
                                 </label>
                             </div> -->
                             <div class="submit-login">
-                                <button type="submit" >Register</button>
+                                <button type="submit" >登録</button>
                             </div>
                         </form>
                         <div class="login-sign-up">
-                            <a href="login.html">back to login</a>
+                            <a href="login.html">ログイン画面に戻る</a>
                         </div>
                     </div>
                 </div>

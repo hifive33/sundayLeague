@@ -74,7 +74,7 @@
                             </div>
                             <div class="account-form-group">
                             	<select name="region">
-                            		<option>지역을 선택해주세요.</option>
+                            		<option>地域を選択して下さい。</option>
 									<option value="서울">서울</option>
 									<option value="경기">경기</option>
 									<option value="강원">강원</option>
@@ -110,11 +110,11 @@
 							</div>
 							<input id="imgPreview" type="file" name="emblemUpload" value="사진첨부" accept="image/jpg, image/jpeg, image/png, image/gif" />
                             <div class="submit-login">
-								<button type="submit" >창단</button>
+								<button type="submit" >作る</button>
                             </div>
                         </form>
                         <div class="login-sign-up">
-                            <a href="login.html">취소</a>
+                            <a href="login.html">キャンセル</a>
                         </div>
                     </div>
                 </div>
