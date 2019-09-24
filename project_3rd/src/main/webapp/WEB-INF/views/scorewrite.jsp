@@ -56,118 +56,101 @@
     <!-- Breadcromb Area Start -->
     <%@include file="menu/breadcrombArea.jsp"%>
     <!-- Breadcromb Area End -->
-    
-    <div class="career">
-		<label for="company">
-			회사명 : <input id="company" type="text" name="company" />
-		</label>
-		<label for="title">
-			직책 : <input id="title" type="text" name="title" />
-		</label>
-		<input class="add" type="button" value="+" />
-		<input class="sub" type="button" value="-" />
-	</div>
 
     <!-- Cart Area Start -->
     <section class="score-write-area section_100">
         <div class="container">
             <div class="row">
                 <div class="score-write-table-div clearfix">
-                    <div class="col-md-6 col-sm-6">
-                    <div class="score-write-table">
-                        <table class="table table-striped table-responsive" border="1">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th colspan="5">Home Team</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="score-write-item">
-                                    <td class="score-write-table-close">
-                                        <a href="" class="sub"><i class="fa fa-close"></i></a>
-                                    </td>
-                                    <td class="score-write-table-select">
-                                    	<select>
-                                    		<option>--</option>
-                                    		<option value="goal">GOAL</option>
-                                    		<option value="redcard">Red Card</option>
-                                    		<option value="yellowcard">Yellow Card</option>
-                                    	</select>
-                                    </td>
-                                    <td class="score-write-table-personone">
-                                    </td>
-                                    <td class="score-write-table-persontwo">
-                                    </td>
-                                </tr>
-								<tr>
-                                    <td class="score-write-table-close">
-                                        <a href="" class="add"><i class="fa fa-plus"></i></a>
-                                    </td>
-                                    <td colspan="3"></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="col-md-2 col-sm-2">
+                    	<div class="score-write-table">
+	                        <table class="table table-striped table-responsive" id="tabletime">
+	                            <thead>
+	                                <tr>
+	                                    <th>Time</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                            	<tr></tr>
+	                                <tr class="score-write-table-time">
+	                                	<td>
+	                                		<input type="time" />
+	                                	</td>
+	                                </tr>
+	                            </tbody>
+	                        </table>
+	                    </div>
                     </div>
-
+                    <div class="col-md-5 col-sm-5">
+	                    <div class="score-write-table">
+	                        <table class="table table-striped table-responsive" id="tableone">
+	                            <thead>
+	                                <tr>
+	                                    <th></th>
+	                                    <th colspan="5">Home Team</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                                <tr class="score-write-item">
+	                                    <td class="score-write-table-close">
+	                                        <a href="" class="sub"><i class="fa fa-close"></i></a>
+	                                    </td>
+	                                    <td class="score-write-table-select">
+	                                    	<select>
+	                                    		<option>--</option>
+	                                    		<option value="goal">GOAL</option>
+	                                    		<option value="redcard">Red Card</option>
+	                                    		<option value="yellowcard">Yellow Card</option>
+	                                    	</select>
+	                                    </td>
+	                                    <td class="score-write-table-personone">
+	                                    </td>
+	                                    <td class="score-write-table-persontwo">
+	                                    </td>
+	                                </tr>
+									<tr>
+	                                    <td class="score-write-table-close">
+	                                        <a href="" class="add"><i class="fa fa-plus"></i></a>
+	                                    </td>
+	                                    <td colspan="3"></td>
+	                                </tr>
+	                            </tbody>
+	                        </table>
+	                    </div>
                     </div>
-                    <div class="col-md-6 col-sm-6">
-                    <div class="cart-table">
-                        <table class="table table-striped table-responsive" border="1">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th colspan="5">Away Team</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="shop-cart-item">
-                                    <td class="kick-cart-close">
-                                        <a href="#"><i class="fa fa-plus"></i></a>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td class="kick-cart-close">
-                                        <a href="#"><i class="fa fa-close"></i></a>
-                                    </td>
-                                </tr>
-                                <tr class="shop-cart-item">
-                                    <td class="kick-cart-close">
-                                        <a href="#"><i class="fa fa-close"></i></a>
-                                    </td>
-                                    <td class="kick-cart-preview">
-                                        <a href="#">
-                                            <img src="resources/img/min-pro-1.jpg" alt="cart-1" />
-                                        </a>
-                                    </td>
-                                    <td class="kick-cart-product">
-                                        <a href="#">
-                                            <p>denim jackets</p>
-                                        </a>
-                                    </td>
-                                    <td class="kick-cart-price">
-                                        <p>$180</p>
-                                    </td>
-                                    <td class="kick-cart-quantity">
-                                        <input type="number" value="1" >
-                                    </td>
-                                    <td class="kick-cart-total">
-                                        <p>$180</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
+                    <div class="col-md-5 col-sm-5">
+	                    <div class="score-write-table">
+	                        <table class="table table-striped table-responsive" id="tabletwo">
+	                            <thead>
+	                                <tr>
+	                                    <th></th>
+	                                    <th colspan="5">Away Team</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+		                            <tr></tr>
+		                            <tr><td colspan="4"><i class="fa fa-ban"></i></td></tr>
+									<tr>
+	                                    <td class="score-write-table-close">
+	                                        <a href="" class="add"><i class="fa fa-plus"></i></a>
+	                                    </td>
+	                                    <td colspan="3"></td>
+	                                </tr>
+	                            </tbody>
+	                        </table>
+	                    </div>
                     </div>
                 </div>
             </div>
+			<div class="row">
+               <div class="col-md-12">
+                   <div class="match-find">
+                   	<div class="match-form-group">
+						<button type="button" id="scorewrite">점수입력</button>
+                   	</div>
+                   </div>
+               </div>
+           </div>
         </div>
     </section>
     <!-- Cart Area End -->
@@ -216,31 +199,20 @@
     <!-- script -->
 	<script>
 		$(function(){
-			$(".breadcromb-box > h2").html("Cart Page")
-			$(".breadcromb-box ul li:last-child").html("Cart Page")
-			
-			/* var item = '<tr>'
-					+'<td class="score-write-table-close">'
-		            +'<a href="#"><i class="fa fa-close"></i></a>'
-			        +'</td>'
-			        +'<td class="score-write-table-select">'
-		        	+'<select>'
-		       		+'<option>--</option>'
-		       		+'<option value="goal">GOAL</option>'
-		       		+'<option value="redcard">Red Card</option>'
-		       		+'<option value="yellowcard">Yellow Card</option>'
-		        	+'</select>'
-			        +'</td>'
-			        +'<td class="score-write-table-personone">'
-			        +'</td>'
-			        +'<td class="score-write-table-persontwo">'
-			        +'</td>'
-				    +'</tr>'; */
+			$(".breadcromb-box > h2").html("Score Write")
+			$(".breadcromb-box ul li:last-child").html("Score Write")
 			
 			var item = $(".score-write-item")[0].outerHTML
 			
 			$('.score-write-table').on('click', '.add', function(){
 				$(this).parent().parent().before(item);
+				if ($(this).parent().parent().parent().parent().attr("id") == "tableone"){
+					$("#tabletime tbody>tr:last-child").before('<tr class="score-write-table-time"><td><input type="time" /></td></tr>')
+					$("#tabletwo tbody>tr:last-child").before('<tr><td colspan="4"><i class="fa fa-ban"></i></td></tr>')
+				}else{
+					$("#tabletime tbody>tr:last-child").before('<tr class="score-write-table-time"><td><input type="time" /></td></tr>')
+					$("#tableone tbody>tr:last-child").before('<tr><td colspan="4"><i class="fa fa-ban"></i></td></tr>')
+				}
 				return false;
 			});
 			
@@ -249,7 +221,7 @@
 				return false;
 			});
 			
-			$(".score-write-table-select > select").on('change', function(){
+			$(".score-write-table").on('change', 'select', function(){
 				switch ($(this).val()) {
 				case "goal":
 					$(this).parent().next().html("<input type='text' placeholder='넌사람' />")

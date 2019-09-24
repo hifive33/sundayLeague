@@ -3382,7 +3382,7 @@ li {
 .member-table table {
     margin-bottom: 0;
 }
-.member-table table tbody tr:hover{
+.member-table table tbody tr:hover, .member-table table tbody tr:hover h3{
 	cursor: pointer;
     background: #212121 none repeat scroll 0 0 !important;
     color: #fff !important;
@@ -3446,13 +3446,13 @@ li {
 .score-write-table tbody td p {
     text-transform: capitalize;
 }
-.score-write-table table tbody > tr:nth-of-type(2n+2), .calculate-shipping-right table tbody > tr:nth-of-type(2n+2) {
+.score-write-table table tbody > tr:nth-of-type(2n+2) {
     background: #f9f9f9 none repeat scroll 0 0;
 }
 .score-write-table > .table-striped > tbody > tr:nth-of-type(2n+1) {
     background-color: #fff;
 }
-.score-write-table input[type=text]{
+.score-write-table input[type=text], .score-write-table input[type=time] {
 	border: medium none;
     height: 100%;
     left: 0;
@@ -3463,6 +3463,9 @@ li {
 	border: none;
 	width: 100%;
 	height: 100%;
+}
+.score-write-table table tbody > tr:nth-of-type(2n+2) select, .score-write-table table tbody > tr:nth-of-type(2n+2) input[type=text], .score-write-table table tbody > tr:nth-of-type(2n+2) input[type=time] {
+    background: #f9f9f9 none repeat scroll 0 0;
 }
 .score-write-table-close {
     text-align: center;

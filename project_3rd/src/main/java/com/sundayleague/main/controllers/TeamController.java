@@ -92,7 +92,9 @@ public class TeamController {
 	@GetMapping("/teamdelete")
 	public String teamdelete(HttpSession session) {
 		repo.deleteTeam((String)session.getAttribute("team_name"));
-		FileService.deleteFile(uploadPath+(String)session.getAttribute("team_name"));
+		FileService.deleteFile(uploadPath + "/" + (String)session.getAttribute("team_name"));
+		session.removeAttribute("team_name");
+		session.setAttribute("authority", 0);
 		return "redirect:/";
 	}
 	

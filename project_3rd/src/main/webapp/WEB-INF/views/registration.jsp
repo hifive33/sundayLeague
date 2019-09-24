@@ -67,7 +67,7 @@
                             <i class="fa fa-lock"></i>
                             <h3>register</h3>
                         </div>
-                        <form action=registration method="post">
+                        <form action=registration method="post" enctype="multipart/form-data">
                             <div class="account-form-group">
                                 <input type="text" placeholder="ID" name=player_id >
                                 <i class="fa fa-user-o"></i>
@@ -169,12 +169,6 @@
                             	<textarea placeholder="Comment" name="player_comment"></textarea>
                                 <i class="fa"></i>
                             </div>
-                            <!-- <div class="remember">
-                                <label>
-                                    <input name="remember" type="checkbox">
-                                     I agree the term’s &#38; conditions
-                                </label>
-                            </div> -->
                             <div class="account-form-group" style="height: 135px">
 	                            <img id="mypic" src="resources/img/emblem-null.png" style="height:130px" />
                                 <i class="fa"></i>
@@ -327,7 +321,31 @@
 		        	$(this).next().removeClass("fa-check");
 		        }
 		    });
+		    
+		    
 		})
+		$("#imgPreview").on('change', function(){
+			previewImage(this); // 미리보기 함수
+			
+			if($("#imgPreview").val() != ''){
+				$("#mypic").next().addClass('fa-check')
+			}else{
+				$("#mypic").next().removeClass("fa-check");
+			}
+		})
+		function previewImage(input){
+			// 이미지를 선택하면
+			if(input.files && input.files[0]){
+				var reader = new FileReader();
+				reader.onload = function(e){
+					$("#mypic").attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			} else{
+				$("#mypic").attr('src', "resources/img/emblem-null.png");
+			}
+			
+		}
 	</script>
 	
 </body>
