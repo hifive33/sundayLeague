@@ -18,6 +18,7 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/emblemimg/**" location="/emblemimg/" />
+	<resources mapping="/mypic/**" location="/mypic/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
@@ -27,21 +28,31 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
+
+
+
 	<context:component-scan
 		base-package="com.sundayleague.main" />
 
 	<!-- LoginInterceptor -->
-<beans:bean id="LoginInterceptor"
-		class="com.sundayleague.main.interceptor.LoginInterceptor" />
+<beans:bean id="LoginInterceptor" class="com.sundayleague.main.interceptor.LoginInterceptor" />
+<beans:bean id="AdminInterceptor" class="com.sundayleague.main.interceptor.AdminInterceptor" />
 	<interceptors>
 		<interceptor>
 			<mapping path="/creation" />
 			<mapping path="/myteam" />
 			<beans:ref bean="LoginInterceptor" />
 		</interceptor>
+		<interceptor>
+			<mapping path="/adminMain" />
+			<beans:ref bean="AdminInterceptor" />
+		</interceptor>
 	</interceptors>
 </beans:beans>
 
+
+
+ <!-- mail bean -->
 
 
 	<!-- 다국어 -->

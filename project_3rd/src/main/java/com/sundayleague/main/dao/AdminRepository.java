@@ -16,6 +16,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.sundayleague.main.dto.ContactDTO;
 import com.sundayleague.main.dto.PlayerDTO;
 import com.sundayleague.main.dto.TeamDTO;
 
@@ -109,4 +110,18 @@ public class AdminRepository {
 		return list;
 	}
 	
+	public List<ContactDTO> allContact(){
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		return mapper.allContact();
+	}
+	
+	public String findMail(String contact_no) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		return mapper.findMail(contact_no);
+	}
+	
+	public int updateMail(String contact_no) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		return mapper.updateMail(contact_no);
+	}
 }

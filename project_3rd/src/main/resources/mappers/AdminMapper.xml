@@ -127,4 +127,18 @@
 		FROM player
 		WHERE team_name = #{team_name}   
 	</select>
+	
+	<select id="allContact" resultType="ContactDTO">
+	select * from contact where complete='0' order by contact_no asc
+	</select>
+	
+	<select id="findMail" resultType="String" parameterType="String">
+	select contact_email from contact where contact_no= #{contact_no}
+	</select>
+	
+	<update id="updateMail" parameterType="String">
+	update contact set complete = '1' where contact_no = #{contact_no}
+	</update>
+	
+	
 </mapper>

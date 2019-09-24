@@ -29,6 +29,9 @@
                                     <li>
                                         <a href="adminManageTeam">Manage Team</a>
                                     </li>
+                                    <li>
+                                        <a href="adminManageContact">Manage Contact</a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>

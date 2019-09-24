@@ -64,7 +64,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="big-isotope-project">
-                                <div class="order-tickets">
+                                <div class="admin-table">
 			                        <table class="table table-striped table-responsive">
 			                            <thead>
 			                                <tr>
@@ -83,8 +83,8 @@
 			                            </thead>
 			                            <tbody>
 			                            	<c:forEach var="board" items="${list }">
-												<tr>
-													<td><a href="adminManageTeamDetail?team_name=${board.team_name }">${board.team_name }</a></td>
+												<tr onclick="location.href='adminManageTeamDetail?team_name=${board.team_name }';">
+													<td>${board.team_name }</td>
 													<td>${board.victory }</td>
 													<td>${board.defeat }</td>
 													<td>${board.draw }</td>
@@ -111,7 +111,7 @@
 						<li><a href="adminManageTeam?currentPage=${navi.currentPage - navi.pagePerGroup }&searchItem=${searchItem}&searchWord=${searchWord}"><i class="fa fa-angle-double-left"></i></a></li>
 						<li><a href="adminManageTeam?currentPage=${navi.currentPage - 1 }&searchItem=${searchItem}&searchWord=${searchWord}"><i class="fa fa-angle-left"></i></a></li>
 							<c:forEach var="page" begin="${navi.startPageGroup }" end="${navi.endPageGroup }">
-								<li><a href="adminManageTeam?currentPage=${page }&searchItem=${searchItem}&searchWord=${searchWord}">${page }</a></li>
+								<li ${navi.currentPage == page ? 'class="active"' : ''}><a href="adminManageTeam?currentPage=${page }&searchItem=${searchItem}&searchWord=${searchWord}">${page }</a></li>
 							</c:forEach>
 						<li><a href="adminManageTeam?currentPage=${navi.currentPage + 1 }&searchItem=${searchItem}&searchWord=${searchWord}"><i class="fa fa-angle-right"></i></a></li>
 						<li><a href="adminManageTeam?currentPage=${navi.currentPage + navi.pagePerGroup }&searchItem=${searchItem}&searchWord=${searchWord}"><i class="fa fa-angle-double-right"></i></a></li>

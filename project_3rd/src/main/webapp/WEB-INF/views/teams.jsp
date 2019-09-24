@@ -84,38 +84,36 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="order-tickets">
+                                <div class="member-table">
 			                        <table class="table table-striped table-responsive" >
 			                            <thead>
 			                                <tr>
-			                                    <th>순위</th>
-			                                    <th>팀명</th>
-			                                    <th>점수</th>
-			                                    <th colspan="2">팀 정보</th>
+			                                    <th>順位</th>
+			                                    <th>チーム名</th>
+			                                    <th>レーティング</th>
+			                                    <th colspan="2">チーム詳細</th>
 			                                </tr>
 			                            </thead>
 			                            <tbody>
 			                            	<!-- team list item start -->
 			                            	<c:forEach var="team" items="${teams}" varStatus="stat">
-				                                <tr class="team-rank-item">
+				                                <tr class="team-rank-item" onclick="location.href='teamdetails?team_name=${team.team_name}';">
 				                                    <td class="element-team-rank">${stat.count + navi.startRecord}</td>
 				                                    <td class="element-team-name">
-				                                    	<a href="teamdetails?team_name=${team.team_name}">
-					                                    	<img src="/emblemimg/${team.team_name}" alt="team image" />
-				                                        </a>
-														<h3><a href="teamdetails?team_name=${team.team_name}">${team.team_name}</a></h3>
+					                                    <img src="/emblemimg/${team.team_name}" alt="team image" />
+														<h3>${team.team_name}</h3>
 				                                    </td>
 				                                    <td class="element-team-rating">
 				                                        <p>${team.rating}</p>
 				                                    </td>
 				                                    <td class="element-team-information">
-				                                    	<p>지역:${team.region}</p>
-				                                    	<p>연령대:</p>
-				                                    	<p>실력:</p>
+				                                    	<p>地域:${team.region}</p>
+				                                    	<p>年齢:</p>
+				                                    	<p>レベル:</p>
 				                                    </td>
 				                                    <td class="element-team-information">
 				                                    	<p>소속유형:</p>
-				                                    	<p>팀원 수:${team.headcount}</p>
+				                                    	<p>人数:${team.headcount}</p>
 				                                    	<p>경기유형:</p>
 				                                    </td>
 				                                </tr>

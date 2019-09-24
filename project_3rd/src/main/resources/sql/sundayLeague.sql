@@ -9,6 +9,8 @@ DROP SEQUENCE SEQ_match_no;
 DROP SEQUENCE SEQ_match_goal_no;
 DROP SEQUENCE SEQ_match_formation_no;
 DROP SEQUENCE SEQ_match_player_no;
+DROP SEQUENCE SEQ_calendar_seq;
+
 
 /* Drop Tables */
 
@@ -18,7 +20,7 @@ DROP TABLE match_formation;
 DROP TABLE match;
 DROP TABLE player;
 DROP TABLE team;
-
+DROP TABLE calendar;
 
 /* Create Sequences */
 
@@ -26,8 +28,20 @@ CREATE SEQUENCE SEQ_match_no INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_match_goal_no INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_match_formation_no INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_match_player_no INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_calendar_seq INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_contact_no INCREMENT BY 1 START WITH 20001;
 
 /* Create Tables */
+
+CREATE TABLE calendar
+(
+	seq             number          primary key,
+	team_name       varchar2(20)    NOT NULL,
+	title           varchar2(500),
+	description     varchar2(500),
+	startdate       date,
+	enddate         date
+);
 
 CREATE TABLE match
 (
@@ -37,13 +51,24 @@ CREATE TABLE match
 	-- 원정팀구단명
 	away_team_name varchar2(20) NOT NULL,
 	-- 홈팀점수
-	home_teamscore number NOT NULL,
+	home_teamscore number,
 	-- 원정팀점수
-	away_teamscore number NOT NULL,
+	away_teamscore number,
 	-- 경기일자
 	matchdate date NOT NULL,
 	PRIMARY KEY (match_no)
 );
+
+--CONTACT Page DB
+create table CONTACT(
+CONTACT_NO NUMBER,
+CONTACT_NAME varchar2(20),
+CONTACT_EMAIL varchar2(20),
+CONTACT_PHONE varchar2(20),
+CONTACT_MESSAGE varchar2(1000)
+)
+
+
 
 
 CREATE TABLE match_formation

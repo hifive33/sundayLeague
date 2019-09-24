@@ -100,22 +100,18 @@
                 <div class="col-md-5">
                     <div class="kick-faqs-right margin-top">
                         <h3>Didn't find the answer?</h3>
-                        <form>
+                        <form action="contact" method="POST">
                             <p>
                                 <label for="name">Name : </label>
-                                <input id="name" name="name" placeholder="Enter Your Name" type="text">
+                                <input id="name" name="contact_name" placeholder="Enter Your Name" type="text">
                             </p>
                             <p>
                                 <label for="email">Email : </label>
-                                <input id="email" name="email" placeholder="Enter Your Email" type="email">
-                            </p>
-                            <p>
-                                <label for="subject">Subject : </label>
-                                <input id="subject" name="subject" placeholder="Enter Your Subject" type="text">
+                                <input id="email" name="contact_email" placeholder="Enter Your Email" type="email">
                             </p>
                             <p>
                                 <label for="message">how can we help you? </label>
-                                <textarea id="message" placeholder="Message..." name="Message"></textarea>
+                                <textarea id="message" placeholder="Message..." name="contact_message"></textarea>
                             </p>
                             <p>
                                 <button type="submit" name="submit">Send</button>

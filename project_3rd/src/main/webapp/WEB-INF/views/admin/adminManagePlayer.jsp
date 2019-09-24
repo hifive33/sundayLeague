@@ -64,7 +64,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="big-isotope-project">
-                                <div class="order-tickets">
+                                <div class="admin-table">
 			                        <table class="table table-striped table-responsive">
 			                            <thead>
 			                                <tr>
@@ -86,9 +86,9 @@
 			                            </thead>
 			                            <tbody>
 			                            	<c:forEach var="board" items="${list }">
-												<tr>
+												<tr onclick="location.href='adminManagePlayerDetail?player_id=${board.player_id }';">
 													<td>${board.player_id }</td>
-													<td><a href="adminManagePlayerDetail?player_id=${board.player_id }">${board.name }</a></td>
+													<td>${board.name }</td>
 													<td>${board.team_name }</td>
 													<td>${board.email }</td>
 													<%-- <td>${board.position }</td>
@@ -117,7 +117,7 @@
 						<li><a href="adminManagePlayer?currentPage=${navi.currentPage - navi.pagePerGroup }&searchItem=${searchItem}&searchWord=${searchWord}"><i class="fa fa-angle-double-left"></i></a></li>
 						<li><a href="adminManagePlayer?currentPage=${navi.currentPage - 1 }&searchItem=${searchItem}&searchWord=${searchWord}"><i class="fa fa-angle-left"></i></a></li>
 							<c:forEach var="page" begin="${navi.startPageGroup }" end="${navi.endPageGroup }">
-								<li><a href="adminManagePlayer?currentPage=${page }&searchItem=${searchItem}&searchWord=${searchWord}">${page }</a></li>
+								<li ${navi.currentPage == page ? 'class="active"' : ''}><a href="adminManagePlayer?currentPage=${page }&searchItem=${searchItem}&searchWord=${searchWord}">${page }</a></li>
 							</c:forEach>
 						<li><a href="adminManagePlayer?currentPage=${navi.currentPage + 1 }&searchItem=${searchItem}&searchWord=${searchWord}"><i class="fa fa-angle-right"></i></a></li>
 						<li><a href="adminManagePlayer?currentPage=${navi.currentPage + navi.pagePerGroup }&searchItem=${searchItem}&searchWord=${searchWord}"><i class="fa fa-angle-double-right"></i></a></li>

@@ -3311,3 +3311,107 @@ li {
     color: #fff !important
 }
 
+/*================================================
+39 - ADMIN TABLE CSS
+==================================================*/ 
+
+.admin-table table thead > tr:nth-of-type(2n+1){
+    background: #f4f4f4 none repeat scroll 0 0;
+}
+.admin-table table thead th{
+    text-transform: uppercase;
+    padding: 15px 20px;
+}
+.admin-table .table-striped > tbody > tr:nth-of-type(2n+1) {
+    background-color: #fff;
+}
+.admin-table table tbody > tr{
+    color: #333 !important;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd
+}
+.admin-table table tbody > tr:nth-of-type(2n+2){
+    background: #f9f9f9 none repeat scroll 0 0;
+}
+.admin-table table tbody tr > td {
+    padding: 25px 20px;
+}
+.admin-table {
+    margin-top: 50px;
+    overflow-x: auto
+}
+.admin-table table {
+    margin-bottom: 0;
+}
+.admin-table table tbody tr:hover{
+	cursor: pointer;
+    background: #212121 none repeat scroll 0 0 !important;
+    color: #fff !important;
+}
+
+/*================================================
+40 - MEMBER TABLE CSS
+==================================================*/ 
+
+.member-table table thead > tr:nth-of-type(2n+1){
+    background: #f4f4f4 none repeat scroll 0 0;
+}
+.member-table table thead th{
+    text-transform: uppercase;
+    padding: 15px 20px;
+}
+.member-table .table-striped > tbody > tr:nth-of-type(2n+1) {
+    background-color: #fff;
+}
+.member-table table tbody > tr{
+    color: #333 !important;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd
+}
+.member-table table tbody > tr:nth-of-type(2n+2){
+    background: #f9f9f9 none repeat scroll 0 0;
+}
+.member-table table tbody tr > td {
+    padding: 25px 20px;
+}
+.member-table {
+    margin-top: 50px;
+    overflow-x: auto
+}
+.member-table table {
+    margin-bottom: 0;
+}
+.member-table table tbody tr:hover{
+	cursor: pointer;
+    background: #212121 none repeat scroll 0 0 !important;
+    color: #fff !important;
+}
+
+/*================================================
+41 - MATCH PAGE CSS
+==================================================*/ 
+
+.match-form-group{
+	text-align: right;
+}
+.match-form-group input[type=text] {
+    border: medium 1px;
+    height: 45px;
+    width: 400px;
+}
+.match-form-group button {
+    background: #e01a22 none repeat scroll 0 0;
+    border: medium none;
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    height: 100%;
+    padding: 10px 20px;
+    -webkit-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    margin-top: 10px
+}
+.match-form-group button:hover{
+    background: #212121 none repeat scroll 0 0
+}
