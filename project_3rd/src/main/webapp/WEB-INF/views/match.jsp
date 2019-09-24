@@ -74,9 +74,7 @@
 	                                    <div class="row">
 	                                        <div class="col-sm-5">
 	                                            <div class="team-head-image">
-	                                                <a href="#">
-	                                                    <img src="resources/img/emblem-question.png" alt="team image" />
-	                                                </a>
+                                                    <img src="resources/img/emblem-question.png" alt="team image" />
 	                                            </div>
 	                                        </div>
 	                                        <div class="col-sm-2">
@@ -86,9 +84,7 @@
 	                                        </div>
 	                                        <div class="col-sm-5">
 	                                            <div class="team-head-image">
-	                                                <a href="#">
-	                                                    <img src="resources/img/emblem-question.png" alt="team image" />
-	                                                </a>
+                                                    <img src="resources/img/emblem-question.png" alt="team image" />
 	                                            </div>
 	                                        </div>
 	                                    </div>
@@ -116,9 +112,7 @@
 	                                        </div>
 	                                        <div class="col-sm-5">
 	                                            <div class="team-head-image">
-                                                	<a>
-                                                    	<img src="resources/img/emblem-question.png" alt="away team image" />
-													</a>
+                                                   	<img src="resources/img/emblem-question.png" alt="away team image" />
 	                                            </div>
 	                                        </div>
 	                                    </div>
@@ -169,7 +163,7 @@
 	                    			<form action="matchfind">
 	                    				<input type="checkbox" id="addressboolean" />
 	                    				<input type="text" name="match_address" placeholder="Address" disabled="disabled" /><br />
-	                    				<input type="radio" name="match_day" value="sat" checked="checked" />SATERDAY<input type="radio" name="matchday" value="sun"/>SUNDAY<br />
+	                    				<input type="radio" name="match_day" value="sat" checked="checked" />SATERDAY<input type="radio" name="match_day" value="sun"/>SUNDAY<br />
 	                    				<button>MATCHING</button>
 	                    			</form>
                     			</c:if>

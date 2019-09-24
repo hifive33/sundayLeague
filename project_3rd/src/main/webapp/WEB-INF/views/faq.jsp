@@ -110,10 +110,6 @@
                                 <input id="email" name="email" placeholder="Enter Your Email" type="email">
                             </p>
                             <p>
-                                <label for="subject">Subject : </label>
-                                <input id="subject" name="subject" placeholder="Enter Your Subject" type="text">
-                            </p>
-                            <p>
                                 <label for="message">how can we help you? </label>
                                 <textarea id="message" placeholder="Message..." name="Message"></textarea>
                             </p>
