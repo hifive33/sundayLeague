@@ -127,7 +127,7 @@
 </div>
 
 	<input type="hidden" name="team_name" id="team_name" value="${sessionScope.team_name }">	
-	
+	<input type="hidden" name="authority" id="authority" value="${sessionScope.authority }">
 	
 
 	<%@include file="menu/footerArea.jsp"%>

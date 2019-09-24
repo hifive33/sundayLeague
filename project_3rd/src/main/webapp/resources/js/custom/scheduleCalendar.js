@@ -7,6 +7,7 @@
 $(function() {
 	var seq = 0;
 	var team_name = $("#team_name").val();
+	var authority = $("#authority").val();
 
 	$('#calendar').fullCalendar({
 		header: {
@@ -15,19 +16,22 @@ $(function() {
 	        right: 'month,basicWeek,basicDay'
     	},
 
-    	defaultDate: '2019-09-01',
+    	defaultDate: moment(),
 	    navLinks: true,
 	    eventLimit: true,
 	    selectable: true,
 	    selectHelper: true,
 	    
+	    
 	    select: function(start, end) {
-	    	document.getElementById("createEventForm").reset();
-	    	var startDate = moment(start).format("YYYY-MM-DD"); 
-			var endDate = moment(end).format("YYYY-MM-DD"); 
-			$("#start").val(startDate);
-			$("#end").val(endDate);
-			$("#exampleModal").modal("show");
+	    	if(authority=='2' || authority=='3'){
+		    	document.getElementById("createEventForm").reset();
+		    	var startDate = moment(start).format("YYYY-MM-DD"); 
+				var endDate = moment(end).format("YYYY-MM-DD"); 
+				$("#start").val(startDate);
+				$("#end").val(endDate);
+				$("#exampleModal").modal("show");
+	    	}
 	    },
         
         eventRender: function (eventObj, $el) {
@@ -41,17 +45,19 @@ $(function() {
         },
 		
 		eventClick: function (view) {
-			if(confirm("delete?")){
-				$.ajax({
-					url: 'deleteCalendarEvent',
-					type: 'GET',
-					data: 'seq=' + view.id,
-					success: function(res) {
-						alert(res);
-					}
-				});
-				$(".popover").remove();
-				$('#calendar').fullCalendar('removeEvents', view.id);
+			if(authority=='2' || authority=='3' ){
+				if(confirm("delete?")){
+					$.ajax({
+						url: 'deleteCalendarEvent',
+						type: 'GET',
+						data: 'seq=' + view.id,
+						success: function(res) {
+							alert(res);
+						}
+					});
+					$(".popover").remove();
+					$('#calendar').fullCalendar('removeEvents', view.id);
+				}
 			}
 		},
 		
