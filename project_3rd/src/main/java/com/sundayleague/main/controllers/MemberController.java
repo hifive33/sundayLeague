@@ -36,14 +36,17 @@ public class MemberController {
 	@PostMapping("/login")
 	public String loginProcess(PlayerDTO player, HttpSession session) {
 		player = repo.login(player);
+		if(player ==null){
+			return "/login";
+		}else if(player.getPlayer_id().equals("admin")) {
 		
-		if (player != null){
+			return "admin/adminMain";
+		
+		}else{
 			session.setAttribute("loginId", player.getPlayer_id());
 			session.setAttribute("team_name", player.getTeam_name());
 			session.setAttribute("authority", player.getAuthority());
 			return "redirect:/";
-		} else{
-			return "/login";
 		}
 	}
 	
@@ -135,6 +138,11 @@ public class MemberController {
 	
 	@PostMapping("/contact")
 	public String contact(ContactDTO contact) {
+		if(contact.getContact_phone()==null) {
+			contact.setContact_phone("QnA문의");
+			repo.insertContact(contact);
+			return "redirect:/faq";
+		}
 		repo.insertContact(contact);
 		return "redirect:/contact";
 		
