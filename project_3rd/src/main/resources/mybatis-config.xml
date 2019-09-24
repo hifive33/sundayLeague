@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
@@ -8,6 +9,7 @@
 		<typeAlias type="com.sundayleague.main.dto.TeamDTO" alias="TeamDTO"/>
 		<typeAlias type="com.sundayleague.main.dto.TeamMatchingDTO" alias="TeamMatchingDTO"/>
 		<typeAlias type="com.sundayleague.main.dto.ContactDTO" alias="ContactDTO"/>
+    <typeAlias type="com.sundayleague.main.dto.CalendarDTO" alias="CalendarDTO"/>
 	</typeAliases>
 	
 	<mappers>
@@ -15,5 +17,6 @@
 		<mapper resource="mappers/TeamMapper.xml" />
 		<mapper resource="mappers/AdminMapper.xml" />
 		<mapper resource="mappers/MatchMapper.xml" />
+    <mapper resource="mappers/CalendarMapper.xml" />
 	</mappers>
 </configuration>

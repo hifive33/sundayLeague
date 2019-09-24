@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sundayleague.main.dao.CalendarMapper">
+	<insert id="insertEvent" parameterType="CalendarDTO">
+		INSERT INTO calendar
+		(
+			seq
+			, team_name
+			, title
+			, description
+			, startdate
+			, enddate
+			
+		)
+		VALUES
+		(
+			SEQ_calendar_seq.NEXTVAL
+			, #{team_name}
+			, #{title}
+			, #{description}
+			, #{startdate}
+			, #{enddate}
+		)
+	</insert>
+	
+	<select id="selectAllEvent" parameterType="String" resultType="CalendarDTO">
+		SELECT
+			seq
+			, team_name
+			, title
+			, description
+			, startdate
+			, enddate
+		FROM
+			calendar
+		WHERE
+			team_name=#{team_name}
+		ORDER BY seq ASC
+	</select>
+	
+	<delete id="deleteEvent" parameterType="int">
+		DELETE FROM calendar
+		WHERE
+			seq=#{seq}
+	</delete>
+</mapper>
