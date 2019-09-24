@@ -96,10 +96,5 @@ public class TeamController {
 		FileService.deleteFile(uploadPath+(String)session.getAttribute("team_name"));
 		return "redirect:/";
 	}
-	
-	@GetMapping("/calendar")
-	public void scheduleTeam(){
-		
-	}
 }
 	
