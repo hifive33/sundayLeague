@@ -57,125 +57,54 @@
     <%@include file="menu/breadcrombArea.jsp"%>
     <!-- Breadcromb Area End -->
     
-    
+    <div class="career">
+		<label for="company">
+			회사명 : <input id="company" type="text" name="company" />
+		</label>
+		<label for="title">
+			직책 : <input id="title" type="text" name="title" />
+		</label>
+		<input class="add" type="button" value="+" />
+		<input class="sub" type="button" value="-" />
+	</div>
+
     <!-- Cart Area Start -->
-    <section class="kick-cart-area section_100">
+    <section class="score-write-area section_100">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                </div>
-            </div>
-            <div class="row">
-                <div class="kick-calculate-shipping clearfix">
+                <div class="score-write-table-div clearfix">
                     <div class="col-md-6 col-sm-6">
-                    <div class="cart-table">
-                        <table class="table table-striped table-responsive">
+                    <div class="score-write-table">
+                        <table class="table table-striped table-responsive" border="1">
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Preview</th>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
+                                    <th colspan="5">Home Team</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="shop-cart-item">
-                                    <td class="kick-cart-close">
-                                        <a href="#"><i class="fa fa-close"></i></a>
+                                <tr class="score-write-item">
+                                    <td class="score-write-table-close">
+                                        <a href="" class="sub"><i class="fa fa-close"></i></a>
                                     </td>
-                                    <td class="kick-cart-preview">
-                                        <a href="#">
-                                            <img src="resources/img/min-pro-1.jpg" alt="cart-1" />
-                                        </a>
+                                    <td class="score-write-table-select">
+                                    	<select>
+                                    		<option>--</option>
+                                    		<option value="goal">GOAL</option>
+                                    		<option value="redcard">Red Card</option>
+                                    		<option value="yellowcard">Yellow Card</option>
+                                    	</select>
                                     </td>
-                                    <td class="kick-cart-product">
-                                        <a href="#">
-                                            <p>denim jackets</p>
-                                        </a>
+                                    <td class="score-write-table-personone">
                                     </td>
-                                    <td class="kick-cart-price">
-                                        <p>$180</p>
-                                    </td>
-                                    <td class="kick-cart-quantity">
-                                        <input type="number" value="1" >
-                                    </td>
-                                    <td class="kick-cart-total">
-                                        <p>$180</p>
+                                    <td class="score-write-table-persontwo">
                                     </td>
                                 </tr>
-                                <tr class="shop-cart-item">
-                                    <td class="kick-cart-close">
-                                        <a href="#"><i class="fa fa-close"></i></a>
+								<tr>
+                                    <td class="score-write-table-close">
+                                        <a href="" class="add"><i class="fa fa-plus"></i></a>
                                     </td>
-                                    <td class="kick-cart-preview">
-                                        <a href="#">
-                                            <img src="resources/img/min-pro-2.jpg" alt="cart-1" />
-                                        </a>
-                                    </td>
-                                    <td class="kick-cart-product">
-                                        <a href="#">
-                                            <p>denim jackets</p>
-                                        </a>
-                                    </td>
-                                    <td class="kick-cart-price">
-                                        <p>$290</p>
-                                    </td>
-                                    <td class="kick-cart-quantity">
-                                        <input type="number" value="1" >
-                                    </td>
-                                    <td class="kick-cart-total">
-                                        <p>$290</p>
-                                    </td>
-                                </tr>
-                                <tr class="shop-cart-item">
-                                    <td class="kick-cart-close">
-                                        <a href="#"><i class="fa fa-close"></i></a>
-                                    </td>
-                                    <td class="kick-cart-preview">
-                                        <a href="#">
-                                            <img src="resources/img/min-pro-3.jpg" alt="cart-1" />
-                                        </a>
-                                    </td>
-                                    <td class="kick-cart-product">
-                                        <a href="#">
-                                            <p>denim jackets</p>
-                                        </a>
-                                    </td>
-                                    <td class="kick-cart-price">
-                                        <p>$230</p>
-                                    </td>
-                                    <td class="kick-cart-quantity">
-                                        <input type="number" value="1" >
-                                    </td>
-                                    <td class="kick-cart-total">
-                                        <p>$230</p>
-                                    </td>
-                                </tr>
-                                <tr class="shop-cart-item">
-                                    <td class="kick-cart-close">
-                                        <a href="#"><i class="fa fa-close"></i></a>
-                                    </td>
-                                    <td class="kick-cart-preview">
-                                        <a href="#">
-                                            <img src="resources/img/min-pro-4.jpg" alt="cart-1" />
-                                        </a>
-                                    </td>
-                                    <td class="kick-cart-product">
-                                        <a href="#">
-                                            <p>denim jackets</p>
-                                        </a>
-                                    </td>
-                                    <td class="kick-cart-price">
-                                        <p>$330</p>
-                                    </td>
-                                    <td class="kick-cart-quantity">
-                                        <input type="number" value="1" >
-                                    </td>
-                                    <td class="kick-cart-total">
-                                        <p>$330</p>
-                                    </td>
+                                    <td colspan="3"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -184,18 +113,30 @@
                     </div>
                     <div class="col-md-6 col-sm-6">
                     <div class="cart-table">
-                        <table class="table table-striped table-responsive">
+                        <table class="table table-striped table-responsive" border="1">
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Preview</th>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
+                                    <th colspan="5">Away Team</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr class="shop-cart-item">
+                                    <td class="kick-cart-close">
+                                        <a href="#"><i class="fa fa-plus"></i></a>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td class="kick-cart-close">
+                                        <a href="#"><i class="fa fa-close"></i></a>
+                                    </td>
+                                </tr>
                                 <tr class="shop-cart-item">
                                     <td class="kick-cart-close">
                                         <a href="#"><i class="fa fa-close"></i></a>
@@ -218,78 +159,6 @@
                                     </td>
                                     <td class="kick-cart-total">
                                         <p>$180</p>
-                                    </td>
-                                </tr>
-                                <tr class="shop-cart-item">
-                                    <td class="kick-cart-close">
-                                        <a href="#"><i class="fa fa-close"></i></a>
-                                    </td>
-                                    <td class="kick-cart-preview">
-                                        <a href="#">
-                                            <img src="resources/img/min-pro-2.jpg" alt="cart-1" />
-                                        </a>
-                                    </td>
-                                    <td class="kick-cart-product">
-                                        <a href="#">
-                                            <p>denim jackets</p>
-                                        </a>
-                                    </td>
-                                    <td class="kick-cart-price">
-                                        <p>$290</p>
-                                    </td>
-                                    <td class="kick-cart-quantity">
-                                        <input type="number" value="1" >
-                                    </td>
-                                    <td class="kick-cart-total">
-                                        <p>$290</p>
-                                    </td>
-                                </tr>
-                                <tr class="shop-cart-item">
-                                    <td class="kick-cart-close">
-                                        <a href="#"><i class="fa fa-close"></i></a>
-                                    </td>
-                                    <td class="kick-cart-preview">
-                                        <a href="#">
-                                            <img src="resources/img/min-pro-3.jpg" alt="cart-1" />
-                                        </a>
-                                    </td>
-                                    <td class="kick-cart-product">
-                                        <a href="#">
-                                            <p>denim jackets</p>
-                                        </a>
-                                    </td>
-                                    <td class="kick-cart-price">
-                                        <p>$230</p>
-                                    </td>
-                                    <td class="kick-cart-quantity">
-                                        <input type="number" value="1" >
-                                    </td>
-                                    <td class="kick-cart-total">
-                                        <p>$230</p>
-                                    </td>
-                                </tr>
-                                <tr class="shop-cart-item">
-                                    <td class="kick-cart-close">
-                                        <a href="#"><i class="fa fa-close"></i></a>
-                                    </td>
-                                    <td class="kick-cart-preview">
-                                        <a href="#">
-                                            <img src="resources/img/min-pro-4.jpg" alt="cart-1" />
-                                        </a>
-                                    </td>
-                                    <td class="kick-cart-product">
-                                        <a href="#">
-                                            <p>denim jackets</p>
-                                        </a>
-                                    </td>
-                                    <td class="kick-cart-price">
-                                        <p>$330</p>
-                                    </td>
-                                    <td class="kick-cart-quantity">
-                                        <input type="number" value="1" >
-                                    </td>
-                                    <td class="kick-cart-total">
-                                        <p>$330</p>
                                     </td>
                                 </tr>
                             </tbody>
@@ -349,7 +218,62 @@
 		$(function(){
 			$(".breadcromb-box > h2").html("Cart Page")
 			$(".breadcromb-box ul li:last-child").html("Cart Page")
-		})
+			
+			/* var item = '<tr>'
+					+'<td class="score-write-table-close">'
+		            +'<a href="#"><i class="fa fa-close"></i></a>'
+			        +'</td>'
+			        +'<td class="score-write-table-select">'
+		        	+'<select>'
+		       		+'<option>--</option>'
+		       		+'<option value="goal">GOAL</option>'
+		       		+'<option value="redcard">Red Card</option>'
+		       		+'<option value="yellowcard">Yellow Card</option>'
+		        	+'</select>'
+			        +'</td>'
+			        +'<td class="score-write-table-personone">'
+			        +'</td>'
+			        +'<td class="score-write-table-persontwo">'
+			        +'</td>'
+				    +'</tr>'; */
+			
+			var item = $(".score-write-item")[0].outerHTML
+			
+			$('.score-write-table').on('click', '.add', function(){
+				$(this).parent().parent().before(item);
+				return false;
+			});
+			
+			$('.score-write-table').on('click', '.sub', function(){
+				$(this).parent().parent().remove();
+				return false;
+			});
+			
+			$(".score-write-table-select > select").on('change', function(){
+				switch ($(this).val()) {
+				case "goal":
+					$(this).parent().next().html("<input type='text' placeholder='넌사람' />")
+									.next().html("<input type='text' placeholder='어시' />")
+					break;
+				case "redcard":
+					$(this).parent().next().html("<input type='text' placeholder='넌사람' />")
+									.next().html("")
+					break;
+				case "yellowcard":
+					$(this).parent().next().html("<input type='text' placeholder='넌사람' />")
+									.next().html("")
+					break;
+				default:
+					$(this).parent().next().html("")
+									.next().html("")
+					break;
+				}
+				if ($(this).val() != $(this).children()[0].innerHTML){
+					
+				}else {
+				}
+			})
+		});
 	</script>
 </body>
 </html>
