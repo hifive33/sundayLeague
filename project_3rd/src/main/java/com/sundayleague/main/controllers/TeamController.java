@@ -97,10 +97,5 @@ public class TeamController {
 		session.setAttribute("authority", 0);
 		return "redirect:/";
 	}
-	
-	@GetMapping("/calendar")
-	public void scheduleTeam(){
-		
-	}
 }
 	
