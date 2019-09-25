@@ -2,6 +2,7 @@ package com.sundayleague.main.controllers;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,9 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sundayleague.main.dao.TeamRepository;
 import com.sundayleague.main.dto.MatchDTO;
+import com.sundayleague.main.dto.MatchPlayerDTO;
 import com.sundayleague.main.dto.TeamDTO;
 
 @Controller
@@ -70,8 +74,9 @@ public class MatchController {
 	
 	// 점수입력 처리
 	@PostMapping("scorewrite")
-	public String scorewriteProcess(){
-		
+	@ResponseBody
+	public String scorewriteProcess(@RequestBody List<MatchPlayerDTO> dataList){
+		System.out.println(dataList);
 		
 		return "success";
 	}

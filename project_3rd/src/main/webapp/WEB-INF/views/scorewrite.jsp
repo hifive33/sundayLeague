@@ -252,42 +252,83 @@
 			
 			$("#scorewritebutton").on('click', function(){
 				
-				/* var data = {
-						"player_id":""
-						,"match_no":""
-						,"minutes_played":""
-						,"goal":""
-						,"conceded_goal":""
-						,"assists":""
-						,"yellowcard":""
-						,"redcard":""
-				} */
 				var dataList = []
-				//var length =  $("#tabletime > tbody > tr").length;
 
 				$.each($("#tabletime > tbody > tr"), function(index, item){
 					var cl = numberdake($(item).attr('class'))
-					var timestr = $(item).children().children().val() + $(item).children().children().next().val() + ":" + $(item).children().children().next().next().val()
-					dataList.push({"minutes_played":timestr})
+					var tableone = $("#tableone > tbody > tr")
+					var tabletwo = $("#tabletwo > tbody > tr")
+					var minutes_played = $(item).children().children().val() + $(item).children().children().next().val() + ":" + $(item).children().children().next().next().val()
+					var action = $(tableone[index]).children().next().children().val()
+					var player_id = null;
+					var assists = null;
+					
+					if (action == "--"){
+					} else if (typeof action != "undefined"){
+						switch (action) {
+						case 'goal':
+							player_id = $(tableone[index]).children().next().next().children().val()
+							assists = $(tableone[index]).children().next().next().next().children().val()
+							dataList.push({"minutes_played":minutes_played
+											,"player_id":player_id
+											,"goal":"1"
+											,"assists":assists})
+							break;
+						case 'redcard':
+							player_id = $(tableone[index]).children().next().next().children().val()
+							dataList.push({"minutes_played":minutes_played
+											,"player_id":player_id
+											,"redcard":"1"})
+							break;
+						case 'yellowcard':
+							player_id = $(tableone[index]).children().next().next().children().val()
+							dataList.push({"minutes_played":minutes_played
+											,"player_id":player_id
+											,"yellowcard":"1"})
+							break;
+						default:
+							break;
+						}
+					} else{
+						action = $(tabletwo[index]).children().next().children().val()
+						switch (action) {
+						case 'goal':
+							player_id = $(tabletwo[index]).children().next().next().children().val()
+							assists = $(tabletwo[index]).children().next().next().next().children().val()
+							dataList.push({"minutes_played":minutes_played
+											,"player_id":player_id
+											,"goal":"1"
+											,"assists":assists})
+							break;
+						case 'redcard':
+							player_id = $(tabletwo[index]).children().next().next().children().val()
+							dataList.push({"minutes_played":minutes_played
+											,"player_id":player_id
+											,"redcard":"1"})
+							break;
+						case 'yellowcard':
+							player_id = $(tabletwo[index]).children().next().next().children().val()
+							dataList.push({"minutes_played":minutes_played
+											,"player_id":player_id
+											,"yellowcard":"1"})
+							break;
+						default:
+							break;
+						}
+					}
 				});
 
-				$.each($("#tableone > tbody > tr"), function(index, item){
-					
-				});
+				console.log(dataList)
 				
-				/* for (var i = 0; i < length; i++) {
-					dataList.push({"minutes_played":})
-				} */
-				
-				/* $.ajax({
+				$.ajax({
 					method:'post'
 					,url:'scorewrite'
 					,data:dataList
 					,success:function(res){
-						
+						alert(res)
 						
 					}
-				}) */
+				})
 				return false
 			})
 		});
