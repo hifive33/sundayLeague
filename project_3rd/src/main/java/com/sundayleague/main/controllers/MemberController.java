@@ -64,7 +64,8 @@ public class MemberController {
 	@PostMapping("/registration")
 	public String registrationProcess(PlayerDTO player, MultipartFile mypicUpload, HttpSession session){
 		int result = repo.registration(player);
-		FileService.saveOriginalFile(mypicUpload, uploadPath, player.getPlayer_id());
+		if (mypicUpload != null)
+			FileService.saveOriginalFile(mypicUpload, uploadPath, player.getPlayer_id());
 		return result == 1 ? "redirect:/login" : null;
 	}
 	

@@ -8,6 +8,7 @@
 		<typeAlias type="com.sundayleague.main.dto.TeamDTO" alias="TeamDTO"/>
 		<typeAlias type="com.sundayleague.main.dto.TeamMatchingDTO" alias="TeamMatchingDTO"/>
 		<typeAlias type="com.sundayleague.main.dto.ContactDTO" alias="ContactDTO"/>
+		<typeAlias type="com.sundayleague.main.dto.MatchDTO" alias="MatchDTO"/>
     <typeAlias type="com.sundayleague.main.dto.CalendarDTO" alias="CalendarDTO"/>
 	</typeAliases>
 	

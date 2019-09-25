@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.sundayleague.main.dao.TeamRepository;
+import com.sundayleague.main.dto.MatchDTO;
 import com.sundayleague.main.dto.TeamDTO;
 
 @Controller
@@ -39,7 +41,10 @@ public class MatchController {
 			String matchFlag = teamRepo.getMatchFlag((String)session.getAttribute("team_name"));
 			model.addAttribute("flag", matchFlag);
 			if (Integer.parseInt(matchFlag) > 1){
-				model.addAttribute("away_team_name", teamRepo.getAwayTeamName((String)session.getAttribute("team_name")));
+				MatchDTO match = teamRepo.getAwayTeamName((String)session.getAttribute("team_name"));
+				model.addAttribute("away_team_name", match.getAway_team_name());
+				model.addAttribute("matchdate", match.getMatchdate());
+				model.addAttribute("match_address", match.getMatch_address());
 			}
 			return "match";
 		}
@@ -55,7 +60,19 @@ public class MatchController {
 	
 	// 점수입력 페이지로 이동
 	@GetMapping("/scorewrite")
-	public void scorewrite(){
+	public void scorewrite(HttpSession session, Model model){
+		String team_name = (String) session.getAttribute("team_name");
+		String away_team_name = teamRepo.getAwayTeamName(team_name).getAway_team_name();
+		model.addAttribute("away_team_name", away_team_name);
+		model.addAttribute("homePlayer", teamRepo.selectTeam2(team_name));
+		model.addAttribute("awayPlayer", teamRepo.selectTeam2(away_team_name));
+	}
+	
+	// 점수입력 처리
+	@PostMapping("scorewrite")
+	public String scorewriteProcess(){
 		
+		
+		return "success";
 	}
 }

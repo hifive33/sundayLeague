@@ -56,118 +56,76 @@
     <!-- Breadcromb Area Start -->
     <%@include file="menu/breadcrombArea.jsp"%>
     <!-- Breadcromb Area End -->
-    
-    <div class="career">
-		<label for="company">
-			회사명 : <input id="company" type="text" name="company" />
-		</label>
-		<label for="title">
-			직책 : <input id="title" type="text" name="title" />
-		</label>
-		<input class="add" type="button" value="+" />
-		<input class="sub" type="button" value="-" />
-	</div>
 
     <!-- Cart Area Start -->
     <section class="score-write-area section_100">
         <div class="container">
             <div class="row">
                 <div class="score-write-table-div clearfix">
-                    <div class="col-md-6 col-sm-6">
-                    <div class="score-write-table">
-                        <table class="table table-striped table-responsive" border="1">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th colspan="5">Home Team</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="score-write-item">
-                                    <td class="score-write-table-close">
-                                        <a href="" class="sub"><i class="fa fa-close"></i></a>
-                                    </td>
-                                    <td class="score-write-table-select">
-                                    	<select>
-                                    		<option>--</option>
-                                    		<option value="goal">GOAL</option>
-                                    		<option value="redcard">Red Card</option>
-                                    		<option value="yellowcard">Yellow Card</option>
-                                    	</select>
-                                    </td>
-                                    <td class="score-write-table-personone">
-                                    </td>
-                                    <td class="score-write-table-persontwo">
-                                    </td>
-                                </tr>
-								<tr>
-                                    <td class="score-write-table-close">
-                                        <a href="" class="add"><i class="fa fa-plus"></i></a>
-                                    </td>
-                                    <td colspan="3"></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="col-md-2 col-sm-2">
+                    	<div class="score-write-table">
+	                        <table class="table table-striped table-responsive" id="tabletime">
+	                            <thead>
+	                                <tr>
+	                                    <th>Time</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                            </tbody>
+	                        </table>
+	                    </div>
                     </div>
-
+                    <div class="col-md-5 col-sm-5">
+	                    <div class="score-write-table">
+	                        <table class="table table-striped table-responsive" id="tableone">
+	                            <thead>
+	                                <tr>
+	                                    <th></th>
+	                                    <th colspan="5">${team_name} (Home Team)</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+									<tr>
+	                                    <td class="score-write-table-close">
+	                                        <a href="" class="addhome"><i class="fa fa-plus"></i></a>
+	                                    </td>
+	                                    <td colspan="3"></td>
+	                                </tr>
+	                            </tbody>
+	                        </table>
+	                    </div>
                     </div>
-                    <div class="col-md-6 col-sm-6">
-                    <div class="cart-table">
-                        <table class="table table-striped table-responsive" border="1">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th colspan="5">Away Team</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="shop-cart-item">
-                                    <td class="kick-cart-close">
-                                        <a href="#"><i class="fa fa-plus"></i></a>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td class="kick-cart-close">
-                                        <a href="#"><i class="fa fa-close"></i></a>
-                                    </td>
-                                </tr>
-                                <tr class="shop-cart-item">
-                                    <td class="kick-cart-close">
-                                        <a href="#"><i class="fa fa-close"></i></a>
-                                    </td>
-                                    <td class="kick-cart-preview">
-                                        <a href="#">
-                                            <img src="resources/img/min-pro-1.jpg" alt="cart-1" />
-                                        </a>
-                                    </td>
-                                    <td class="kick-cart-product">
-                                        <a href="#">
-                                            <p>denim jackets</p>
-                                        </a>
-                                    </td>
-                                    <td class="kick-cart-price">
-                                        <p>$180</p>
-                                    </td>
-                                    <td class="kick-cart-quantity">
-                                        <input type="number" value="1" >
-                                    </td>
-                                    <td class="kick-cart-total">
-                                        <p>$180</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
+                    <div class="col-md-5 col-sm-5">
+	                    <div class="score-write-table">
+	                        <table class="table table-striped table-responsive" id="tabletwo">
+	                            <thead>
+	                                <tr>
+	                                    <th></th>
+	                                    <th colspan="5">${away_team_name} (Away Team)</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+									<tr>
+	                                    <td class="score-write-table-close">
+	                                        <a href="" class="addaway"><i class="fa fa-plus"></i></a>
+	                                    </td>
+	                                    <td colspan="3"></td>
+	                                </tr>
+	                            </tbody>
+	                        </table>
+	                    </div>
                     </div>
                 </div>
             </div>
+			<div class="row">
+               <div class="col-md-12">
+                   <div class="match-find">
+                   	<div class="match-form-group">
+						<button type="button" id="scorewritebutton">점수입력</button>
+                   	</div>
+                   </div>
+               </div>
+           </div>
         </div>
     </section>
     <!-- Cart Area End -->
@@ -216,51 +174,53 @@
     <!-- script -->
 	<script>
 		$(function(){
-			$(".breadcromb-box > h2").html("Cart Page")
-			$(".breadcromb-box ul li:last-child").html("Cart Page")
+			$(".breadcromb-box > h2").html("Score Write")
+			$(".breadcromb-box ul li:last-child").html("Score Write")
 			
-			/* var item = '<tr>'
-					+'<td class="score-write-table-close">'
-		            +'<a href="#"><i class="fa fa-close"></i></a>'
-			        +'</td>'
-			        +'<td class="score-write-table-select">'
-		        	+'<select>'
-		       		+'<option>--</option>'
-		       		+'<option value="goal">GOAL</option>'
-		       		+'<option value="redcard">Red Card</option>'
-		       		+'<option value="yellowcard">Yellow Card</option>'
-		        	+'</select>'
-			        +'</td>'
-			        +'<td class="score-write-table-personone">'
-			        +'</td>'
-			        +'<td class="score-write-table-persontwo">'
-			        +'</td>'
-				    +'</tr>'; */
+			var count = 1
 			
-			var item = $(".score-write-item")[0].outerHTML
+			var timetr = '<select><option>전반</option><option>후반</option><option>연장</option><option>PK</option></select><input type="number" /> :<input type="number" />'
 			
-			$('.score-write-table').on('click', '.add', function(){
-				$(this).parent().parent().before(item);
+			$('.score-write-table').on('click', '.addhome', function(){
+				$(this).parent().parent().before('<tr class="score-write-item"><td class="score-write-table-close"><a href="" class="subhome" id="'+count+'"><i class="fa fa-close"></i></a></td><td class="score-write-table-select home-select"><select><option>--</option><option value="goal">GOAL</option><option value="redcard">Red Card</option><option value="yellowcard">Yellow Card</option></select></td><td class="score-write-table-personone"></td><td class="score-write-table-persontwo"></td></tr>');
+				$("#tabletime tbody").append('<tr class="score-write-table-time '+ count +'"><td>'+timetr+'</td></tr>')
+				$("#tabletwo tbody>tr:last-child").before('<tr class="'+ count +'"><td colspan="4"><i class="fa fa-ban"></i></td></tr>')
+				count++
 				return false;
-			});
-			
-			$('.score-write-table').on('click', '.sub', function(){
+			})
+			.on('click', '.addaway', function(){
+				$(this).parent().parent().before('<tr class="score-write-item"><td class="score-write-table-close"><a href="" class="subaway" id="'+count+'"><i class="fa fa-close"></i></a></td><td class="score-write-table-select away-select"><select><option>--</option><option value="goal">GOAL</option><option value="redcard">Red Card</option><option value="yellowcard">Yellow Card</option></select></td><td class="score-write-table-personone"></td><td class="score-write-table-persontwo"></td></tr>');
+				$("#tabletime tbody").append('<tr class="score-write-table-time '+ count +'"><td>'+timetr+'</td></tr>')
+				$("#tableone tbody>tr:last-child").before('<tr class="'+ count +'"><td colspan="4"><i class="fa fa-ban"></i></td></tr>')
+				count++
+				return false;
+			})
+			.on('click', '.subhome', function(){
 				$(this).parent().parent().remove();
+				var c = $(this).attr("id")
+				$("#tabletime tbody>tr." + c).remove()
+				$("#tabletwo tbody>tr." + c).remove()
 				return false;
-			});
-			
-			$(".score-write-table-select > select").on('change', function(){
+			})
+			.on('click', '.subaway', function(){
+				$(this).parent().parent().remove();
+				var c = $(this).attr("id")
+				$("#tabletime tbody>tr." + c).remove()
+				$("#tableone tbody>tr." + c).remove()
+				return false;
+			})
+			.on('change', '.home-select > select', function(){
 				switch ($(this).val()) {
 				case "goal":
-					$(this).parent().next().html("<input type='text' placeholder='넌사람' />")
-									.next().html("<input type='text' placeholder='어시' />")
+					$(this).parent().next().html("<select><option>넌사람</option><c:forEach var="item" items="${homePlayer}"><option>${item.player_id}</option></c:forEach></select>")
+									.next().html("<select><option>어시</option><c:forEach var="item" items="${homePlayer}"><option>${item.player_id}</option></c:forEach></select>")
 					break;
 				case "redcard":
-					$(this).parent().next().html("<input type='text' placeholder='넌사람' />")
+					$(this).parent().next().html("<select><option>사람</option><c:forEach var="item" items="${homePlayer}"><option>${item.player_id}</option></c:forEach></select>")
 									.next().html("")
 					break;
 				case "yellowcard":
-					$(this).parent().next().html("<input type='text' placeholder='넌사람' />")
+					$(this).parent().next().html("<select><option>사람</option><c:forEach var="item" items="${homePlayer}"><option>${item.player_id}</option></c:forEach></select>")
 									.next().html("")
 					break;
 				default:
@@ -268,12 +228,75 @@
 									.next().html("")
 					break;
 				}
-				if ($(this).val() != $(this).children()[0].innerHTML){
-					
-				}else {
+			})
+			.on('change', '.away-select > select', function(){
+				switch ($(this).val()) {
+				case "goal":
+					$(this).parent().next().html("<select><option>넌사람</option><c:forEach var="item" items="${awayPlayer}"><option>${item.player_id}</option></c:forEach></select>")
+									.next().html("<select><option>어시</option><c:forEach var="item" items="${awayPlayer}"><option>${item.player_id}</option></c:forEach></select>")
+					break;
+				case "redcard":
+					$(this).parent().next().html("<select><option>사람</option><c:forEach var="item" items="${awayPlayer}"><option>${item.player_id}</option></c:forEach></select>")
+									.next().html("")
+					break;
+				case "yellowcard":
+					$(this).parent().next().html("<select><option>사람</option><c:forEach var="item" items="${awayPlayer}"><option>${item.player_id}</option></c:forEach></select>")
+									.next().html("")
+					break;
+				default:
+					$(this).parent().next().html("")
+									.next().html("")
+					break;
 				}
 			})
+			
+			$("#scorewritebutton").on('click', function(){
+				
+				/* var data = {
+						"player_id":""
+						,"match_no":""
+						,"minutes_played":""
+						,"goal":""
+						,"conceded_goal":""
+						,"assists":""
+						,"yellowcard":""
+						,"redcard":""
+				} */
+				var dataList = []
+				//var length =  $("#tabletime > tbody > tr").length;
+
+				$.each($("#tabletime > tbody > tr"), function(index, item){
+					var cl = numberdake($(item).attr('class'))
+					var timestr = $(item).children().children().val() + $(item).children().children().next().val() + ":" + $(item).children().children().next().next().val()
+					dataList.push({"minutes_played":timestr})
+				});
+
+				$.each($("#tableone > tbody > tr"), function(index, item){
+					
+				});
+				
+				/* for (var i = 0; i < length; i++) {
+					dataList.push({"minutes_played":})
+				} */
+				
+				/* $.ajax({
+					method:'post'
+					,url:'scorewrite'
+					,data:dataList
+					,success:function(res){
+						
+						
+					}
+				}) */
+				return false
+			})
 		});
+		
+		function numberdake(str){
+		    var res;
+		    res = str.replace(/[^0-9]/g,"");
+		    return res;
+		}
 	</script>
 </body>
 </html>
