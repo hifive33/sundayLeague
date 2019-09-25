@@ -9,6 +9,7 @@
 		<typeAlias type="com.sundayleague.main.dto.TeamMatchingDTO" alias="TeamMatchingDTO"/>
 		<typeAlias type="com.sundayleague.main.dto.ContactDTO" alias="ContactDTO"/>
 		<typeAlias type="com.sundayleague.main.dto.MatchDTO" alias="MatchDTO"/>
+    <typeAlias type="com.sundayleague.main.dto.CalendarDTO" alias="CalendarDTO"/>
 	</typeAliases>
 	
 	<mappers>
@@ -16,5 +17,6 @@
 		<mapper resource="mappers/TeamMapper.xml" />
 		<mapper resource="mappers/AdminMapper.xml" />
 		<mapper resource="mappers/MatchMapper.xml" />
+    <mapper resource="mappers/CalendarMapper.xml" />
 	</mappers>
 </configuration>
