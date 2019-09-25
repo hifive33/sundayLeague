@@ -56,19 +56,19 @@ CREATE TABLE match
 	away_teamscore number,
 	-- 경기일자
 	matchdate date NOT NULL,
+	-- 경기장 주소
+	match_address varchar2(200),
 	PRIMARY KEY (match_no)
 );
 
 --CONTACT Page DB
 create table CONTACT(
-CONTACT_NO NUMBER,
-CONTACT_NAME varchar2(20),
-CONTACT_EMAIL varchar2(20),
-CONTACT_PHONE varchar2(20),
-CONTACT_MESSAGE varchar2(1000)
+	CONTACT_NO NUMBER,
+	CONTACT_NAME varchar2(20),
+	CONTACT_EMAIL varchar2(20),
+	CONTACT_PHONE varchar2(20),
+	CONTACT_MESSAGE varchar2(1000)
 )
-
-
 
 
 CREATE TABLE match_formation

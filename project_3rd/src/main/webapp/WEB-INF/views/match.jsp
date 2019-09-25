@@ -122,8 +122,8 @@
                             </c:if>
                             <c:if test="${flag > '1'}">
 	                            <div class="upcoming-match-box">
-	                                <h4>위치</h4>
-	                                <p>날짜</p>
+	                                <h4>${match_address}</h4>
+	                                <p>${matchdate}</p>
 	                                <div class="upcoming-teams-head">
 	                                    <div class="row">
 	                                        <div class="col-sm-5">

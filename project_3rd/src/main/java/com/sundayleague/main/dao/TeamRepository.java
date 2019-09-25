@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.sundayleague.main.dto.MatchDTO;
 import com.sundayleague.main.dto.PlayerDTO;
 import com.sundayleague.main.dto.TeamDTO;
 import com.sundayleague.main.dto.TeamMatchingDTO;
@@ -75,9 +76,9 @@ public class TeamRepository {
 		return mapper.selectMatchTeamList();
 	}
 
-	public String getAwayTeamName(String team_name) {
+	public MatchDTO getAwayTeamName(String team_name) {
 		TeamMapper mapper = session.getMapper(TeamMapper.class);
-		return mapper.getAwayTeamName(team_name);
+		return mapper.selectMatch(team_name);
 	}
 
 	public int countUpHeadcount(TeamDTO team) {
