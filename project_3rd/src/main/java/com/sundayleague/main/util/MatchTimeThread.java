@@ -82,7 +82,7 @@ public class MatchTimeThread implements Runnable { // (1)
             	// group별 matching
             	for (Map.Entry<List<String>, List<TeamMatchingDTO>> entry : groupedByRegionDay.entrySet()){
             		// 확인용 출력
-            		System.out.println(entry.getKey() + team.matching(entry.getValue()).toString());
+//            		System.out.println(entry.getKey() + team.matching(entry.getValue()).toString());
             		result = team.matching(entry.getValue());
             		
             		// Map 키값 오름차순 정렬 후 
@@ -112,9 +112,9 @@ public class MatchTimeThread implements Runnable { // (1)
             			matchRepo.updateMatchFlag(matchList);
             			// matching log table에 추가
             			matchRepo.insertMatches(matchList);
+            			// insert calendar
+            			
             		}
-            		
-            		// match_flag 는 점수 입력후 2 -> 0, match_region, match_day -> null
             		
             	}
             	

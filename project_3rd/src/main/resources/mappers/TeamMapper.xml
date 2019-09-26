@@ -135,13 +135,17 @@
 	</select>
 	<select id="selectMatch" parameterType="String" resultType="MatchDTO">
 		select
-		    away_team_name
+			match_no
+			,team_name
+		    ,away_team_name
 		    ,matchdate
 		    ,match_address
 		from
 		(
 		    select
-		        away_team_name
+		        match_no
+		        ,team_name
+		    	,away_team_name
 			    ,matchdate
 			    ,match_address
 		    from

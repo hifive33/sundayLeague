@@ -101,7 +101,7 @@
 	                                        <div class="col-sm-5">
 	                                            <div class="team-head-image">
 	                                                <a href="myteam">
-	                                                    <img src="emblemimg/${team_name}" alt="my team image" />
+	                                                    <img src="emblemimg/${home_team_name}" alt="my team image" />
 	                                                </a>
 	                                            </div>
 	                                        </div>
@@ -129,7 +129,7 @@
 	                                        <div class="col-sm-5">
 	                                            <div class="team-head-image">
 	                                                <a href="myteam">
-	                                                    <img src="emblemimg/${team_name}" alt="my team image" />
+	                                                    <img src="emblemimg/${home_team_name}" alt="my team image" />
 	                                                </a>
 	                                            </div>
 	                                        </div>

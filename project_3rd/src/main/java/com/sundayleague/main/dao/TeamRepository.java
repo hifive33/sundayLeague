@@ -76,7 +76,7 @@ public class TeamRepository {
 		return mapper.selectMatchTeamList();
 	}
 
-	public MatchDTO getAwayTeamName(String team_name) {
+	public MatchDTO selectMatch(String team_name) {
 		TeamMapper mapper = session.getMapper(TeamMapper.class);
 		return mapper.selectMatch(team_name);
 	}

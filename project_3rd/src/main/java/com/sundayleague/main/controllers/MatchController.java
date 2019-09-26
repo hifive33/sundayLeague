@@ -1,8 +1,11 @@
 package com.sundayleague.main.controllers;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,9 +17,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sundayleague.main.dao.MatchRepository;
 import com.sundayleague.main.dao.TeamRepository;
 import com.sundayleague.main.dto.MatchDTO;
+import com.sundayleague.main.dto.MatchGoalDTO;
 import com.sundayleague.main.dto.MatchPlayerDTO;
+import com.sundayleague.main.dto.PlayerDTO;
 import com.sundayleague.main.dto.TeamDTO;
 
 @Controller
@@ -24,6 +30,9 @@ public class MatchController {
 	
 	@Autowired
 	TeamRepository teamRepo;
+	
+	@Autowired
+	MatchRepository matchRepo;
 	
 	// match페이지로 이동
 	@GetMapping("/match")
@@ -45,17 +54,21 @@ public class MatchController {
 			String matchFlag = teamRepo.getMatchFlag((String)session.getAttribute("team_name"));
 			model.addAttribute("flag", matchFlag);
 			if (Integer.parseInt(matchFlag) > 1){
-				MatchDTO match = teamRepo.getAwayTeamName((String)session.getAttribute("team_name"));
+				MatchDTO match = teamRepo.selectMatch((String)session.getAttribute("team_name"));
+				
+				model.addAttribute("home_team_name", match.getTeam_name());
 				model.addAttribute("away_team_name", match.getAway_team_name());
 				model.addAttribute("matchdate", match.getMatchdate());
 				model.addAttribute("match_address", match.getMatch_address());
+			}else{
+				model.addAttribute("home_team_name", session.getAttribute("team_name"));
 			}
 			return "match";
 		}
 	}
 	
 	// 매칭신청, 취소
-	@GetMapping("matchfind")
+	@GetMapping("/matchfind")
 	public String matchfind(HttpSession session, TeamDTO team){
 		team.setTeam_name((String)session.getAttribute("team_name"));
 		teamRepo.updateMatch_flag(team);
@@ -65,18 +78,74 @@ public class MatchController {
 	// 점수입력 페이지로 이동
 	@GetMapping("/scorewrite")
 	public void scorewrite(HttpSession session, Model model){
-		String team_name = (String) session.getAttribute("team_name");
-		String away_team_name = teamRepo.getAwayTeamName(team_name).getAway_team_name();
+		MatchDTO match = teamRepo.selectMatch((String) session.getAttribute("team_name"));
+		String match_no = match.getMatch_no();
+		String home_team_name = match.getTeam_name();
+		String away_team_name = match.getAway_team_name();
+		
+		model.addAttribute("home_team_name", home_team_name);
 		model.addAttribute("away_team_name", away_team_name);
-		model.addAttribute("homePlayer", teamRepo.selectTeam2(team_name));
+		model.addAttribute("match_no", match_no);
+		model.addAttribute("homePlayer", teamRepo.selectTeam2(home_team_name));
 		model.addAttribute("awayPlayer", teamRepo.selectTeam2(away_team_name));
 	}
 	
 	// 점수입력 처리
-	@PostMapping("scorewrite")
+	@PostMapping("/scorewrite")
 	@ResponseBody
-	public String scorewriteProcess(@RequestBody List<MatchPlayerDTO> dataList){
-		System.out.println(dataList);
+	public String scorewriteProcess(@RequestBody ArrayList<MatchPlayerDTO> dataList, HttpSession session){
+		List<MatchPlayerDTO> list = dataList;
+		// insert match_player
+		matchRepo.scorewrite(list);
+		
+		// update match
+		MatchDTO match = teamRepo.selectMatch((String) session.getAttribute("team_name"));
+		List<PlayerDTO> home_players = teamRepo.selectTeam2(match.getTeam_name());
+
+		int home_teamscore = 0;
+		int count = 0;
+		
+		for (MatchPlayerDTO matchPlayer : dataList){
+			if (matchPlayer.getGoal() != null){
+				for (PlayerDTO player : home_players){
+					if (player.getPlayer_id().equals(matchPlayer.getPlayer_id())){
+						home_teamscore++;
+						break;
+					}
+				}
+				count++;
+			}
+		}
+		match.setHome_teamscore(String.valueOf(home_teamscore));
+		match.setAway_teamscore(String.valueOf(count - home_teamscore));
+		
+		matchRepo.updateMatchGoal(match);
+		
+		// insert match_goal
+		List<MatchGoalDTO> match_goalList = new ArrayList<>();
+		Map<String, List<MatchPlayerDTO>> groupByMinutes = list.stream()
+			.collect(Collectors.groupingBy(MatchPlayerDTO::getMinutes_played));
+		groupByMinutes.entrySet().removeIf(entry -> entry.getValue().size() == 1);
+		// 확인용 출력
+		/*for (Map.Entry<String, List<MatchPlayerDTO>> entry : groupByMinutes.entrySet()){
+			System.out.println(entry.getKey() + " : " + entry.getValue());
+		}*/
+		for (Map.Entry<String, List<MatchPlayerDTO>> entry : groupByMinutes.entrySet()){
+			MatchGoalDTO matchGoal = new MatchGoalDTO();
+			matchGoal.setMatch_no(match.getMatch_no());
+			matchGoal.setPlayer_id(entry.getValue().get(0).getPlayer_id());
+			matchGoal.setGoaltime(entry.getKey());
+			matchGoal.setAssistedby(entry.getValue().get(1).getPlayer_id());
+			
+			match_goalList.add(matchGoal);
+		}
+		matchRepo.insertMatchGoal(match_goalList);
+		
+		// update team / match_flag -> 0 / match_address, match_day -> null
+		match.setMatchdate(null);
+		List<MatchDTO> updateTeamList = new ArrayList<>();
+		updateTeamList.add(match);
+		matchRepo.updateMatchFlag(updateTeamList);
 		
 		return "success";
 	}
