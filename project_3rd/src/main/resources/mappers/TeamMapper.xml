@@ -26,6 +26,11 @@
 		select * from player where team_name = #{team_name}
 
 	</select>
+	<select id="selectTeam3" resultType="PlayerDTO"
+		parameterType="String">
+		select player_id,to_char(birth,'yyyy') as birth from player where team_name = #{team_name}
+
+	</select>
 	<select id="getTeamCount" parameterType="map" resultType="int">
 		SELECT
 		count(*)
@@ -134,26 +139,23 @@
 			match_flag = '1'
 	</select>
 	<select id="selectMatch" parameterType="String" resultType="MatchDTO">
-		select
-		    away_team_name
-		    ,matchdate
-		    ,match_address
+	select
+		  *
 		from
 		(
 		    select
-		        away_team_name
-			    ,matchdate
-			    ,match_address
+		        *
 		    from
 		        match
 			where
-				team_name = #{team_name} or away_team_name = #{team_name}
+				team_name = #{team_name} or away_team_name = #{team_name} 
 		    order by
 		        matchdate desc
 		)
 		where
 		    rownum = 1
 	</select>
+	
 	<update id="countUpHeadcount" parameterType="TeamDTO">
 		<selectKey resultType="int" keyProperty="headcount" order="BEFORE">
 			select
@@ -170,4 +172,38 @@
 		where
 			team_name = #{team_name}
 	</update>
+	
+	<select id="selectMatch2" parameterType="String" resultType="MatchDTO">
+	select
+		 *
+		from
+		(
+		    select
+		       *
+		    from
+		        match
+			where
+				team_name = #{team_name} or away_team_name = #{team_name} 
+				
+				and away_teamscore!=null
+		    order by
+		        matchdate desc
+		)
+		where
+		    rownum = 1
+	</select>
+	
+	<select id="selectMatch3" parameterType="String" resultType="MatchDTO">
+		    select
+		       *
+		    from
+		        match
+			where
+				team_name = #{team_name} or away_team_name = #{team_name} 
+				
+				and away_teamscore!=null
+		    order by
+		        matchdate desc
+
+	</select>
 </mapper>

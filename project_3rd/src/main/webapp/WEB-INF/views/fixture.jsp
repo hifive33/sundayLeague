@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +46,11 @@
     
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="resources/css/responsive.css">
-
+<style>
+.resultList th{
+text-align: center;
+}
+</style>
 </head>
 <body>
     
@@ -58,140 +63,99 @@
     <!-- Breadcromb Area End -->
     
     <!-- Fixture Page Next Match Start -->
-    <section class="kick-fixture-page-next-match section_100">
+      <section class="kick-tickets-list-area section_100">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="fixture-page-next-match-left">
                         <div class="single-upcoming-match">
                             <div id="coming-soon"></div>
                             <h2>next match started in</h2>
-                            <div class="upcoming-match-box">
-                                <h4>Laliga Semi Finals at city stadium</h4>
-                                <p>Friday, 10th Sep, 2016, 16:00GMT</p>
-                                <div class="upcoming-teams-head">
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <div class="team-head-image">
-                                                <a href="#">
-                                                    <img src="resources/img/team-2.png" alt="team image" />
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <div class="team-head-vs">
-                                                <span>VS</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <div class="team-head-image">
-                                                <a href="#">
-                                                    <img src="resources/img/team-3.png" alt="team image" />
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="upcoming-match-btn">
-                                    <a href="#" class="kick-btn">Buy tickets </a>
-                                    <a href="#" class="kick-btn">view more</a>
-                                </div>
-                            </div>
+                            <c:if test="${flag == '0'}">
+	                            <div class="upcoming-match-box">
+	                                <h4>위치</h4>
+	                                <p>날짜</p>
+	                                <div class="upcoming-teams-head">
+	                                    <div class="row">
+	                                        <div class="col-sm-5">
+	                                            <div class="team-head-image">
+                                                    <img src="resources/img/emblem-question.png" alt="team image" />
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-sm-2">
+	                                            <div class="team-head-vs">
+	                                                <span>VS</span>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-sm-5">
+	                                            <div class="team-head-image">
+                                                    <img src="resources/img/emblem-question.png" alt="team image" />
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <h4>Sunday League</h4>
+	                            </div>
+                            </c:if>
+                            <c:if test="${flag == '1'}">
+	                            <div class="upcoming-match-box">
+	                                <h4>위치</h4>
+	                                <p>날짜</p>
+	                                <div class="upcoming-teams-head">
+	                                    <div class="row">
+	                                        <div class="col-sm-5">
+	                                            <div class="team-head-image">
+	                                                <a href="myteam">
+	                                                    <img src="emblemimg/${team_name}" alt="my team image" />
+	                                                </a>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-sm-2">
+	                                            <div class="team-head-vs">
+	                                                <span>VS</span>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-sm-5">
+	                                            <div class="team-head-image">
+                                                   	<img src="resources/img/emblem-question.png" alt="away team image" />
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <h4>Sunday League</h4>
+	                            </div>
+                            </c:if>
+                            <c:if test="${flag > '1'}">
+	                            <div class="upcoming-match-box">
+	                                <h4>${match_address}</h4>
+	                                <p>${matchdate}</p>
+	                                <div class="upcoming-teams-head">
+	                                    <div class="row">
+	                                        <div class="col-sm-5">
+	                                            <div class="team-head-image">
+	                                                <a href="myteam">
+	                                                    <img src="emblemimg/${team_name}" alt="my team image" />
+	                                                </a>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-sm-2">
+	                                            <div class="team-head-vs">
+	                                                <span>VS</span>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-sm-5">
+	                                            <div class="team-head-image">
+	                                                <a href="teamdetails?team_name=${away_team_name}">
+	                                                    <img src="emblemimg/${away_team_name}" alt="away team image" />
+	                                                </a>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <h4>Sunday League</h4>
+	                            </div>
+                            </c:if>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="fixture-page-next-match-right">
-                        <table class="table table-striped table-responsive">
-                            <thead>
-                                <tr>
-                                    <th>team</th>
-                                    <th>w</th>
-                                    <th>d</th>
-                                    <th>l</th>
-                                    <th>pts</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Chelsea</td>
-                                    <td>12</td>
-                                    <td>03</td>
-                                    <td>00</td>
-                                    <td>54</td>
-                                </tr>
-                                <tr>
-                                    <td>Aresenal</td>
-                                    <td>12</td>
-                                    <td>03</td>
-                                    <td>00</td>
-                                    <td>54</td>
-                                </tr>
-                                <tr>
-                                    <td>Real Soccer</td>
-                                    <td>12</td>
-                                    <td>03</td>
-                                    <td>00</td>
-                                    <td>54</td>
-                                </tr>
-                                <tr>
-                                    <td>Real Madrid</td>
-                                    <td>12</td>
-                                    <td>03</td>
-                                    <td>00</td>
-                                    <td>54</td>
-                                </tr>
-                                <tr>
-                                    <td>City Club</td>
-                                    <td>12</td>
-                                    <td>03</td>
-                                    <td>00</td>
-                                    <td>54</td>
-                                </tr>
-                                <tr>
-                                    <td>Aresenal</td>
-                                    <td>12</td>
-                                    <td>03</td>
-                                    <td>00</td>
-                                    <td>54</td>
-                                </tr>
-                                <tr>
-                                    <td>Real Soccer</td>
-                                    <td>12</td>
-                                    <td>03</td>
-                                    <td>00</td>
-                                    <td>54</td>
-                                </tr>
-                                <tr>
-                                    <td>Real Madrid</td>
-                                    <td>12</td>
-                                    <td>03</td>
-                                    <td>00</td>
-                                    <td>54</td>
-                                </tr>
-                                <tr>
-                                    <td>Chelsea</td>
-                                    <td>12</td>
-                                    <td>03</td>
-                                    <td>00</td>
-                                    <td>54</td>
-                                </tr>
-                                <tr>
-                                    <td>Aresenal</td>
-                                    <td>12</td>
-                                    <td>03</td>
-                                    <td>00</td>
-                                    <td>54</td>
-                                </tr>
-                                <tr>
-                                    <td>Chelsea</td>
-                                    <td>12</td>
-                                    <td>03</td>
-                                    <td>00</td>
-                                    <td>54</td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
@@ -220,15 +184,16 @@
                                 <h3 class="result">win</h3>
                                 <div class="result-details">
                                     <h3 class="result-details-left">
-                                        <a href="#">kick dragon</a>
+                                        <a href="#">${left }</a>
                                     </h3>
                                     <ul>
-                                        <li><p>Roman Fenley</p><span>(15)</span></li>
-                                        <li><p>Jonah Jolicoeur</p><span>(39)</span></li>
-                                        <li><p>Miguel Beckel</p><span>(25)</span></li>
+                                    <c:forEach var="list" items="${l_player }">
+                           
+                                        <li>${list.player_id}<span>(${2020-list.birth})</span></li>
+                                        </c:forEach>
                                     </ul>
                                     <div class="last-match-logo">
-                                        <a href="#"><img src="resources/img/team-4.png" alt="logo" /></a>
+                                        <a href="#"><img src="/emblemimg/${left}" alt="logo" /></a>
                                     </div>
                                 </div>
                             </div>
@@ -236,7 +201,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="last-match-score">
-                            <h2>3 <span class="devider">/</span> <span class="lose-point">2</span> </h2>
+                            <h2>${l_score} <span class="devider">/</span> <span class="lose-point">${r_score}</span> </h2>
                         </div>
                     </div>
                     <div class="col-md-5">
@@ -245,17 +210,18 @@
                                 <h3 class="result">lose</h3>
                                 <div class="result-details">
                                     <div class="last-match-logo-right">
-                                        <a href="#"><img src="resources/img/team-2.png" alt="logo" /></a>
+                                        <a href="#"><img src="/emblemimg/${right }" alt="logo" /></a>
                                     </div>
                                     <h3 class="result-details-right">
                                         <a href="#">
-                                            kick ninja
+                                           ${right }
                                         </a>
                                     </h3>
                                     <ul>
-                                        <li><p>Roman Fenley</p><span>(15)</span></li>
-                                        <li><p>Jonah Jolicoeur</p><span>(39)</span></li>
-                                        <li><p>Miguel Beckel</p><span>(25)</span></li>
+                                    <c:forEach var="list2" items="${r_player }">
+                                        <li>${list2.player_id}<span>(${2020-list2.birth})</span></li>
+                                        </c:forEach>
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -265,270 +231,28 @@
             </div>
             <div class="row">
                 <div class="view-all-result">
-                    <a href="#" class="kick-btn">view all result</a>
+                    <a id="resultlist"class="kick-btn">view all result</a>
                 </div>
             </div>
+            
+            	<div class="resultListWrap" style="position: absolute; top: 0; padding: 50px; left: 0; display:none; width: 100%; height: 100%; background: #000000cc">
+            		<div class="resultList" style="display: block; margin: 0 auto; width: 400px; text-align:center; height: 100%; background: #ffffffaa; vertical-align: middle">
+ 					<table style="width: 100%">
+ 					<thead>
+ 					<tr style="background: #00000077;text-align: center;">
+ 					<th>Home</th><th>Away</th><th colspan="2">Score</th><th>Location</th>
+ 					
+ 					</tr>
+ 					</thead>
+ 					<tbody id="resultList">
+ 
+ 					</tbody>
+ 					</table>     		
+            		</div>
+    		</div>
         </div>
     </section>
     <!-- Last Match Result Area End -->
-    
-    
-    <!-- Upcoming Matches Area Start -->
-    <section class="kick-upcoming-mathces-area section_100">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="kick-section-heading">
-                        <h2>upcoming <span>matches</span></h2>
-                        <div class="title-line-one"></div>
-                        <div class="title-line-two"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="single-upcoming-match">
-                        <h3>Upcoming Match</h3>
-                        <p>10th sep<span>2017</span></p>
-                        <div class="upcoming-match-box">
-                            <h4>Laliga Semi Finals at city stadium</h4>
-                            <p>Friday, 10th Sep, 2016, 16:00GMT</p>
-                            <div class="upcoming-teams-head">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <div class="team-head-image">
-                                            <a href="#">
-                                                <img src="resources/img/team-2.png" alt="team image" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="team-head-vs">
-                                            <span>VS</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <div class="team-head-image">
-                                            <a href="#">
-                                                <img src="resources/img/team-3.png" alt="team image" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="upcoming-match-btn">
-                                <a href="#" class="kick-btn">Buy tickets </a>
-                                <a href="#" class="kick-btn">view more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="single-upcoming-match">
-                        <h3>Upcoming Match</h3>
-                        <p>10th sep<span>2017</span></p>
-                        <div class="upcoming-match-box">
-                            <h4>Laliga Semi Finals at city stadium</h4>
-                            <p>Friday, 10th Sep, 2016, 16:00GMT</p>
-                            <div class="upcoming-teams-head">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <div class="team-head-image">
-                                            <a href="#">
-                                                <img src="resources/img/team-4.png" alt="team image" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="team-head-vs">
-                                            <span>VS</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <div class="team-head-image">
-                                            <a href="#">
-                                                <img src="resources/img/team-2.png" alt="team image" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="upcoming-match-btn">
-                                <a href="#" class="kick-btn">Buy tickets </a>
-                                <a href="#" class="kick-btn">view more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="single-upcoming-match">
-                        <h3>Upcoming Match</h3>
-                        <p>10th sep<span>2017</span></p>
-                        <div class="upcoming-match-box">
-                            <h4>Laliga Semi Finals at city stadium</h4>
-                            <p>Friday, 10th Sep, 2016, 16:00GMT</p>
-                            <div class="upcoming-teams-head">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <div class="team-head-image">
-                                            <a href="#">
-                                                <img src="resources/img/team-4.png" alt="team image" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="team-head-vs">
-                                            <span>VS</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <div class="team-head-image">
-                                            <a href="#">
-                                                <img src="resources/img/team-2.png" alt="team image" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="upcoming-match-btn">
-                                <a href="#" class="kick-btn">Buy tickets </a>
-                                <a href="#" class="kick-btn">view more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="single-upcoming-match">
-                        <h3>Upcoming Match</h3>
-                        <p>10th sep<span>2017</span></p>
-                        <div class="upcoming-match-box">
-                            <h4>Laliga Semi Finals at city stadium</h4>
-                            <p>Friday, 10th Sep, 2016, 16:00GMT</p>
-                            <div class="upcoming-teams-head">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <div class="team-head-image">
-                                            <a href="#">
-                                                <img src="resources/img/team-4.png" alt="team image" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="team-head-vs">
-                                            <span>VS</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <div class="team-head-image">
-                                            <a href="#">
-                                                <img src="resources/img/team-2.png" alt="team image" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="upcoming-match-btn">
-                                <a href="#" class="kick-btn">Buy tickets </a>
-                                <a href="#" class="kick-btn">view more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="single-upcoming-match">
-                        <h3>Upcoming Match</h3>
-                        <p>10th sep<span>2017</span></p>
-                        <div class="upcoming-match-box">
-                            <h4>Laliga Semi Finals at city stadium</h4>
-                            <p>Friday, 10th Sep, 2016, 16:00GMT</p>
-                            <div class="upcoming-teams-head">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <div class="team-head-image">
-                                            <a href="#">
-                                                <img src="resources/img/team-4.png" alt="team image" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="team-head-vs">
-                                            <span>VS</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <div class="team-head-image">
-                                            <a href="#">
-                                                <img src="resources/img/team-2.png" alt="team image" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="upcoming-match-btn">
-                                <a href="#" class="kick-btn">Buy tickets </a>
-                                <a href="#" class="kick-btn">view more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="single-upcoming-match">
-                        <h3>Upcoming Match</h3>
-                        <p>10th sep<span>2017</span></p>
-                        <div class="upcoming-match-box">
-                            <h4>Laliga Semi Finals at city stadium</h4>
-                            <p>Friday, 10th Sep, 2016, 16:00GMT</p>
-                            <div class="upcoming-teams-head">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <div class="team-head-image">
-                                            <a href="#">
-                                                <img src="resources/img/team-3.png" alt="team image" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="team-head-vs">
-                                            <span>VS</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <div class="team-head-image">
-                                            <a href="#">
-                                                <img src="resources/img/team-2.png" alt="team image" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="upcoming-match-btn">
-                                <a href="#" class="kick-btn">Buy tickets </a>
-                                <a href="#" class="kick-btn">view more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="pagination-box">
-                        <ul class="pagination">
-                            <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li class="active"><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Upcoming Matches Area End -->
     
     <!-- Footer Area Start -->
     <%@include file="menu/footerArea.jsp"%>
@@ -575,6 +299,32 @@
 			$(".breadcromb-box > h2").html("Fixture")
 			$(".breadcromb-box ul li:last-child").html("Fixture")
 			$(".kick-header-area a[href=fixture]").parent().attr('class', 'current-page-item')
+			var dday = '${dday}' 
+			$('#coming-soon').countdown(dday, function (event) {
+	            var $this = $(this).html(event.strftime('' + '<p><span>%D</span>days</p>  ' + '<p><span>%H</span>Hours</p>  ' + '<p><span>%M</span>Minutes</p>  ' + '<p><span>%S</span>Seconds</p> '));
+	        });
+			$("#resultlist").on('click',function(){
+				$(".resultListWrap").css('display','block');
+			})
+			$(".resultList").on('click',function(){
+				$(".resultListWrap").css('display','none');
+			})
+			
+			
+			
+			$("#resultlist").on('click',function(){
+				var result = 'id="resultList"';
+				$.ajax({
+					url:"fixturelist",
+					type:"POST",
+					success:function(res){
+						$.each(res,function(index,item){
+							result += '<tr><td>'+item.team_name+'</td><td>'+item.away_team_name+'</td><td>'+item.away_teamscore+'</td><td>'+item.home_teamscore+'</td><td>'+item.match_address+'</td></tr>'
+						})
+						$("#resultList").html(result);
+					}
+				})
+			})
 		})
 	</script>
 </body>
