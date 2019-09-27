@@ -15,6 +15,7 @@ public interface TeamMapper {
 	int insertTeam(Map<String, Object> map);
 	TeamDTO selectTeam(String team_name);
 	List<PlayerDTO> selectTeam2(String team_name);
+	List<PlayerDTO> selectTeam3(String team_name);
 	int getTeamCount(Map<String,String>map);
 	List<TeamDTO> selectTeamList(Map<String, String> map, RowBounds rb);
 	int deleteTeam(String team_name);
@@ -22,6 +23,7 @@ public interface TeamMapper {
 	String getMatch_flag(String team_name);
 	List<TeamMatchingDTO> selectMatchTeamList();
 	MatchDTO selectMatch(String team_name);
+	MatchDTO selectMatch2(String team_name);
 	int countUpHeadcount(TeamDTO team);
-
+	List<MatchDTO>selectMatch3(String team_name);
 }

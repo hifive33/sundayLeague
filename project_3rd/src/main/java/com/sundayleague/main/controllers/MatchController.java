@@ -149,4 +149,59 @@ public class MatchController {
 		
 		return "success";
 	}
+	
+	@GetMapping("/fixture")
+	public void fixture(HttpSession session, Model model) {
+		
+		SimpleDateFormat format = new SimpleDateFormat();
+ 		format.applyPattern("yyyy/MM/dd");
+		Calendar c = Calendar.getInstance();
+ 		if(c.get(Calendar.DAY_OF_WEEK) <= 4){
+ 			c.set(Calendar.DAY_OF_WEEK,Calendar.THURSDAY);
+ 		} else{
+ 			c.add(Calendar.DATE, 7);
+ 			c.set(Calendar.DAY_OF_WEEK,Calendar.THURSDAY);
+ 		}
+ 		model.addAttribute("dday", format.format(c.getTime()));
+ 		String matchFlag = teamRepo.getMatchFlag((String)session.getAttribute("team_name"));
+ 		model.addAttribute("flag", matchFlag);
+		if (Integer.parseInt(matchFlag) > 1){
+			MatchDTO match = teamRepo.selectMatch((String)session.getAttribute("team_name"));
+			model.addAttribute("away_team_name", match.getAway_team_name());
+			model.addAttribute("matchdate", match.getMatchdate());
+			model.addAttribute("match_address", match.getMatch_address());
+		}
+ 		
+		MatchDTO result = teamRepo.selectMatch2((String)session.getAttribute("team_name"));
+		List<PlayerDTO> result2 = teamRepo.selectTeam3(result.getTeam_name());
+		List<PlayerDTO> result3 = teamRepo.selectTeam3(result.getAway_team_name());
+		
+		
+		if(Integer.parseInt(result.getHome_teamscore())<Integer.parseInt(result.getAway_teamscore())){
+			model.addAttribute("left",result.getAway_team_name());
+			model.addAttribute("right", result.getTeam_name());
+			model.addAttribute("l_score",result.getAway_teamscore());
+			model.addAttribute("r_score",result.getHome_teamscore());
+			model.addAttribute("l_player",result3);
+			model.addAttribute("r_player",result2);
+		}else {
+			model.addAttribute("right",result.getAway_team_name());
+			model.addAttribute("left", result.getTeam_name());
+			model.addAttribute("r_score",result.getAway_teamscore());
+			model.addAttribute("l_score",result.getHome_teamscore());
+			model.addAttribute("l_player",result2);
+			model.addAttribute("r_player",result3);
+		}
+		
+	}
+	
+	@PostMapping("/fixturelist")
+	@ResponseBody
+	public List<MatchDTO> fixturelist(HttpSession session) {
+		List<MatchDTO> list = teamRepo.selectMatch3((String)session.getAttribute("team_name"));
+		return list;
+	}
+	
+	
+	
 }
