@@ -139,12 +139,20 @@
 			match_flag = '1'
 	</select>
 	<select id="selectMatch" parameterType="String" resultType="MatchDTO">
-	select
-		  *
+		select
+			match_no
+			,team_name
+		    ,away_team_name
+		    ,matchdate
+		    ,match_address
 		from
 		(
 		    select
-		        *
+		        match_no
+		        ,team_name
+		    	,away_team_name
+			    ,matchdate
+			    ,match_address
 		    from
 		        match
 			where
