@@ -14,11 +14,7 @@ public class HomeController {
 	@GetMapping("/about")
 	public void about() {
 	}
-	
-	@GetMapping("/fixture")
-	public void fixture() {
-	}
-	
+
 	@GetMapping("/singlefixture")
 	public void singlefixture() {
 	}

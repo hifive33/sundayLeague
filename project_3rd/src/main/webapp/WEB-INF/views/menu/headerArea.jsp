@@ -57,12 +57,6 @@
                                     <li>
                                         <a href="about">サンデーリーグについて</a>
                                     </li>
-                                    <li id="fixture">
-                                        <a href="fixture">試合</a>
-                                        <ul>
-                                            <li><a href="fixture">試合一覧</a></li><li><a href="singlefixture">試合詳細</a></li>
-                                        </ul>
-                                    </li>
                                     <li>
                                         <a href="gallery">ギャラリー</a>
                                     </li>
@@ -93,6 +87,8 @@
 	                                            <c:if test="${sessionScope.team_name != null}">
 		                                            <li><a href="myteam">マイチーム詳細</a></li>
 		                                            <li><a href="calendar">スケジュール</a></li>
+		                                            <li><a href="fixture">試合</a></li>
+		                                            
 	                                            </c:if>
 	                                            <!-- 운영진 전용 -->
 	                                            <c:if test="${sessionScope.authority > 1}">
