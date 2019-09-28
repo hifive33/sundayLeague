@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.sundayleague.main.dto.CalendarDTO;
+import com.sundayleague.main.dto.MatchDTO;
 
 @Repository
 public class CalendarRepository {
@@ -43,6 +44,11 @@ public class CalendarRepository {
 		int result = mapper.deleteEvent(seq);
 				
 		return result;
+	}
+
+	public int insertMatchEvent(List<MatchDTO> matchList) {
+		CalendarMapper mapper = session.getMapper(CalendarMapper.class);
+		return mapper.insertMatchEvent(matchList);
 	}
 	
 	

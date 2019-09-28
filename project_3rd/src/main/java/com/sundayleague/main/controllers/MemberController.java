@@ -73,7 +73,7 @@ public class MemberController {
 	public void myaccount(HttpSession session, Model model) {
 		String loginId = (String)session.getAttribute("loginId");
 		PlayerDTO player = repo.selectProfile(loginId);
-		System.out.println(player);
+//		System.out.println(player);
 		model.addAttribute("player",player );		
 	}
 	

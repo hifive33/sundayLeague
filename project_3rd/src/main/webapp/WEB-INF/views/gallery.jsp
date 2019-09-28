@@ -73,7 +73,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="clearfix projectContainer projectContainer3column">
-                                    <div class="element-item  construction">
+                                    <!-- <div class="element-item  construction">
                                         <div class="single-match-gallery">
                                            <a href="resources/img/gallery-1.jpg" class="gallery-lightbox">
                                                 <div class="project-img">
@@ -180,7 +180,7 @@
                                                 </div>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

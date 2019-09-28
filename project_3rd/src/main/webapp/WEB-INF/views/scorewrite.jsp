@@ -179,12 +179,15 @@
 			
 			var count = 1
 			
-			var timetr = '<select><option>전반</option><option>후반</option><option>연장</option><option>PK</option></select><input type="number" /> :<input type="number" />'
+			var timetr = '<select class="timetr"><option>전반</option><option>후반</option><option>연장</option></select><input type="number" min="0" max="60 "/> :<input type="number" min="0" max="60" />'
 			
+				
+				  
 			$('.score-write-table').on('click', '.addhome', function(){
 				$(this).parent().parent().before('<tr class="score-write-item"><td class="score-write-table-close"><a href="" class="subhome" id="'+count+'"><i class="fa fa-close"></i></a></td><td class="score-write-table-select home-select"><select><option>--</option><option value="goal">GOAL</option><option value="redcard">Red Card</option><option value="yellowcard">Yellow Card</option></select></td><td class="score-write-table-personone"></td><td class="score-write-table-persontwo"></td></tr>');
 				$("#tabletime tbody").append('<tr class="score-write-table-time '+ count +'"><td>'+timetr+'</td></tr>')
 				$("#tabletwo tbody>tr:last-child").before('<tr class="'+ count +'"><td colspan="4"><i class="fa fa-ban"></i></td></tr>')
+				$("#tabletime tbody>tr:last-child .timetr").next().select()
 				count++
 				return false;
 			})
@@ -192,6 +195,7 @@
 				$(this).parent().parent().before('<tr class="score-write-item"><td class="score-write-table-close"><a href="" class="subaway" id="'+count+'"><i class="fa fa-close"></i></a></td><td class="score-write-table-select away-select"><select><option>--</option><option value="goal">GOAL</option><option value="redcard">Red Card</option><option value="yellowcard">Yellow Card</option></select></td><td class="score-write-table-personone"></td><td class="score-write-table-persontwo"></td></tr>');
 				$("#tabletime tbody").append('<tr class="score-write-table-time '+ count +'"><td>'+timetr+'</td></tr>')
 				$("#tableone tbody>tr:last-child").before('<tr class="'+ count +'"><td colspan="4"><i class="fa fa-ban"></i></td></tr>')
+				$("#tabletime tbody>tr:last-child .timetr").next().select()
 				count++
 				return false;
 			})
@@ -208,6 +212,26 @@
 				$("#tabletime tbody>tr." + c).remove()
 				$("#tableone tbody>tr." + c).remove()
 				return false;
+			})
+			.on('keydown', 'input[type=number]', function(){
+				// Save old value.
+				if (!$(this).val() || (parseInt($(this).val()) <= 60 && parseInt($(this).val()) >= 0))
+				$(this).data("old", $(this).val())
+			})
+			.on('keyup', 'input[type=number]', function(){
+				// Check correct, else revert back to old value.
+				if (!$(this).val() || (parseInt($(this).val()) <= 60 && parseInt($(this).val()) >= 0)) ;
+				else $(this).val($(this).data("old"))
+			})
+			.on('change', 'select:not(.timetr)', function(){
+				if ($(this).val() != $(this).children()[0].innerHTML){
+					//alert("ㅇㅇ")
+				}else {
+					//alert("다른거")
+				}
+			})
+			.on('change', 'select.timetr', function(){
+				$(this).next().select()
 			})
 			.on('change', '.home-select > select', function(){
 				switch ($(this).val()) {
@@ -266,16 +290,23 @@
 					var data = {}
 					data.match_no = ${match_no}
 					
-					if (action == "--"){
+					if (action == "--" || $(item).children().children().next().val() == ""  || $(item).children().children().next().next().val()==""){
 					} else if (typeof action != "undefined"){
 						switch (action) {
 						case 'goal':
 							player_id = $(tableone[index]).children().next().next().children().val()
-							assists = $(tableone[index]).children().next().next().next().children().val()
+							
+							// validation
+							if (player_id == $(tableone[index]).children().next().next().children().children()[0].innerHTML) break;
+							
 							data.minutes_played = minutes_played
 							data.player_id = player_id
 							data.goal = "1"
 							dataList.push(data)
+
+							assists = $(tableone[index]).children().next().next().next().children().val()
+							// validation
+							if (assists == $(tableone[index]).children().next().next().next().children().children()[0].innerHTML) break;
 							
 							var data2 = {}
 							data2.match_no = ${match_no}
@@ -287,6 +318,9 @@
 							break;
 						case 'redcard':
 							player_id = $(tableone[index]).children().next().next().children().val()
+							// validation
+							if (player_id == $(tableone[index]).children().next().next().children().children()[0].innerHTML) break;
+							
 							data.minutes_played = minutes_played
 							data.player_id = player_id
 							data.redcard = "1"
@@ -295,6 +329,9 @@
 							break;
 						case 'yellowcard':
 							player_id = $(tableone[index]).children().next().next().children().val()
+							// validation
+							if (player_id == $(tableone[index]).children().next().next().children().children()[0].innerHTML) break;
+							
 							data.minutes_played = minutes_played
 							data.player_id = player_id
 							data.yellowcard = "1"
@@ -309,11 +346,17 @@
 						switch (action) {
 						case 'goal':
 							player_id = $(tabletwo[index]).children().next().next().children().val()
-							assists = $(tabletwo[index]).children().next().next().next().children().val()
+							// validation
+							if (player_id == $(tabletwo[index]).children().next().next().children().children()[0].innerHTML) break;
+							
 							data.minutes_played = minutes_played
 							data.player_id = player_id
 							data.goal = "1"
 							dataList.push(data)
+							
+							// validation
+							assists = $(tabletwo[index]).children().next().next().next().children().val()
+							if (assists == $(tabletwo[index]).children().next().next().next().children().children()[0].innerHTML) break;
 							
 							var data2 = {}
 							data2.match_no = ${match_no}
@@ -325,6 +368,9 @@
 							break;
 						case 'redcard':
 							player_id = $(tabletwo[index]).children().next().next().children().val()
+							// validation
+							if (player_id == $(tabletwo[index]).children().next().next().children().children()[0].innerHTML) break;
+							
 							data.minutes_played = minutes_played
 							data.player_id = player_id
 							data.redcard = "1"
@@ -333,6 +379,9 @@
 							break;
 						case 'yellowcard':
 							player_id = $(tabletwo[index]).children().next().next().children().val()
+							// validation
+							if (player_id == $(tabletwo[index]).children().next().next().children().children()[0].innerHTML) break;
+							
 							data.minutes_played = minutes_played
 							data.player_id = player_id
 							data.yellowcard = "1"

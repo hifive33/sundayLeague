@@ -132,6 +132,7 @@
 			, rating as rating
 			, substr(region, 0, 2) as region
 			, nvl2(match_address, '1', '0') as stadium
+			, match_address
 			, match_day
 		from
 			team
