@@ -138,6 +138,7 @@
 		#{contact_message}
 		)
 	</insert>
+
 	<select id="checkId" parameterType="String" resultType="String">
 		select
 			count(*)

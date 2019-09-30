@@ -41,6 +41,10 @@ public class TeamRepository {
 		TeamMapper mapper = session.getMapper(TeamMapper.class);
 		return mapper.selectTeam3(team_name);
 	}
+	public List<PlayerDTO> selectTeam4(String team_name){
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		return mapper.selectTeam4(team_name);
+	}
 	public int getTeamCount(String region,String searchWord) {
 		TeamMapper mapper = session.getMapper(TeamMapper.class);
 		Map<String,String> map = new HashMap<>();
@@ -96,5 +100,10 @@ public class TeamRepository {
 	public List<MatchDTO> selectMatch3(String team_name) {
 		TeamMapper mapper = session.getMapper(TeamMapper.class);
 		return mapper.selectMatch3(team_name);
+	}
+	
+	public int countHead(String team_name) {
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		return mapper.countHead(team_name);
 	}
 }

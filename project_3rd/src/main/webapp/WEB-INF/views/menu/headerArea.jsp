@@ -93,12 +93,8 @@
 	                                            <!-- 운영진 전용 -->
 	                                            <c:if test="${sessionScope.authority > 1}">
 		                                            <li><a href="#">試合申請</a></li>
-		                                            <li><a href="#">チーム情報</a></li>
 	                                            </c:if>
 	                                            <!-- 감독 전용 -->
-	                                            <c:if test="${sessionScope.authority == 3}">
-	                                            	<li><a href="#">コーチ任命</a></li>
-	                                            </c:if>
 	                                        </ul>
                                         </c:if>
                                     </li>
