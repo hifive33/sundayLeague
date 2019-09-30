@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sundayleague.main.dto.CalendarDTO;
+import com.sundayleague.main.dto.MatchDTO;
 
 public interface CalendarMapper {
 
@@ -19,6 +20,8 @@ public interface CalendarMapper {
 	ArrayList<CalendarDTO> selectAllEvent(String team_name);
 
 	int deleteEvent(int seq);
+
+	int insertMatchEvent(List<MatchDTO> matchList);
 
 
 

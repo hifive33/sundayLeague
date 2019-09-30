@@ -12,6 +12,7 @@
 				,team_name
 				,away_team_name
 				,matchdate
+				,match_address
 			)
 			values
 			(
@@ -19,6 +20,7 @@
 				,#{item.team_name}
 				,#{item.away_team_name}
 				,#{item.matchdate}
+				,#{item.match_address}
 			)
 		</foreach>
 	</insert>
@@ -38,6 +40,19 @@
 	        where
 	        	team_name = #{item.team_name} or team_name = #{item.away_team_name}
 	    </foreach>
+	</update>
+	<update id="updateTeamWinLoseRating" parameterType="list">
+		<foreach  item="item" collection="list"  index="index" separator=";" open="DECLARE BEGIN" close="; END;" >
+        update
+        	team
+        set
+        	victory = #{item.victory}
+        	,defeat = #{item.defeat}
+        	,draw = #{item.draw}
+        	,rating = #{item.rating}
+        where
+        	team_name = #{item.team_name}
+        </foreach>
 	</update>
 	<insert id="scorewrite" parameterType="List" >
 		<foreach collection="list" item="item" index="index" open="INSERT ALL " separator=" " close="SELECT * FROM DUAL" >
@@ -104,7 +119,9 @@
 				,match_no
 				,player_id
 				,goaltime
+			<if test="item.assistedby != null">
 				,assistedby
+			</if>
 			)
 			values
 			(
@@ -112,7 +129,9 @@
 				,#{item.match_no}
 				,#{item.player_id}
 				,#{item.goaltime}
+			<if test="item.assistedby != null">
 				,#{item.assistedby}
+			</if>
 			)
 		</foreach>
 	</insert>

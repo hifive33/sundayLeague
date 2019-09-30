@@ -46,4 +46,44 @@
 		WHERE
 			seq=#{seq}
 	</delete>
+	<insert id="insertMatchEvent" parameterType="list">
+		<foreach collection="list" item="item" index="index" open="INSERT ALL " separator=" " close="SELECT * FROM DUAL" > 
+			into calendar
+			(
+				seq
+				,team_name
+				,title
+				,description
+				,startdate
+				,enddate
+			)
+			values
+			(
+				get_seq_calendar_no()
+				,#{item.team_name}
+				,'MATCH'
+				,#{item.match_no}
+				,#{item.matchdate}
+				,#{item.matchdate}
+			)
+			into calendar
+			(
+				seq
+				,team_name
+				,title
+				,description
+				,startdate
+				,enddate
+			)
+			values
+			(
+				get_seq_calendar_no()
+				,#{item.away_team_name}
+				,'MATCH'
+				,#{item.match_no}
+				,#{item.matchdate}
+				,#{item.matchdate}
+			)
+		</foreach>
+	</insert>
 </mapper>
