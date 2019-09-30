@@ -18,6 +18,7 @@ import javax.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sundayleague.main.dao.CalendarRepository;
 import com.sundayleague.main.dao.MatchRepository;
 import com.sundayleague.main.dao.TeamRepository;
 import com.sundayleague.main.dto.MatchDTO;
@@ -27,7 +28,7 @@ import com.sundayleague.main.dto.TeamMatchingDTO;
 @Service
 public class MatchTimeThread implements Runnable { // (1)
 	
-	private TeamMatching team = new TeamMatching();
+	private TeamMatching teamMatching = new TeamMatching();
 	private List<TeamMatchingDTO> list = new ArrayList<>();
 	private Map<String, String> result = new HashMap<>();
 	private Map<List<String>, List<TeamMatchingDTO>> groupedByRegionDay = null;
@@ -37,6 +38,9 @@ public class MatchTimeThread implements Runnable { // (1)
 	
 	@Autowired
 	MatchRepository matchRepo;
+	
+	@Autowired
+	CalendarRepository calendarRepo;
 	
     /** 작업을 수행할 thread */
     private Thread thread;
@@ -82,12 +86,12 @@ public class MatchTimeThread implements Runnable { // (1)
             	// group별 matching
             	for (Map.Entry<List<String>, List<TeamMatchingDTO>> entry : groupedByRegionDay.entrySet()){
             		// 확인용 출력
-            		System.out.println(entry.getKey() + team.matching(entry.getValue()).toString());
-            		result = team.matching(entry.getValue());
+//            		System.out.println(entry.getKey() + teamMatching.matching(entry.getValue()).toString());
+            		result = teamMatching.matching(entry.getValue());
             		
-            		// Map 키값 오름차순 정렬 후 
+            		// Map 키값 오름차순 정렬
             		TreeMap<String,String> tm = new TreeMap<String,String>(result);
-            		Iterator<String> iteratorKey = tm.keySet( ).iterator( );
+            		Iterator<String> iteratorKey = tm.keySet().iterator();
             		int count = 0, max = tm.size()/2;
             		List<MatchDTO> matchList = new ArrayList<>();
             		while(iteratorKey.hasNext()) {
@@ -95,11 +99,16 @@ public class MatchTimeThread implements Runnable { // (1)
             			if (count < max){
             				// away 팀 순서대로
             				matchList.add(new MatchDTO());
-            				matchList.get(count).setTeam_name(tm.get(key));
+            				matchList.get(count).setAway_team_name(tm.get(key));
             			} else{
             				// home 팀 순서대로
-            				matchList.get(count - max).setAway_team_name(tm.get(key));
+            				matchList.get(count - max).setTeam_name(tm.get(key));
             				matchList.get(count - max).setMatchdate((entry.getKey().get(1).equals("sat")) ? this.getCurSaterday() : this.getCurSunday());
+            				for (TeamMatchingDTO teamMatching : entry.getValue()){
+            					if (teamMatching.getName().equals(tm.get(key))){
+            						matchList.get(count - max).setMatch_address(teamMatching.getMatch_address());
+            					}
+            				}
             			}
             			count++;
             		}
@@ -112,9 +121,13 @@ public class MatchTimeThread implements Runnable { // (1)
             			matchRepo.updateMatchFlag(matchList);
             			// matching log table에 추가
             			matchRepo.insertMatches(matchList);
+            			// insert calendar
+            			for (MatchDTO match : matchList){
+            				String str = match.getTeam_name() + " VS " + match.getAway_team_name();
+            				match.setMatch_no(str);
+            			}
+            			calendarRepo.insertMatchEvent(matchList);
             		}
-            		
-            		// match_flag 는 점수 입력후 2 -> 0, match_region, match_day -> null
             		
             	}
             	

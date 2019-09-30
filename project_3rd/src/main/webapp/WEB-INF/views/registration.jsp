@@ -69,25 +69,30 @@
                         </div>
                         <form action=registration method="post" enctype="multipart/form-data">
                             <div class="account-form-group">
-                                <input type="text" placeholder="ID" name=player_id >
+                                <input type="text" placeholder="ID" name="player_id" >
                                 <i class="fa fa-user-o"></i>
                             </div>
+							<div id="id_check" style="color:red !important;text-align: right;"></div>
                             <div class="account-form-group">
                                 <input type="text" placeholder="お名前" name="name" >
                                 <i class="fa fa-user"></i>
                             </div>
+							<div id="name_check" style="color:red !important;text-align: right;"></div>
                             <div class="account-form-group">
                                 <input type="email" placeholder="Email Address" name="email" >
                                 <i class="fa fa-envelope-o"></i>
                             </div>
+							<div id="email_check" style="color:red !important;text-align: right;"></div>
                             <div class="account-form-group">
-                                <input type="password" placeholder="パスワード" name="password" >
+                                <input type="password" placeholder="パスワード" name="password" id="pw">
                                 <i class="fa fa-lock"></i>
                             </div>
+							<div id="pw_check" style="color:red !important;text-align: right;"></div>
                             <div class="account-form-group">
                                 <input type="password" placeholder="パスワード再確認" id="confirm">
                                 <i class="fa fa-lock"></i>
                             </div>
+							<div id="confirm_check" style="color:red !important;text-align: right;"></div>
                             <hr>
                             <div class="account-form-group">
                             	<select name="position">
@@ -232,6 +237,7 @@
     <!-- script -->
 	<script>
 		$(function(){
+			var validation = [false, false, false, false, false, false, false, false, false, false, false, false, false]
 			$(".breadcromb-box > h2").html("Registraion")
 			$(".breadcromb-box ul li:last-child").html("Registraion")
 			$(".account-form-group > select").on('change', function(){
@@ -244,58 +250,81 @@
 				}
 			})
 			
-			$(".account-form-group > input[name=player_id]").on('change', function(){
-				// validation 추가
-				if ($(this).val() != ""){
-					$(this).next().removeClass("fa-user-o");
-					$(this).next().addClass("fa-check");
-				}else {
+			$(".account-form-group > input[name=player_id]").on('keyup', function(){
+				if ($(this).val().length < 3 || $(this).val().length > 10){
+					$("#id_check").html("ID는 3~10자리만 가능합니다.")
 					$(this).next().removeClass("fa-check");
 					$(this).next().addClass("fa-user-o");
+				}else {
+					$.ajax({
+						method:'get'
+						,url:'checkId'
+						,data:'player_id=' + $(this).val()
+						,success:function(res){
+							var temp = ".account-form-group > input[name=player_id]"
+							if (res == 'success'){
+								$("#id_check").html("이미 존재하는 ID 입니다")
+								$(temp).next().removeClass("fa-check");
+								$(temp).next().addClass("fa-user-o");
+							} else{
+								$("#id_check").html("")
+								$(temp).next().removeClass("fa-user-o");
+								$(temp	).next().addClass("fa-check");
+							}
+						}
+					})
 				}
 			})
 			
-			$(".account-form-group > input[name=name]").on('change', function(){
-				// validation 추가
+			$(".account-form-group > input[name=name]").on('keyup', function(){
 				if ($(this).val() != ""){
+					$("#name_check").html("")
 					$(this).next().removeClass("fa-user");
 					$(this).next().addClass("fa-check");
 				}else {
+					$("#name_check").html("이름을 입력하세요.")
 					$(this).next().removeClass("fa-check");
 					$(this).next().addClass("fa-user");
 				}
 			})
 			
-			$(".account-form-group > input[name=email]").on('change', function(){
+			$(".account-form-group > input[name=email]").on('keyup', function(){
+				var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 				// validation 추가
-				if ($(this).val() != ""){
-					$(this).next().removeClass("fa-envelope-o");
-					$(this).next().addClass("fa-check");
-				}else {
+				if(!emailRule.test($(this).val())) {
+					$("#email_check").html("올바른 email을 입력하세요.")
 					$(this).next().removeClass("fa-check");
 					$(this).next().addClass("fa-envelope-o");
+				}else{
+					$("#email_check").html("")
+					$(this).next().removeClass("fa-envelope-o");
+					$(this).next().addClass("fa-check");
 				}
 			})
 			
-			$(".account-form-group > input[name=password]").on('change', function(){
+			$(".account-form-group > input[name=password]").on('keyup', function(){
 				// validation 추가
-				if ($(this).val() != ""){
-					$(this).next().removeClass("fa-lock");
-					$(this).next().addClass("fa-check");
-				}else {
+				if($(this).val().length < 3 || $(this).val().length > 10){
+					$("#pw_check").html("pw는 3~10자리만 가능합니다.")
 					$(this).next().removeClass("fa-check");
 					$(this).next().addClass("fa-lock");
+				} else{
+					$("#pw_check").html("")
+					$(this).next().removeClass("fa-lock");
+					$(this).next().addClass("fa-check");
 				}
 			})
 			
-			$("#confirm").on('change', function(){
+			$("#confirm").on('keyup', function(){
 				// validation 추가
-				if ($(this).val() != ""){
-					$(this).next().removeClass("fa-lock");
-					$(this).next().addClass("fa-check");
-				}else {
+				if ($(this).val() != $("#pw").val()){
+					$("#confirm_check").html("password가 일치하지 않습니다.")
 					$(this).next().removeClass("fa-check");
 					$(this).next().addClass("fa-lock");
+				}else {
+					$("#confirm_check").html("")
+					$(this).next().removeClass("fa-lock");
+					$(this).next().addClass("fa-check");
 				}
 			})
 			

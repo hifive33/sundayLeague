@@ -81,7 +81,7 @@
 	                            <thead>
 	                                <tr>
 	                                    <th></th>
-	                                    <th colspan="5">${team_name} (Home Team)</th>
+	                                    <th colspan="5">${home_team_name} (Home Team)</th>
 	                                </tr>
 	                            </thead>
 	                            <tbody>
@@ -179,12 +179,15 @@
 			
 			var count = 1
 			
-			var timetr = '<select><option>전반</option><option>후반</option><option>연장</option><option>PK</option></select><input type="number" /> :<input type="number" />'
+			var timetr = '<select class="timetr"><option>전반</option><option>후반</option><option>연장</option></select><input type="number" value="00"/> :<input type="number" value="00" />'
 			
+				
+				  
 			$('.score-write-table').on('click', '.addhome', function(){
 				$(this).parent().parent().before('<tr class="score-write-item"><td class="score-write-table-close"><a href="" class="subhome" id="'+count+'"><i class="fa fa-close"></i></a></td><td class="score-write-table-select home-select"><select><option>--</option><option value="goal">GOAL</option><option value="redcard">Red Card</option><option value="yellowcard">Yellow Card</option></select></td><td class="score-write-table-personone"></td><td class="score-write-table-persontwo"></td></tr>');
 				$("#tabletime tbody").append('<tr class="score-write-table-time '+ count +'"><td>'+timetr+'</td></tr>')
 				$("#tabletwo tbody>tr:last-child").before('<tr class="'+ count +'"><td colspan="4"><i class="fa fa-ban"></i></td></tr>')
+				$("#tabletime tbody>tr:last-child .timetr").next().select()
 				count++
 				return false;
 			})
@@ -192,6 +195,7 @@
 				$(this).parent().parent().before('<tr class="score-write-item"><td class="score-write-table-close"><a href="" class="subaway" id="'+count+'"><i class="fa fa-close"></i></a></td><td class="score-write-table-select away-select"><select><option>--</option><option value="goal">GOAL</option><option value="redcard">Red Card</option><option value="yellowcard">Yellow Card</option></select></td><td class="score-write-table-personone"></td><td class="score-write-table-persontwo"></td></tr>');
 				$("#tabletime tbody").append('<tr class="score-write-table-time '+ count +'"><td>'+timetr+'</td></tr>')
 				$("#tableone tbody>tr:last-child").before('<tr class="'+ count +'"><td colspan="4"><i class="fa fa-ban"></i></td></tr>')
+				$("#tabletime tbody>tr:last-child .timetr").next().select()
 				count++
 				return false;
 			})
@@ -208,6 +212,26 @@
 				$("#tabletime tbody>tr." + c).remove()
 				$("#tableone tbody>tr." + c).remove()
 				return false;
+			})
+			.on('keydown', 'input[type=number]', function(){
+				// Save old value.
+				if (!$(this).val() || (parseInt($(this).val()) <= 60 && parseInt($(this).val()) >= 0))
+				$(this).data("old", $(this).val())
+			})
+			.on('keyup', 'input[type=number]', function(){
+				// Check correct, else revert back to old value.
+				if (!$(this).val() || (parseInt($(this).val()) <= 60 && parseInt($(this).val()) >= 0)) ;
+				else $(this).val($(this).data("old"))
+			})
+			.on('change', 'select:not(.timetr)', function(){
+				if ($(this).val() != $(this).children()[0].innerHTML){
+					//alert("ㅇㅇ")
+				}else {
+					//alert("다른거")
+				}
+			})
+			.on('change', 'select.timetr', function(){
+				$(this).next().select()
 			})
 			.on('change', '.home-select > select', function(){
 				switch ($(this).val()) {
@@ -252,42 +276,138 @@
 			
 			$("#scorewritebutton").on('click', function(){
 				
-				/* var data = {
-						"player_id":""
-						,"match_no":""
-						,"minutes_played":""
-						,"goal":""
-						,"conceded_goal":""
-						,"assists":""
-						,"yellowcard":""
-						,"redcard":""
-				} */
 				var dataList = []
-				//var length =  $("#tabletime > tbody > tr").length;
 
 				$.each($("#tabletime > tbody > tr"), function(index, item){
 					var cl = numberdake($(item).attr('class'))
-					var timestr = $(item).children().children().val() + $(item).children().children().next().val() + ":" + $(item).children().children().next().next().val()
-					dataList.push({"minutes_played":timestr})
+					var tableone = $("#tableone > tbody > tr")
+					var tabletwo = $("#tabletwo > tbody > tr")
+					var minutes_played = $(item).children().children().val() + ":" + pad($(item).children().children().next().val(),2) + ":" + pad($(item).children().children().next().next().val(),2)
+					var action = $(tableone[index]).children().next().children().val()
+					var player_id = null;
+					var assists = null;
+					
+					var data = {}
+					data.match_no = ${match_no}
+					
+					if (action == "--" || $(item).children().children().next().val() == ""  || $(item).children().children().next().next().val()==""){
+					} else if (typeof action != "undefined"){
+						switch (action) {
+						case 'goal':
+							player_id = $(tableone[index]).children().next().next().children().val()
+							
+							// validation
+							if (player_id == $(tableone[index]).children().next().next().children().children()[0].innerHTML) break;
+							
+							data.minutes_played = minutes_played
+							data.player_id = player_id
+							data.goal = "1"
+							dataList.push(data)
+
+							assists = $(tableone[index]).children().next().next().next().children().val()
+							// validation
+							if (assists == $(tableone[index]).children().next().next().next().children().children()[0].innerHTML) break;
+							
+							var data2 = {}
+							data2.match_no = ${match_no}
+							data2.minutes_played = minutes_played
+							data2.player_id = assists
+							data2.assists = "1"
+							
+							dataList.push(data2)
+							break;
+						case 'redcard':
+							player_id = $(tableone[index]).children().next().next().children().val()
+							// validation
+							if (player_id == $(tableone[index]).children().next().next().children().children()[0].innerHTML) break;
+							
+							data.minutes_played = minutes_played
+							data.player_id = player_id
+							data.redcard = "1"
+							
+							dataList.push(data)
+							break;
+						case 'yellowcard':
+							player_id = $(tableone[index]).children().next().next().children().val()
+							// validation
+							if (player_id == $(tableone[index]).children().next().next().children().children()[0].innerHTML) break;
+							
+							data.minutes_played = minutes_played
+							data.player_id = player_id
+							data.yellowcard = "1"
+							
+							dataList.push(data)
+							break;
+						default:
+							break;
+						}
+					} else{
+						action = $(tabletwo[index]).children().next().children().val()
+						switch (action) {
+						case 'goal':
+							player_id = $(tabletwo[index]).children().next().next().children().val()
+							// validation
+							if (player_id == $(tabletwo[index]).children().next().next().children().children()[0].innerHTML) break;
+							
+							data.minutes_played = minutes_played
+							data.player_id = player_id
+							data.goal = "1"
+							dataList.push(data)
+							
+							// validation
+							assists = $(tabletwo[index]).children().next().next().next().children().val()
+							if (assists == $(tabletwo[index]).children().next().next().next().children().children()[0].innerHTML) break;
+							
+							var data2 = {}
+							data2.match_no = ${match_no}
+							data2.minutes_played = minutes_played
+							data2.player_id = assists
+							data2.assists = "1"
+							
+							dataList.push(data2)
+							break;
+						case 'redcard':
+							player_id = $(tabletwo[index]).children().next().next().children().val()
+							// validation
+							if (player_id == $(tabletwo[index]).children().next().next().children().children()[0].innerHTML) break;
+							
+							data.minutes_played = minutes_played
+							data.player_id = player_id
+							data.redcard = "1"
+							
+							dataList.push(data)
+							break;
+						case 'yellowcard':
+							player_id = $(tabletwo[index]).children().next().next().children().val()
+							// validation
+							if (player_id == $(tabletwo[index]).children().next().next().children().children()[0].innerHTML) break;
+							
+							data.minutes_played = minutes_played
+							data.player_id = player_id
+							data.yellowcard = "1"
+							
+							dataList.push(data)
+							break;
+						default:
+							break;
+						}
+					}
 				});
 
-				$.each($("#tableone > tbody > tr"), function(index, item){
-					
-				});
+				console.log(dataList)
 				
-				/* for (var i = 0; i < length; i++) {
-					dataList.push({"minutes_played":})
-				} */
-				
-				/* $.ajax({
-					method:'post'
+				$.ajax({
+					type:'post'
 					,url:'scorewrite'
-					,data:dataList
+					,data:JSON.stringify(dataList)
+					,contentType:'application/json'
 					,success:function(res){
-						
+						if (res == "success"){
+							location.href = "/"
+						}
 						
 					}
-				}) */
+				})
 				return false
 			})
 		});
@@ -296,6 +416,11 @@
 		    var res;
 		    res = str.replace(/[^0-9]/g,"");
 		    return res;
+		}
+		
+		function pad(n, width) {
+			  n = n + '';
+			  return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
 		}
 	</script>
 </body>

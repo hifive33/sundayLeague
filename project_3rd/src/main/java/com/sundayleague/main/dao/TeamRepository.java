@@ -90,7 +90,7 @@ public class TeamRepository {
 	}
 	public MatchDTO selectMatch2(String team_name) {
 		TeamMapper mapper = session.getMapper(TeamMapper.class);
-		return mapper.selectMatch(team_name);
+		return mapper.selectMatch2(team_name);
 	}
 
 	public int countUpHeadcount(TeamDTO team) {

@@ -5,13 +5,14 @@
   
 <mapper namespace="com.sundayleague.main.dao.MatchMapper">
 	<insert id="insertMatches" parameterType="Map">
-		<foreach collection="list" item="item" index="index"  open="INSERT ALL " separator=" " close="SELECT * FROM DUAL" > 
+		<foreach collection="list" item="item" index="index" open="INSERT ALL " separator=" " close="SELECT * FROM DUAL" > 
 			into match
 			(
 				match_no
 				,team_name
 				,away_team_name
 				,matchdate
+				,match_address
 			)
 			values
 			(
@@ -19,17 +20,119 @@
 				,#{item.team_name}
 				,#{item.away_team_name}
 				,#{item.matchdate}
+				,#{item.match_address}
 			)
 		</foreach>
 	</insert>
 	<update id="updateMatchFlag" parameterType="List">
-	    <foreach collection="list" item="item" index="index" separator=";" open="DECLARE BEGIN" close="; END;" >
+		<foreach  item="item" collection="list"  index="index" separator=";" open="DECLARE BEGIN" close="; END;" >
 	        update
 	        	team
 	        set
+	        <if test="item.matchdate != null">
 	        	match_flag = '2'
+	        </if>
+	        <if test="item.matchdate == null">
+	        	match_flag = '0'
+	        	,match_address = null
+	        	,match_day = null
+	        </if>
 	        where
 	        	team_name = #{item.team_name} or team_name = #{item.away_team_name}
 	    </foreach>
 	</update>
+	<update id="updateTeamWinLoseRating" parameterType="list">
+		<foreach  item="item" collection="list"  index="index" separator=";" open="DECLARE BEGIN" close="; END;" >
+        update
+        	team
+        set
+        	victory = #{item.victory}
+        	,defeat = #{item.defeat}
+        	,draw = #{item.draw}
+        	,rating = #{item.rating}
+        where
+        	team_name = #{item.team_name}
+        </foreach>
+	</update>
+	<insert id="scorewrite" parameterType="List" >
+		<foreach collection="list" item="item" index="index" open="INSERT ALL " separator=" " close="SELECT * FROM DUAL" >
+			into match_player
+			(
+				match_player_no
+				,player_id
+				,match_no
+				,minutes_played
+				<if test="item.goal != null">
+					,goal
+				</if>
+				<if test="item.conceded_goal != null">
+					,conceded_goal
+				</if>
+				<if test="item.assists != null">
+					,assists
+				</if>
+				<if test="item.yellowcard != null">
+					,yellowcard
+				</if>
+				<if test="item.redcard != null">
+					,redcard
+				</if>
+			)
+			values
+			(
+				get_seq_match_player_no()
+				,#{item.player_id}
+				,#{item.match_no}
+				,#{item.minutes_played}
+				<if test="item.goal != null">
+					,#{item.goal}
+				</if>
+				<if test="item.conceded_goal != null">
+					,#{item.conceded_goal}
+				</if>
+				<if test="item.assists != null">
+					,#{item.assists}
+				</if>
+				<if test="item.yellowcard != null">
+					,#{item.yellowcard}
+				</if>
+				<if test="item.redcard != null">
+					,#{item.redcard}
+				</if>
+			)
+		</foreach>
+	</insert>
+	<update id="updateMatchGoal" parameterType="MatchDTO">
+		update
+			match
+		set
+			home_teamscore = #{home_teamscore}
+			,away_teamscore = #{away_teamscore}
+		where
+			match_no = #{match_no}
+	</update>
+	<insert id="insertMatchGoal" parameterType="list">
+		<foreach collection="list" item="item" index="index" open="INSERT ALL " separator=" " close="SELECT * FROM DUAL" > 
+			into match_goal
+			(
+				matchgoal_no
+				,match_no
+				,player_id
+				,goaltime
+			<if test="item.assistedby != null">
+				,assistedby
+			</if>
+			)
+			values
+			(
+				get_seq_match_goal_no()
+				,#{item.match_no}
+				,#{item.player_id}
+				,#{item.goaltime}
+			<if test="item.assistedby != null">
+				,#{item.assistedby}
+			</if>
+			)
+		</foreach>
+	</insert>
 </mapper>

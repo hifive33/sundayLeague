@@ -106,7 +106,7 @@ CREATE TABLE match_goal
 	-- 웹페이지 접속용 아이디
 	player_id varchar2(20) NOT NULL,
 	-- 득점시간
-	goaltime date,
+	goaltime varchar2(20),
 	-- 어시스트
 	assistedby varchar2(20),
 	PRIMARY KEY (matchgoal_no)
@@ -121,7 +121,7 @@ CREATE TABLE match_player
 	player_id varchar2(20) NOT NULL,
 	match_no number NOT NULL,
 	-- 경기시간
-	minutes_played number DEFAULT 0,
+	minutes_played varchar2(20),
 	-- 득점
 	goal number DEFAULT 0,
 	-- 실점(골키퍼 전용)
@@ -298,4 +298,39 @@ begin
 	team_name=v_team_name 
     where player_id=v_player_id;
 end;
+/
+/*
+ * sequence function
+ */
+create or replace FUNCTION get_seq_match_ID RETURN NUMBER AS num NUMBER;
+BEGIN
+  SELECT SEQ_MATCH_NO.nextval 
+  INTO num 
+  FROM dual;  
+  return num;  
+END get_seq_match_ID;
+/
+create or replace FUNCTION get_seq_match_player_no RETURN NUMBER AS num NUMBER;
+BEGIN
+  SELECT SEQ_MATCH_PLAYER_NO.nextval 
+  INTO num 
+  FROM dual;  
+  return num;  
+END get_seq_match_player_no;
+/
+create or replace FUNCTION get_seq_match_goal_no RETURN NUMBER AS num NUMBER;
+BEGIN
+  SELECT SEQ_MATCH_GOAL_NO.NEXTVAL 
+  INTO num 
+  FROM dual;  
+  return num;  
+END get_seq_match_goal_no;
+/
+create or replace FUNCTION get_seq_calendar_no RETURN NUMBER AS num NUMBER;
+BEGIN
+  SELECT SEQ_CALENDAR_SEQ.nextval 
+  INTO num 
+  FROM dual;  
+  return num;  
+END get_seq_calendar_no;
 /
