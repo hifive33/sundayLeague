@@ -64,7 +64,8 @@
     <style>
         .team__box__left{
             display: inline-block; 
-            width: 300px;
+            /* width: 300px; */
+            width: 30%;
             vertical-align: top;
             margin-right: 8px;
             	height:443px;
@@ -124,7 +125,8 @@
         .team__box__right{
             display: inline-block;
             height: 443px;
-            width: 657px;
+            /* width: 657px; */
+            width: 65%;
             background: #212121;
         }
 
@@ -208,6 +210,9 @@
             font-weight: 100;
             border-bottom: 1px solid #2E2E2E;
         }
+		ul::-webkit-scrollbar {
+			display: none !important;
+		}
 
     </style>
 
@@ -222,8 +227,7 @@
 
                     <div class="spec__box">
                         <div class="team__image" >
-                        
-                            <img style="height: 100%;"src="resources/img/mancity1.png"/>
+                            <img style="height: 100%;"src="emblemimg/${team.team_name}"/>
                         </div>
 
                         <div class="team__score">
