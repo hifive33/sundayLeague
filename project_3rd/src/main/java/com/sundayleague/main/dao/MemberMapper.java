@@ -13,5 +13,6 @@ public interface MemberMapper {
 	String selectPw(PlayerDTO player);
 	int insertContact(ContactDTO contact);
 	void saveFile(String uploadPath);
+	String checkId(String player_id);
 	
 }

@@ -70,5 +70,10 @@ public class MemberRepository {
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
 		return mapper.insertContact(contact);
 	}
+
+	public String checkId(String player_id) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		return mapper.checkId(player_id);
+	}
 	
 }

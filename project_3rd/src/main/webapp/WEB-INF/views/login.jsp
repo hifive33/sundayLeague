@@ -79,10 +79,10 @@
                                 <i class="fa fa-lock"></i>
                             </div>
                             <div id="pw_check" style="color:red !important;text-align: right;"></div>
-                            <p class="forgot">
+                            <!-- <p class="forgot">
                                 <a href="forgot">ID・パスワードをお忘れですか？</a>
                                 
-                            </p>
+                            </p> -->
                             <p>
                                 <label>
                                     <input name="remember" type="checkbox" id="idSaveCheck">
