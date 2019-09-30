@@ -92,6 +92,7 @@
                                 <input type="password" placeholder="パスワード再確認" id="confirm">
                                 <i class="fa fa-lock"></i>
                             </div>
+							<div id="confirm_check" style="color:red !important;text-align: right;"></div>
                             <hr>
                             <div class="account-form-group">
                             	<select name="position">
@@ -268,7 +269,7 @@
 							} else{
 								$("#id_check").html("")
 								$(temp).next().removeClass("fa-user-o");
-								$(temp).next().addClass("fa-check");
+								$(temp	).next().addClass("fa-check");
 							}
 						}
 					})
@@ -277,6 +278,7 @@
 			
 			$(".account-form-group > input[name=name]").on('keyup', function(){
 				if ($(this).val() != ""){
+					$("#name_check").html("")
 					$(this).next().removeClass("fa-user");
 					$(this).next().addClass("fa-check");
 				}else {
@@ -316,9 +318,11 @@
 			$("#confirm").on('keyup', function(){
 				// validation 추가
 				if ($(this).val() != $("#pw").val()){
+					$("#confirm_check").html("password가 일치하지 않습니다.")
 					$(this).next().removeClass("fa-check");
 					$(this).next().addClass("fa-lock");
 				}else {
+					$("#confirm_check").html("")
 					$(this).next().removeClass("fa-lock");
 					$(this).next().addClass("fa-check");
 				}
