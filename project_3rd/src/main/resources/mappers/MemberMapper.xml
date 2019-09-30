@@ -138,4 +138,6 @@
 		#{contact_message}
 		)
 	</insert>
+	
+	
 </mapper>

@@ -168,6 +168,7 @@
 						<div class="col-md-12 col-sm-6">
 							<div class="coupon-cart-right">
 								<a href="joinapply?player_id=${player.player_id}">가입 승인</a>
+								<a href="joinrefuse?player_id=${player.player_id}">가입 거절</a>
 							</div>
 						</div>
 					</div>

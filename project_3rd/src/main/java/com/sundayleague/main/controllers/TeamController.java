@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sundayleague.main.dao.MemberRepository;
 import com.sundayleague.main.dao.TeamRepository;
-import com.sundayleague.main.dto.MatchDTO;
+import com.sundayleague.main.dto.PlayerDTO;
 import com.sundayleague.main.dto.TeamDTO;
 import com.sundayleague.main.util.FileService;
 import com.sundayleague.main.util.PageNavigator;
@@ -28,6 +29,9 @@ public class TeamController {
 
 	@Autowired
 	TeamRepository repo;
+	
+	@Autowired
+	MemberRepository Mrepo;
 	
 	final String uploadPath = "/uploadfile/emblems";
 	
@@ -64,9 +68,12 @@ public class TeamController {
 	public String myteam(HttpSession session,Model model) {
 		// 가입된 구단이 없을 시 creation으로 이동
 		if(session.getAttribute("team_name")==null) return "creation";
-		
-		model.addAttribute("team", repo.selectTeam((String)session.getAttribute("team_name")));
+		TeamDTO t = repo.selectTeam((String)session.getAttribute("team_name"));
+		t.setHeadcount(repo.countHead((String)session.getAttribute("team_name")));
+		model.addAttribute("team", t);
 		model.addAttribute("player", repo.selectTeam2((String)session.getAttribute("team_name")));
+		model.addAttribute("player2", repo.selectTeam4((String)session.getAttribute("team_name")));
+		
 		return "myteam";
 	}
 	
@@ -77,7 +84,6 @@ public class TeamController {
 		int total = repo.getTeamCount(region, searchWord);
 		PageNavigator navi = new PageNavigator(currentPage, total);
 		List<TeamDTO>list = repo.selectTeamList(region,searchWord,navi.getStartRecord(), navi.getCountPerPage());
-
 		model.addAttribute("navi", navi);
 		model.addAttribute("teams", list);
 		model.addAttribute("region", region);
