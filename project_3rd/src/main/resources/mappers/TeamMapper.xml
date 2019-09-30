@@ -192,11 +192,10 @@
 		    from
 		        match
 			where
-				team_name = #{team_name} or away_team_name = #{team_name} 
-				
-				and away_teamscore!=null
+				(team_name = #{team_name} or away_team_name = #{team_name})
+				and away_teamscore is not null
 		    order by
-		        matchdate desc
+		        match_no desc
 		)
 		where
 		    rownum = 1

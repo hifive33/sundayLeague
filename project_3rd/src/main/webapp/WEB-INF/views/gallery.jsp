@@ -65,14 +65,29 @@
                     <div class="big-isotope-project">
                         <div class="projectFilter project-btn-const">
                             <a href="#" data-filter="*" class="current">All items</a>
-                            <a href="#" data-filter=".construction">football</a>
-                            <a href="#" data-filter=".renovation">player</a>
-                            <a href="#" data-filter=".plumbing">stadium</a>
-                            <a href="#" data-filter=".flooring">shoes</a>
+                        	<c:forEach var="list" items="${galleryMap}">
+	                            <a href="#" data-filter=".${list.key}">${list.key}</a>
+                        	</c:forEach>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="clearfix projectContainer projectContainer3column">
+                                	<c:forEach var="list" items="${galleryMap}">
+                                		<c:forEach var="item" items="${list.value}">
+											<div class="element-item ${list.key}">
+		                                        <div class="single-match-gallery">
+		                                           <a href="gallerys/${item}" class="gallery-lightbox">
+		                                                <div class="project-img">
+		                                                    <img src="gallerys/${item}" alt="single project" />
+		                                                    <div class="single-pro-overlay">
+		                                                        <i class="fa fa-search-plus"></i>
+		                                                    </div>
+		                                                </div>
+		                                            </a>
+		                                        </div>
+		                                    </div>
+                                    	</c:forEach>
+                                	</c:forEach>
                                     <!-- <div class="element-item  construction">
                                         <div class="single-match-gallery">
                                            <a href="resources/img/gallery-1.jpg" class="gallery-lightbox">

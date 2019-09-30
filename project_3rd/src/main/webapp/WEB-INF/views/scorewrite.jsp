@@ -179,7 +179,7 @@
 			
 			var count = 1
 			
-			var timetr = '<select class="timetr"><option>전반</option><option>후반</option><option>연장</option></select><input type="number" min="0" max="60 "/> :<input type="number" min="0" max="60" />'
+			var timetr = '<select class="timetr"><option>전반</option><option>후반</option><option>연장</option></select><input type="number" value="00"/> :<input type="number" value="00" />'
 			
 				
 				  
@@ -282,7 +282,7 @@
 					var cl = numberdake($(item).attr('class'))
 					var tableone = $("#tableone > tbody > tr")
 					var tabletwo = $("#tabletwo > tbody > tr")
-					var minutes_played = $(item).children().children().val() + ":" + $(item).children().children().next().val() + ":" + $(item).children().children().next().next().val()
+					var minutes_played = $(item).children().children().val() + ":" + pad($(item).children().children().next().val(),2) + ":" + pad($(item).children().children().next().next().val(),2)
 					var action = $(tableone[index]).children().next().children().val()
 					var player_id = null;
 					var assists = null;
@@ -416,6 +416,11 @@
 		    var res;
 		    res = str.replace(/[^0-9]/g,"");
 		    return res;
+		}
+		
+		function pad(n, width) {
+			  n = n + '';
+			  return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
 		}
 	</script>
 </body>

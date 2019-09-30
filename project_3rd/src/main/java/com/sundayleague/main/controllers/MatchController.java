@@ -150,7 +150,7 @@ public class MatchController {
 			match.setMatchdate(null);
 			List<MatchDTO> updateTeamList = new ArrayList<>();
 			updateTeamList.add(match);
-//			matchRepo.updateMatchFlag(updateTeamList);
+			matchRepo.updateMatchFlag(updateTeamList);
 		}
 		
 		// win, lose, draw update
@@ -210,7 +210,7 @@ public class MatchController {
 		List<PlayerDTO> result2 = teamRepo.selectTeam3(result.getTeam_name());
 		List<PlayerDTO> result3 = teamRepo.selectTeam3(result.getAway_team_name());
 		
-		
+		System.out.println(result);
 		if(Integer.parseInt(result.getHome_teamscore())<Integer.parseInt(result.getAway_teamscore())){
 			model.addAttribute("left",result.getAway_team_name());
 			model.addAttribute("right", result.getTeam_name());
