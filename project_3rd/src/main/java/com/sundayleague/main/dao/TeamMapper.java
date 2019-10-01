@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 
+import com.sundayleague.main.dto.FormationDTO;
 import com.sundayleague.main.dto.MatchDTO;
 import com.sundayleague.main.dto.PlayerDTO;
 import com.sundayleague.main.dto.TeamDTO;
@@ -26,4 +27,10 @@ public interface TeamMapper {
 	MatchDTO selectMatch2(String team_name);
 	int countUpHeadcount(TeamDTO team);
 	List<MatchDTO>selectMatch3(String team_name);
+	FormationDTO selectFormation(String team_name);
+	int insertFormation(String team_name);
+	PlayerDTO selectPlayer(Map<String, String> map);
+	int updateTeamFormation(Map<String, String> map);
+	int updatePlayerFormation(Map<String, String> map);
+	int deletePlayerFormation(Map<String, String> map);
 }

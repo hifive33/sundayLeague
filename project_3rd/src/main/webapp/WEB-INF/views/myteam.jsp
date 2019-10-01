@@ -45,6 +45,7 @@
     
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="resources/css/responsive.css">
+    
 
 </head>
 <body>
@@ -78,8 +79,9 @@
                                         <div class="col-sm-2">
                                             <div class="team-head-image">
 												<!-- <img src="resources/img/emblem-null.png" alt="team image" /> -->
-												<img src="/emblemimg/${team.team_name}" alt="team image" />
+												 <img src="/emblemimg/${team.team_name}" alt="team image" />
                                             </div>
+                                            
                                         </div>
                                         <div class="col-sm-5">
                                         </div>
@@ -88,6 +90,7 @@
 								<h4>${team.team_name}</h4>
                                 <p>${team.team_comment}</p>
                             </div>
+                            <%@include file="formation.jsp" %>
                         </div>
                     </div>
                     <div class="row">
@@ -146,10 +149,17 @@
 						</c:if>
                     </div>
                 </div>
+                <div>
+                	
+                </div>
             </div>
         </div>
     </section>
+    
+    
     <!-- My Team Page End -->
+    
+    
     
     <!-- Footer Area Start -->
     <%@include file="menu/footerArea.jsp"%>
