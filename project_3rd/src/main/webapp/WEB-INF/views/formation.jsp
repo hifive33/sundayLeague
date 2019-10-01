@@ -127,7 +127,7 @@
 		border-radius: 5px;
 		padding: 20px;
 		display: inline-block;
-		color:white;
+		color:white; 
 	}
 
 	

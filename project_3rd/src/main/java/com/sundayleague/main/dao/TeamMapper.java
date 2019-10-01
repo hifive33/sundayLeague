@@ -32,5 +32,5 @@ public interface TeamMapper {
 	PlayerDTO selectPlayer(Map<String, String> map);
 	int updateTeamFormation(Map<String, String> map);
 	int updatePlayerFormation(Map<String, String> map);
-	int deletePlayerFormation(Map<String, String> map);
+	int deletePlayerFormation(Map<String, String> map); 
 }

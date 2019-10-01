@@ -125,7 +125,7 @@ public class TeamRepository {
 		TeamMapper mapper = session.getMapper(TeamMapper.class);
 		Map<String, String> map = new HashMap<>();
 		map.put("formation", formation);
-		map.put("team_name", team_name);
+		map.put("team_name", team_name); 
 		int result = mapper.updateTeamFormation(map);
 		return result;
 	}

@@ -256,6 +256,7 @@
 	<update id="deletePlayerFormation" parameterType="map">
 		UPDATE formation
 		SET ${player} = null
-		WHERE team_name = #{team_name} 
+		WHERE
+			team_name = #{team_name} 
 	</update>
 </mapper>

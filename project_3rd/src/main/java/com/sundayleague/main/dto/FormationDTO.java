@@ -23,5 +23,5 @@ public class FormationDTO {
 	private String player7;
 	private String player8;
 	private String player9;
-	private String player10;
+	private String player10; 
 }

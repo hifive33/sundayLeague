@@ -90,7 +90,7 @@ public class TeamController {
 		System.out.println(player);
 		System.out.println(team_name);
 		
-		String name = "";
+		String name = ""; 
 		
 		FormationDTO result = repo.selectFormation(team_name);
 		

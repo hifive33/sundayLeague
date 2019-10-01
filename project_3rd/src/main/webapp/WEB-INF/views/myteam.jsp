@@ -200,7 +200,7 @@
     <!-- Custom JS -->
     <script src="resources/js/custom.js"></script>
     
-    <!-- script -->
+    <!-- script --> 
 	<script>
 		$(function(){
 			$(".breadcromb-box > h2").html("My Team")
