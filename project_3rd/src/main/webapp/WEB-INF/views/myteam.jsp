@@ -256,15 +256,15 @@
                     <div class="__navgation">
                         <ul>
                         <c:if test="${sessionScope.authority >=0}">
-                            <li id="list1"><a href="#">팀 목록</a></li>
+                            <li id="list1"><a href="#">チーム一覧</a></li>
                         </c:if> 
                         	<c:if test="${sessionScope.authority >1}">
-                            <li id="list2"><a href="#">가입 승인</a></li>
+                            <li id="list2"><a href="#">登録承認</a></li>
                         </c:if>
                        	<c:if test="${sessionScope.authority >2}">
-                            <li id="list3"><a href="#">스탭 임명</a></li>
+                            <li id="list3"><a href="#">スタッフ選任</a></li>
                   
-                            <li id="delete"><a href="#">구단 해체</a></li>
+                            <li id="delete"><a href="#">チーム解団</a></li>
                         </c:if>
                         </ul>
                     </div>
@@ -284,7 +284,7 @@
                         <li class="__item" onclick="playerDetail(this)">
                             <p>${list.player_id}</p>
                             <p>${list.position }</p>
-                            <p>${list.authority ==3 ? '구단주':list.authority ==2 ? '스태프':'팀원'}</p>
+                            <p>${list.authority ==3 ? 'オーナー':list.authority ==2 ? 'スタッフ':'選手'}</p>
                             <p>${list.player_comment }</p>
                         </li>
                         </c:if>
@@ -422,13 +422,13 @@
 			$(this).toggleClass('navigation_active');
 		}
 		function delteam(){
-			var dialog = $('<p>구단을 해체하시겠습니까?</p>').dialog({
+			var dialog = $('<p>解団しますか?</p>').dialog({
 				buttons: {
-					"구단 해체": function() {
+					"チーム解団": function() {
         				location.href="teamdelete";
 						dialog.dialog('close');
 					},
-					"취소":  function() {
+					"キャンセル":  function() {
 						dialog.dialog('close');
 					}
                 }
@@ -440,30 +440,30 @@
 			return false;
 		}
 		function confirmApply(param) {
-			var dialog = $('<p>승인 하시겠습니까?</p>').dialog({
+			var dialog = $('<p>承認しますか?</p>').dialog({
 				buttons: {
-					"승인": function() {
+					"承認する": function() {
         				location.href="joinapply?player_id=" + $(param).children()[0].innerText;
 						dialog.dialog('close');
 					},
-					"거절":  function() {
+					"断る":  function() {
         				location.href="joinrefuse?player_id=" + $(param).children()[0].innerText;
 						dialog.dialog('close');
 					},
-					"취소":  function() {
+					"キャンセル":  function() {
 						dialog.dialog('close');
 					}
                 }
             })
 		}
 		function confirmAppoint(param) {
-			var dialog = $('<p>임명 하시겠습니까?</p>').dialog({
+			var dialog = $('<p>選任しますか?</p>').dialog({
 				buttons: {
-					"임명": function() {
+					"選任": function() {
         				location.href="appoint?player_id=" + $(param).children()[0].innerText;
 						dialog.dialog('close');
 					},
-					"취소":  function() {
+					"キャンセル":  function() {
 						dialog.dialog('close');
 					}
                 }

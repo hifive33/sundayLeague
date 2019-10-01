@@ -86,7 +86,7 @@
                             <p>
                                 <label>
                                     <input name="remember" type="checkbox" id="idSaveCheck">
-                                    Remember Me
+                                    チェックしてIDを記憶する
                                 </label>
                             </p>
                             <p>
