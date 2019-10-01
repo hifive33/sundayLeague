@@ -47,19 +47,9 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="resources/css/responsive.css">
 
-</head>
-<body>
-    
-    <!-- Header Area Start -->
-	<%@include file="menu/headerArea.jsp"%>
-    <!-- Header Area End -->
-    
-    <!-- Breadcromb Area Start -->
-    <%@include file="menu/breadcrombArea.jsp"%>
-    <!-- Breadcromb Area End -->
-    
-    <!-- My Team Page Start -->
-    
+	<!-- JqueryUI CSS -->
+	<link rel="stylesheet" href="resources/css/jquery-ui.css">
+	
     <!-- this is brand new css for layouts -->
     <style>
         .team__box__left{
@@ -210,11 +200,27 @@
             font-weight: 100;
             border-bottom: 1px solid #2E2E2E;
         }
-		ul::-webkit-scrollbar {
-			display: none !important;
+		.__item:hover{
+			cursor: pointer;
+		    background: #353535 none repeat scroll 0 0 !important;
 		}
+		ul::-webkit-scrollbar{width: 10px;}
+		ul::-webkit-scrollbar-track {display: none;}
+		ul::-webkit-scrollbar-thumb {background-color:#303030; }
+		ul::-webkit-scrollbar-thumb:hover {background: #555;}
+		ul::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {display: none;} 
 
     </style>
+</head>
+<body>
+    
+    <!-- Header Area Start -->
+	<%@include file="menu/headerArea.jsp"%>
+    <!-- Header Area End -->
+    
+    <!-- Breadcromb Area Start -->
+    <%@include file="menu/breadcrombArea.jsp"%>
+    <!-- Breadcromb Area End -->
 
     <!-- My Team Page Start -->
     <section class="kick-fixture-page-next-match section_100">
@@ -275,8 +281,8 @@
                     <ul class="item__list __scroll" id="listmain">
                     <c:forEach var ="list" items="${player }">
                     <c:if test="${list.authority > 0}">
-                        <li class="__item">
-                            <p><a href="playerdetails?playerid=${list.player_id}">${list.player_id}</a></p>
+                        <li class="__item" onclick="playerDetail(this)">
+                            <p>${list.player_id}</p>
                             <p>${list.position }</p>
                             <p>${list.authority ==3 ? '구단주':list.authority ==2 ? '스태프':'팀원'}</p>
                             <p>${list.player_comment }</p>
@@ -285,64 +291,8 @@
                         </c:forEach>
                        </ul>
                 </div>
-
-                </div>
-                    
-                    <!-- <div class="row">
-	                    <div class="order-tickets">
-	                    	<div class="coupon-cart-right">
-	                    		등록 취소 변경
-	                    		<a href="#" class="kick-btn">모집 등록</a>
-	                    		
-	                    			<a href="http://sundayleague.xyz/teamdelete" class="kick-btn">구단 해체</a>
-	                    		
-	                    	</div>
-	                    </div>
-                    </div>
-                </div> -->
-
-                <!-- 팀원 목록
-                <div class="col-md-4">
-                    <div class="fixture-page-next-match-right">
-                        <table class="table table-striped table-responsive">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            
-                            	
-	                                <tr>
-	                                    <td><a href="http://sundayleague.xyz/playerdetails?playerid=qwe">qwe</a></td>
-	                                    <td>LB</td>
-	                                </tr>
-                                
-                            
-                            </tbody>
-                        </table> -->
-
-						<!-- 신청자 목록 -->
-                        
-	                        <!-- <table class="table table-striped table-responsive">
-	                            <thead class="apply">
-	                                <tr>
-	                                    <th>Name</th>
-	                                    <th>Position</th>
-	                                </tr>
-	                            </thead>
-	                            <tbody>
-								
-									
-								
-	                            </tbody>
-	                        </table> -->
-						
-                    </div>
-                </div>
-            </div>
-        </div>
+			</div>
+		</div>
     </section>
     <!-- My Team Page End -->
     
@@ -387,6 +337,9 @@
     <!-- Custom JS -->
     <script src="resources/js/custom.js"></script>
     
+    <!-- Jquery-ui -->
+	<script src="resources/js/jquery-ui.js"></script>
+	
     <!-- script -->
 	<script>
 		$(function(){
@@ -402,15 +355,13 @@
 			
 			//가입목록	
 			$("#list2").on('click',function(){
-			var head = '<li class="__head"><p>ID</p>\ <p>Position</p><p>Comment</p><p></p></li>'
-			$(".item__list").html(head)
 			
 			
-		var result = '<c:forEach var ="list" items="${player2}"><li class="__item">'
+		var result = '<c:forEach var ="list" items="${player2}"><li class="__item" onclick="confirmApply(this)">'
 				result += '<p>${list.player_id}</p>'
 				result += '<p>${list.position }</p>'
+                result += '<p>${list.authority ==3 ? "구단주":list.authority ==2 ? "스태프":"팀원"}</p>'
                 result += '<p>${list.player_comment}</p>'
-                result += '<p><a href="joinapply?player_id=${list.player_id}">승인</a> / <a href="joinrefuse?player_id=${list.player_id}">거절</a></p>'
            	    result += '</li>'
            	    result += '</c:forEach>'
 				$("#listmain").html(result)
@@ -421,8 +372,8 @@
 			$("#list1").on('click',function(){
 				var head = '<li class="__head"><p>ID</p>\ <p>Position</p><p>Rank</p><p>Comment</p></li>'
 					$(".item__list").html(head)
-				var result = '<c:forEach var ="list" items="${player}"><c:if test="${list.authority > 0}"><li class="__item">'
-				result += '<p><a href="playerdetails?playerid=${list.player_id}">${list.player_id}</a></p>'
+				var result = '<c:forEach var ="list" items="${player}"><c:if test="${list.authority > 0}"><li class="__item" onclick="playerDetail(this)">'
+				result += '<p>${list.player_id}</p>'
 				result += '<p>${list.position }</p>'
                 result += '<p>${list.authority ==3 ? "구단주":list.authority ==2 ? "스태프":"팀원"}</p>'
                 result += '<p>${list.player_comment }</p>'
@@ -434,18 +385,36 @@
 			
 			//스태프 임명
 			$("#list3").on('click',function(){
-				var head = '<li class="__head"><p>ID</p>\ <p>Position</p><p>Rank</p><p></p></li>'
-					$(".item__list").html(head)
-				var result = '<c:forEach var ="list" items="${player}"><c:if test="${list.authority > 0 && list.authority < 2}"><li class="__item">'
-				result += '<p><a href="playerdetails?playerid=${list.player_id}">${list.player_id}</a></p>'
+				var result = '<c:forEach var ="list" items="${player}"><c:if test="${list.authority > 0 && list.authority < 2}"><li class="__item" onclick="confirmAppoint(this)">'
+				result += '<p>${list.player_id}</p>'
 				result += '<p>${list.position }</p>'
                 result += '<p>${list.authority ==3 ? "구단주":list.authority ==2 ? "스태프":"팀원"}</p>'
-                result += '<p><a href="appoint?player_id=${list.player_id}">임명</a></p>'
+                result += '<p>${list.player_comment}</p>'
            	    result += '</li></c:if>'
            	    result += '</c:forEach>'
 				$("#listmain").html(result)
 				return false;
 			})
+			
+			$("#dialog").on('click', function(e) {
+                e.preventDefault();
+                var dialog = $('<p>Are you sure?</p>').dialog({
+                    buttons: {
+                        "Yes": function() {
+            				location.href="joinapply?player_id=" + $(param).children()[0].innerText;
+                            dialog.dialog('close');
+                        },
+                        "No":  function() {
+            				location.href="joinrefuse?player_id=" + $(param).children()[0].innerText;
+                            dialog.dialog('close');
+                        },
+                        "Cancel":  function() {
+                            dialog.dialog('close');
+                        }
+                    }
+                })
+			});
+
 		})
 		
 		function toggle(){
@@ -453,12 +422,52 @@
 			$(this).toggleClass('navigation_active');
 		}
 		function delteam(){
-			if(confirm("구단을 해체하시겠습니까?")){
-				location.href='teamdelete';
-			}
-			else{
-				return;
-			}
+			var dialog = $('<p>구단을 해체하시겠습니까?</p>').dialog({
+				buttons: {
+					"구단 해체": function() {
+        				location.href="teamdelete";
+						dialog.dialog('close');
+					},
+					"취소":  function() {
+						dialog.dialog('close');
+					}
+                }
+            })
+            return false;
+		}
+		function playerDetail(param){
+			location.href="playerdetails?playerid=" + $(param).children()[0].innerText;
+			return false;
+		}
+		function confirmApply(param) {
+			var dialog = $('<p>승인 하시겠습니까?</p>').dialog({
+				buttons: {
+					"승인": function() {
+        				location.href="joinapply?player_id=" + $(param).children()[0].innerText;
+						dialog.dialog('close');
+					},
+					"거절":  function() {
+        				location.href="joinrefuse?player_id=" + $(param).children()[0].innerText;
+						dialog.dialog('close');
+					},
+					"취소":  function() {
+						dialog.dialog('close');
+					}
+                }
+            })
+		}
+		function confirmAppoint(param) {
+			var dialog = $('<p>임명 하시겠습니까?</p>').dialog({
+				buttons: {
+					"임명": function() {
+        				location.href="appoint?player_id=" + $(param).children()[0].innerText;
+						dialog.dialog('close');
+					},
+					"취소":  function() {
+						dialog.dialog('close');
+					}
+                }
+            })
 		}
 	</script>
 </body>
