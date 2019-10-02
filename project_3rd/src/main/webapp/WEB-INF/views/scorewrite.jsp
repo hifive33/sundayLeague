@@ -121,7 +121,7 @@
                <div class="col-md-12">
                    <div class="match-find">
                    	<div class="match-form-group">
-						<button type="button" id="scorewritebutton">점수입력</button>
+						<button type="button" id="scorewritebutton">SCORE入力</button>
                    	</div>
                    </div>
                </div>

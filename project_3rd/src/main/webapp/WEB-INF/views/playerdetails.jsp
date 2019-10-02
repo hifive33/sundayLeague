@@ -103,36 +103,36 @@
                         <table class="table table-striped table-responsive">
                             <tbody>
                                 <tr>
-                                    <td>Team Name</td>
+                                    <td>チーム名</td>
                                     <c:if test="${player.team_name == null }">
-                                    <td>무소속</td>
+                                    <td>なし</td>
                                     </c:if>
                                     <c:if test="${player.team_name != null }">
                                     <td>${player.team_name }</td>
                                     </c:if>
                                 </tr>
                                 <tr>
-                                    <td>Birth Date</td>
+                                    <td>生年月日</td>
                                     <td>${player.birth }</td>
                                 </tr>
                                 <tr>
-                                    <td>Position</td>
+                                    <td>ポジション</td>
                                     <td>${player.position}</td>
                                 </tr>
                                 <tr>
-                                    <td>Subposition</td>
+                                    <td>サブポジション</td>
                                     <td>${player.subposition}</td>
                                 </tr>
                                 <tr>
-                                    <td>Height</td>
+                                    <td>身長</td>
                                     <td>${player.height }</td>
                                 </tr>
                                 <tr>
-                                    <td>Weight</td>
+                                    <td>体重</td>
                                     <td>${player.weight }</td>
                                 </tr>
                                 <tr>
-                                    <td>Mainfoot</td>
+                                    <td>利き足</td>
                                     <td>${player.mainfoot}</td>
                                 </tr>
                             </tbody>
@@ -167,8 +167,8 @@
 					<div class="player-profile-update clearfix">
 						<div class="col-md-12 col-sm-6">
 							<div class="coupon-cart-right">
-								<a href="joinapply?player_id=${player.player_id}">가입 승인</a>
-								<a href="joinrefuse?player_id=${player.player_id}">가입 거절</a>
+								<a href="joinapply?player_id=${player.player_id}">加入承知</a>
+								<a href="joinrefuse?player_id=${player.player_id}">加入断り</a>
 							</div>
 						</div>
 					</div>

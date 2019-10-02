@@ -137,9 +137,9 @@
                                 </tr>
                                 <tr>
                                     <td>Authority</td>
-                                    <td>${player.authority == 3 ? '감독' : 
-                                    	  player.authority == 2 ? '코치' : 
-                                    	  player.authority == 1 ? '일반' : '승인 대기' }</td>
+                                    <td>${player.authority == 3 ? '監督' : 
+                                    	  player.authority == 2 ? 'コーチ' : 
+                                    	  player.authority == 1 ? '選手' : '承認待ち' }</td>
                                 </tr>
                             </tbody>
                         </table>
