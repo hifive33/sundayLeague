@@ -326,3 +326,11 @@ BEGIN
   return num;  
 END get_seq_match_goal_no;
 /
+create or replace FUNCTION get_seq_calendar_no RETURN NUMBER AS num NUMBER;
+BEGIN
+  SELECT SEQ_CALENDAR_SEQ.nextval 
+  INTO num 
+  FROM dual;  
+  return num;  
+END get_seq_calendar_no;
+/

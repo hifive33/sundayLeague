@@ -138,4 +138,13 @@
 		#{contact_message}
 		)
 	</insert>
+
+	<select id="checkId" parameterType="String" resultType="String">
+		select
+			count(*)
+		from
+			player
+		where
+			player_id = #{player_id}
+	</select>
 </mapper>

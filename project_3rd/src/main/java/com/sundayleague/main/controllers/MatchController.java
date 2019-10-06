@@ -24,6 +24,7 @@ import com.sundayleague.main.dto.MatchGoalDTO;
 import com.sundayleague.main.dto.MatchPlayerDTO;
 import com.sundayleague.main.dto.PlayerDTO;
 import com.sundayleague.main.dto.TeamDTO;
+import com.sundayleague.main.util.ELORating;
 
 @Controller
 public class MatchController {
@@ -96,7 +97,7 @@ public class MatchController {
 	public String scorewriteProcess(@RequestBody ArrayList<MatchPlayerDTO> dataList, HttpSession session){
 		List<MatchPlayerDTO> list = dataList;
 		// insert match_player
-		matchRepo.scorewrite(list);
+		if (list.size() > 0) matchRepo.scorewrite(list);
 		
 		// update match
 		MatchDTO match = teamRepo.selectMatch((String) session.getAttribute("team_name"));
@@ -125,27 +126,60 @@ public class MatchController {
 		List<MatchGoalDTO> match_goalList = new ArrayList<>();
 		Map<String, List<MatchPlayerDTO>> groupByMinutes = list.stream()
 			.collect(Collectors.groupingBy(MatchPlayerDTO::getMinutes_played));
-		groupByMinutes.entrySet().removeIf(entry -> entry.getValue().size() == 1);
-		// 확인용 출력
-		/*for (Map.Entry<String, List<MatchPlayerDTO>> entry : groupByMinutes.entrySet()){
-			System.out.println(entry.getKey() + " : " + entry.getValue());
-		}*/
-		for (Map.Entry<String, List<MatchPlayerDTO>> entry : groupByMinutes.entrySet()){
-			MatchGoalDTO matchGoal = new MatchGoalDTO();
-			matchGoal.setMatch_no(match.getMatch_no());
-			matchGoal.setPlayer_id(entry.getValue().get(0).getPlayer_id());
-			matchGoal.setGoaltime(entry.getKey());
-			matchGoal.setAssistedby(entry.getValue().get(1).getPlayer_id());
+		if (groupByMinutes.size() != 0){
+			System.out.println(groupByMinutes);
+			groupByMinutes.entrySet().removeIf(entry -> entry.getValue().get(0).getGoal() == null);
+			// 확인용 출력
+			/*for (Map.Entry<String, List<MatchPlayerDTO>> entry : groupByMinutes.entrySet()){
+				System.out.println(entry.getKey() + " : " + entry.getValue());
+			}*/
+			for (Map.Entry<String, List<MatchPlayerDTO>> entry : groupByMinutes.entrySet()){
+				MatchGoalDTO matchGoal = new MatchGoalDTO();
+				matchGoal.setMatch_no(match.getMatch_no());
+				matchGoal.setPlayer_id(entry.getValue().get(0).getPlayer_id());
+				matchGoal.setGoaltime(entry.getKey());
+				try {
+					matchGoal.setAssistedby(entry.getValue().get(1).getPlayer_id());
+				} catch(IndexOutOfBoundsException e){
+				}
+				match_goalList.add(matchGoal);
+			}
+			if (match_goalList.size() > 0) matchRepo.insertMatchGoal(match_goalList);
 			
-			match_goalList.add(matchGoal);
+			// update team / match_flag -> 0 / match_address, match_day -> null
+			match.setMatchdate(null);
+			List<MatchDTO> updateTeamList = new ArrayList<>();
+			updateTeamList.add(match);
+			matchRepo.updateMatchFlag(updateTeamList);
 		}
-		matchRepo.insertMatchGoal(match_goalList);
 		
-		// update team / match_flag -> 0 / match_address, match_day -> null
-		match.setMatchdate(null);
-		List<MatchDTO> updateTeamList = new ArrayList<>();
-		updateTeamList.add(match);
-		matchRepo.updateMatchFlag(updateTeamList);
+		// win, lose, draw update
+		// rating 처리
+		List<TeamDTO> teamList = new ArrayList<>();
+		ELORating elo = new ELORating();
+		
+		TeamDTO home_team = teamRepo.selectTeam(match.getTeam_name());
+		TeamDTO away_team = teamRepo.selectTeam(match.getAway_team_name());
+		if (Integer.parseInt(match.getHome_teamscore()) > Integer.parseInt(match.getAway_teamscore())){
+			home_team.setVictory(home_team.getVictory() + 1);
+			away_team.setDefeat(away_team.getDefeat() + 1);
+			home_team.setRating(elo.calcRating("WIN", home_team.getRating(), away_team.getRating()));
+			away_team.setRating(elo.calcRating("LOSE", away_team.getRating(), home_team.getRating()));
+		} else if(Integer.parseInt(match.getHome_teamscore()) == Integer.parseInt(match.getAway_teamscore())){
+			home_team.setDraw(home_team.getDraw() + 1);
+			away_team.setDraw(away_team.getDraw() + 1);
+			home_team.setRating(elo.calcRating("DRAW", home_team.getRating(), away_team.getRating()));
+			away_team.setRating(elo.calcRating("DRAW", away_team.getRating(), home_team.getRating()));
+		} else{
+			home_team.setDefeat(home_team.getDefeat() + 1);
+			away_team.setVictory(away_team.getVictory() + 1);
+			home_team.setRating(elo.calcRating("LOSE", home_team.getRating(), away_team.getRating()));
+			away_team.setRating(elo.calcRating("WIN", away_team.getRating(), home_team.getRating()));
+		}
+		teamList.add(home_team);
+		teamList.add(away_team);
+		matchRepo.updateTeamWinLoseRating(teamList);
+		
 		
 		return "success";
 	}
@@ -176,7 +210,7 @@ public class MatchController {
 		List<PlayerDTO> result2 = teamRepo.selectTeam3(result.getTeam_name());
 		List<PlayerDTO> result3 = teamRepo.selectTeam3(result.getAway_team_name());
 		
-		
+		System.out.println(result);
 		if(Integer.parseInt(result.getHome_teamscore())<Integer.parseInt(result.getAway_teamscore())){
 			model.addAttribute("left",result.getAway_team_name());
 			model.addAttribute("right", result.getTeam_name());

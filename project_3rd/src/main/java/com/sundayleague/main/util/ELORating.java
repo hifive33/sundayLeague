@@ -39,13 +39,13 @@ public class ELORating {
 		
 		
 		///내부데이터 확인용
-		System.out.println("======");
-		System.out.println("myTeam : " + teamRating);
-		System.out.println("objectTeam : " + objectTeamRating);
-		System.out.println("pow = " + pow);
-		System.out.println("winRate = " + winRate);
-		System.out.println("result = " + result);
-		System.out.println("======");
+//		System.out.println("======");
+//		System.out.println("myTeam : " + teamRating);
+//		System.out.println("objectTeam : " + objectTeamRating);
+//		System.out.println("pow = " + pow);
+//		System.out.println("winRate = " + winRate);
+//		System.out.println("result = " + result);
+//		System.out.println("======");
 		///
 		
 		return result;
@@ -74,13 +74,13 @@ public class ELORating {
 		
 		
 		///내부데이터 확인용
-		System.out.println("======");
-		System.out.println("myTeam : " + teamRating);
-		System.out.println("objectTeam : " + objectTeamRating);
-		System.out.println("pow = " + pow);
-		System.out.println("winRate = " + winRate);
-		System.out.println("result = " + result);
-		System.out.println("======");
+//		System.out.println("======");
+//		System.out.println("myTeam : " + teamRating);
+//		System.out.println("objectTeam : " + objectTeamRating);
+//		System.out.println("pow = " + pow);
+//		System.out.println("winRate = " + winRate);
+//		System.out.println("result = " + result);
+//		System.out.println("======");
 		///
 		
 		return result;

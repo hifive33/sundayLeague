@@ -73,7 +73,7 @@ public class MemberController {
 	public void myaccount(HttpSession session, Model model) {
 		String loginId = (String)session.getAttribute("loginId");
 		PlayerDTO player = repo.selectProfile(loginId);
-		System.out.println(player);
+//		System.out.println(player);
 		model.addAttribute("player",player );		
 	}
 	
@@ -149,7 +149,13 @@ public class MemberController {
 		
 	}
 	
-	
+	@GetMapping("/checkId")
+	@ResponseBody
+	public String checkId(String player_id){
+		String result = repo.checkId(player_id);
+		
+		return result.equals("1") ? "success" : "failure";
+	}
 
 	@RequestMapping(value = "/ajaxFileUpload", method = RequestMethod.POST)
 	@ResponseBody

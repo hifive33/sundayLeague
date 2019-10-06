@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.sundayleague.main.dto.MatchDTO;
 import com.sundayleague.main.dto.MatchGoalDTO;
 import com.sundayleague.main.dto.MatchPlayerDTO;
+import com.sundayleague.main.dto.TeamDTO;
 
 @Repository
 public class MatchRepository {
@@ -39,6 +40,11 @@ public class MatchRepository {
 	public int insertMatchGoal(List<MatchGoalDTO> match_goalList) {
 		MatchMapper mapper = session.getMapper(MatchMapper.class);
 		return mapper.insertMatchGoal(match_goalList);
+	}
+
+	public int updateTeamWinLoseRating(List<TeamDTO> teamList) {
+		MatchMapper mapper = session.getMapper(MatchMapper.class);
+		return mapper.updateTeamWinLoseRating(teamList);
 	}
 	
 }

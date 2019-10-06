@@ -17,6 +17,7 @@ public interface TeamMapper {
 	TeamDTO selectTeam(String team_name);
 	List<PlayerDTO> selectTeam2(String team_name);
 	List<PlayerDTO> selectTeam3(String team_name);
+	List<PlayerDTO> selectTeam4(String team_name);
 	int getTeamCount(Map<String,String>map);
 	List<TeamDTO> selectTeamList(Map<String, String> map, RowBounds rb);
 	int deleteTeam(String team_name);
@@ -33,4 +34,5 @@ public interface TeamMapper {
 	int updateTeamFormation(Map<String, String> map);
 	int updatePlayerFormation(Map<String, String> map);
 	int deletePlayerFormation(Map<String, String> map); 
+	int countHead(String team_name);
 }
