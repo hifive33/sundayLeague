@@ -12,9 +12,11 @@
 	    <typeAlias type="com.sundayleague.main.dto.CalendarDTO" alias="CalendarDTO"/>
 	    <typeAlias type="com.sundayleague.main.dto.MatchPlayerDTO" alias="MatchPlayerDTO"/>
 	    <typeAlias type="com.sundayleague.main.dto.MatchGoalDTO" alias="MatchGoalDTO"/>
+	    <typeAlias type="com.sundayleague.main.dto.FormationDTO" alias="FormationDTO"/>
 	</typeAliases>
 	
 	<mappers>
+	
 		<mapper resource="mappers/MemberMapper.xml" />
 		<mapper resource="mappers/TeamMapper.xml" />
 		<mapper resource="mappers/AdminMapper.xml" />
