@@ -293,7 +293,7 @@
                 </div>
 			</div>
 		</div>
-    </section>
+    </section> 
     <!-- My Team Page End -->
     
     <!-- Footer Area Start -->
