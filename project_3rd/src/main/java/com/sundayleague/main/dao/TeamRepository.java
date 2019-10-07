@@ -228,6 +228,7 @@ public class TeamRepository {
 		
 		int result = mapper.updatePlayerFormation(map);
 		return result;
+	}
 	
 	public int countHead(String team_name) {
 		TeamMapper mapper = session.getMapper(TeamMapper.class);

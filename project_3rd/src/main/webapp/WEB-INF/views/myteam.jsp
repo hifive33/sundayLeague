@@ -227,36 +227,8 @@
     <section class="kick-fixture-page-next-match section_100">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
-                    <div class="fixture-page-next-match-left">
-                        <div class="single-upcoming-match">
-                            <div id="wdl">
-                            	<p><span>${team.victory}</span>win</p>
-                            	<p><span>${team.draw}</span>draw</p>
-                            	<p><span>${team.defeat}</span>lose</p>
-                            </div>
-                            <h2>Team Record</h2>
-                            <div class="upcoming-match-box">
-                                <div class="upcoming-teams-head">
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <div class="team-head-image">
-												<!-- <img src="resources/img/emblem-null.png" alt="team image" /> -->
-												 <img src="/emblemimg/${team.team_name}" alt="team image" />
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="col-sm-5">
-                                        </div>
-                                    </div>
-                                </div>
-								<h4>${team.team_name}</h4>
-                                <p>${team.team_comment}</p>
-                            </div>
-                            <%@include file="formation.jsp" %>
                 <!-- !Added_Layout Starts from here! Team Specification -->
+
                 <!-- team_spec_left -->
                 <div class="team__box__left">
                     <div class="team__title">${team.team_name }</div>
@@ -321,13 +293,13 @@
                         </c:forEach>
                        </ul>
                 </div>
-                <div>
-                	
-                </div>
+            </div>
+            <div class="row">
+            	<div class="col-md-8">
+					<%@include file="formation.jsp" %>
+				</div>
             </div>
         </div>
-			</div>
-		</div>
     </section>
     
     
