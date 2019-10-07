@@ -24,11 +24,19 @@
 	<select id="selectTeam2" resultType="PlayerDTO"
 		parameterType="String">
 		select * from player where team_name = #{team_name}
-
+		order by authority desc
 	</select>
-	<select id="selectTeam3" resultType="PlayerDTO"
+	<select id="selectTeam3" resultType="MatchGoalDTO"
 		parameterType="String">
-		select player_id,to_char(birth,'yyyy') as birth from player where team_name = #{team_name}
+		select
+		    *
+		from
+		    match_goal
+		where
+		    player_id in (select    player_id
+		                  from      player
+		                  where     team_name = #{team_name})
+<!-- 		select player_id,to_char(birth,'yyyy') as birth from player where team_name = #{team_name} -->
 
 	</select>
 	

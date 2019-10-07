@@ -106,7 +106,7 @@ text-align: center;
 	                                        <div class="col-sm-5">
 	                                            <div class="team-head-image">
 	                                                <a href="myteam">
-	                                                    <img src="emblemimg/${team_name}" alt="my team image" />
+	                                                    <img src="emblemimg/${home_team_name}" alt="my team image" />
 	                                                </a>
 	                                            </div>
 	                                        </div>
@@ -133,8 +133,8 @@ text-align: center;
 	                                    <div class="row">
 	                                        <div class="col-sm-5">
 	                                            <div class="team-head-image">
-	                                                <a href="myteam">
-	                                                    <img src="emblemimg/${team_name}" alt="my team image" />
+	                                                <a href="teamdetails?team_name=${home_team_name}">
+	                                                    <img src="emblemimg/${home_team_name}" alt="my team image" />
 	                                                </a>
 	                                            </div>
 	                                        </div>
@@ -164,6 +164,7 @@ text-align: center;
     <!-- Fixture Page Next Match End -->
     
     
+    <c:if test="${left ne null}">
     <!-- Last Match Result Area Start -->
     <section class="kick-last-match-result section_100">
         <div class="container">
@@ -184,16 +185,15 @@ text-align: center;
                                 <h3 class="result">win</h3>
                                 <div class="result-details">
                                     <h3 class="result-details-left">
-                                        <a href="#">${left }</a>
+                                        <a href="teamdetails?team_name=${left}">${left }</a>
                                     </h3>
                                     <ul>
                                     <c:forEach var="list" items="${l_player }">
-                           
-                                        <li>${list.player_id}<span>(${2020-list.birth})</span></li>
-                                        </c:forEach>
+                                       	<li>${list.player_id}<span>(${list.goaltime} assisted by ${list.assistedby})</span></li>
+									</c:forEach>
                                     </ul>
                                     <div class="last-match-logo">
-                                        <a href="#"><img src="/emblemimg/${left}" alt="logo" /></a>
+                                        <a href="teamdetails?team_name=${left}"><img src="/emblemimg/${left}" alt="logo" /></a>
                                     </div>
                                 </div>
                             </div>
@@ -210,17 +210,17 @@ text-align: center;
                                 <h3 class="result">lose</h3>
                                 <div class="result-details">
                                     <div class="last-match-logo-right">
-                                        <a href="#"><img src="/emblemimg/${right }" alt="logo" /></a>
+                                        <a href="teamdetails?team_name=${right}"><img src="/emblemimg/${right}" alt="logo" /></a>
                                     </div>
                                     <h3 class="result-details-right">
-                                        <a href="#">
+                                        <a href="teamdetails?team_name=${right}">
                                            ${right }
                                         </a>
                                     </h3>
                                     <ul>
-                                    <c:forEach var="list2" items="${r_player }">
-                                        <li>${list2.player_id}<span>(${2020-list2.birth})</span></li>
-                                        </c:forEach>
+                                    <c:forEach var="list" items="${r_player }">
+                                       	<li>${list.player_id}<span>(${list.goaltime} assisted by ${list.assistedby})</span></li>
+									</c:forEach>
                                         
                                     </ul>
                                 </div>
@@ -253,6 +253,7 @@ text-align: center;
         </div>
     </section>
     <!-- Last Match Result Area End -->
+    </c:if>
     
     <!-- Footer Area Start -->
     <%@include file="menu/footerArea.jsp"%>

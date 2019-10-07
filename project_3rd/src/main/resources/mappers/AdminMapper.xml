@@ -35,7 +35,14 @@
 			, draw
 			, rating
 			, established
-			, headcount
+			, nvl((select
+		            count(*)
+		        from
+		            player
+		        group by
+		            team_name
+		        having
+		            player.team_name = team.team_name), 0) as headcount
 			, team_comment
 			, region
 			, deleted_flag
@@ -125,7 +132,8 @@
 			, withdrawal_flag
 			, authority
 		FROM player
-		WHERE team_name = #{team_name}   
+		WHERE team_name = #{team_name}
+		order by authority desc
 	</select>
 	
 	<select id="allContact" resultType="ContactDTO">

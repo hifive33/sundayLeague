@@ -48,15 +48,35 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="resources/css/responsive.css">
 
+	<style>
+		.btntoTop{
+			background-color: #1759c6;
+			border: 2px solid #1759c6;
+		}
+		.btntoTop.active:hover {
+		    background: #1759c6  none repeat scroll 0 0;
+		    opacity: 0.8;
+		    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+		}
+		.coupon-cart-right > a {
+   			background: #1759c6 none repeat scroll 0 0;
+   		}
+   		.title-line-two {
+    		background: #1759c6 none repeat scroll 0 0;
+    	}
+    	.kick-section-heading span {
+		    color: #1759c6;
+		}
+	</style>
 </head>
 <body>
     
     <!-- Header Area Start -->
-	<%@include file="../menu/headerArea.jsp"%>
+	<%@include file="../menu/adminheaderArea.jsp"%>
     <!-- Header Area End -->
     
     <!-- Breadcromb Area Start -->
-    <%@include file="../menu/breadcrombArea.jsp"%>
+    <%@include file="../menu/adminbreadcrombArea.jsp"%>
     <!-- Breadcromb Area End -->
     
     <!-- Player Page Section Start -->
@@ -215,8 +235,9 @@
     <!-- script -->
 	<script>
 		$(function(){
-			$(".breadcromb-box > h2").html("My Account")
-			$(".breadcromb-box > ul > li:last-child").html("My Account")
+			$(".admin-breadcromb-box > h2").html("Manage Player Detail")
+			$(".admin-breadcromb-box ul li:last-child").html("Manage Player Detail")
+			$(".kick-header-area a[href=adminManagePlayer]").parent().attr('class', 'admin-current-page-item')
 			
 			$("#delete").on('click', function(){
 				var flag = confirm("정말 삭제하시겠습니까?")

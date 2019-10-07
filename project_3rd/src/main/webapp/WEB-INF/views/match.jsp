@@ -128,7 +128,7 @@
 	                                    <div class="row">
 	                                        <div class="col-sm-5">
 	                                            <div class="team-head-image">
-	                                                <a href="myteam">
+	                                                <a href="teamdetails?team_name=${home_team_name}">
 	                                                    <img src="emblemimg/${home_team_name}" alt="my team image" />
 	                                                </a>
 	                                            </div>

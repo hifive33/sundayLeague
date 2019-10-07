@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.sundayleague.main.dto.FormationDTO;
 import com.sundayleague.main.dto.MatchDTO;
+import com.sundayleague.main.dto.MatchGoalDTO;
 import com.sundayleague.main.dto.PlayerDTO;
 import com.sundayleague.main.dto.TeamDTO;
 import com.sundayleague.main.dto.TeamMatchingDTO;
@@ -38,7 +39,7 @@ public class TeamRepository {
 		return mapper.selectTeam2(team_name);
 	}
 	
-	public List<PlayerDTO> selectTeam3(String team_name){
+	public List<MatchGoalDTO> selectTeam3(String team_name){
 		TeamMapper mapper = session.getMapper(TeamMapper.class);
 		return mapper.selectTeam3(team_name);
 	}
