@@ -197,36 +197,43 @@ public class MatchController {
  			c.set(Calendar.DAY_OF_WEEK,Calendar.THURSDAY);
  		}
  		model.addAttribute("dday", format.format(c.getTime()));
+ 		
  		String matchFlag = teamRepo.getMatchFlag((String)session.getAttribute("team_name"));
- 		model.addAttribute("flag", matchFlag);
+		model.addAttribute("flag", matchFlag);
 		if (Integer.parseInt(matchFlag) > 1){
 			MatchDTO match = teamRepo.selectMatch((String)session.getAttribute("team_name"));
+			
+			model.addAttribute("home_team_name", match.getTeam_name());
 			model.addAttribute("away_team_name", match.getAway_team_name());
 			model.addAttribute("matchdate", match.getMatchdate());
 			model.addAttribute("match_address", match.getMatch_address());
+		}else{
+			model.addAttribute("home_team_name", session.getAttribute("team_name"));
 		}
  		
 		MatchDTO result = teamRepo.selectMatch2((String)session.getAttribute("team_name"));
-		List<PlayerDTO> result2 = teamRepo.selectTeam3(result.getTeam_name());
-		List<PlayerDTO> result3 = teamRepo.selectTeam3(result.getAway_team_name());
+		List<MatchGoalDTO> result2 = null;
+		List<MatchGoalDTO> result3 = null;
+		if (result != null) {
+			result2 = teamRepo.selectTeam3(result.getTeam_name());
+			result3 = teamRepo.selectTeam3(result.getAway_team_name());
 		
-		System.out.println(result);
-		if(Integer.parseInt(result.getHome_teamscore())<Integer.parseInt(result.getAway_teamscore())){
-			model.addAttribute("left",result.getAway_team_name());
-			model.addAttribute("right", result.getTeam_name());
-			model.addAttribute("l_score",result.getAway_teamscore());
-			model.addAttribute("r_score",result.getHome_teamscore());
-			model.addAttribute("l_player",result3);
-			model.addAttribute("r_player",result2);
-		}else {
-			model.addAttribute("right",result.getAway_team_name());
-			model.addAttribute("left", result.getTeam_name());
-			model.addAttribute("r_score",result.getAway_teamscore());
-			model.addAttribute("l_score",result.getHome_teamscore());
-			model.addAttribute("l_player",result2);
-			model.addAttribute("r_player",result3);
+			if(Integer.parseInt(result.getHome_teamscore())<Integer.parseInt(result.getAway_teamscore())){
+				model.addAttribute("left",result.getAway_team_name());
+				model.addAttribute("right", result.getTeam_name());
+				model.addAttribute("l_score",result.getAway_teamscore());
+				model.addAttribute("r_score",result.getHome_teamscore());
+				model.addAttribute("l_player",result3);
+				model.addAttribute("r_player",result2);
+			}else {
+				model.addAttribute("right",result.getAway_team_name());
+				model.addAttribute("left", result.getTeam_name());
+				model.addAttribute("r_score",result.getAway_teamscore());
+				model.addAttribute("l_score",result.getHome_teamscore());
+				model.addAttribute("l_player",result2);
+				model.addAttribute("r_player",result3);
+			}
 		}
-		
 	}
 	
 	@PostMapping("/fixturelist")

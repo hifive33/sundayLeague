@@ -67,7 +67,7 @@
                             <i class="fa fa-lock"></i>
                             <h3>register</h3>
                         </div>
-                        <form action=registration method="post" enctype="multipart/form-data">
+                        <form action=registration method="post" enctype="multipart/form-data" id="regform">
                             <div class="account-form-group">
                                 <input type="text" placeholder="ID" name="player_id" >
                                 <i class="fa fa-user-o"></i>
@@ -180,11 +180,11 @@
 							</div>
 							<input id="imgPreview" type="file" name="mypicUpload" value="사진첨부" accept="image/jpg, image/jpeg, image/png, image/gif" />                            
                             <div class="submit-login">
-                                <button type="submit" >登録</button>
+                                <button id="regsubmit">登録</button>
                             </div>
                         </form>
                         <div class="login-sign-up">
-                            <a href="login.html">ログイン画面に戻る</a>
+                            <a href="login">ログイン画面に戻る</a>
                         </div>
                     </div>
                 </div>
@@ -240,21 +240,14 @@
 			var validation = [false, false, false, false, false, false, false, false, false, false, false, false, false]
 			$(".breadcromb-box > h2").html("Registraion")
 			$(".breadcromb-box ul li:last-child").html("Registraion")
-			$(".account-form-group > select").on('change', function(){
-				if ($(this).val() != $(this).children()[0].innerHTML){
-					$(this).attr('style','color:black;')
-						   .next().addClass("fa-check");
-				}else {
-					$(this).removeAttr('style')
-						   .next().removeClass("fa-check");
-				}
-			})
 			
+			/* 0. ID */
 			$(".account-form-group > input[name=player_id]").on('keyup', function(){
 				if ($(this).val().length < 3 || $(this).val().length > 10){
 					$("#id_check").html("ID는 3~10자리만 가능합니다.")
 					$(this).next().removeClass("fa-check");
 					$(this).next().addClass("fa-user-o");
+					validation[0] = false;
 				}else {
 					$.ajax({
 						method:'get'
@@ -266,28 +259,34 @@
 								$("#id_check").html("이미 존재하는 ID 입니다")
 								$(temp).next().removeClass("fa-check");
 								$(temp).next().addClass("fa-user-o");
+								validation[0] = false;
 							} else{
 								$("#id_check").html("")
 								$(temp).next().removeClass("fa-user-o");
-								$(temp	).next().addClass("fa-check");
+								$(temp).next().addClass("fa-check");
+								validation[0] = true;
 							}
 						}
 					})
 				}
 			})
 			
+			/* 1. user name */
 			$(".account-form-group > input[name=name]").on('keyup', function(){
 				if ($(this).val() != ""){
 					$("#name_check").html("")
 					$(this).next().removeClass("fa-user");
 					$(this).next().addClass("fa-check");
+					validation[1] = true;
 				}else {
 					$("#name_check").html("이름을 입력하세요.")
 					$(this).next().removeClass("fa-check");
 					$(this).next().addClass("fa-user");
+					validation[1] = false;
 				}
 			})
 			
+			/* 2. Email */
 			$(".account-form-group > input[name=email]").on('keyup', function(){
 				var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 				// validation 추가
@@ -295,86 +294,204 @@
 					$("#email_check").html("올바른 email을 입력하세요.")
 					$(this).next().removeClass("fa-check");
 					$(this).next().addClass("fa-envelope-o");
+					validation[2] = false;
 				}else{
 					$("#email_check").html("")
 					$(this).next().removeClass("fa-envelope-o");
 					$(this).next().addClass("fa-check");
+					validation[2] = true;
 				}
 			})
 			
+			/* 3. Password */
 			$(".account-form-group > input[name=password]").on('keyup', function(){
-				// validation 추가
 				if($(this).val().length < 3 || $(this).val().length > 10){
 					$("#pw_check").html("pw는 3~10자리만 가능합니다.")
 					$(this).next().removeClass("fa-check");
 					$(this).next().addClass("fa-lock");
+					validation[3] = false;
 				} else{
 					$("#pw_check").html("")
 					$(this).next().removeClass("fa-lock");
 					$(this).next().addClass("fa-check");
+					validation[3] = true;
 				}
 			})
 			
+			/* 4. Confirm */
 			$("#confirm").on('keyup', function(){
-				// validation 추가
 				if ($(this).val() != $("#pw").val()){
 					$("#confirm_check").html("password가 일치하지 않습니다.")
 					$(this).next().removeClass("fa-check");
 					$(this).next().addClass("fa-lock");
+					validation[4] = false;
 				}else {
 					$("#confirm_check").html("")
 					$(this).next().removeClass("fa-lock");
 					$(this).next().addClass("fa-check");
+					validation[4] = true;
 				}
 			})
 			
-			$(".account-form-group > input[type=number], textarea").on('change', function(){
-				// validation 추가
+			/* 5. Position */
+			$(".account-form-group > select[name=position]").on('change', function(){
+				if ($(this).val() != $(this).children()[0].innerHTML){
+					$(this).attr('style','color:black;')
+						   .next().addClass("fa-check");
+					validation[5] = true;
+				}else {
+					$(this).removeAttr('style')
+						   .next().removeClass("fa-check");
+					validation[5] = false;
+				}
+			})
+			
+			/* 6. SubPosition */
+			$(".account-form-group > select[name=subposition]").on('change', function(){
+				if ($(this).val() != $(this).children()[0].innerHTML){
+					$(this).attr('style','color:black;')
+						   .next().addClass("fa-check");
+					validation[6] = true;
+				}else {
+					$(this).removeAttr('style')
+						   .next().removeClass("fa-check");
+					validation[6] = false;
+				}
+			})
+			
+			/* 7. Height */
+			$(".account-form-group > input[name=height]").on('keyup', function(){
 				if ($(this).val() != ""){
 					$(this).next().addClass("fa-check");
+					validation[7] = true;
 				}else {
 					$(this).next().removeClass("fa-check");
+					validation[7] = false;
+				}
+			})
+			$(".account-form-group > input[name=height]").on('change', function(){
+				if ($(this).val() != ""){
+					$(this).next().addClass("fa-check");
+					validation[7] = true;
+				}else {
+					$(this).next().removeClass("fa-check");
+					validation[7] = false;
 				}
 			})
 			
-		    var el = $('.account-form-group > input[type="date"]')
+			/* 8. Weight */
+			$(".account-form-group > input[name=weight]").on('keyup', function(){
+				if ($(this).val() != ""){
+					$(this).next().addClass("fa-check");
+					validation[8] = true;
+				}else {
+					$(this).next().removeClass("fa-check");
+					validation[8] = false;
+				}
+			})
+			$(".account-form-group > input[name=weight]").on('change', function(){
+				if ($(this).val() != ""){
+					$(this).next().addClass("fa-check");
+					validation[8] = true;
+				}else {
+					$(this).next().removeClass("fa-check");
+					validation[8] = false;
+				}
+			})
+			
+			/* 9. Birth Date */
+		    var el = $('.account-form-group > input[type=date]')
 		    if ($(el).val() == '') $(el).attr('type', 'text');
 		    $(el).focus(function() {
 		        $(this).attr('type', 'date');
 		        $(this).next().addClass("fa-check");
+				validation[9] = true;
 		        el.click();
 		    });
 		    $(el).blur(function() {
 		        if ($(this).val() == '') {
 		        	$(this).attr('type', 'text');
 		        	$(this).next().removeClass("fa-check");
+					validation[9] = false;
 		        }
 		    });
-		    
-		    
-		})
-		$("#imgPreview").on('change', function(){
-			previewImage(this); // 미리보기 함수
 			
-			if($("#imgPreview").val() != ''){
-				$("#mypic").next().addClass('fa-check')
-			}else{
-				$("#mypic").next().removeClass("fa-check");
-			}
-		})
-		function previewImage(input){
-			// 이미지를 선택하면
-			if(input.files && input.files[0]){
-				var reader = new FileReader();
-				reader.onload = function(e){
-					$("#mypic").attr('src', e.target.result);
+			/* 10. mainfoot */
+			$(".account-form-group > select[name=mainfoot]").on('change', function(){
+				if ($(this).val() != $(this).children()[0].innerHTML){
+					$(this).attr('style','color:black;')
+						   .next().addClass("fa-check");
+					validation[10] = true;
+				}else {
+					$(this).removeAttr('style')
+						   .next().removeClass("fa-check");
+					validation[10] = false;
 				}
-				reader.readAsDataURL(input.files[0]);
-			} else{
-				$("#mypic").attr('src', "resources/img/emblem-null.png");
-			}
+			})
 			
-		}
+			/* 11. Comment */
+			$(".account-form-group > textarea").on('keyup', function(){
+				if ($(this).val() != ""){
+					$(this).next().addClass("fa-check");
+					validation[11] = true;
+				}else {
+					$(this).next().removeClass("fa-check");
+					validation[11] = false;
+				}
+			})
+			$(".account-form-group > textarea").on('change', function(){
+				if ($(this).val() != ""){
+					$(this).next().addClass("fa-check");
+					validation[11] = true;
+				}else {
+					$(this).next().removeClass("fa-check");
+					validation[11] = false;
+				}
+			})
+		    
+			/* 12. Picture */
+			$("#imgPreview").on('change', function(){
+				previewImage(this); // 미리보기 함수
+				
+				if($("#imgPreview").val() != ''){
+					$("#mypic").next().addClass('fa-check')
+					validation[12] = true;
+				}else{
+					$("#mypic").next().removeClass("fa-check");
+					validation[12] = false;
+				}
+			})
+			function previewImage(input){
+				// 이미지를 선택하면
+				if(input.files && input.files[0]){
+					var reader = new FileReader();
+					reader.onload = function(e){
+						$("#mypic").attr('src', e.target.result);
+					}
+					reader.readAsDataURL(input.files[0]);
+				} else{
+					$("#mypic").attr('src', "resources/img/emblem-null.png");
+				}
+			}
+
+		    /* Submit Button */
+		    $("#regsubmit").on('click', function(){
+		    	var count = 0
+		    	$.each(validation, function(index, item){
+		    		if (!item){
+		    			alert("제대로 입력")
+		    			return false;
+		    		}else{
+		    			count++;
+		    		}
+		    	});
+		    	if (count == 13) {
+		    		$("#regform").submit()
+		    	}
+		    	return false;
+		    })
+		    
+		})
 	</script>
 	
 </body>

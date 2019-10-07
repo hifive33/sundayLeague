@@ -371,7 +371,7 @@
 		var result = '<c:forEach var ="list" items="${player2}"><li class="__item" onclick="confirmApply(this)">'
 				result += '<p>${list.player_id}</p>'
 				result += '<p>${list.position }</p>'
-                result += '<p>${list.authority ==3 ? "구단주":list.authority ==2 ? "스태프":"팀원"}</p>'
+                result += '<p>${list.authority ==3 ? "オーナー":list.authority ==2 ? "スタッフ":"選手"}</p>'
                 result += '<p>${list.player_comment}</p>'
            	    result += '</li>'
            	    result += '</c:forEach>'
@@ -386,7 +386,7 @@
 				var result = '<c:forEach var ="list" items="${player}"><c:if test="${list.authority > 0}"><li class="__item" onclick="playerDetail(this)">'
 				result += '<p>${list.player_id}</p>'
 				result += '<p>${list.position }</p>'
-                result += '<p>${list.authority ==3 ? "구단주":list.authority ==2 ? "스태프":"팀원"}</p>'
+                result += '<p>${list.authority ==3 ? "オーナー":list.authority ==2 ? "スタッフ":"選手"}</p>'
                 result += '<p>${list.player_comment }</p>'
            	    result += '</li></c:if>'
            	    result += '</c:forEach>'
@@ -394,12 +394,12 @@
 				return false;
 			})
 			
-			//스태프 임명
+			//スタッフ 임명
 			$("#list3").on('click',function(){
 				var result = '<c:forEach var ="list" items="${player}"><c:if test="${list.authority > 0 && list.authority < 2}"><li class="__item" onclick="confirmAppoint(this)">'
 				result += '<p>${list.player_id}</p>'
 				result += '<p>${list.position }</p>'
-                result += '<p>${list.authority ==3 ? "구단주":list.authority ==2 ? "스태프":"팀원"}</p>'
+                result += '<p>${list.authority ==3 ? "オーナー":list.authority ==2 ? "スタッフ":"選手"}</p>'
                 result += '<p>${list.player_comment}</p>'
            	    result += '</li></c:if>'
            	    result += '</c:forEach>'

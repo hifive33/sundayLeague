@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -123,12 +122,13 @@ public class AdminController {
 		
 		TeamDTO team = adRepo.selectTeam(team_name);
 		List<PlayerDTO> list = adRepo.selectTeamMember(team_name);
-		
-		System.out.println(team_name);
-		System.out.println(list);
+		list.forEach(x -> x.setPlayer_comment(x.getPlayer_comment().split("\r\n")[0]));
+
+//		System.out.println(team_name);
+//		System.out.println(list);
 		
 		model.addAttribute("team", team);
-		model.addAttribute("list", list);
+		model.addAttribute("player", list);
 		
 		return "admin/adminManageTeamDetail";
 	}

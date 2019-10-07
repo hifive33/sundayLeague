@@ -65,8 +65,7 @@
                 <div class="col-md-4 col-sm-4">
                     <div class="player-details-left">
 						<div class="player-head-image">
-							<!-- <img src="resources/img/emblem-null.png" alt="team image" /> -->
-							<img src="/mypic/${player.player_id}" alt="player image" />
+							<img src="/mypic/${player.player_id}" onerror="this.src='resources/img/player-1.jpg'" alt="player image" border=0 />
                     	</div>
                     </div>
                 </div>

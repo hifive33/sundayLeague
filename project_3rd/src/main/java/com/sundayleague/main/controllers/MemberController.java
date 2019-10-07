@@ -40,7 +40,7 @@ public class MemberController {
 			return "/login";
 		}else if(player.getPlayer_id().equals("admin")) {
 		
-			return "admin/adminMain";
+			return "redirect:/adminManagePlayer";
 		
 		}else{
 			session.setAttribute("loginId", player.getPlayer_id());

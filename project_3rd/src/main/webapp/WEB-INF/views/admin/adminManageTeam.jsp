@@ -47,6 +47,17 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="resources/css/responsive.css">
 
+	<style>
+		.btntoTop{
+			background-color: #1759c6;
+			border: 2px solid #1759c6;
+		}
+		.btntoTop.active:hover {
+		    background: #1759c6  none repeat scroll 0 0;
+		    opacity: 0.8;
+		    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+		}
+	</style>
 </head>
 <body>
 	

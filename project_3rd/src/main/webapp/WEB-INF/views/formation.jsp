@@ -10,7 +10,7 @@
 <style>
 	#body {
 		margin: 0 auto;
-		background: #34495e;
+		background: #212121;
 		font-family: "Open Sans", sans-serif;
 		cursor: default;
 	}

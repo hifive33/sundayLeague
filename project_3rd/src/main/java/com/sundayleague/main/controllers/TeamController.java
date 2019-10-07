@@ -20,7 +20,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.sundayleague.main.dao.MemberRepository;
 import com.sundayleague.main.dao.TeamRepository;
 import com.sundayleague.main.dto.FormationDTO;
-import com.sundayleague.main.dto.MatchDTO;
 import com.sundayleague.main.dto.PlayerDTO;
 import com.sundayleague.main.dto.TeamDTO;
 import com.sundayleague.main.util.FileService;
@@ -181,7 +180,9 @@ public class TeamController {
 	@GetMapping("/teamdetails")
 	public void teamdetails(String team_name, Model model) {
 		model.addAttribute("team", repo.selectTeam(team_name));
-		model.addAttribute("player", repo.selectTeam2(team_name));
+		List<PlayerDTO> playerList = repo.selectTeam2(team_name);
+		playerList.forEach(x -> x.setPlayer_comment(x.getPlayer_comment().split("\r\n")[0]));
+		model.addAttribute("player", playerList);
 	}
 	
 	@GetMapping("/teamdelete")
