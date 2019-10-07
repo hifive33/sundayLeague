@@ -191,8 +191,30 @@
 					$(this).next().addClass("fa-check");
 				}
 			})
+			$("#password").on('change',function(){
+				if($("#password").val().length < 3 || $("#password").val().length > 10){
+					$("#pw_check").html("pw는 3~10자리만 가능합니다.")
+					$(this).next().removeClass("fa-check");
+					$(this).next().addClass("fa-lock");
+				} else{
+					$("#pw_check").html("")
+					$(this).next().removeClass("fa-lock");
+					$(this).next().addClass("fa-check");
+				}
+			})
 			
 			$("#userId").on('keyup',function(){
+				if($("#userId").val().length < 3 || $("#userId").val().length > 10){
+					$("#id_check").html("id는 3~10자리만 가능합니다.")
+					$(this).next().removeClass("fa-check");
+					$(this).next().addClass("fa-user");
+				}else{
+					$("#id_check").html("")
+					$(this).next().removeClass("fa-user");
+					$(this).next().addClass("fa-check");
+				}
+			})
+			$("#userId").on('change',function(){
 				if($("#userId").val().length < 3 || $("#userId").val().length > 10){
 					$("#id_check").html("id는 3~10자리만 가능합니다.")
 					$(this).next().removeClass("fa-check");

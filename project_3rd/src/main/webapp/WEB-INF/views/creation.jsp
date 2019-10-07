@@ -203,6 +203,34 @@
 					})
 				}
 		    })
+		    $(".account-form-group > input[name=team_name]").on('change', function(){
+				if ($(this).val().length < 3 || $(this).val().length > 10){
+					$("#team_name_check").html("팀이름은 3~10자리만 가능합니다.")
+					$(this).next().removeClass("fa-check");
+					$(this).next().addClass("fa-user-o");
+					validation[0] = false;
+				}else {
+					$.ajax({
+						method:'get'
+						,url:'checkTeamName'
+						,data:'team_name=' + $(this).val()
+						,success:function(res){
+							var temp = ".account-form-group > input[name=team_name]"
+							if (res == 'success'){
+								$("#team_name_check").html("이미 존재하는 팀이름 입니다")
+								$(temp).next().removeClass("fa-check");
+								$(temp).next().addClass("fa-user-o");
+								validation[0] = false;
+							} else{
+								$("#team_name_check").html("")
+								$(temp).next().removeClass("fa-user-o");
+								$(temp).next().addClass("fa-check");
+								validation[0] = true;
+							}
+						}
+					})
+				}
+		    })
 		    
 		    /* 1. Select Region 1 */
 			$(".account-form-group > select[name=region]").on('change', function(){
@@ -232,6 +260,15 @@
 			
 			/* 3. Comment */
 			$(".account-form-group > textarea").on('keyup', function(){
+				if ($(this).val() != ""){
+					$(this).next().addClass("fa-check");
+					validation[3] = true;
+				}else {
+					$(this).next().removeClass("fa-check");
+					validation[3] = false;
+				}
+			})
+			$(".account-form-group > textarea").on('change', function(){
 				if ($(this).val() != ""){
 					$(this).next().addClass("fa-check");
 					validation[3] = true;
