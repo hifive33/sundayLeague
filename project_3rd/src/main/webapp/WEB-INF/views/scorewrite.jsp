@@ -282,7 +282,7 @@
 					var cl = numberdake($(item).attr('class'))
 					var tableone = $("#tableone > tbody > tr")
 					var tabletwo = $("#tabletwo > tbody > tr")
-					var minutes_played = $(item).children().children().val() + ":" + pad($(item).children().children().next().val(),2) + ":" + pad($(item).children().children().next().next().val(),2)
+					var minutes_played = $(item).children().children().val() + " " + pad($(item).children().children().next().val(),2) + "'" + pad($(item).children().children().next().next().val(),2) + '"'
 					var action = $(tableone[index]).children().next().children().val()
 					var player_id = null;
 					var assists = null;

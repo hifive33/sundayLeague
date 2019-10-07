@@ -77,13 +77,12 @@
 								<div id="matchID" style="display:none;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);width: 300px;margin: 0 auto;height: 300px;overflow: hidden;background-color: #ffffff88;">
 											<div style="margin-top: 50px">
 											<form action="matchfind">
-												<input type="checkbox" id="addressboolean" /> <input
-													type="text" name="match_address" placeholder="Address"
-													disabled="disabled" /><br /> <input type="radio"
-													name="match_day" value="sat" checked="checked" />SATERDAY<input
-													type="radio" name="match_day" value="sun" />SUNDAY<br />
+												<input type="checkbox" id="addressboolean" />
+												<input type="text" name="match_address" placeholder="Address" disabled="disabled" /><br />
+												<input type="radio" name="match_day" value="sat" checked="checked" />SATERDAY
+												<input type="radio" name="match_day" value="sun" />SUNDAY<br />
 												<div class="button" style="align-content: center">
-													<button>MATCHING</button>
+													<button id="matchfind">MATCHING</button>
 												</div>
 											</form>
 											</div>
