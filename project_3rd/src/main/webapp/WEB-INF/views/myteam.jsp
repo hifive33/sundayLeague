@@ -48,9 +48,9 @@
     <link rel="stylesheet" href="resources/css/responsive.css">
     
 
-	<!-- JqueryUI CSS -->
-	<link rel="stylesheet" href="resources/css/jquery-ui.css">
-	
+   <!-- JqueryUI CSS -->
+   <link rel="stylesheet" href="resources/css/jquery-ui.css">
+   
     <!-- this is brand new css for layouts -->
     <style>
         .team__box__left{
@@ -59,7 +59,7 @@
             width: 30%;
             vertical-align: top;
             margin-right: 8px;
-            	height:443px;
+            /* height:443px; */
             box-sizing: border-box;
         }
 
@@ -79,7 +79,7 @@
         
         .spec__box{
             padding: 14px;
-            	height:385px;
+               height:385px;
             background: #212121;
         }
 
@@ -151,7 +151,7 @@
             border-bottom: 4px solid #212121;
         }
         .navigation_active{
-        	border-bottom: 4px solid #E01A22;
+           border-bottom: 4px solid #E01A22;
             color: #ffffff;
             transition: all 0.3s ease-in-out;
         }
@@ -201,22 +201,22 @@
             font-weight: 100;
             border-bottom: 1px solid #2E2E2E;
         }
-		.__item:hover{
-			cursor: pointer;
-		    background: #353535 none repeat scroll 0 0 !important;
-		}
-		ul::-webkit-scrollbar{width: 10px;}
-		ul::-webkit-scrollbar-track {display: none;}
-		ul::-webkit-scrollbar-thumb {background-color:#303030; }
-		ul::-webkit-scrollbar-thumb:hover {background: #555;}
-		ul::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {display: none;} 
+      .__item:hover{
+         cursor: pointer;
+          background: #353535 none repeat scroll 0 0 !important;
+      }
+      ul::-webkit-scrollbar{width: 10px;}
+      ul::-webkit-scrollbar-track {display: none;}
+      ul::-webkit-scrollbar-thumb {background-color:#303030; }
+      ul::-webkit-scrollbar-thumb:hover {background: #555;}
+      ul::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {display: none;} 
 
     </style>
 </head>
 <body>
     
     <!-- Header Area Start -->
-	<%@include file="menu/headerArea.jsp"%>
+   <%@include file="menu/headerArea.jsp"%>
     <!-- Header Area End -->
     
     <!-- Breadcromb Area Start -->
@@ -242,7 +242,6 @@
                             <span>RATING</span><p>${team.rating }</p><br>
                             <span>HEADCOUNT</span><p>${team.headcount }</p><br>
                             <span>REGION</span><p>${team.region }</p>
-                            
                         </div>
                     </div>
                 </div>
@@ -260,10 +259,10 @@
                         <c:if test="${sessionScope.authority >=0}">
                             <li id="list1"><a href="#">チーム一覧</a></li>
                         </c:if> 
-                        	<c:if test="${sessionScope.authority >1}">
+                           <c:if test="${sessionScope.authority >1}">
                             <li id="list2"><a href="#">登録承認</a></li>
                         </c:if>
-                       	<c:if test="${sessionScope.authority >2}">
+                          <c:if test="${sessionScope.authority >2}">
                             <li id="list3"><a href="#">スタッフ選任</a></li>
                   
                             <li id="delete"><a href="#">チーム解団</a></li>
@@ -289,25 +288,21 @@
                             <p>${list.authority ==3 ? 'オーナー':list.authority ==2 ? 'スタッフ':'選手'}</p>
                             <p>${list.player_comment }</p>
                         </li>
-                        </c:if>
-                        </c:forEach>
-                       </ul>
+               </c:if>
+               </c:forEach>
+               </ul>
                 </div>
             </div>
             <div class="row">
-            	<div class="col-md-8">
-					<%@include file="formation.jsp" %>
-				</div>
+               <div class="team__box__right">
+               <%@include file="formation.jsp" %>
+            </div>
             </div>
         </div>
     </section>
     
     
     <!-- My Team Page End -->
-    
-    
-    
-    <!-- Footer Area Start -->
     
     <!-- Footer Area Start -->
     <%@include file="menu/footerArea.jsp"%>
@@ -349,74 +344,74 @@
     <script src="resources/js/custom.js"></script>
     
     <!-- Jquery-ui -->
-	<script src="resources/js/jquery-ui.js"></script>
-	
+   <script src="resources/js/jquery-ui.js"></script>
+   
     <!-- script -->
-	<script>
-		$(function(){
-			$(".breadcromb-box > h2").html("My Team")
-			$(".breadcromb-box ul li:last-child").html("My Team")
-			$("a[href=myteam]").parent().attr('class', 'current-page-item')
-			$(".__navgation > ul > li").on('click', toggle)
-			$("#delete").on('click',delteam)
-			$(".__navgation > ul > li:first-child").toggleClass('navigation_active')
-			$(".applylist").on('click',function(){
-				alert("fuck you")
-			})
-			
-			//가입목록	
-			$("#list2").on('click',function(){
-			
-			
-		var result = '<c:forEach var ="list" items="${player2}"><li class="__item" onclick="confirmApply(this)">'
-				result += '<p>${list.player_id}</p>'
-				result += '<p>${list.position }</p>'
+   <script>
+      $(function(){
+         $(".breadcromb-box > h2").html("My Team")
+         $(".breadcromb-box ul li:last-child").html("My Team")
+         $("a[href=myteam]").parent().attr('class', 'current-page-item')
+         $(".__navgation > ul > li").on('click', toggle)
+         $("#delete").on('click',delteam)
+         $(".__navgation > ul > li:first-child").toggleClass('navigation_active')
+         $(".applylist").on('click',function(){
+            alert("fuck you")
+         })
+         
+         //가입목록   
+         $("#list2").on('click',function(){
+         
+         
+      var result = '<c:forEach var ="list" items="${player2}"><li class="__item" onclick="confirmApply(this)">'
+            result += '<p>${list.player_id}</p>'
+            result += '<p>${list.position }</p>'
                 result += '<p>${list.authority ==3 ? "オーナー":list.authority ==2 ? "スタッフ":"選手"}</p>'
                 result += '<p>${list.player_comment}</p>'
-           	    result += '</li>'
-           	    result += '</c:forEach>'
-				$("#listmain").html(result)
-				return false;
-			})
-			
-			//팀목록
-			$("#list1").on('click',function(){
-				var head = '<li class="__head"><p>ID</p>\ <p>Position</p><p>Rank</p><p>Comment</p></li>'
-					$(".item__list").html(head)
-				var result = '<c:forEach var ="list" items="${player}"><c:if test="${list.authority > 0}"><li class="__item" onclick="playerDetail(this)">'
-				result += '<p>${list.player_id}</p>'
-				result += '<p>${list.position }</p>'
+                  result += '</li>'
+                  result += '</c:forEach>'
+            $("#listmain").html(result)
+            return false;
+         })
+         
+         //팀목록
+         $("#list1").on('click',function(){
+            var head = '<li class="__head"><p>ID</p>\ <p>Position</p><p>Rank</p><p>Comment</p></li>'
+               $(".item__list").html(head)
+            var result = '<c:forEach var ="list" items="${player}"><c:if test="${list.authority > 0}"><li class="__item" onclick="playerDetail(this)">'
+            result += '<p>${list.player_id}</p>'
+            result += '<p>${list.position }</p>'
                 result += '<p>${list.authority ==3 ? "オーナー":list.authority ==2 ? "スタッフ":"選手"}</p>'
                 result += '<p>${list.player_comment }</p>'
-           	    result += '</li></c:if>'
-           	    result += '</c:forEach>'
-				$("#listmain").html(result)
-				return false;
-			})
-			
-			//スタッフ 임명
-			$("#list3").on('click',function(){
-				var result = '<c:forEach var ="list" items="${player}"><c:if test="${list.authority > 0 && list.authority < 2}"><li class="__item" onclick="confirmAppoint(this)">'
-				result += '<p>${list.player_id}</p>'
-				result += '<p>${list.position }</p>'
+                  result += '</li></c:if>'
+                  result += '</c:forEach>'
+            $("#listmain").html(result)
+            return false;
+         })
+         
+         //スタッフ 임명
+         $("#list3").on('click',function(){
+            var result = '<c:forEach var ="list" items="${player}"><c:if test="${list.authority > 0 && list.authority < 2}"><li class="__item" onclick="confirmAppoint(this)">'
+            result += '<p>${list.player_id}</p>'
+            result += '<p>${list.position }</p>'
                 result += '<p>${list.authority ==3 ? "オーナー":list.authority ==2 ? "スタッフ":"選手"}</p>'
                 result += '<p>${list.player_comment}</p>'
-           	    result += '</li></c:if>'
-           	    result += '</c:forEach>'
-				$("#listmain").html(result)
-				return false;
-			})
-			
-			$("#dialog").on('click', function(e) {
+                  result += '</li></c:if>'
+                  result += '</c:forEach>'
+            $("#listmain").html(result)
+            return false;
+         })
+         
+         $("#dialog").on('click', function(e) {
                 e.preventDefault();
                 var dialog = $('<p>Are you sure?</p>').dialog({
                     buttons: {
                         "Yes": function() {
-            				location.href="joinapply?player_id=" + $(param).children()[0].innerText;
+                        location.href="joinapply?player_id=" + $(param).children()[0].innerText;
                             dialog.dialog('close');
                         },
                         "No":  function() {
-            				location.href="joinrefuse?player_id=" + $(param).children()[0].innerText;
+                        location.href="joinrefuse?player_id=" + $(param).children()[0].innerText;
                             dialog.dialog('close');
                         },
                         "Cancel":  function() {
@@ -424,62 +419,62 @@
                         }
                     }
                 })
-			});
+         });
 
-		})
-		
-		function toggle(){
-			$(".navigation_active").toggleClass('navigation_active');
-			$(this).toggleClass('navigation_active');
-		}
-		function delteam(){
-			var dialog = $('<p>解団しますか?</p>').dialog({
-				buttons: {
-					"チーム解団": function() {
-        				location.href="teamdelete";
-						dialog.dialog('close');
-					},
-					"キャンセル":  function() {
-						dialog.dialog('close');
-					}
+      })
+      
+      function toggle(){
+         $(".navigation_active").toggleClass('navigation_active');
+         $(this).toggleClass('navigation_active');
+      }
+      function delteam(){
+         var dialog = $('<p>解団しますか?</p>').dialog({
+            buttons: {
+               "チーム解団": function() {
+                    location.href="teamdelete";
+                  dialog.dialog('close');
+               },
+               "キャンセル":  function() {
+                  dialog.dialog('close');
+               }
                 }
             })
             return false;
-		}
-		function playerDetail(param){
-			location.href="playerdetails?playerid=" + $(param).children()[0].innerText;
-			return false;
-		}
-		function confirmApply(param) {
-			var dialog = $('<p>承認しますか?</p>').dialog({
-				buttons: {
-					"承認する": function() {
-        				location.href="joinapply?player_id=" + $(param).children()[0].innerText;
-						dialog.dialog('close');
-					},
-					"断る":  function() {
-        				location.href="joinrefuse?player_id=" + $(param).children()[0].innerText;
-						dialog.dialog('close');
-					},
-					"キャンセル":  function() {
-						dialog.dialog('close');
-					}
+      }
+      function playerDetail(param){
+         location.href="playerdetails?playerid=" + $(param).children()[0].innerText;
+         return false;
+      }
+      function confirmApply(param) {
+         var dialog = $('<p>承認しますか?</p>').dialog({
+            buttons: {
+               "承認する": function() {
+                    location.href="joinapply?player_id=" + $(param).children()[0].innerText;
+                  dialog.dialog('close');
+               },
+               "断る":  function() {
+                    location.href="joinrefuse?player_id=" + $(param).children()[0].innerText;
+                  dialog.dialog('close');
+               },
+               "キャンセル":  function() {
+                  dialog.dialog('close');
+               }
                 }
             })
-		}
-		function confirmAppoint(param) {
-			var dialog = $('<p>選任しますか?</p>').dialog({
-				buttons: {
-					"選任": function() {
-        				location.href="appoint?player_id=" + $(param).children()[0].innerText;
-						dialog.dialog('close');
-					},
-					"キャンセル":  function() {
-						dialog.dialog('close');
-					}
+      }
+      function confirmAppoint(param) {
+         var dialog = $('<p>選任しますか?</p>').dialog({
+            buttons: {
+               "選任": function() {
+                    location.href="appoint?player_id=" + $(param).children()[0].innerText;
+                  dialog.dialog('close');
+               },
+               "キャンセル":  function() {
+                  dialog.dialog('close');
+               }
                 }
             })
-		}
-	</script>
+      }
+   </script>
 </body>
 </html>

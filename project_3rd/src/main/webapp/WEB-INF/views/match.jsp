@@ -1,259 +1,283 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- Title -->
-    <title>Sunday League</title>
-    
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="144x144" href="resources/favicons/apple-touch-icon.png">
-    
-    <link rel="icon" type="image/png" sizes="32x32" href="resources/favicons/favicon-32x32.png">
-    
-    <link rel="icon" type="image/png" sizes="16x16" href="resources/favicons/favicon-16x16.png">
-    
-    <link rel="manifest" href="resources/favicons/manifest.json">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-    
-    <!-- Font awesome CSS -->
-    <link rel="stylesheet" href="resources/css/font-awesome.min.css">
-    
-    <!-- Animate CSS -->
-    <link rel="stylesheet" href="resources/css/animate.min.css">
-    
-    <!-- OwlCarousel CSS -->
-    <link rel="stylesheet" href="resources/css/owl.carousel.css">
-    
-    <!-- SlickNav CSS -->
-    <link rel="stylesheet" href="resources/css/slicknav.min.css">
-    
-    <!-- Magnific popup CSS -->
-    <link rel="stylesheet" href="resources/css/magnific-popup.css">
-    
-    <!-- Scroll CSS -->
-    <link rel="stylesheet" href="resources/css/perfect-scrollbar.min.css">
-    
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="resources/css/style.css">
-    
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="resources/css/responsive.css">
+<!-- Title -->
+<title>Sunday League</title>
+
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="144x144"
+	href="resources/favicons/apple-touch-icon.png">
+
+<link rel="icon" type="image/png" sizes="32x32"
+	href="resources/favicons/favicon-32x32.png">
+
+<link rel="icon" type="image/png" sizes="16x16"
+	href="resources/favicons/favicon-16x16.png">
+
+<link rel="manifest" href="resources/favicons/manifest.json">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+
+<!-- Font awesome CSS -->
+<link rel="stylesheet" href="resources/css/font-awesome.min.css">
+
+<!-- Animate CSS -->
+<link rel="stylesheet" href="resources/css/animate.min.css">
+
+<!-- OwlCarousel CSS -->
+<link rel="stylesheet" href="resources/css/owl.carousel.css">
+
+<!-- SlickNav CSS -->
+<link rel="stylesheet" href="resources/css/slicknav.min.css">
+
+<!-- Magnific popup CSS -->
+<link rel="stylesheet" href="resources/css/magnific-popup.css">
+
+<!-- Scroll CSS -->
+<link rel="stylesheet" href="resources/css/perfect-scrollbar.min.css">
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="resources/css/style.css">
+
+<!-- Responsive CSS -->
+<link rel="stylesheet" href="resources/css/responsive.css">
 
 </head>
 <body>
 
-    <!-- Header Area Start -->
+	<!-- Header Area Start -->
 	<%@include file="menu/headerArea.jsp"%>
-    <!-- Header Area End -->
-    
-    <!-- Breadcromb Area Start -->
-    <%@include file="menu/breadcrombArea.jsp"%>
-    <!-- Breadcromb Area End -->
-    
-    <!-- Match Area Start -->
-    <section class="kick-tickets-list-area section_100">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="fixture-page-next-match-left">
-                        <div class="single-upcoming-match">
-                            <div id="coming-soon"></div>
-                            <h2>next match started in</h2>
-                            <c:if test="${flag == '0'}">
-	                            <div class="upcoming-match-box">
-	                                <h4>場所</h4>
-	                                <p>日付</p>
-	                                <div class="upcoming-teams-head">
-	                                    <div class="row">
-	                                        <div class="col-sm-5">
-	                                            <div class="team-head-image">
-                                                    <img src="resources/img/emblem-question.png" alt="team image" />
-	                                            </div>
-	                                        </div>
-	                                        <div class="col-sm-2">
-	                                            <div class="team-head-vs">
-	                                                <span>VS</span>
-	                                            </div>
-	                                        </div>
-	                                        <div class="col-sm-5">
-	                                            <div class="team-head-image">
-                                                    <img src="resources/img/emblem-question.png" alt="team image" />
-	                                            </div>
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                                <h4>Sunday League</h4>
-	                            </div>
-                            </c:if>
-                            <c:if test="${flag == '1'}">
-	                            <div class="upcoming-match-box">
-	                                <h4>場所</h4>
-	                                <p>日付</p>
-	                                <div class="upcoming-teams-head">
-	                                    <div class="row">
-	                                        <div class="col-sm-5">
-	                                            <div class="team-head-image">
-	                                                <a href="myteam">
-	                                                    <img src="emblemimg/${home_team_name}" alt="my team image" />
-	                                                </a>
-	                                            </div>
-	                                        </div>
-	                                        <div class="col-sm-2">
-	                                            <div class="team-head-vs">
-	                                                <span>VS</span>
-	                                            </div>
-	                                        </div>
-	                                        <div class="col-sm-5">
-	                                            <div class="team-head-image">
-                                                   	<img src="resources/img/emblem-question.png" alt="away team image" />
-	                                            </div>
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                                <h4>Sunday League</h4>
-	                            </div>
-                            </c:if>
-                            <c:if test="${flag > '1'}">
-	                            <div class="upcoming-match-box">
-	                                <h4>${match_address}</h4>
-	                                <p>${matchdate}</p>
-	                                <div class="upcoming-teams-head">
-	                                    <div class="row">
-	                                        <div class="col-sm-5">
-	                                            <div class="team-head-image">
-	                                                <a href="teamdetails?team_name=${home_team_name}">
-	                                                    <img src="emblemimg/${home_team_name}" alt="my team image" />
-	                                                </a>
-	                                            </div>
-	                                        </div>
-	                                        <div class="col-sm-2">
-	                                            <div class="team-head-vs">
-	                                                <span>VS</span>
-	                                            </div>
-	                                        </div>
-	                                        <div class="col-sm-5">
-	                                            <div class="team-head-image">
-	                                                <a href="teamdetails?team_name=${away_team_name}">
-	                                                    <img src="emblemimg/${away_team_name}" alt="away team image" />
-	                                                </a>
-	                                            </div>
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                                <h4>Sunday League</h4>
-	                            </div>
-                            </c:if>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="match-find">
-                    	<div class="match-form-group">
-                    		<c:if test="${authority > 1}">
-                    			<c:if test="${flag == '0'}">
-	                    			<form action="matchfind">
-	                    				<input type="checkbox" id="addressboolean" />
-	                    				<input type="text" name="match_address" placeholder="Address" disabled="disabled" /><br />
-	                    				<input type="radio" name="match_day" value="sat" checked="checked" />SATERDAY<input type="radio" name="match_day" value="sun"/>SUNDAY<br />
-	                    				<button>MATCHING</button>
-	                    			</form>
-                    			</c:if>
-                    			<c:if test="${flag == '1'}">
+	<!-- Header Area End -->
+
+	<!-- Breadcromb Area Start -->
+	<%@include file="menu/breadcrombArea.jsp"%>
+	<!-- Breadcromb Area End -->
+
+	<!-- Match Area Start -->
+	<section class="kick-tickets-list-area section_100">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="fixture-page-next-match-left">
+						<div class="single-upcoming-match">
+							<div id="coming-soon"></div>
+							<h2>next match started in</h2>
+							<c:if test="${flag == '0'}">
+								<div class="upcoming-match-box"style="position: relative;">
+								<div id="matchID" style="display:none;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);width: 300px;margin: 0 auto;height: 300px;overflow: hidden;background-color: #ffffff88;">
+											<div style="margin-top: 50px">
+											<form action="matchfind">
+												<input type="checkbox" id="addressboolean" /> <input
+													type="text" name="match_address" placeholder="Address"
+													disabled="disabled" /><br /> <input type="radio"
+													name="match_day" value="sat" checked="checked" />SATERDAY<input
+													type="radio" name="match_day" value="sun" />SUNDAY<br />
+												<div class="button" style="align-content: center">
+													<button>MATCHING</button>
+												</div>
+											</form>
+											</div>
+									</div>
+									<h4>場所</h4>
+									<p>日付</p>
+									<div class="upcoming-teams-head">
+										<div class="row">
+											<div class="col-sm-5">
+												<div class="team-head-image">
+													<img src="resources/img/emblem-question.png"
+														alt="team image" />
+												</div>
+											</div>
+											<div class="col-sm-2">
+												<div class="team-head-vs">
+													<span>VS</span>
+												</div>
+												
+											</div>
+											<div class="col-sm-5">
+												<div class="team-head-image">
+													<img src="resources/img/emblem-question.png"
+														alt="team image" />
+												</div>
+											</div>
+										</div>
+									</div>
+									<h4>Sunday League</h4>
+								</div>
+							</c:if>
+							<c:if test="${flag == '1'}">
+								<div class="upcoming-match-box">
+									<h4>場所</h4>
+									<p>日付</p>
+									<div class="upcoming-teams-head">
+										<div class="row">
+											<div class="col-sm-5">
+												<div class="team-head-image">
+													<a href="myteam"> <img
+														src="emblemimg/${home_team_name}" alt="my team image" />
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-2">
+												<div class="team-head-vs">
+													<span>VS</span>
+												</div>
+											</div>
+											<div class="col-sm-5">
+												<div class="team-head-image">
+													<img src="resources/img/emblem-question.png"
+														alt="away team image" />
+												</div>
+											</div>
+										</div>
+									</div>
+									<h4>Sunday League</h4>
+								</div>
+							</c:if>
+							<c:if test="${flag > '1'}">
+								<div class="upcoming-match-box">
+									<h4>${match_address}</h4>
+									<p>${matchdate}</p>
+									<div class="upcoming-teams-head">
+										<div class="row">
+											<div class="col-sm-5">
+												<div class="team-head-image">
+													<a href="teamdetails?team_name=${home_team_name}"> <img
+														src="emblemimg/${home_team_name}" alt="my team image" />
+													</a>
+												</div>
+											</div>
+											<div class="col-sm-2">
+												<div class="team-head-vs">
+													<span>VS</span>
+												</div>
+											</div>
+											<div class="col-sm-5">
+												<div class="team-head-image">
+													<a href="teamdetails?team_name=${away_team_name}"> <img
+														src="emblemimg/${away_team_name}" alt="away team image" />
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<h4>Sunday League</h4>
+								</div>
+							</c:if>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="match-find">
+						<div class="match-form-group">
+							<c:if test="${authority > 1}">
+								<c:if test="${flag == '0'}">
+									<button id="matching">MATCHING</button>
+								</c:if>
+								<c:if test="${flag == '1'}">
 									<button type="button" id="matchfind">申込キャンセル</button>
-                    			</c:if>
-                    			<c:if test="${flag > '1' && authority > 1}">
+								</c:if>
+								<c:if test="${flag > '1' && authority > 1}">
 									<button type="button" id="scorewrite">入力</button>
-                    			</c:if>
-                    		</c:if>
-                    	</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Match Area End -->
-    
-    
-    <!-- Footer Area Start -->
-    <%@include file="menu/footerArea.jsp"%>
-    <!-- Footer Area End -->
+								</c:if>
+							</c:if>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Match Area End -->
 
 
-    <!-- jQuery -->
-    <script src="resources/js/jquery.min.js"></script>
-    
-    <!-- Bootstrap JS -->
-    <script src="resources/js/bootstrap.min.js"></script>
-    
-    <!-- Magnific Popup JS -->
-    <script src="resources/js/jquery.magnific-popup.min.js"></script>
-    
-    <!-- OwlCarousel JS -->
-    <script src="resources/js/owl.carousel.min.js"></script>
-    
-    <!-- SlickNav JS -->
-    <script src="resources/js/jquery.slicknav.min.js"></script>
-    
-    <!-- Scrollbar JS -->
-    <script src="resources/js/jquery-perfect-scrollbar.min.js"></script>
-    
-    <!-- Countdown JS -->
-    <script src="resources/js/jquery.countdown.min.js"></script>
-    
-    <!-- Waypoints JS -->
-    <script src="resources/js/jquery.waypoints.min.js"></script>
-    
-    <!-- Progressbar JS -->
-    <script src="resources/js/progressbar.min.js"></script>
-    
-    <!-- Isotop JS -->
-    <script src="resources/js/isotope.pkgd.min.js"></script>
-    
-    <script src="resources/js/custom-isotop.js"></script>
-    
-    <!-- Custom JS -->
-    <script src="resources/js/custom.js"></script>
-    
-    <!-- script -->
+	<!-- Footer Area Start -->
+	<%@include file="menu/footerArea.jsp"%>
+	<!-- Footer Area End -->
+
+
+	<!-- jQuery -->
+	<script src="resources/js/jquery.min.js"></script>
+
+	<!-- Bootstrap JS -->
+	<script src="resources/js/bootstrap.min.js"></script>
+
+	<!-- Magnific Popup JS -->
+	<script src="resources/js/jquery.magnific-popup.min.js"></script>
+
+	<!-- OwlCarousel JS -->
+	<script src="resources/js/owl.carousel.min.js"></script>
+
+	<!-- SlickNav JS -->
+	<script src="resources/js/jquery.slicknav.min.js"></script>
+
+	<!-- Scrollbar JS -->
+	<script src="resources/js/jquery-perfect-scrollbar.min.js"></script>
+
+	<!-- Countdown JS -->
+	<script src="resources/js/jquery.countdown.min.js"></script>
+
+	<!-- Waypoints JS -->
+	<script src="resources/js/jquery.waypoints.min.js"></script>
+
+	<!-- Progressbar JS -->
+	<script src="resources/js/progressbar.min.js"></script>
+
+	<!-- Isotop JS -->
+	<script src="resources/js/isotope.pkgd.min.js"></script>
+
+	<script src="resources/js/custom-isotop.js"></script>
+
+	<!-- Custom JS -->
+	<script src="resources/js/custom.js"></script>
+
+	<!-- script -->
 	<script>
-		$(function(){
+		$(function() {
 			$(".breadcromb-box > h2").html("Match")
 			$(".breadcromb-box ul li:last-child").html("Match")
-			
+			$("#matching").on('click', function() {
+				$("#matchID").css('display','');
+			})
 			var dday = '${dday}' // 경기시간
-			
-			$('#coming-soon').countdown(dday, function (event) {
-	            var $this = $(this).html(event.strftime('' + '<p><span>%D</span>days</p>  ' + '<p><span>%H</span>Hours</p>  ' + '<p><span>%M</span>Minutes</p>  ' + '<p><span>%S</span>Seconds</p> '));
-	        });
-			
-			$("#matchfind").on('click', function(){
+
+			$('#coming-soon').countdown(
+					dday,
+					function(event) {
+						var $this = $(this).html(
+								event.strftime(''
+										+ '<p><span>%D</span>days</p>  '
+										+ '<p><span>%H</span>Hours</p>  '
+										+ '<p><span>%M</span>Minutes</p>  '
+										+ '<p><span>%S</span>Seconds</p> '));
+					});
+
+			$("#matchfind").on('click', function() {
 				location.href = "matchfind"
 				return false;
 			})
-			
-			$("#scorewrite").on('click', function(){
+
+			$("#scorewrite").on('click', function() {
 				location.href = "scorewrite"
 				return false;
 			})
-			
-			$("#addressboolean").on('click', function(){
+
+			$("#addressboolean").on('click', function() {
 				if ($("#addressboolean").is(":checked"))
 					$(this).next().removeAttr('disabled')
 				else
 					$(this).next().attr('disabled', 'disabled')
 			})
 		})
-		
 	</script>
-	
+
 </body>
 </html>

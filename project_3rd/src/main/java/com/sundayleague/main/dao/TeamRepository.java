@@ -235,4 +235,8 @@ public class TeamRepository {
 		TeamMapper mapper = session.getMapper(TeamMapper.class);
 		return mapper.countHead(team_name);
 	}
+	public List<TeamDTO>rankTeam(){
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		return mapper.rankTeam();
+	}
 }

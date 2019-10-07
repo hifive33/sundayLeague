@@ -6,17 +6,24 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.sundayleague.main.dao.TeamRepository;
 
 @Controller
 public class HomeController {
 
 	final String path = "/uploadfile/gallery";
 
+	@Autowired
+	TeamRepository repo;
+	
 	@GetMapping("/")
-	public String home(){
+	public String home(Model model){
+		model.addAttribute("team", repo.rankTeam());
 		return "index";
 	}
 

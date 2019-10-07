@@ -92,7 +92,7 @@
 	                                            </c:if>
 	                                            <!-- 운영진 전용 -->
 	                                            <c:if test="${sessionScope.authority > 1}">
-		                                            <li><a href="#">試合申請</a></li>
+		                                            <li><a href="match">試合申請</a></li>
 	                                            </c:if>
 	                                            <!-- 감독 전용 -->
 	                                        </ul>
