@@ -284,4 +284,12 @@
 	<select id="countHead" parameterType="String" resultType="int">
 	select count(*) from player where team_name = #{team_name} and authority > 0
 	</select>
+	<select id="checkTeamName" parameterType="String" resultType="String">
+		select
+			count(*)
+		from
+			team
+		where
+			team_name = #{team_name}
+	</select>
 </mapper>

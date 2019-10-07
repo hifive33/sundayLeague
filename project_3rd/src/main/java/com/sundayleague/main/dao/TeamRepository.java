@@ -235,4 +235,9 @@ public class TeamRepository {
 		TeamMapper mapper = session.getMapper(TeamMapper.class);
 		return mapper.countHead(team_name);
 	}
+
+	public String checkTeamName(String team_name) {
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		return mapper.checkTeamName(team_name);
+	}
 }

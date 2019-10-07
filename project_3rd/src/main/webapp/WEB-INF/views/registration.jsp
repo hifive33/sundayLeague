@@ -479,7 +479,7 @@
 		    	var count = 0
 		    	$.each(validation, function(index, item){
 		    		if (!item){
-		    			alert("제대로 입력")
+		    			alert("빈칸을 모두 입력해주세요")
 		    			return false;
 		    		}else{
 		    			count++;
