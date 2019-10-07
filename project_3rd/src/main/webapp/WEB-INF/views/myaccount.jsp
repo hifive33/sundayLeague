@@ -47,6 +47,204 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="resources/css/responsive.css">
 
+    <!-- this is brand new css for layouts -->
+    <style>
+        .team__box__left{
+            display: inline-block; 
+            /* width: 300px; */
+            width: 30%;
+            vertical-align: top;
+            margin-right: 8px;
+            /* height:443px; */
+            box-sizing: border-box;
+        }
+
+        .team__title{
+            display: block; 
+            width: 100%; 
+            height: 50px;
+            box-sizing: border-box;
+            font-size: 18px; 
+            background: #E01A22;
+            text-align: center;
+            color: #ffffff;
+            padding: 10px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .team__title__right{
+            display: block; 
+            width: 100%; 
+            height: 50px;
+            box-sizing: border-box;
+            font-size: 18px; 
+            background: #E01A22;
+            text-align: left;
+            color: #ffffff;
+            padding: 10px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .spec__box{
+            padding: 14px;
+            height:385px;
+            background: #212121;
+        }
+
+        .spec__box2{
+            padding: 14px;
+            height:385px;
+            background: #212121;
+        }
+
+		.img__box{
+			padding: 14px;
+			height: 518.6px;
+			background: #212121;
+			text-align: center;
+		}
+
+        .team__image{
+            display: block;
+            box-sizing: border-box;
+            margin: 0 auto;
+            width: 200px;
+            height:230px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .team__image > img{
+        	width: auto;
+        	height: auto;
+        	max-height: 100%;
+        	max-width: 100%;
+        }
+
+        .team__score{
+            padding: 0px 20px;
+            font-size: 0;
+        }
+
+        .team__score>span{
+            width: 50%;
+            font-size: 16px;
+            font-weight: 600;
+            color: #ADADAD;
+            display: inline-block;
+        }
+
+        .team__score>p{
+            display: inline-block;
+            text-align: right;
+            color: #ffffff;
+            font-size: 16px;
+            width: 50%;
+            vertical-align: top;
+        }
+
+        .team__box__right{
+            display: inline-block;
+            height: 443px;
+            /* width: 657px; */
+            width: 65%;
+            background: #ffffff;
+            margin-right: 8px;
+        }
+
+        .top__menu{
+            height: 55px;
+        }
+
+        .top__menu>p{
+            height: 100%;
+        }
+        .__navgation{
+            margin: 0;
+            padding: 0;
+        }
+        .__navgation > ul{
+            font-size: 0;
+        }
+        .__navgation > ul > li{
+            display: inline-block;
+            width: 25%;
+        }
+        .__navgation > ul > li > a{
+            display: block;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 400;
+            color: #898989;
+            box-sizing: border-box;
+            border-bottom: 4px solid #212121;
+        }
+        .navigation_active{
+        	border-bottom: 4px solid #E01A22;
+            color: #ffffff;
+            transition: all 0.3s ease-in-out;
+        }
+        .__navgation > ul > li > a:hover,
+        .__navgation > ul > li > a:active{
+            border-bottom: 4px solid #E01A22;
+            color: #ffffff;
+            transition: all 0.3s ease-in-out;
+        }
+        .item__list{
+            box-sizing: border-box;
+            font-size: 0;
+        }
+        .__scroll{
+            height: 260px;
+            overflow-y: scroll;
+        }
+        .item__list > li > p{
+            display: inline-block;
+            vertical-align: middle;
+            padding: 6px 10px;
+            color: #ffffff;
+            overflow: hidden;
+            text-align: center;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            
+        }
+        .item__list > li > p:nth-child(1){
+            width: 20%;
+        }
+        .item__list > li > p:nth-child(2){
+            width: 16%;
+        }
+        .item__list > li > p:nth-child(3){
+            width: 16%;
+        }
+        .item__list > li > p:nth-child(4){
+            width: 44%;
+        }
+        .__head{
+            font-size: 16px;
+            background: #2E2E2E;
+        }
+        .__item{
+            font-size: 14px;
+            font-weight: 100;
+            border-bottom: 1px solid #2E2E2E;
+        }
+		.__item:hover{
+			cursor: pointer;
+		    background: #353535 none repeat scroll 0 0 !important;
+		}
+		ul::-webkit-scrollbar{width: 10px;}
+		ul::-webkit-scrollbar-track {display: none;}
+		ul::-webkit-scrollbar-thumb {background-color:#303030; }
+		ul::-webkit-scrollbar-thumb:hover {background: #555;}
+		ul::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {display: none;} 
+
+    </style>
 </head>
 <body>
     
@@ -58,47 +256,33 @@
     <%@include file="menu/breadcrombArea.jsp"%>
     <!-- Breadcromb Area End -->
     
-    <!-- Player Page Section Start -->
-    <section class="kick-player-page section_100">
+	<!-- My Account Page Start -->
+    <section class="kick-fixture-page-next-match section_100">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <div class="player-details-left">
-						<div class="player-head-image">
-							<img src="/mypic/${player.player_id}" onerror="this.src='resources/img/player-1.jpg'" alt="player image" border=0 />
-                    	</div>
-                    </div>
-                </div>
-                <div class="col-md-8 col-sm-8">
-                    <div class="player-details-right">
-                        <h2>${player.player_id }</h2>
-                        <hr>
-                        <div class="player-desc">
-                            <p>${player.player_comment }</p>
+                <!-- !Added_Layout Starts from here! Team Specification -->
+
+                <!-- team_spec_left -->
+                <div class="team__box__left">
+                    <div class="team__title">${player.player_id }</div>
+
+                    <div class="spec__box">
+                        <div class="team__image" >
+                        	<img src="/mypic/${player.player_id}" onerror="this.src='resources/img/player-5.jpg'" alt="player image" border=0 />
+                        </div>
+
+                        <div class="team__score">
+                            <span>COMMENT</span><p>${player.player_comment }</p><br>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!-- Player Page Section Start -->
-    
-    
-    <!-- Player Profile Info Start -->
-    <section class="kick-player-profile-info section_100">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="kick-section-heading">
-                        <h2>Profile <Span>information</Span></h2>
-                        <div class="title-line-one"></div>
-                        <div class="title-line-two"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="player-profile-left">
+                   
+                <!-- team_spec_right -->
+                <div class="team__box__right">
+                	<div class="team__title__right">
+                		Profile information
+                	</div>
+                	<div class="spec__box2">
                         <table class="table table-striped table-responsive">
                             <tbody>
                                 <tr>
@@ -144,120 +328,19 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="player-profile-right">
-                        <ul class="progress-list">
-                            <li>
-                                <p>Attendance</p>
-                                <div class="bar" data-value="92"></div>
-                            </li>
-                            <li>
-                                <p>Winning Rate</p>
-                                <div class="bar" data-value="85"></div>
-                            </li>
-<!--                             <li>
-                                <p>timing Accuracy</p>
-                                <div class="bar" data-value="90"></div>
-                            </li>
-                            <li>
-                                <p>total Accuracy</p>
-                                <div class="bar" data-value="95"></div>
-                            </li> -->
-                        </ul>
-                    </div>
-                </div>
             </div>
             <div class="row">
 				<div class="player-profile-update clearfix">
-					<div class="col-md-12 col-sm-6">
-						<div class="coupon-cart-right">
+					<div class="col-md-12 col-sm-12">
+						<div class="coupon-cart-right" style="margin-top: 10px;">
 							<a href="updateprofile">Edit Profile</a>
 						</div>
 					</div>
 				</div>
 			</div>
         </div>
-
     </section>
-    <!-- Player Profile Info End -->
-    
-    
-    <!-- Player Page Gallery Start -->
-    <!-- <section class="kick-player-page-gallery section_100">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="kick-section-heading">
-                        <h2>Player <span>Gallery</span></h2>
-                        <div class="title-line-one"></div>
-                        <div class="title-line-two"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <a href="resources/img/player-gallery-5.jpg" class="gallery-lightbox">
-                        <div class="project-img player-gallery-single">
-                            <img src="resources/img/player-gallery-5.jpg" alt="single project" />
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="resources/img/player-gallery-4.jpg" class="gallery-lightbox">
-                        <div class="project-img player-gallery-single">
-                            <img src="resources/img/player-gallery-4.jpg" alt="single project" />
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="resources/img/player-gallery-6.jpg" class="gallery-lightbox">
-                        <div class="project-img player-gallery-single">
-                            <img src="resources/img/player-gallery-6.jpg" alt="single project" />
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="resources/img/player-gallery-3.jpg" class="gallery-lightbox">
-                        <div class="project-img player-gallery-single">
-                            <img src="resources/img/player-gallery-3.jpg" alt="single project" />
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <a href="resources/img/player-gallery-6.jpg" class="gallery-lightbox">
-                        <div class="project-img player-gallery-single">
-                            <img src="resources/img/player-gallery-6.jpg" alt="single project" />
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="resources/img/player-gallery-5.jpg" class="gallery-lightbox">
-                        <div class="project-img player-gallery-single">
-                            <img src="resources/img/player-gallery-5.jpg" alt="single project" />
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="resources/img/player-gallery-2.jpg" class="gallery-lightbox">
-                        <div class="project-img player-gallery-single">
-                            <img src="resources/img/player-gallery-2.jpg" alt="single project" />
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="resources/img/player-gallery-1.jpg" class="gallery-lightbox">
-                        <div class="project-img player-gallery-single">
-                            <img src="resources/img/player-gallery-1.jpg" alt="single project" />
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- Player Page Gallery End -->
-    
+    <!-- My Account Page End -->
     
     <!-- Footer Area Start -->
     <%@include file="menu/footerArea.jsp"%>

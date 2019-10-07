@@ -75,11 +75,12 @@ public class TeamController {
 		model.addAttribute("team", team);
 		List<PlayerDTO> playerList = repo.selectTeam2((String)session.getAttribute("team_name"));
 		playerList.forEach(x -> x.setPlayer_comment(x.getPlayer_comment().split("\r\n")[0]));
+		List<PlayerDTO> playerList2 = repo.selectTeam4((String)session.getAttribute("team_name"));
+		playerList2.forEach(x -> x.setPlayer_comment(x.getPlayer_comment().split("\r\n")[0]));
 		model.addAttribute("player", playerList);
-		model.addAttribute("player2", repo.selectTeam4((String)session.getAttribute("team_name")));
+		model.addAttribute("player2", playerList2);
 		
 		model.addAttribute("team", repo.selectTeam((String)session.getAttribute("team_name")));
-		model.addAttribute("player", repo.selectTeam2((String)session.getAttribute("team_name")));
 		
 		////팀 포메이션 정보 획득 
 		FormationDTO formation = repo.selectFormation((String)session.getAttribute("team_name"));
@@ -194,5 +195,12 @@ public class TeamController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/checkTeamName")
+	@ResponseBody
+	public String checkTeamName(String team_name){
+		String result = repo.checkTeamName(team_name);
+		
+		return result.equals("1") ? "success" : "failure";
+	}
 }
 	
