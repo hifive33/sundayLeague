@@ -64,10 +64,10 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
-                                    <h2>kika Semi Finals at city stadium</h2>
-                                    <p>Friday, 10th Sep, 2018, 16:00GMT</p>
-                                    <a href="#" class="kick-btn">
-                                        Link1
+                                    <h2>英"레알의 지단, 손흥민 원한다이적료 1047억 준비"</h2>
+                                    <p>Monday, 6th Oct, 2018, 16:00GMT</p>
+                                    <a href="https://news.joins.com/article/23596096" class="kick-btn" target="_blank">
+                                        자세히
                                         <i class="fa fa-arrow-right"></i>
                                     </a>
                                 </div>
@@ -82,28 +82,10 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
-                                    <h2>kika Semi Finals at city stadium</h2>
-                                    <p>Friday, 10th Sep, 2018, 16:00GMT</p>
-                                    <a href="#" class="kick-btn">
-                                        Link2
-                                        <i class="fa fa-arrow-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="kick-main-slide slide-item-3">
-                <div class="kick-main-caption">
-                    <div class="kick-caption-cell">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2">
-                                    <h2>kika Semi Finals at city stadium</h2>
-                                    <p>Friday, 10th Sep, 2018, 16:00GMT</p>
-                                    <a href="#" class="kick-btn">
-                                        Link3
+                                    <h2>영국 매체, “황희찬, 분명 토트넘의 관심 다시 받을 것”</h2>
+                                    <p>Monday, 7th Oct, 2018, 16:00GMT</p>
+                                    <a href="http://www.sportalkorea.com/news/view.php?gisa_uniq=2019100714241843&section_code=20&cp=se&sp=A" class="kick-btn"target="_blank">
+                                        자세히
                                         <i class="fa fa-arrow-right"></i>
                                     </a>
                                 </div>
@@ -124,11 +106,11 @@
                 <div class="col-md-8">
                     <div class="kick-about-right">
                         <div class="kick-section-heading">
-                            <h2>about <span>kick</span></h2>
+                            <h2>about <span>SundayLeague</span></h2>
                             <div class="title-line-one"></div>
                             <div class="title-line-two"></div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, Lorem ipsum dolor sit. Nam sed ligula odio. Sed id metus felis. Ut pretium nisl non justo condimentum id tincidunt nunc faucibus. Ut neque eros, pulvinar eu blandit quis, lacinia nec ipsum. Etiam vel orci ipsum. Sed eget velit ipsum. Duis in tortor scelerisque felis .</p>
+                        <p>サッカー同好会の活動を活性化させるためにレーティング点数を基盤にマッチングするサービスをELO アルゴリズムを使って開発</p>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="single-about-right">
@@ -136,8 +118,9 @@
                                         <i class="fa fa-grav"></i>
                                     </div>
                                     <div class="single-about-right-text">
-                                        <h3>training capacity</h3>
-                                        <p>Lorem ipsum dolor sit amet, Lorem ipsum dolor sit. Nam sed ligula odio. Sed id metus felis.</p>
+                                        <h3>Training period</h3>
+                                        <p>3th March - 27th December</p>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -147,8 +130,11 @@
                                         <i class="fa fa-trophy"></i>
                                     </div>
                                     <div class="single-about-right-text">
-                                        <h3>winning history</h3>
-                                        <p>Lorem ipsum dolor sit amet, Lorem ipsum dolor sit. Nam sed ligula odio. Sed id metus felis.</p>
+                                        <h3>used language</h3>
+                                        <p>Spring FrameWork</p>
+                                        <p>Mybtis</p>
+                                        <p>JavaScript</p>
+                                        <p>Oracle DataBase</p>
                                     </div>
                                 </div>
                             </div>
@@ -160,8 +146,8 @@
                                         <i class="fa fa-line-chart"></i>
                                     </div>
                                     <div class="single-about-right-text">
-                                        <h3>match history</h3>
-                                        <p>Lorem ipsum dolor sit amet, Lorem ipsum dolor sit. Nam sed ligula odio. Sed id metus felis.</p>
+                                        <h3>Develope period</h3>
+                                        <p>1th September - 10th October</p>
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +158,10 @@
                                     </div>
                                     <div class="single-about-right-text">
                                         <h3>team member</h3>
-                                        <p>Lorem ipsum dolor sit amet, Lorem ipsum dolor sit. Nam sed ligula odio. Sed id metus felis.</p>
+                                        <p>Project manager Lee Jung Hyun</p>
+                                        <p>Back-End Dev Jung Jin woo</p>
+                                        <p>Back-End Dev Park Myeong Kook</p>
+                                        <p>Front-End Dev Jin Sung Min</p>
                                     </div>
                                 </div>
                             </div>
@@ -196,7 +185,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="kick-section-heading">
-                        <h2>last match <span>result</span></h2>
+                        <h2>Top Team <span>Match</span></h2>
                         <div class="title-line-one"></div>
                         <div class="title-line-two"></div>
                     </div>
@@ -210,12 +199,12 @@
                                 <h3 class="result">win</h3>
                                 <div class="result-details">
                                     <h3 class="result-details-left">
-                                        <a href="#">kick dragon</a>
+                                        <a href="#">별거없구만</a>
                                     </h3>
                                     <ul>
-                                        <li><p>Roman Fenley</p><span>(15)</span></li>
-                                        <li><p>Jonah Jolicoeur</p><span>(39)</span></li>
-                                        <li><p>Miguel Beckel</p><span>(25)</span></li>
+                                        <li><p>내일은축구왕</p><span>(15')</span></li>
+                                        <li><p>Jonah</p><span>(39')</span></li>
+                                        <li><p>강남스타일</p><span>(25')</span></li>
                                     </ul>
                                     <div class="last-match-logo">
                                         <a href="#"><img src="resources/img/team-4.png" alt="logo" /></a>
@@ -239,13 +228,12 @@
                                     </div>
                                     <h3 class="result-details-right">
                                         <a href="#">
-                                            kick ninja
+                                            강동원빠
                                         </a>
                                     </h3>
                                     <ul>
-                                        <li><p>Roman Fenley</p><span>(15)</span></li>
-                                        <li><p>Jonah Jolicoeur</p><span>(39)</span></li>
-                                        <li><p>Miguel Beckel</p><span>(25)</span></li>
+                                        <li><p>Cokeci</p><span>(15')</span></li>
+                                        <li><p>ppap</p><span>(39')</span></li>
                                     </ul>
                                 </div>
                             </div>
@@ -253,11 +241,11 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+<!--             <div class="row">
                 <div class="view-all-result">
                     <a href="#" class="kick-btn">view all result</a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
     <!-- Last Match Result Area End -->
@@ -527,7 +515,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="kick-section-heading">
-                        <h2>top <span>player</span></h2>
+                        <h2>Top <span>Team</span></h2>
                         <div class="title-line-one"></div>
                         <div class="title-line-two"></div>
                     </div>
@@ -536,66 +524,20 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="top-player-slider">
+                    <c:forEach var="team" items="${team}" varStatus="stat">
                         <div class="single-top-player">
-                            <img src="resources/img/player-1.jpg" alt="top player" />
+                            <img src="/emblemimg/${team.team_name }" alt="top Team" />
                             <div class="player-info">
                                 <div class="player-nmbr">
-                                    <p>09</p>
+                                    <p>${stat.count }</p>
                                 </div>
                                 <div class="player-name">
-                                    <h4><a href="#">Ican Ivanovich</a></h4>
-                                    <p>defender</p>
+                                    <h4><a href="#">${team.team_name }</a></h4>
+                                    <p>${team.region}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="single-top-player">
-                            <img src="resources/img/player-2.jpg" alt="top player" />
-                            <div class="player-info">
-                                <div class="player-nmbr">
-                                    <p>22</p>
-                                </div>
-                                <div class="player-name">
-                                    <h4><a href="#">Lan Smith</a></h4>
-                                    <p>Goal Kipper</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-top-player">
-                            <img src="resources/img/player-3.jpg" alt="top player" />
-                            <div class="player-info">
-                                <div class="player-nmbr">
-                                    <p>13</p>
-                                </div>
-                                <div class="player-name">
-                                    <h4><a href="#">Fizz Mark</a></h4>
-                                    <p>defender</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-top-player">
-                            <img src="resources/img/player-4.jpg" alt="top player" />
-                            <div class="player-info">
-                                <div class="player-nmbr">
-                                    <p>07</p>
-                                </div>
-                                <div class="player-name">
-                                    <h4><a href="#">Ican Ivanovich</a></h4>
-                                    <p>defender</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-top-player">
-                            <img src="resources/img/player-2.jpg" alt="top player" />
-                            <div class="player-info">
-                                <div class="player-nmbr">
-                                    <p>04</p>
-                                </div>
-                                <div class="player-name">
-                                    <h4><a href="#">Vicky raj</a></h4>
-                                    <p>defender</p>
-                                </div>
-                            </div>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>

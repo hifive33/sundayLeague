@@ -59,27 +59,81 @@
     
     
     <!-- About Page Section Start -->
-    <section class="kick-about-page-welcome section_100">
+      <section class="kick-about-area section_100">
+        <div class="back" style="background-color: #00000033;padding-top: 100px;padding-bottom:100px">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="kick-section-heading">
-                        <h2>Welcome To <span>our Site</span></h2>
-                        <div class="title-line-one"></div>
-                        <div class="title-line-two"></div>
+                <div class="col-md-8">
+                    <div class="kick-about-right">
+                        <div class="kick-section-heading">
+                            <h2>about <span>SundayLeague</span></h2>
+                            <div class="title-line-one"></div>
+                            <div class="title-line-two"></div>
+                        </div>
+                        <p>サッカー同好会の活動を活性化させるためにレーティング点数を基盤にマッチングするサービスをELO アルゴリズムを使って開発</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="single-about-right">
+                                    <div class="single-about-right-con">
+                                        <i class="fa fa-grav"></i>
+                                    </div>
+                                    <div class="single-about-right-text">
+                                        <h3>Training period</h3>
+                                        <p>3th March - 27th December</p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-about-right">
+                                    <div class="single-about-right-con">
+                                        <i class="fa fa-trophy"></i>
+                                    </div>
+                                    <div class="single-about-right-text">
+                                        <h3>used language</h3>
+                                        <p>Spring FrameWork</p>
+                                        <p>Mybtis</p>
+                                        <p>JavaScript</p>
+                                        <p>Oracle DataBase</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="single-about-right">
+                                    <div class="single-about-right-con">
+                                        <i class="fa fa-line-chart"></i>
+                                    </div>
+                                    <div class="single-about-right-text">
+                                        <h3>Develope period</h3>
+                                        <p>1th September - 10th October</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-about-right">
+                                    <div class="single-about-right-con">
+                                        <i class="fa fa-users"></i>
+                                    </div>
+                                    <div class="single-about-right-text">
+                                        <h3>team member</h3>
+                                        <p>Project manager Lee Jung Hyun</p>
+                                        <p>Back-End Dev Jung Jin woo</p>
+                                        <p>Back-End Dev Park Myeong Kook</p>
+                                        <p>Front-End Dev Jin Sung Min</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="kick-about-left">
+                        <img src="resources/img/img-03.png" alt="about player" />
                     </div>
                 </div>
             </div>
-            <div class="row">
-               
-                <div class="col-md-6">
-                    <div class="about-page-welcome-left">
-                        <img src="resources/img/202020.jpg" alt="about welcome" />
-                    </div>
-                    <div class="textarea" style="display:block;">
-                    	
-                    </div>
-                </div>
             </div>
         </div>
     </section>
