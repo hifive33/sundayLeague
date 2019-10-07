@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sundayleague.main.dao.MemberRepository;
 import com.sundayleague.main.dao.TeamRepository;
+import com.sundayleague.main.dto.FormationDTO;
+import com.sundayleague.main.dto.MatchDTO;
 import com.sundayleague.main.dto.PlayerDTO;
 import com.sundayleague.main.dto.TeamDTO;
 import com.sundayleague.main.util.FileService;
@@ -76,7 +79,90 @@ public class TeamController {
 		model.addAttribute("player", playerList);
 		model.addAttribute("player2", repo.selectTeam4((String)session.getAttribute("team_name")));
 		
+		model.addAttribute("team", repo.selectTeam((String)session.getAttribute("team_name")));
+		model.addAttribute("player", repo.selectTeam2((String)session.getAttribute("team_name")));
+		
+		////팀 포메이션 정보 획득 
+		FormationDTO formation = repo.selectFormation((String)session.getAttribute("team_name"));
+		if(formation==null){
+			formation = repo.insertFormation((String)session.getAttribute("team_name"));
+		}
+		model.addAttribute("formation", formation);
+		
+		System.out.println("선수리스트 : " + repo.selectTeam2((String)session.getAttribute("team_name")));
+		System.out.println("포메이션 : " + formation);
+
 		return "myteam";
+	}
+	
+	@GetMapping("/printFormation")
+	@ResponseBody
+	public PlayerDTO printFormation(String player, String team_name) {
+		System.out.println(player);
+		System.out.println(team_name);
+		
+		String name = ""; 
+		
+		FormationDTO result = repo.selectFormation(team_name);
+		
+		switch(player){
+		case "playerGK":
+			name = result.getPlayer0(); break;
+		case "player1":
+			name = result.getPlayer1(); break;
+		case "player2":
+			name = result.getPlayer2(); break;
+		case "player3":
+			name = result.getPlayer3(); break;
+		case "player4":
+			name = result.getPlayer4(); break;
+		case "player5":
+			name = result.getPlayer5(); break;
+		case "player6":
+			name = result.getPlayer6(); break;
+		case "player7":
+			name = result.getPlayer7(); break;
+		case "player8":
+			name = result.getPlayer8(); break;
+		case "player9":
+			name = result.getPlayer9(); break;
+		case "player10":
+			name = result.getPlayer10(); break;
+		}
+		System.out.println("name : " + name);
+		
+		if(name == null){
+			System.out.println("null");
+			return null;
+		} else {
+		
+		PlayerDTO res = repo.selectPlayer(name, team_name);
+		System.out.println("res : " + res);
+		
+		return res;
+		}
+	}
+	
+	@RequestMapping(value="/formationModalForm", method=RequestMethod.POST)
+	public String formationModalForm(String formation, String player_id, String player, HttpSession session){
+		System.out.println("--formationModalForm--");
+		System.out.println("formation : " + formation);
+		System.out.println("player_id : " + player_id);
+		System.out.println("player : " + player);
+		
+		if(player!=null){
+			if(player.equals("GK")){
+				player = "0";
+			}
+		}
+		
+		String team_name = (String)session.getAttribute("team_name");
+		if(formation != null){
+			int result = repo.updateTeamFormation(team_name, formation);
+		} else if(player_id != null){
+			int result = repo.updatePlayerFormation(team_name, player_id, "player"+player);
+		}
+		return "redirect:/myteam";
 	}
 	
 	@GetMapping("/teams")

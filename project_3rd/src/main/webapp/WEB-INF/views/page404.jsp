@@ -64,14 +64,14 @@
                 <div class="col-md-6 col-md-offset-3">
                     <div class="kick-notfound">
                         <h2>404</h2>
-                        <h4>Sorry, Page you're looking for is not found</h4>
+                        <h4>申し訳ございません、ページが見つかりません。</h4>
                         <form>
-                            <input name="email" placeholder="Enter Your Email Address" type="email">
+                            <input name="email" placeholder="e-mailを入力して下さい" type="email">
                             <button type="submit">
                                 <i class="fa fa-send-o" aria-hidden="true"></i>
                             </button>
                         </form>
-                        <a href="index.html" class="kick-btn" >back to home page</a>
+                        <a href="index.html" class="kick-btn" >ホームページに戻る</a>
                     </div>
                 </div>
             </div>

@@ -77,7 +77,7 @@
                         <img src="resources/img/202020.jpg" alt="about welcome" />
                     </div>
                     <div class="textarea" style="display:block;">
-                    	반갑습니다 반가워
+                    	
                     </div>
                 </div>
             </div>
