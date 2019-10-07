@@ -57,19 +57,26 @@
 	</select>
 	<select id="selectTeamList" resultType="TeamDTO" parameterType="Map">
 		SELECT
-			team_name
-			, victory
-			, defeat
-			, draw
-			, rating
-			, to_char(established, 'yyyy-mm-dd') as established
-			, headcount
-			, team_comment
-			, region
-			, deleted_flag
-			, accpet_flag
+		    team_name
+		    , victory
+		    , defeat
+		    , draw
+		    , rating
+		    , to_char(established, 'yyyy-mm-dd') as established
+		    , nvl((select
+		            count(*)
+		        from
+		            player
+		        group by
+		            team_name
+		        having
+		            player.team_name = team.team_name), 0) as headcount
+		    , team_comment
+		    , region
+		    , deleted_flag
+		    , accpet_flag
 		FROM
-			team
+		    team
 		<trim prefix="WHERE" prefixOverrides="AND |OR ">
 			<if test="region != ''">
 				region like #{region}||'%'
