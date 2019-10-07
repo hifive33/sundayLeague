@@ -37,4 +37,5 @@ public interface TeamMapper {
 	int deletePlayerFormation(Map<String, String> map); 
 	int countHead(String team_name);
 	List<TeamDTO>rankTeam();
+	String checkTeamName(String team_name);
 }

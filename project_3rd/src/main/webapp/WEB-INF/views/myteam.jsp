@@ -79,10 +79,16 @@
         
         .spec__box{
             padding: 14px;
-               height:385px;
+            height:385px;
             background: #212121;
         }
 
+		.img__box{
+			padding: 14px;
+			height: 518.6px;
+			background: #212121;
+			text-align: center;
+		}
         .team__image{
             display: block;
             box-sizing: border-box;
@@ -119,6 +125,7 @@
             /* width: 657px; */
             width: 65%;
             background: #212121;
+            margin-right: 8px;
         }
 
         .top__menu{
@@ -288,15 +295,20 @@
                             <p>${list.authority ==3 ? 'オーナー':list.authority ==2 ? 'スタッフ':'選手'}</p>
                             <p>${list.player_comment }</p>
                         </li>
-               </c:if>
-               </c:forEach>
-               </ul>
+					</c:if>
+					</c:forEach>
+					</ul>
                 </div>
             </div>
             <div class="row">
-               <div class="team__box__right">
-               <%@include file="formation.jsp" %>
-            </div>
+            	<div class="team__box__right">
+					<%@include file="formation.jsp" %>
+				</div>
+            	<div class="team__box__left">
+                    <div class="img__box">
+                    	<img src="resources/img/banner.png" style="height: 100%"/>
+                    </div>
+            	</div>
             </div>
         </div>
     </section>

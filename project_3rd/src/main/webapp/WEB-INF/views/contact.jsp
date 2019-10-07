@@ -61,7 +61,7 @@
 	<!-- Breadcromb Area End -->
 
 	<!-- Map Canvas Start -->
-	<div id="map" style="width: 500px; height: 400px; top:50px;margin:auto;"></div>
+	<div id="map" style="width: 750px; height: 400px; top:50px;margin:auto;"></div>
 	<!-- Map Canvas End -->
 
 

@@ -270,9 +270,50 @@
 					})
 				}
 			})
+			$(".account-form-group > input[name=player_id]").on('change', function(){
+				if ($(this).val().length < 3 || $(this).val().length > 10){
+					$("#id_check").html("ID는 3~10자리만 가능합니다.")
+					$(this).next().removeClass("fa-check");
+					$(this).next().addClass("fa-user-o");
+					validation[0] = false;
+				}else {
+					$.ajax({
+						method:'get'
+						,url:'checkId'
+						,data:'player_id=' + $(this).val()
+						,success:function(res){
+							var temp = ".account-form-group > input[name=player_id]"
+							if (res == 'success'){
+								$("#id_check").html("이미 존재하는 ID 입니다")
+								$(temp).next().removeClass("fa-check");
+								$(temp).next().addClass("fa-user-o");
+								validation[0] = false;
+							} else{
+								$("#id_check").html("")
+								$(temp).next().removeClass("fa-user-o");
+								$(temp).next().addClass("fa-check");
+								validation[0] = true;
+							}
+						}
+					})
+				}
+			})
 			
 			/* 1. user name */
 			$(".account-form-group > input[name=name]").on('keyup', function(){
+				if ($(this).val() != ""){
+					$("#name_check").html("")
+					$(this).next().removeClass("fa-user");
+					$(this).next().addClass("fa-check");
+					validation[1] = true;
+				}else {
+					$("#name_check").html("이름을 입력하세요.")
+					$(this).next().removeClass("fa-check");
+					$(this).next().addClass("fa-user");
+					validation[1] = false;
+				}
+			})
+			$(".account-form-group > input[name=name]").on('change', function(){
 				if ($(this).val() != ""){
 					$("#name_check").html("")
 					$(this).next().removeClass("fa-user");
@@ -302,6 +343,21 @@
 					validation[2] = true;
 				}
 			})
+			$(".account-form-group > input[name=email]").on('change', function(){
+				var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+				// validation 추가
+				if(!emailRule.test($(this).val())) {
+					$("#email_check").html("올바른 email을 입력하세요.")
+					$(this).next().removeClass("fa-check");
+					$(this).next().addClass("fa-envelope-o");
+					validation[2] = false;
+				}else{
+					$("#email_check").html("")
+					$(this).next().removeClass("fa-envelope-o");
+					$(this).next().addClass("fa-check");
+					validation[2] = true;
+				}
+			})
 			
 			/* 3. Password */
 			$(".account-form-group > input[name=password]").on('keyup', function(){
@@ -317,9 +373,35 @@
 					validation[3] = true;
 				}
 			})
+			$(".account-form-group > input[name=password]").on('change', function(){
+				if($(this).val().length < 3 || $(this).val().length > 10){
+					$("#pw_check").html("pw는 3~10자리만 가능합니다.")
+					$(this).next().removeClass("fa-check");
+					$(this).next().addClass("fa-lock");
+					validation[3] = false;
+				} else{
+					$("#pw_check").html("")
+					$(this).next().removeClass("fa-lock");
+					$(this).next().addClass("fa-check");
+					validation[3] = true;
+				}
+			})
 			
 			/* 4. Confirm */
 			$("#confirm").on('keyup', function(){
+				if ($(this).val() != $("#pw").val()){
+					$("#confirm_check").html("password가 일치하지 않습니다.")
+					$(this).next().removeClass("fa-check");
+					$(this).next().addClass("fa-lock");
+					validation[4] = false;
+				}else {
+					$("#confirm_check").html("")
+					$(this).next().removeClass("fa-lock");
+					$(this).next().addClass("fa-check");
+					validation[4] = true;
+				}
+			})
+			$("#confirm").on('change', function(){
 				if ($(this).val() != $("#pw").val()){
 					$("#confirm_check").html("password가 일치하지 않습니다.")
 					$(this).next().removeClass("fa-check");
@@ -479,7 +561,7 @@
 		    	var count = 0
 		    	$.each(validation, function(index, item){
 		    		if (!item){
-		    			alert("제대로 입력")
+		    			alert("빈칸을 모두 입력해주세요")
 		    			return false;
 		    		}else{
 		    			count++;

@@ -238,5 +238,10 @@ public class TeamRepository {
 	public List<TeamDTO>rankTeam(){
 		TeamMapper mapper = session.getMapper(TeamMapper.class);
 		return mapper.rankTeam();
+  }
+
+	public String checkTeamName(String team_name) {
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		return mapper.checkTeamName(team_name);
 	}
 }

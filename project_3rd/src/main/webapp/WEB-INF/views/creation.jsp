@@ -67,11 +67,12 @@
                             <i class="fa fa-lock"></i>
                             <h3>Create Team</h3>
                         </div>
-                        <form action=creation method="post" enctype="multipart/form-data">
+                        <form action=creation method="post" enctype="multipart/form-data" id="regform">
                             <div class="account-form-group">
                                 <input type="text" placeholder="team_name" name=team_name >
                                 <i class="fa fa-user-o"></i>
                             </div>
+                            <div id="team_name_check" style="color:red !important;text-align: right;"></div>
                             <div class="account-form-group">
                             	<select name="region">
                             		<option>地域を選択して下さい。</option>
@@ -110,7 +111,7 @@
 							</div>
 							<input id="imgPreview" type="file" name="emblemUpload" value="사진첨부" accept="image/jpg, image/jpeg, image/png, image/gif" />
                             <div class="submit-login">
-								<button type="submit" >登録</button>
+								<button id="creationSubmit">登録</button>
                             </div>
                         </form>
                         <div class="login-sign-up">
@@ -167,41 +168,159 @@
     <!-- script -->
     <script>
 		$(function(){
+			var validation = [false, false, false, false, false]
 			$(".breadcromb-box > h2").html("Create Team")
 			$(".breadcromb-box ul li:last-child").html("Create Team")
 			$("#navigation_menu_2 > li:first-child").attr('class', 'current-page-item')
 			$(".kick-header-area a[href=creation]").parent().attr('class', 'current-page-item')
-			
-			$(".account-form-group > select").on('change', function(){
-				if ($(this).val() != $(this).children()[0].innerHTML){
-					$(this).attr('style','color:black;')
-						   .next().addClass("fa-check");
-				}else {
-					$(this).removeAttr('style')
-						   .next().removeClass("fa-check");
-				}
-			})
-			
-			$(".account-form-group > textarea").on('change', function(){
-				// validation 추가
-				if ($(this).val() != ""){
-					$(this).next().addClass("fa-check");
-				}else {
-					$(this).next().removeClass("fa-check");
-				}
-			})
-			
-		    $(".account-form-group > input[name=team_name]").on('change', function(){
-				// validation 추가
-				if ($(this).val() != ""){
-					$(this).next().removeClass("fa-user-o");
-					$(this).next().addClass("fa-check");
-				}else {
+
+			/* 0. Team Name */
+		    $(".account-form-group > input[name=team_name]").on('keyup', function(){
+				if ($(this).val().length < 3 || $(this).val().length > 10){
+					$("#team_name_check").html("팀이름은 3~10자리만 가능합니다.")
 					$(this).next().removeClass("fa-check");
 					$(this).next().addClass("fa-user-o");
+					validation[0] = false;
+				}else {
+					$.ajax({
+						method:'get'
+						,url:'checkTeamName'
+						,data:'team_name=' + $(this).val()
+						,success:function(res){
+							var temp = ".account-form-group > input[name=team_name]"
+							if (res == 'success'){
+								$("#team_name_check").html("이미 존재하는 팀이름 입니다")
+								$(temp).next().removeClass("fa-check");
+								$(temp).next().addClass("fa-user-o");
+								validation[0] = false;
+							} else{
+								$("#team_name_check").html("")
+								$(temp).next().removeClass("fa-user-o");
+								$(temp).next().addClass("fa-check");
+								validation[0] = true;
+							}
+						}
+					})
+				}
+		    })
+		    $(".account-form-group > input[name=team_name]").on('change', function(){
+				if ($(this).val().length < 3 || $(this).val().length > 10){
+					$("#team_name_check").html("팀이름은 3~10자리만 가능합니다.")
+					$(this).next().removeClass("fa-check");
+					$(this).next().addClass("fa-user-o");
+					validation[0] = false;
+				}else {
+					$.ajax({
+						method:'get'
+						,url:'checkTeamName'
+						,data:'team_name=' + $(this).val()
+						,success:function(res){
+							var temp = ".account-form-group > input[name=team_name]"
+							if (res == 'success'){
+								$("#team_name_check").html("이미 존재하는 팀이름 입니다")
+								$(temp).next().removeClass("fa-check");
+								$(temp).next().addClass("fa-user-o");
+								validation[0] = false;
+							} else{
+								$("#team_name_check").html("")
+								$(temp).next().removeClass("fa-user-o");
+								$(temp).next().addClass("fa-check");
+								validation[0] = true;
+							}
+						}
+					})
 				}
 		    })
 		    
+		    /* 1. Select Region 1 */
+			$(".account-form-group > select[name=region]").on('change', function(){
+				if ($(this).val() != $(this).children()[0].innerHTML){
+					$(this).attr('style','color:black;')
+						   .next().addClass("fa-check");
+					validation[1] = true;
+				}else {
+					$(this).removeAttr('style')
+						   .next().removeClass("fa-check");
+					validation[1] = false;
+				}
+			})
+			
+		    /* 2. Select Region 2 */
+			$(".account-form-group > select[name=subregion]").on('change', function(){
+				if ($(this).val() != $(this).children()[0].innerHTML){
+					$(this).attr('style','color:black;')
+						   .next().addClass("fa-check");
+					validation[2] = true;
+				}else {
+					$(this).removeAttr('style')
+						   .next().removeClass("fa-check");
+					validation[2] = false;
+				}
+			})
+			
+			/* 3. Comment */
+			$(".account-form-group > textarea").on('keyup', function(){
+				if ($(this).val() != ""){
+					$(this).next().addClass("fa-check");
+					validation[3] = true;
+				}else {
+					$(this).next().removeClass("fa-check");
+					validation[3] = false;
+				}
+			})
+			$(".account-form-group > textarea").on('change', function(){
+				if ($(this).val() != ""){
+					$(this).next().addClass("fa-check");
+					validation[3] = true;
+				}else {
+					$(this).next().removeClass("fa-check");
+					validation[3] = false;
+				}
+			})
+			
+			/* 4. Image */
+			$("#imgPreview").on('change', function(){
+				previewImage(this); // 미리보기 함수
+				
+				if($("#imgPreview").val() != ''){
+					$("#mypic").next().addClass('fa-check')
+					validation[4] = true;
+				}else{
+					$("#mypic").next().removeClass("fa-check");
+					validation[4] = false;
+				}
+			})
+			function previewImage(input){
+				// 이미지를 선택하면
+				if(input.files && input.files[0]){
+					var reader = new FileReader();
+					reader.onload = function(e){
+						$("#mypic").attr('src', e.target.result);
+					}
+					reader.readAsDataURL(input.files[0]);
+				} else{
+					$("#mypic").attr('src', "resources/img/emblem-null.png");
+				}
+				
+			}
+			
+			/* 5. Submit */
+			$("#creationSubmit").on('click', function(){
+		    	var count = 0
+		    	$.each(validation, function(index, item){
+		    		if (!item){
+		    			alert("빈칸을 모두 입력해주세요")
+		    			return false;
+		    		}else{
+		    			count++;
+		    		}
+		    	});
+		    	if (count == 5) {
+		    		$("#regform").submit()
+		    	}
+		    	return false;
+			})
+			
 		    $(".account-form-group > select[name=region]").on('change', function(){
 				var none = [ "---" ]
 				var seoul = [ "---", "강동구","종로구", "중구", "용산구", "성동구", "광진구", "동대문구", "중랑구", "성북구", "강북구", "도봉구", "노원구", "은평구", "서대문구", "마포구", "양천구", "강서구", "구로구", "금천구", "영등포구", "동작구", "관악구", "서초구", "강남구", "송파구" ];
@@ -288,30 +407,8 @@
 					target.appendChild(opt);
 				}
 			})
+
 		})
-		
-		$("#imgPreview").on('change', function(){
-			previewImage(this); // 미리보기 함수
-			
-			if($("#imgPreview").val() != ''){
-				$("#mypic").next().addClass('fa-check')
-			}else{
-				$("#mypic").next().removeClass("fa-check");
-			}
-		})
-		function previewImage(input){
-			// 이미지를 선택하면
-			if(input.files && input.files[0]){
-				var reader = new FileReader();
-				reader.onload = function(e){
-					$("#mypic").attr('src', e.target.result);
-				}
-				reader.readAsDataURL(input.files[0]);
-			} else{
-				$("#mypic").attr('src', "resources/img/emblem-null.png");
-			}
-			
-		}
 	</script>
 	
 </body>
