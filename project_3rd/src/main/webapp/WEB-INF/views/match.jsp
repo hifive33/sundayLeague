@@ -74,19 +74,20 @@
 							<h2>next match started in</h2>
 							<c:if test="${flag == '0'}">
 								<div class="upcoming-match-box"style="position: relative;">
-								<div id="matchID" style="display:none;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);width: 300px;margin: 0 auto;height: 300px;overflow: hidden;background-color: #ffffff88;">
-										<div style="margin-top: 50px">
-										<form action="matchfind">
-											<input type="checkbox" id="addressboolean" />
-											<input type="text" name="match_address" placeholder="Address" disabled="disabled" /><br />
-											<input type="radio" name="match_day" value="sat" checked="checked" />SATERDAY
-											<input type="radio" name="match_day" value="sun" />SUNDAY<br />
-											<div class="button" style="align-content: center">
-												<button>MATCHING</button>
+								<!-- <div id="matchID" style="display:none;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);width: 300px;margin: 0 auto;height: 300px;overflow: hidden;background-color: #ffffff88;">
+											<div style="margin-top: 50px">
+											<form action="matchfind">
+												<input type="checkbox" id="addressboolean" /> <input
+													type="text" name="match_address" placeholder="Address"
+													disabled="disabled" /><br /> <input type="radio"
+													name="match_day" value="sat" checked="checked" />SATERDAY<input
+													type="radio" name="match_day" value="sun" />SUNDAY<br />
+												<div class="button" style="align-content: center">
+													<button>MATCHING</button>
+												</div>
+											</form>
 											</div>
-										</form>
-										</div>
-									</div>
+									</div> -->
 									<h4>場所</h4>
 									<p>日付</p>
 									<div class="upcoming-teams-head">
@@ -183,7 +184,12 @@
 						<div class="match-form-group">
 							<c:if test="${authority > 1}">
 								<c:if test="${flag == '0'}">
-									<button id="matching">MATCHING</button>
+									<form action="matchfind">
+										<input type="checkbox" id="addressboolean" />
+										<input type="text" name="match_address" placeholder="Address" disabled="disabled" />
+										<input type="hidden" name="match_day" value="sun" />
+										<button id="matching">MATCHING</button>
+									</form>
 								</c:if>
 								<c:if test="${flag == '1'}">
 									<button type="button" id="matchfind">申込キャンセル</button>
@@ -246,9 +252,9 @@
 		$(function() {
 			$(".breadcromb-box > h2").html("Match")
 			$(".breadcromb-box ul li:last-child").html("Match")
-			$("#matching").on('click', function() {
+			/* $("#matching").on('click', function() {
 				$("#matchID").css('display','');
-			})
+			}) */
 			var dday = '${dday}' // 경기시간
 
 			$('#coming-soon').countdown(

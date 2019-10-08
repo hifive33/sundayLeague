@@ -256,7 +256,7 @@
     <%@include file="menu/breadcrombArea.jsp"%>
     <!-- Breadcromb Area End -->
     
-	<!-- My Account Page Start -->
+	<!-- Player Details Page Start -->
     <section class="kick-fixture-page-next-match section_100">
         <div class="container">
             <div class="row">
@@ -331,7 +331,7 @@
             </div>
         </div>
     </section>
-    <!-- My Account Page End -->
+    <!-- Player Details Page End -->
     
     
     <!-- Footer Area Start -->

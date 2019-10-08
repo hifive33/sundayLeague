@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
@@ -72,6 +73,12 @@ public class MatchController {
 	@GetMapping("/matchfind")
 	public String matchfind(HttpSession session, TeamDTO team){
 		team.setTeam_name((String)session.getAttribute("team_name"));
+		if (team.getMatch_address() != null && team.getMatch_address().equals("random")){
+			if (new Random().nextInt(2) == 1)
+				team.setMatch_address("random_address");
+			else
+				team.setMatch_address(null);
+		}
 		teamRepo.updateMatch_flag(team);
 		return "redirect:/match";
 	}

@@ -66,33 +66,28 @@
                         <div class="kick-faqs-left-box">
                             <div class="kick-single-faqs">
                                 <i class="fa fa-question-circle"></i>
-                                <h3>How do I become an author?</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus eveniet sequi placeat beatae neque, officiis repudiandae totam quia, consectetur, soluta </p>
+                                <h3>개발기간은 얼마나 걸렸나요?</h3>
+                                <p>9월초부터 1달정도 걸렸습니다</p>
                             </div>
                             <div class="kick-single-faqs">
                                 <i class="fa fa-question-circle"></i>
-                                <h3>Can I start multiple project?</h3>
-                                <p>dolor sit amet, consectetur adipisicing elit. Temporibus Lorem ipsum  eveniet sequi placeat beatae neque, officiis repudiandae totam quia, consectetur, soluta </p>
+                                <h3>팀 매칭은 어떻게 되나요?</h3>
+                                <p>구단, 지역, 레이팅 별로 계산하여 동일한 수준의 팀과 자동으로 매칭됩니다</p>
                             </div>
                             <div class="kick-single-faqs">
                                 <i class="fa fa-question-circle"></i>
-                                <h3>Tips for Increasing Your Income?</h3>
-                                <p>consectetur sit amet, consectetur adipisicing elit. Temporibus Lorem ipsum  eveniet sequi placeat beatae neque, officiis repudiandae totam quia, consectetur, soluta </p>
+                                <h3>서비스 이용료는 얼마인가요 ?</h3>
+                                <p>Sunday League는 모든 서비스가 무료입니다</p>
                             </div>
                             <div class="kick-single-faqs">
                                 <i class="fa fa-question-circle"></i>
-                                <h3>How can I install a theme?</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus eveniet sequi placeat beatae neque, officiis repudiandae totam quia, consectetur, soluta </p>
+                                <h3>개발에 사용한 언어는 무엇인가요 ?</h3>
+                                <p>java, javascript, ajax, json, Spring Legacy, tomcat, OracleDB, BootStrap, CSS, HTML5 등 다양한 언어를 사용하였습니다</p>
                             </div>
                             <div class="kick-single-faqs">
                                 <i class="fa fa-question-circle"></i>
-                                <h3>Tips for Increasing Your Income?</h3>
-                                <p>consectetur sit amet, consectetur adipisicing elit. Temporibus Lorem ipsum  eveniet sequi placeat beatae neque, officiis repudiandae totam quia, consectetur, soluta </p>
-                            </div>
-                            <div class="kick-single-faqs">
-                                <i class="fa fa-question-circle"></i>
-                                <h3>Can I start multiple project?</h3>
-                                <p>dolor sit amet, consectetur adipisicing elit. Temporibus Lorem ipsum  eveniet sequi placeat beatae neque, officiis repudiandae totam quia, consectetur, soluta </p>
+                                <h3>개발하면서 어려웠던점은 무엇인가요 ?</h3>
+                                <p>데이터베이스랑 디자인부분이 어려웠습니다</p>
                             </div>
                         </div>
                     </div>

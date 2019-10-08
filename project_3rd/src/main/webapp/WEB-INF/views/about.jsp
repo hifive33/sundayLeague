@@ -60,7 +60,7 @@
     
     <!-- About Page Section Start -->
       <section class="kick-about-area section_100">
-        <div class="back" style="background-color: #00000033;padding-top: 100px;padding-bottom:100px">
+        <div class="back" style="background-color: #00000011;padding-top: 100px;padding-bottom:100px">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">

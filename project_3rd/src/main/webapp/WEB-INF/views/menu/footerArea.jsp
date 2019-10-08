@@ -8,14 +8,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="single-footer-widget">
-                        <h3>about <span>kick</span></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ante at nunc pretium.</p>
+                        <h3>about <span>SundayLeague</span></h3>
+                        <p>サッカー同好会の活動を活性化させるためにレーティング点数を基盤にマッチングするサービスをELO アルゴリズムを使って開発</p>
                         <ul class="single-footer-address">
                             <li>
                                 <div class="add-icon">
                                     <i class="fa fa-map-marker"></i>
                                 </div>
-                                <p> 616 Street, Old Trafford, New South Wales London , UK </p>
+                                <p> Trade Center COEX, Samseong 1-dong, Gangnam-gu, Seoul, SEOUL 135-731 KOREA </p>
                             </li>
                             <li>
                                 <div class="add-icon">
