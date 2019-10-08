@@ -189,7 +189,7 @@ text-align: center;
                                     </h3>
                                     <ul>
                                     <c:forEach var="list" items="${l_player }">
-                                       	<li>${list.player_id}<span>(${list.goaltime} assisted by ${list.assistedby})</span></li>
+                                       	<li><p>${list.player_id}</p><span>(${list.goaltime })</span></li>
 									</c:forEach>
                                     </ul>
                                     <div class="last-match-logo">
@@ -219,7 +219,7 @@ text-align: center;
                                     </h3>
                                     <ul>
                                     <c:forEach var="list" items="${r_player }">
-                                       	<li>${list.player_id}<span>(${list.goaltime} assisted by ${list.assistedby})</span></li>
+                                       	<li><p>${list.player_id}</p><span>(${list.goaltime })</span></li>
 									</c:forEach>
                                         
                                     </ul>

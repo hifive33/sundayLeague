@@ -26,18 +26,18 @@
       select * from player where team_name = #{team_name}
       order by authority desc
    </select>
-   <select id="selectTeam3" resultType="MatchGoalDTO"
-      parameterType="String">
-      select
-          *
-      from
-          match_goal
-      where
-          player_id in (select    player_id
-                        from      player
-                        where     team_name = #{team_name})
-<!--       select player_id,to_char(birth,'yyyy') as birth from player where team_name = #{team_name} -->
-
+   <select id="selectTeam3" resultType="MatchGoalDTO" parameterType="String">
+		select
+			*
+		from
+			match_goal
+		where
+			player_id in (select    player_id
+	                        from      player
+	                        where     team_name = #{team_name})
+			and match_no = #{match_no}
+		order by
+			goaltime
    </select>
    
       <select id="selectTeam4" resultType="PlayerDTO"
@@ -181,7 +181,7 @@
          where
             team_name = #{team_name} or away_team_name = #{team_name} 
           order by
-              matchdate desc
+              match_no desc
       )
       where
           rownum = 1
@@ -299,7 +299,7 @@
 			 desc
 			 )
 		where
-	rownum &lt; 5
+	rownum &lt; 6
 	</select>
 	<select id="checkTeamName" parameterType="String" resultType="String">
 		select

@@ -17,7 +17,7 @@ public interface TeamMapper {
 	int insertTeam(Map<String, Object> map);
 	TeamDTO selectTeam(String team_name);
 	List<PlayerDTO> selectTeam2(String team_name);
-	List<MatchGoalDTO> selectTeam3(String team_name);
+	List<MatchGoalDTO> selectTeam3(Map<String, String> map);
 	List<PlayerDTO> selectTeam4(String team_name);
 	int getTeamCount(Map<String,String>map);
 	List<TeamDTO> selectTeamList(Map<String, String> map, RowBounds rb);

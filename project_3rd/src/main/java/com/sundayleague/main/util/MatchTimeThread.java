@@ -75,65 +75,66 @@ public class MatchTimeThread implements Runnable { // (1)
             if (currentThread == thread) { // (8)
             	// 매칭서비스
             	this.list = teamRepo.selectMatchTeamList();
-            	
-            	// list 지역별, 날짜별로 grouping
-            	this.groupedByRegionDay = this.list
-            			.stream()
-            			.collect(Collectors.groupingBy(x->{
-                            return new ArrayList<String>(Arrays.asList(x.getRegion(), x.getMatch_day()));
-                        }));
-            	
-            	// group별 matching
-            	for (Map.Entry<List<String>, List<TeamMatchingDTO>> entry : groupedByRegionDay.entrySet()){
-            		// 확인용 출력
-//            		System.out.println(entry.getKey() + teamMatching.matching(entry.getValue()).toString());
-            		result = teamMatching.matching(entry.getValue());
-            		
-            		// Map 키값 오름차순 정렬
-            		TreeMap<String,String> tm = new TreeMap<String,String>(result);
-            		Iterator<String> iteratorKey = tm.keySet().iterator();
-            		int count = 0, max = tm.size()/2;
-            		List<MatchDTO> matchList = new ArrayList<>();
-            		while(iteratorKey.hasNext()) {
-            			String key = iteratorKey.next();
-            			if (count < max){
-            				// away 팀 순서대로
-            				matchList.add(new MatchDTO());
-            				matchList.get(count).setAway_team_name(tm.get(key));
-            			} else{
-            				// home 팀 순서대로
-            				matchList.get(count - max).setTeam_name(tm.get(key));
-            				matchList.get(count - max).setMatchdate((entry.getKey().get(1).equals("sat")) ? this.getCurSaterday() : this.getCurSunday());
-            				for (TeamMatchingDTO teamMatching : entry.getValue()){
-            					if (teamMatching.getName().equals(tm.get(key))){
-            						matchList.get(count - max).setMatch_address(teamMatching.getMatch_address());
-            					}
-            				}
-            			}
-            			count++;
-            		}
-            		// 확인용 출력
-//            		System.out.println(matchList);
-            		
-            		
-            		if (matchList.size() != 0) {
-            			// db처리 match_flag -> 2  => 매칭완료
-            			matchRepo.updateMatchFlag(matchList);
-            			// matching log table에 추가
-            			matchRepo.insertMatches(matchList);
-            			// insert calendar
-            			for (MatchDTO match : matchList){
-            				String str = match.getTeam_name() + " VS " + match.getAway_team_name();
-            				match.setMatch_no(str);
-            			}
-            			calendarRepo.insertMatchEvent(matchList);
-            		}
-            		
+            	if (this.list.size() > 0){
+	            	// list 지역별, 날짜별로 grouping
+	            	this.groupedByRegionDay = this.list
+	            			.stream()
+	            			.collect(Collectors.groupingBy(x->{
+	                            return new ArrayList<String>(Arrays.asList(x.getRegion(), x.getMatch_day()));
+	                        }));
+	            	
+	            	// group별 matching
+	            	for (Map.Entry<List<String>, List<TeamMatchingDTO>> entry : groupedByRegionDay.entrySet()){
+	            		// 확인용 출력
+	            		System.out.println(entry.getKey() + teamMatching.matching(entry.getValue()).toString());
+	            		result = teamMatching.matching(entry.getValue());
+	            		
+	            		// Map 키값 오름차순 정렬
+	            		TreeMap<String,String> tm = new TreeMap<String,String>(result);
+	            		Iterator<String> iteratorKey = tm.keySet().iterator();
+	            		int count = 0, max = tm.size()/2;
+	            		List<MatchDTO> matchList = new ArrayList<>();
+	            		while(iteratorKey.hasNext()) {
+	            			String key = iteratorKey.next();
+	            			if (count < max){
+	            				// away 팀 순서대로
+	            				matchList.add(new MatchDTO());
+	            				matchList.get(count).setAway_team_name(tm.get(key));
+	            			} else{
+	            				// home 팀 순서대로
+	            				matchList.get(count - max).setTeam_name(tm.get(key));
+	            				matchList.get(count - max).setMatchdate((entry.getKey().get(1).equals("sat")) ? this.getCurSaterday() : this.getCurSunday());
+	            				for (TeamMatchingDTO teamMatching : entry.getValue()){
+	            					if (teamMatching.getName().equals(tm.get(key))){
+	            						matchList.get(count - max).setMatch_address(teamMatching.getMatch_address());
+	            					}
+	            				}
+	            			}
+	            			count++;
+	            		}
+	            		// 확인용 출력
+	            		System.out.println(matchList);
+	            		
+	            		
+	            		if (matchList.size() != 0) {
+	            			// db처리 match_flag -> 2  => 매칭완료
+	            			matchRepo.updateMatchFlag(matchList);
+	            			// matching log table에 추가
+	            			matchRepo.insertMatches(matchList);
+	            			// insert calendar
+	            			for (MatchDTO match : matchList){
+	            				String str = match.getTeam_name() + " VS " + match.getAway_team_name();
+	            				match.setMatch_no(str);
+	            			}
+	            			calendarRepo.insertMatchEvent(matchList);
+	            		}
+	            		
+	            	}
+	            	
+	            	// list, map 초기화
+	            	list.clear();
+	            	groupedByRegionDay.clear();
             	}
-            	
-            	// list, map 초기화
-            	list.clear();
-            	groupedByRegionDay.clear();
             }
         }
     }

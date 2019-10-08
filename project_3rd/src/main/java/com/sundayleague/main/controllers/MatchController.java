@@ -146,12 +146,12 @@ public class MatchController {
 			}
 			if (match_goalList.size() > 0) matchRepo.insertMatchGoal(match_goalList);
 			
-			// update team / match_flag -> 0 / match_address, match_day -> null
-			match.setMatchdate(null);
-			List<MatchDTO> updateTeamList = new ArrayList<>();
-			updateTeamList.add(match);
-			matchRepo.updateMatchFlag(updateTeamList);
 		}
+		// update team / match_flag -> 0 / match_address, match_day -> null
+		match.setMatchdate(null);
+		List<MatchDTO> updateTeamList = new ArrayList<>();
+		updateTeamList.add(match);
+		matchRepo.updateMatchFlag(updateTeamList);
 		
 		// win, lose, draw update
 		// rating 처리
@@ -215,8 +215,8 @@ public class MatchController {
 		List<MatchGoalDTO> result2 = null;
 		List<MatchGoalDTO> result3 = null;
 		if (result != null) {
-			result2 = teamRepo.selectTeam3(result.getTeam_name());
-			result3 = teamRepo.selectTeam3(result.getAway_team_name());
+			result2 = teamRepo.selectTeam3(result.getTeam_name(), result.getMatch_no());
+			result3 = teamRepo.selectTeam3(result.getAway_team_name(), result.getMatch_no());
 		
 			if(Integer.parseInt(result.getHome_teamscore())<Integer.parseInt(result.getAway_teamscore())){
 				model.addAttribute("left",result.getAway_team_name());

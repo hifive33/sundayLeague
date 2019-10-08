@@ -39,9 +39,12 @@ public class TeamRepository {
 		return mapper.selectTeam2(team_name);
 	}
 	
-	public List<MatchGoalDTO> selectTeam3(String team_name){
+	public List<MatchGoalDTO> selectTeam3(String team_name, String match_no){
 		TeamMapper mapper = session.getMapper(TeamMapper.class);
-		return mapper.selectTeam3(team_name);
+		Map<String, String> map = new HashMap<>();
+		map.put("team_name", team_name);
+		map.put("match_no", match_no);
+		return mapper.selectTeam3(map);
 	}
 	public List<PlayerDTO> selectTeam4(String team_name){
 		TeamMapper mapper = session.getMapper(TeamMapper.class);
