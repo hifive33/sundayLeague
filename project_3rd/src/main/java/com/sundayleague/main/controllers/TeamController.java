@@ -71,7 +71,7 @@ public class TeamController {
 		// 가입된 구단이 없을 시 creation으로 이동
 		if(session.getAttribute("team_name")==null) return "creation";
 		TeamDTO team = repo.selectTeam((String)session.getAttribute("team_name"));
-		team.setHeadcount(repo.countHead((String)session.getAttribute("team_name")));
+//		team.setHeadcount(repo.countHead((String)session.getAttribute("team_name")));
 		model.addAttribute("team", team);
 		List<PlayerDTO> playerList = repo.selectTeam2((String)session.getAttribute("team_name"));
 		playerList.forEach(x -> x.setPlayer_comment(x.getPlayer_comment().split("\r\n")[0]));
@@ -158,9 +158,9 @@ public class TeamController {
 		
 		String team_name = (String)session.getAttribute("team_name");
 		if(formation != null){
-			int result = repo.updateTeamFormation(team_name, formation);
+			repo.updateTeamFormation(team_name, formation);
 		} else if(player_id != null){
-			int result = repo.updatePlayerFormation(team_name, player_id, "player"+player);
+			repo.updatePlayerFormation(team_name, player_id, "player"+player);
 		}
 		return "redirect:/myteam";
 	}

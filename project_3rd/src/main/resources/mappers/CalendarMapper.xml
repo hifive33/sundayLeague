@@ -61,7 +61,7 @@
 			(
 				get_seq_calendar_no()
 				,#{item.team_name}
-				,'MATCH'
+				,'試合'
 				,#{item.match_no}
 				,#{item.matchdate}
 				,#{item.matchdate}
